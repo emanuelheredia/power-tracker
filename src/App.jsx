@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import readXlsxFile from "read-excel-file";
-
-const tableHeaders = [
-	"CODIGO",
-	"PRECIO IVA INCLUIDO",
-	"CAMIONETA / COLOR",
-	"PRECIO",
-	"Nueva Etiqueta",
-];
+import { estructureTable } from "../helps/helpers";
 
 function App() {
 	const [data, setData] = useState([]);
@@ -19,41 +12,27 @@ function App() {
 	};
 	useEffect(() => {
 		if (data.length > 0) {
-			setDataCleaned(data.filter((el) => !isNull(el)));
+			setDataCleaned(estructureTable(data));
 		}
 	}, [data]);
-	console.log(dataCleaned);
-	const isNull = (row) => {
-		let nullElemnt = 0;
-		let isTableHeader = false;
-		for (let el of row) {
-			if (el === null) {
-				nullElemnt += 1;
-			}
-			if (tableHeaders.includes(el)) {
-				isTableHeader = true;
-			}
-		}
-		if (
-			nullElemnt === row.length ||
-			nullElemnt === row.length - 1 ||
-			isTableHeader
-		) {
-			return true;
-		}
-		return false;
-	};
-	const getStructuredRow = (row) => {
-		let columnIndexCode = null;
-		let columnIndexVehiculo = null;
-		let columnIndexPrice = null;
-		let columnIndexMoreInfo = null;
-		let columnIndexMark = null;
-	};
 	return (
 		<>
 			<div>
 				<input type="file" onChange={(e) => handleExcelChange(e)} />
+				{dataCleaned.length > 0 &&
+					dataCleaned.map((el) => (
+						<div style={{ display: "flex", gap: "2rem" }}>
+							<p>{el[0] ? el[0] : "sin datos"}</p>
+							<p>{el[1] ? el[1] : "sin datos"}</p>
+							<p>
+								{el[2] && !isNaN(el[2])
+									? el[2].toFixed(1)
+									: "sin datos"}
+							</p>
+							<p>{el[3] ? el[3] : "sin datos"}</p>
+							<p>{el[4] ? el[4] : "sin datos"}</p>
+						</div>
+					))}
 			</div>
 		</>
 	);
