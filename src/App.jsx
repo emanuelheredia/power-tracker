@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import readXlsxFile from "read-excel-file";
 import { estructureTable } from "../helps/helpers";
-
 function App() {
 	const [data, setData] = useState([]);
 	const [dataCleaned, setDataCleaned] = useState([]);

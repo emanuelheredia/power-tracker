@@ -29,17 +29,17 @@ export const estructureTable = (table) => {
 	let firstClean;
 	if (table[1][0]?.includes("FARAD")) {
 		firstClean = getStructureFarad(table);
+		return firstClean;
 	} else {
 		firstClean = table.filter((el) => !isNull(el));
+		const headerIndexs = getStructuredRow(headerStructure);
+		const tableStructured = firstClean.map((row) =>
+			orderColumn(row, headerIndexs),
+		);
+		return tableStructured;
 	}
-
-	const headerIndexs = getStructuredRow(headerStructure);
-	const tableStructured = firstClean.map((row) =>
-		orderColumn(row, headerIndexs),
-	);
-	return tableStructured;
 };
-const isNull = (row) => {
+export const isNull = (row) => {
 	let nullElemnt = 0;
 	let isTableHeader = false;
 	if (
