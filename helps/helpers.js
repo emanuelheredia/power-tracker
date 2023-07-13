@@ -98,10 +98,10 @@ const getStructuredRow = (row) => {
 };
 const orderColumn = (row, headerIndexs) => {
 	return [
-		row[headerIndexs[0] ? headerIndexs[0] : 0],
-		row[headerIndexs[1] ? headerIndexs[1] : 0],
-		row[headerIndexs[2] ? headerIndexs[2] : 0],
-		row[headerIndexs[3] ? headerIndexs[3] : 0],
-		row[headerIndexs[4] ? headerIndexs[4] : 0],
+		{ code: row[headerIndexs[0] ? headerIndexs[0] : 0] },
+		{ vehiculo: row[headerIndexs[1] ? headerIndexs[1] : 0] },
+		{ price: row[headerIndexs[2] ? headerIndexs[2] : 0] },
+		{ moreInfo: row[headerIndexs[3] ? headerIndexs[3] : 0] },
+		{ mark: row[headerIndexs[4] ? headerIndexs[4] : 0] },
 	];
 };

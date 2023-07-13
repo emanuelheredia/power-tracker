@@ -21,15 +21,19 @@ function App() {
 				{dataCleaned.length > 0 &&
 					dataCleaned.map((el) => (
 						<div style={{ display: "flex", gap: "2rem" }}>
-							<p>{el[0] ? el[0] : "sin datos"}</p>
-							<p>{el[1] ? el[1] : "sin datos"}</p>
+							<p>{el[0].code ? el[0].code : "sin datos"}</p>
 							<p>
-								{el[2] && !isNaN(el[2])
-									? el[2].toFixed(1)
+								{el[1].vehiculo ? el[1].vehiculo : "sin datos"}
+							</p>
+							<p>
+								{el[2].price && !isNaN(el[2].price)
+									? el[2].price.toFixed(1)
 									: "sin datos"}
 							</p>
-							<p>{el[3] ? el[3] : "sin datos"}</p>
-							<p>{el[4] ? el[4] : "sin datos"}</p>
+							<p>
+								{el[3].moreInfo ? el[3].moreInfo : "sin datos"}
+							</p>
+							<p>{el[4].marca ? el[4].marca : "sin datos"}</p>
 						</div>
 					))}
 			</div>

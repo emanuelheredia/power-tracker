@@ -1,154 +1,271 @@
 import { isNull } from "./helpers";
 
 const structuredTable = [
-	["A1C/M", "500, TORO", 0, "sin datos", "FIAT"],
-	["A2C/M", "PALIO, SIENA, IDEA, PUNTO, ARGO,", 0, "sin datos", "FIAT"],
 	[
-		"BE8/M",
-		"AIRCROSS, C4 LOUNGE, BERLINGO, 206/207/208, 408, 308, 3008",
-		0,
-		"sin datos",
-		"CITROEN - PEUGEOT",
-	],
-	["DLF2/M", "JOURNEY", 0, "sin datos", "DODGE"],
-	[
-		"H/M",
-		"ECOSPORT,FIESTA,FOCUS,MONDEO, S10,TRAILBLAZER,ONIX,PRISMA",
-		0,
-		"sin datos",
-		"FORD - CHEVROLET",
+		{ code: "A1C/M" },
+		{ vehiculo: " TORO" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FIAT" },
 	],
 	[
-		"I/M",
-		"GRAND SANTA FE AGILE, CORSA, ASTRA, MERIVA, VECTRA CLIO, KANGOO, SYMBOL, SANDERO",
-		0,
-		"sin datos",
-		"HYUNDAI CHEVROLET RENAULT",
-	],
-	["R1/M", "FRONTIER 2000, ", 0, "sin datos", "NISSAN"],
-	[
-		"ZA/M",
-		"VENTO,BORA,GOLF,TIGUAN,PASAT,FOX,POLO, A1,A3,A5, FORD TERRITORY",
-		0,
-		"sin datos",
-		"VOLSKWAGEN 5T - AUDI",
-	],
-	["482/M", "HILUX,COROLLA,ETIOS,YARIS,SW4,RAV4", 0, "sin datos", "TOYOTA"],
-	["AC1C/M", "TODOS", 0, "sin datos", "HONDA"],
-	["HA4/M", "F-150 RAPTOR / LARIAT, MAVERICK", 0, "sin datos", "FORD"],
-	[
-		"A2C/E",
-		"PALIO, SIENA, IDEA, PUNTO, ARGO, STRADA, DOBLO, UNO NUEVO",
-		0,
-		"sin datos",
-		"FIAT",
+		{ code: "A2C/M" },
+		{ vehiculo: "PALIO, SIENA, IDEA, PUNTO, ARGO," },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FIAT" },
 	],
 	[
-		"BE8/E",
-		"AIRCROSS, C4 LOUNGE, BERLINGO, 206/207/208, 408, 308, 3008",
-		0,
-		"sin datos",
-		"CITROEN - PEUGEOT",
+		{ code: "BE8/M" },
+		{
+			vehiculo:
+				"AIRCROSS, C4 LOUNGE, BERLINGO, 206/207/208, 408, 308, 3008",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "CITROEN - PEUGEOT" },
 	],
 	[
-		"HA/E",
-		"ECOSPORT, FIESTA, FOCUS, MONDEO, S10, TRAILBLAZER, ONIX, PRISMA, GRAND SANTA FE",
-		0,
-		"sin datos",
-		"FORD - CHEVROLET - HYUNDAI",
+		{ code: "DLF2/M" },
+		{ vehiculo: "JOURNEY" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "DODGE" },
 	],
 	[
-		"I3/E",
-		"AGILE, CORSA, ASTRA, MERIVA, VECTRA,  CLIO, KANGOO, SYMBOL, SANDERO",
-		0,
-		"sin datos",
-		"CHEVROLET -  RENAULT",
+		{ code: "H/M" },
+		{
+			vehiculo:
+				"ECOSPORT,FIESTA,FOCUS,MONDEO, S1{price:0},TRAILBLAZER,ONIX,PRISMA",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FORD - CHEVROLET" },
 	],
 	[
-		"L2/E",
-		"GOL G4/G5, SAVEIRO, UP, VOYAGE, TIGGO 5 ",
-		0,
-		"sin datos",
-		"VOLSKWAGEN",
+		{ code: "I/M" },
+		{
+			vehiculo:
+				"GRAND SANTA FE AGILE, CORSA, ASTRA, MERIVA, VECTRA CLIO, KANGOO, SYMBOL, SANDERO",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "HYUNDAI CHEVROLET RENAULT" },
 	],
 	[
-		"PP14/E",
-		"AMAROK, TOUAREG, SPRINTER, Q7",
-		0,
-		"sin datos",
-		"VOLSKWAGEN/AUDI",
+		{ code: "R1/M" },
+		{ vehiculo: "FRONTIER 200{price:0},{moreInfo: " },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "NISSAN" },
 	],
 	[
-		"ZA/E",
-		"VENTO,BORA,GOLF,TIGUAN,PASAT,FOX,POLO,  A1,A3,A5 , FORD TERRITORY  ",
-		0,
-		"sin datos",
-		"VOLSKWAGEN 5T - AUDI",
+		{ code: "ZA/M" },
+		{
+			vehiculo:
+				"VENTO,BORA,GOLF,TIGUAN,PASAT,FOX,POLO, A1,A3,A5, FORD TERRITORY",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "VOLSKWAGEN 5T - AUDI" },
 	],
 	[
-		"482/E",
-		"HILUX,COROLLA,ETIOS,PRIUS,YARIS,SW4,RAV4",
-		0,
-		"sin datos",
-		"TOYOTA (Aleación)",
-	],
-	["AC1/E", "TODOS", 0, "sin datos", "HONDA"],
-	["BV2/D", "RENEGADE / PARTNER CHAPA", 0, "sin datos", "JEEP"],
-	[
-		"B02/D",
-		"PALIO, SIENA, IDEA, PUNTO, ARGO, STRADA, DOBLO, UNO NUEVO",
-		0,
-		"sin datos",
-		"FIAT",
+		{ code: "482/M" },
+		{ vehiculo: "HILUX,COROLLA,ETIOS,YARIS,SW4,RAV4" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "TOYOTA" },
 	],
 	[
-		"BE8/D",
-		"AIRCROSS, C4 LOUNGE, BERLINGO, 206/207/208, 408, 308, 3008",
-		0,
-		"sin datos",
-		"CITROEN - PEUGEOT",
+		{ code: "AC1C/M" },
+		{ vehiculo: "TODOS" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "HONDA" },
 	],
 	[
-		"D2/D",
-		"ECOSPORT,FIESTA,FOCUS,MONDEO, S10,TRAILBLAZER,ONIX, PRISMA, GRAND SANTA FE",
-		0,
-		"sin datos",
-		"FORD - CHEVROLET - HYUNDAI",
+		{ code: "HA4/M" },
+		{ vehiculo: "F-150 RAPTOR / LARIAT, MAVERICK" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FORD" },
 	],
 	[
-		"B12/D",
-		"AGILE, CORSA, ASTRA, MERIVA, VECTRA,  CLIO, KANGOO, SYMBOL, SANDERO",
-		0,
-		"sin datos",
-		"CHEVROLET - RENAULT",
-	],
-	["BR37/D", "GOL G4/G5, SAVEIRO, UP, VOYAGE ", 0, "sin datos", "VOLSKWAGEN"],
-	["D14/D", "FRONTIER 2000, ", 0, "sin datos", "NISSAN"],
-	[
-		"B54/D",
-		"VENTO,BORA,GOLF,TIGUAN,PASAT,FOX,POLO ,  A1,A3,A5",
-		0,
-		"sin datos",
-		"VOLSKWAGEN 5T - AUDI",
+		{ code: "A2C/E" },
+		{
+			vehiculo:
+				"PALIO, SIENA, IDEA, PUNTO, ARGO, STRADA, DOBLO, UNO NUEVO",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FIAT" },
 	],
 	[
-		"D4/D",
-		"HILUX,COROLLA,ETIOS,PRIUS,YARIS,SW4,RAV4",
-		0,
-		"sin datos",
-		"TOYOTA (Chapa)",
+		{ code: "BE8/E" },
+		{
+			vehiculo:
+				"AIRCROSS, C4 LOUNGE, BERLINGO, 206/207/208, 408, 308, 3008",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "CITROEN - PEUGEOT" },
 	],
-	["D22/D", "TODOS", 0, "sin datos", "HONDA"],
-	[90732, "PORTA BICICLETA FARAD", 0, "sin datos", "sin datos"],
+	[
+		{ code: "HA/E" },
+		{
+			vehiculo:
+				"ECOSPORT, FIESTA, FOCUS, MONDEO, S1{price:0}, TRAILBLAZER, ONIX, PRISMA, GRAND SANTA FE",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FORD - CHEVROLET - HYUNDAI" },
+	],
+	[
+		{ code: "I3/E" },
+		{
+			vehiculo:
+				"AGILE, CORSA, ASTRA, MERIVA, VECTRA,  CLIO, KANGOO, SYMBOL, SANDERO",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "CHEVROLET -  RENAULT" },
+	],
+	[
+		{ code: "L2/E" },
+		{ vehiculo: "GOL G4/G5, SAVEIRO, UP, VOYAGE, TIGGO 5 " },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "VOLSKWAGEN" },
+	],
+	[
+		{ code: "PP14/E" },
+		{ vehiculo: "AMAROK, TOUAREG, SPRINTER, Q7" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "VOLSKWAGEN/AUDI" },
+	],
+	[
+		{ code: "ZA/E" },
+		{
+			vehiculo:
+				"VENTO,BORA,GOLF,TIGUAN,PASAT,FOX,POLO,  A1,A3,A5 , FORD TERRITORY  ",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "VOLSKWAGEN 5T - AUDI" },
+	],
+	[
+		{ code: "482/E" },
+		{ vehiculo: "HILUX,COROLLA,ETIOS,PRIUS,YARIS,SW4,RAV4" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "TOYOTA (Aleación)" },
+	],
+	[
+		{ code: "AC1/E" },
+		{ vehiculo: "TODOS" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "HONDA" },
+	],
+	[
+		{ code: "BV2/D" },
+		{ vehiculo: "RENEGADE / PARTNER CHAPA" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "JEEP" },
+	],
+	[
+		{ code: "B02/D" },
+		{
+			vehiculo:
+				"PALIO, SIENA, IDEA, PUNTO, ARGO, STRADA, DOBLO, UNO NUEVO",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FIAT" },
+	],
+	[
+		{ code: "BE8/D" },
+		{
+			vehiculo:
+				"AIRCROSS, C4 LOUNGE, BERLINGO, 206/207/208, 408, 308, 3008",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "CITROEN - PEUGEOT" },
+	],
+	[
+		{ code: "D2/D" },
+		{
+			vehiculo:
+				"ECOSPORT,FIESTA,FOCUS,MONDEO, S1{price:0},TRAILBLAZER,ONIX, PRISMA, GRAND SANTA FE",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "FORD - CHEVROLET - HYUNDAI" },
+	],
+	[
+		{ code: "B12/D" },
+		{
+			vehiculo:
+				"AGILE, CORSA, ASTRA, MERIVA, VECTRA,  CLIO, KANGOO, SYMBOL, SANDERO",
+		},
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "CHEVROLET - RENAULT" },
+	],
+	[
+		{ code: "BR37/D" },
+		{ vehiculo: "GOL G4/G5, SAVEIRO, UP, VOYAGE " },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "VOLSKWAGEN" },
+	],
+	[
+		{ code: "D14/D" },
+		{ vehiculo: "FRONTIER 200{price:0},{moreInfo: " },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "NISSAN" },
+	],
+	[
+		{ code: "B54/D" },
+		{ vehiculo: "VENTO,BORA,GOLF,TIGUAN,PASAT,FOX,POLO ,  A1,A3,A5" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "VOLSKWAGEN 5T - AUDI" },
+	],
+	[
+		{ code: "D4/D" },
+		{ vehiculo: "HILUX,COROLLA,ETIOS,PRIUS,YARIS,SW4,RAV4" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "TOYOTA (Chapa)" },
+	],
+	[
+		{ code: "D22/D" },
+		{ vehiculo: "TODOS" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "HONDA" },
+	],
+	[
+		90732,
+		{ vehiculo: "PORTA BICICLETA FARAD" },
+		{ price: 0 },
+		{ moreInfo: "sin datos" },
+		{ marca: "sin datos" },
+	],
 ];
 
 export const getStructureFarad = (table) => {
 	let firstClean = table.filter((el) => !isNull(el));
 	let seconClean = structuredTable.map((el) => {
 		for (let row of firstClean) {
-			if (row[0] === el[0]) {
+			if (row[0] === el[0].code) {
 				let uploadItem = el;
-				uploadItem[2] = row[3];
+				uploadItem[2].price = row[3];
 				return uploadItem;
 			}
 		}
