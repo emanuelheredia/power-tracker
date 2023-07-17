@@ -27,14 +27,15 @@ const markHeaders = ["marca", "camioneta / color"];
 let headerStructure = [];
 export const estructureTable = (table) => {
 	let firstClean;
-	if (table[1][0]?.includes("FARAD")) {
+	const proveedor = table[1][0]?.split(" ")[0] || "ZT";
+	if (proveedor === "FARAD") {
 		firstClean = getStructureFarad(table);
 		return firstClean;
 	} else {
 		firstClean = table.filter((el) => !isNull(el));
 		const headerIndexs = getStructuredRow(headerStructure);
 		const tableStructured = firstClean.map((row) =>
-			orderColumn(row, headerIndexs),
+			orderColumn(row, headerIndexs, proveedor),
 		);
 		return tableStructured;
 	}
@@ -96,12 +97,13 @@ const getStructuredRow = (row) => {
 		columnIndexMark,
 	];
 };
-const orderColumn = (row, headerIndexs) => {
+const orderColumn = (row, headerIndexs, proveedor) => {
 	return [
 		{ code: row[headerIndexs[0] ? headerIndexs[0] : 0] },
 		{ vehiculo: row[headerIndexs[1] ? headerIndexs[1] : 0] },
 		{ price: row[headerIndexs[2] ? headerIndexs[2] : 0] },
 		{ moreInfo: row[headerIndexs[3] ? headerIndexs[3] : 0] },
 		{ mark: row[headerIndexs[4] ? headerIndexs[4] : 0] },
+		{ proveedor: proveedor },
 	];
 };

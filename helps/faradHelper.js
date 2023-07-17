@@ -7,6 +7,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FIAT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "A2C/M" },
@@ -14,6 +15,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FIAT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "BE8/M" },
@@ -24,6 +26,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "CITROEN - PEUGEOT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "DLF2/M" },
@@ -31,6 +34,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "DODGE" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "H/M" },
@@ -41,6 +45,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FORD - CHEVROLET" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "I/M" },
@@ -51,6 +56,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "HYUNDAI CHEVROLET RENAULT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "R1/M" },
@@ -58,6 +64,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "NISSAN" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "ZA/M" },
@@ -68,6 +75,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "VOLSKWAGEN 5T - AUDI" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "482/M" },
@@ -75,6 +83,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "TOYOTA" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "AC1C/M" },
@@ -82,6 +91,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "HONDA" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "HA4/M" },
@@ -89,6 +99,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FORD" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "A2C/E" },
@@ -99,6 +110,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FIAT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "BE8/E" },
@@ -109,6 +121,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "CITROEN - PEUGEOT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "HA/E" },
@@ -119,6 +132,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FORD - CHEVROLET - HYUNDAI" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "I3/E" },
@@ -129,6 +143,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "CHEVROLET -  RENAULT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "L2/E" },
@@ -136,6 +151,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "VOLSKWAGEN" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "PP14/E" },
@@ -143,6 +159,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "VOLSKWAGEN/AUDI" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "ZA/E" },
@@ -153,6 +170,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "VOLSKWAGEN 5T - AUDI" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "482/E" },
@@ -160,6 +178,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "TOYOTA (Aleación)" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "AC1/E" },
@@ -167,6 +186,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "HONDA" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "BV2/D" },
@@ -174,6 +194,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "JEEP" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "B02/D" },
@@ -184,6 +205,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FIAT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "BE8/D" },
@@ -194,6 +216,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "CITROEN - PEUGEOT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "D2/D" },
@@ -204,6 +227,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "FORD - CHEVROLET - HYUNDAI" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "B12/D" },
@@ -214,6 +238,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "CHEVROLET - RENAULT" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "BR37/D" },
@@ -221,6 +246,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "VOLSKWAGEN" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "D14/D" },
@@ -228,6 +254,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "NISSAN" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "B54/D" },
@@ -235,6 +262,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "VOLSKWAGEN 5T - AUDI" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "D4/D" },
@@ -242,6 +270,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "TOYOTA (Chapa)" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		{ code: "D22/D" },
@@ -249,6 +278,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "HONDA" },
+		{ proveedor: "FARAD" },
 	],
 	[
 		90732,
@@ -256,6 +286,7 @@ const structuredTable = [
 		{ price: 0 },
 		{ moreInfo: "sin datos" },
 		{ marca: "sin datos" },
+		{ proveedor: "FARAD" },
 	],
 ];
 

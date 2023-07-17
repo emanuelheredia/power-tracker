@@ -14,6 +14,7 @@ function App() {
 			setDataCleaned(estructureTable(data));
 		}
 	}, [data]);
+	console.log(dataCleaned);
 	return (
 		<>
 			<div>
