@@ -5,17 +5,20 @@ import {
 	UPDATE_ALL_PRODUCTS,
 	UPDATE_ALL_PRODUCTS_EXITO,
 	UPDATE_ALL_PRODUCTS_ERROR,
+	GET_ALL_PRODUCTS,
+	GET_ALL_PRODUCTS_ERROR,
+	GET_ALL_PRODUCTS_EXITO,
 } from "../types";
 import { collection, addDoc, deleteDoc } from "firebase/firestore";
 import {
 	db,
 	deleteProductByID,
+	getAllProductsDB,
 	getProductsIDByConsulta,
 	queryToDeleteDocs,
 } from "../../../firebase/firebase";
 
 export const uploadProducts = (products) => {
-	console.log(products);
 	return async (dispatch) => {
 		dispatch(uploadAllProducts());
 		try {
@@ -47,19 +50,17 @@ const uploadAllProductsError = (res) => ({
 });
 
 export const uploadOrUpdateProducts = (products, proveedor) => {
-	console.log(products);
 	return async (dispatch) => {
 		dispatch(updateAllProducts());
 		try {
 			const query = queryToDeleteDocs(proveedor);
 			const productsIDs = await getProductsIDByConsulta(query);
-			console.log(productsIDs);
 			productsIDs.map((el) => deleteProductByID(el));
 			products.forEach(async (element) => {
 				let refDoc = collection(db, "productos");
 				await addDoc(refDoc, element);
 			});
-			dispatch(uploadAllProductsExito("Actualización exitoso"));
+			dispatch(updateAllProductsExito("Actualización exitoso"));
 		} catch (error) {
 			dispatch(
 				updateAllProductsError(
@@ -80,4 +81,30 @@ const updateAllProductsExito = (res) => ({
 const updateAllProductsError = (res) => ({
 	payload: res,
 	type: UPDATE_ALL_PRODUCTS_ERROR,
+});
+
+export const getAllProducts = () => {
+	return async (dispatch) => {
+		dispatch(getProducts());
+		try {
+			const allProducts = await getAllProductsDB();
+			dispatch(getProductsExito(allProducts));
+		} catch (error) {
+			dispatch(
+				getProductsError("Error en la obtención de los productos"),
+				console.log(error),
+			);
+		}
+	};
+};
+
+const getProducts = () => ({ type: GET_ALL_PRODUCTS });
+
+const getProductsExito = (res) => ({
+	payload: res,
+	type: GET_ALL_PRODUCTS_EXITO,
+});
+const getProductsError = (res) => ({
+	payload: res,
+	type: GET_ALL_PRODUCTS_ERROR,
 });

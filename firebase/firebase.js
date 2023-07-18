@@ -5,7 +5,6 @@ import {
 	getDocs,
 	collection,
 	doc,
-	getDoc,
 	query,
 	where,
 	deleteDoc,
@@ -24,7 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-//
+// Helpers Firebase
 export const queryToDeleteDocs = (proveedor) =>
 	query(collection(db, "productos"), where("proveedor", "==", proveedor));
 
@@ -36,6 +35,12 @@ export const getProductsIDByConsulta = (query) =>
 export const deleteProductByID = async (productID) => {
 	const refProduct = doc(db, "productos", productID);
 	await deleteDoc(refProduct)
-		.then(console.log("producto ID:" + productID + " se eliminó con éxito"))
+		.then()
 		.catch((err) => console.log(err));
+};
+export const getAllProductsDB = async () => {
+	const docs = getDocs(collection(db, "productos")).then(({ docs }) =>
+		docs.map((el) => el.data()),
+	);
+	return docs;
 };
