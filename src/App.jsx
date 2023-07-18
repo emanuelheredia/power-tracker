@@ -3,14 +3,11 @@ import "./App.css";
 import readXlsxFile from "read-excel-file";
 import { estructureTable } from "../helps/helpers";
 import { useDispatch } from "react-redux";
-import { uploadProducts } from "../helps/redux/actions/products.actions";
+import { uploadOrUpdateProducts } from "../helps/redux/actions/products.actions";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { collection } from "firebase/firestore";
-import { db } from "../firebase/firebase";
 function App() {
 	const dispatch = useDispatch();
 	const state = useSelector((state) => state);
-	console.log(state);
 	const [data, setData] = useState([]);
 	const [dataCleaned, setDataCleaned] = useState([]);
 	const handleExcelChange = async (e) => {
@@ -21,12 +18,14 @@ function App() {
 		if (data.length > 0) {
 			setDataCleaned(estructureTable(data));
 		}
-		console.log(collection(db, "productos"));
 	}, [data]);
 	const handleUpload = () => {
 		console.log("guardando...");
-		dispatch(uploadProducts(dataCleaned));
+		dispatch(
+			uploadOrUpdateProducts(dataCleaned, dataCleaned[0]?.proveedor),
+		);
 	};
+	console.log(state);
 	return (
 		<>
 			<div>

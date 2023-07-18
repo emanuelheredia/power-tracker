@@ -6,6 +6,9 @@ import {
 	collection,
 	doc,
 	getDoc,
+	query,
+	where,
+	deleteDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
@@ -20,3 +23,19 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+//
+export const queryToDeleteDocs = (proveedor) =>
+	query(collection(db, "productos"), where("proveedor", "==", proveedor));
+
+export const getProductsIDByConsulta = (query) =>
+	getDocs(query).then(({ docs }) =>
+		docs.map((el) => el._key.path.segments[6]),
+	);
+
+export const deleteProductByID = async (productID) => {
+	const refProduct = doc(db, "productos", productID);
+	await deleteDoc(refProduct)
+		.then(console.log("producto ID:" + productID + " se eliminó con éxito"))
+		.catch((err) => console.log(err));
+};

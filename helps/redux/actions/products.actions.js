@@ -7,9 +7,14 @@ import {
 	UPDATE_ALL_PRODUCTS_ERROR,
 } from "../types";
 import { collection, addDoc, deleteDoc } from "firebase/firestore";
-import { db } from "../../../firebase/firebase";
+import {
+	db,
+	deleteProductByID,
+	getProductsIDByConsulta,
+	queryToDeleteDocs,
+} from "../../../firebase/firebase";
 
-export const uploadProducts = (products, proveedor) => {
+export const uploadProducts = (products) => {
 	console.log(products);
 	return async (dispatch) => {
 		dispatch(uploadAllProducts());
@@ -41,25 +46,24 @@ const uploadAllProductsError = (res) => ({
 	type: UPLOAD_ALL_PRODUCTS_ERROR,
 });
 
-export const updateProducts = (products, proveedor) => {
+export const uploadOrUpdateProducts = (products, proveedor) => {
 	console.log(products);
 	return async (dispatch) => {
 		dispatch(updateAllProducts());
 		try {
-			const productosRef = collection(db, "productos");
-			await deleteDoc(productosRef.where("proveedor", "==", proveedor));
+			const query = queryToDeleteDocs(proveedor);
+			const productsIDs = await getProductsIDByConsulta(query);
+			console.log(productsIDs);
+			productsIDs.map((el) => deleteProductByID(el));
 			products.forEach(async (element) => {
-				await addDoc(
-					productosRef.where("proveedor", "==", proveedor),
-					element,
-				);
+				let refDoc = collection(db, "productos");
+				await addDoc(refDoc, element);
 			});
-
-			dispatch(updateAllProductsExito("Almacenado exitoso"));
+			dispatch(uploadAllProductsExito("Actualización exitoso"));
 		} catch (error) {
 			dispatch(
 				updateAllProductsError(
-					"Error en el almacenado de los productos",
+					"Error en la actualización de los productos",
 				),
 				console.log(error),
 			);

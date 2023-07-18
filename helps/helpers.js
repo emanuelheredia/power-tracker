@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc, query } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { getStructureFarad } from "./faradHelper";
 
