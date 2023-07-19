@@ -1,14 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./userDashBoard.css";
 import { getAllProducts } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie } from "../../../helps/guide";
+import Select from "react-select";
+
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
 	const { products } = useSelector((state) => state);
+	const [codeInput, setCodeInput] = useState("");
+	const [modeloInput, setModeloInput] = useState("");
+	const [marcaInput, setMarcaInput] = useState("");
+	const [categoriaSelect, setCategoriaSelect] = useState("");
+	const [productsFiltered, setProductsFiltered] = useState([]);
 	useEffect(() => {
 		dispatch(getAllProducts());
 	}, []);
+	useEffect(() => {
+		if (products.products?.length > 0) {
+			setProductsFiltered(products.products);
+		}
+	}, [products]);
+
 	const getProductImage = (code) => {
 		let images = [];
 		guiaImageAndCategorie.categories.map((el) => {
@@ -27,8 +40,40 @@ const UserDashBoard = () => {
 		});
 		return categorie;
 	};
+	const handleCodeChange = (e) => {
+		const filtered = productsFiltered.map((el) => {
+			if (el.code.includes(4210)) {
+				return el;
+			}
+		});
+		/* 		setProductsFiltered(
+			productsFiltered.filter((el) => el.code.includes(e.target.value)),
+		);
+ */
+		console.log(filtered);
+	};
+	const getCategorieFromGuide = () => {
+		const categories = guiaImageAndCategorie.categories.map((el) => {
+			return {
+				label: el[0],
+				value: el[0],
+			};
+		});
+		return categories;
+	};
+	const selectStyles = () => ({
+		control: (baseStyles) => ({
+			...baseStyles,
+			fontSize: ".8rem",
+		}),
+		option: (baseStyles) => ({
+			...baseStyles,
+			fontSize: ".8rem",
+			padding: 0,
+		}),
+	});
 	return (
-		<div>
+		<div className="userDashBoard-container">
 			<div className="userDashBoard-container-headTable">
 				<h4>CODIGO PRODUCTO</h4>
 				<h4>CATEGORIA</h4>
@@ -38,8 +83,24 @@ const UserDashBoard = () => {
 				<h4>MAS DETALLES</h4>
 				<h4>PRECIO</h4>
 			</div>
-			{products.products?.length > 0 &&
-				products.products.map((el, index) => (
+			<div className="userDashBoard-container-inputsSearch">
+				<input
+					onChange={(e) => handleCodeChange(e)}
+					placeholder="Ingrese Código"
+				/>
+				<input placeholder="Ingrese Modelo Vehículo" />
+				<input placeholder="Ingrese Marca Producto" />
+				<Select
+					name="categorie"
+					className="userInfo-teamSelect"
+					placeholder="Seleccione una categoria"
+					options={getCategorieFromGuide()}
+					type="text"
+					styles={selectStyles()}
+				/>
+			</div>
+			{productsFiltered.length > 0 &&
+				productsFiltered.map((el, index) => (
 					<div
 						className="userDashBoard-container-rowTable"
 						key={index}

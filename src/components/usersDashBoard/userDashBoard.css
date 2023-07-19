@@ -1,7 +1,9 @@
+.userDashBoard-container{
+    width: 530px;
+}
 .userDashBoard-container-headTable{
     background-color: rgb(238, 165, 29);
     font-size: .8rem;
-    width: 530px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +20,6 @@
 }
 .userDashBoard-container-rowTable{
     font-size: .7rem;
-    width: 530px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,4 +51,26 @@
     height: auto;
     min-height: 50px;
     width: 100px;
+}
+.userDashBoard-container-inputsSearch{
+    display: flex;
+    background-color: black;
+    border-radius: 5px;
+    justify-content: center;
+    margin: .5rem 0 .5rem 0;
+    padding: .5rem;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+.userDashBoard-container-inputsSearch>input{
+    width: 31%;
+    height: 1.7rem;
+    font-size: .8rem;
+    text-align: center;
+    border: 1px solid rgba(128, 128, 128, 0.432);
+    border-radius: 3px;
+    letter-spacing: .4px;
+}
+.userDashBoard-container-inputsSearch>div{
+    width: 99%;
 }
