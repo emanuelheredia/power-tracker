@@ -21,6 +21,24 @@ const UserDashBoard = () => {
 			setProductsFiltered(products.products);
 		}
 	}, [products]);
+	useEffect(() => {
+		setProductsFiltered(
+			products.products.filter(
+				(el) =>
+					el.code.toString().toLowerCase().includes(codeInput) &&
+					el.proveedor
+						.toString()
+						.toLowerCase()
+						.includes(marcaInput) &&
+					el.vehiculo
+						.toString()
+						.toLowerCase()
+						.includes(modeloInput) &&
+					getProductCategorie(el.code).includes(categoriaSelect),
+			),
+		);
+		console.log(categoriaSelect);
+	}, [codeInput, marcaInput, modeloInput, categoriaSelect]);
 
 	const getProductImage = (code) => {
 		let images = [];
@@ -40,18 +58,6 @@ const UserDashBoard = () => {
 		});
 		return categorie;
 	};
-	const handleCodeChange = (e) => {
-		const filtered = productsFiltered.map((el) => {
-			if (el.code.includes(4210)) {
-				return el;
-			}
-		});
-		/* 		setProductsFiltered(
-			productsFiltered.filter((el) => el.code.includes(e.target.value)),
-		);
- */
-		console.log(filtered);
-	};
 	const getCategorieFromGuide = () => {
 		const categories = guiaImageAndCategorie.categories.map((el) => {
 			return {
@@ -59,6 +65,7 @@ const UserDashBoard = () => {
 				value: el[0],
 			};
 		});
+		categories.unshift({ label: "Sin categoria", value: "" });
 		return categories;
 	};
 	const selectStyles = () => ({
@@ -85,11 +92,23 @@ const UserDashBoard = () => {
 			</div>
 			<div className="userDashBoard-container-inputsSearch">
 				<input
-					onChange={(e) => handleCodeChange(e)}
+					onChange={(e) =>
+						setCodeInput(e.target.value.toString().toLowerCase())
+					}
 					placeholder="Ingrese Código"
 				/>
-				<input placeholder="Ingrese Modelo Vehículo" />
-				<input placeholder="Ingrese Marca Producto" />
+				<input
+					placeholder="Ingrese Modelo Vehículo"
+					onChange={(e) =>
+						setModeloInput(e.target.value.toString().toLowerCase())
+					}
+				/>
+				<input
+					placeholder="Ingrese Marca Producto"
+					onChange={(e) =>
+						setMarcaInput(e.target.value.toString().toLowerCase())
+					}
+				/>
 				<Select
 					name="categorie"
 					className="userInfo-teamSelect"
@@ -97,6 +116,7 @@ const UserDashBoard = () => {
 					options={getCategorieFromGuide()}
 					type="text"
 					styles={selectStyles()}
+					onChange={(e) => setCategoriaSelect(e.value)}
 				/>
 			</div>
 			{productsFiltered.length > 0 &&
@@ -113,7 +133,7 @@ const UserDashBoard = () => {
 						<p>{el.moreInfo ? el.moreInfo : "sin datos"}</p>
 						<p>
 							{el.price && !isNaN(el.price)
-								? el.price.toFixed(1)
+								? "$ " + el.price.toFixed(1).replace(".", ",")
 								: "sin datos"}
 						</p>
 					</div>

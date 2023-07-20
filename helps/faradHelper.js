@@ -301,6 +301,5 @@ export const getStructureFarad = (table) => {
 			}
 		}
 	});
-	console.log(seconClean.filter((el) => el !== undefined));
 	return seconClean.filter((el) => el !== undefined);
 };
