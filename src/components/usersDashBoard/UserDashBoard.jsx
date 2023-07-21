@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./userDashBoard.css";
 import { getAllProducts } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie } from "../../../helps/guide";
+import ProductModal from "./productModal/ProductModal";
 import Select from "react-select";
 
 const UserDashBoard = () => {
@@ -13,6 +14,7 @@ const UserDashBoard = () => {
 	const [marcaInput, setMarcaInput] = useState("");
 	const [categoriaSelect, setCategoriaSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
+	const [opennModal, setOpennModal] = useState(false);
 	useEffect(() => {
 		dispatch(getAllProducts());
 	}, []);
@@ -40,15 +42,6 @@ const UserDashBoard = () => {
 		console.log(categoriaSelect);
 	}, [codeInput, marcaInput, modeloInput, categoriaSelect]);
 
-	const getProductImage = (code) => {
-		let images = [];
-		guiaImageAndCategorie.categories.map((el) => {
-			if (el.includes(code)) {
-				images = el[1];
-			}
-		});
-		return images;
-	};
 	const getProductCategorie = (code) => {
 		let categorie = "";
 		guiaImageAndCategorie.categories.map((el) => {
@@ -125,17 +118,46 @@ const UserDashBoard = () => {
 						className="userDashBoard-container-rowTable"
 						key={index}
 					>
-						<p>{el.code ? el.code : "sin datos"}</p>
-						<p title="Ver Imagen">{getProductCategorie(el.code)}</p>
-						<p>{el.vehiculo ? el.vehiculo : "sin datos"}</p>
-						<p>{el.proveedor ? el.proveedor : "sin datos"}</p>
-						<p>{el.marca ? el.marca : "sin datos"}</p>
-						<p>{el.moreInfo ? el.moreInfo : "sin datos"}</p>
-						<p>
-							{el.price && !isNaN(el.price)
-								? "$ " + el.price.toFixed(1).replace(".", ",")
-								: "sin datos"}
-						</p>
+						{" "}
+						<div className="userDashBoard-item-celda">
+							<p>Codigo</p>
+							<p>{el.code ? el.code : "sin datos"}</p>
+						</div>
+						<div className="userDashBoard-item-celda">
+							<p>Categoria</p>
+							<ProductModal
+								product={el}
+								productImage={"hola"}
+								opennModal={opennModal}
+								setOpennModal={setOpennModal}
+								categorie={getProductCategorie(el.code)}
+							/>
+						</div>
+						<div className="userDashBoard-item-celda">
+							<p>Modelo</p>
+							<p>{el.vehiculo ? el.vehiculo : "sin datos"}</p>
+						</div>
+						<div className="userDashBoard-item-celda">
+							<p>Marca</p>
+							<p>{el.proveedor ? el.proveedor : "sin datos"}</p>
+						</div>
+						<div className="userDashBoard-item-celda">
+							<p>Marca Auto</p>
+							<p>{el.marca ? el.marca : "sin datos"}</p>
+						</div>
+						<div className="userDashBoard-item-celda">
+							<p>Mas info</p>
+							<p>{el.moreInfo ? el.moreInfo : "sin datos"}</p>
+						</div>
+						<div className="userDashBoard-item-celda">
+							<p>Precio</p>
+							<p>
+								{el.price && !isNaN(el.price)
+									? "$ " +
+									  el.price.toFixed(1).replace(".", ",")
+									: "sin datos"}
+							</p>
+						</div>
 					</div>
 				))}
 		</div>

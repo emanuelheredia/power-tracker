@@ -4,7 +4,8 @@ import AdminDashBoard from "./components/adminDashBoard/AdminDashBoard";
 function App() {
 	return (
 		<>
-			<AdminDashBoard />
+			{/* 			<AdminDashBoard />
+			 */}{" "}
 			<UserDashBoard />
 		</>
 	);

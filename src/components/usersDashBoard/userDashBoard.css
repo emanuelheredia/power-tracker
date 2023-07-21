@@ -20,31 +20,43 @@
 }
 .userDashBoard-container-rowTable{
     font-size: .7rem;
+    margin: .5rem 0 .5rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.userDashBoard-container-rowTable>p{
+.userDashBoard-item-celda{
+    display: flex;
+    flex-direction: column;
+}
+.userDashBoard-item-celda>p{
+    margin: 0;
+}
+.userDashBoard-item-celda>p:first-child{
+    width: 100%;
+    background-color: rgb(238, 165, 29);
+}
+.userDashBoard-container-rowTable>div{
     width: 16.3%;
     height: 40px;
     margin: 0;
     padding: 0;
     border: 1px solid black;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     overflow: hidden;
 }
-.userDashBoard-container-rowTable>p:nth-child(2){
-    justify-content: center;
+.userDashBoard-container-rowTable>div:nth-child(2){
+    justify-content: start;
     align-items: start;
     cursor: pointer;
 }
-.userDashBoard-container-rowTable>p:nth-child(3){
+.userDashBoard-container-rowTable>div:nth-child(3){
     justify-content: center;
     align-items: start;
 }
-.userDashBoard-container-rowTable>p:nth-child(3):hover{
+.userDashBoard-container-rowTable>div:nth-child(3):hover{
     background-color: rgb(245, 195, 103);
     padding:0 2px 0 2px;
     overflow-wrap:unset;

@@ -1,0 +1,15 @@
+.productModal-text-container{}
+.productModal-title{
+    margin: 0 0 0 2rem;
+}
+.productModal-image-coontainer{
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 2rem 0;
+    gap: 2rem;
+}
+.productModal-image{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
