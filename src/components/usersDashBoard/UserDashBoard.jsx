@@ -58,9 +58,13 @@ const UserDashBoard = () => {
 				value: el[0],
 			};
 		});
-		categories.unshift({ label: "Sin categoria", value: "" });
+		const orderedCategoty = categories.sort((a, b) =>
+			a.label.localeCompare(b.label),
+		);
+		orderedCategoty.unshift({ label: "Sin categoria", value: "" });
 		return categories;
 	};
+
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -74,30 +78,21 @@ const UserDashBoard = () => {
 	});
 	return (
 		<div className="userDashBoard-container">
-			<div className="userDashBoard-container-headTable">
-				<h4>CODIGO PRODUCTO</h4>
-				<h4>CATEGORIA</h4>
-				<h4>MODELO VEHICULO</h4>
-				<h4>MARCA PRODUCTO</h4>
-				<h4>MARCA VEHICULO</h4>
-				<h4>MAS DETALLES</h4>
-				<h4>PRECIO</h4>
-			</div>
 			<div className="userDashBoard-container-inputsSearch">
 				<input
 					onChange={(e) =>
 						setCodeInput(e.target.value.toString().toLowerCase())
 					}
-					placeholder="Ingrese Código"
+					placeholder="Código"
 				/>
 				<input
-					placeholder="Ingrese Modelo Vehículo"
+					placeholder="Modelo Vehículo"
 					onChange={(e) =>
 						setModeloInput(e.target.value.toString().toLowerCase())
 					}
 				/>
 				<input
-					placeholder="Ingrese Marca Producto"
+					placeholder="Marca Producto"
 					onChange={(e) =>
 						setMarcaInput(e.target.value.toString().toLowerCase())
 					}
@@ -119,11 +114,11 @@ const UserDashBoard = () => {
 						key={index}
 					>
 						{" "}
-						<div className="userDashBoard-item-celda">
+						<div className="userDashBoard-item-celdaCode">
 							<p>Codigo</p>
 							<p>{el.code ? el.code : "sin datos"}</p>
 						</div>
-						<div className="userDashBoard-item-celda">
+						<div className="userDashBoard-item-celdaCategory">
 							<p>Categoria</p>
 							<ProductModal
 								product={el}
@@ -133,29 +128,37 @@ const UserDashBoard = () => {
 								categorie={getProductCategorie(el.code)}
 							/>
 						</div>
-						<div className="userDashBoard-item-celda">
-							<p>Modelo</p>
-							<p>{el.vehiculo ? el.vehiculo : "sin datos"}</p>
+						<div className="userDashBoard-item-celdaModelo">
+							<p>Vehículos</p>
+							<p>
+								{el.vehiculo !== "sin datos" ? el.vehiculo : ""}
+							</p>
 						</div>
-						<div className="userDashBoard-item-celda">
+						<div className="userDashBoard-item-celdaProveedor">
 							<p>Marca</p>
-							<p>{el.proveedor ? el.proveedor : "sin datos"}</p>
+							<p>
+								{el.proveedor !== "sin datos"
+									? el.proveedor
+									: ""}
+							</p>
 						</div>
-						<div className="userDashBoard-item-celda">
+						<div className="userDashBoard-item-celdaMarca">
 							<p>Marca Auto</p>
-							<p>{el.marca ? el.marca : "sin datos"}</p>
+							<p>{el.marca !== "sin datos" ? el.marca : ""}</p>
 						</div>
-						<div className="userDashBoard-item-celda">
+						<div className="userDashBoard-item-celdaMoreInfo">
 							<p>Mas info</p>
-							<p>{el.moreInfo ? el.moreInfo : "sin datos"}</p>
+							<p>
+								{el.moreInfo !== "sin datos" ? el.moreInfo : ""}
+							</p>
 						</div>
-						<div className="userDashBoard-item-celda">
+						<div className="userDashBoard-item-celdaPrice">
 							<p>Precio</p>
 							<p>
-								{el.price && !isNaN(el.price)
+								{el.price !== "sin datos" && !isNaN(el.price)
 									? "$ " +
 									  el.price.toFixed(1).replace(".", ",")
-									: "sin datos"}
+									: ""}
 							</p>
 						</div>
 					</div>

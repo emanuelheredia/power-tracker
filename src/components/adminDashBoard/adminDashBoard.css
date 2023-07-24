@@ -1,0 +1,29 @@
+.adminDashBoard-container{
+    margin-top: 100px;
+    width: 100%;
+}
+.adminDachBoard-buttonUpload{
+    background-color: orange;
+    margin-top: 4rem;
+    padding: .5rem;
+    height: 3rem;
+    width: 70%;
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.adminDashBoard-input{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4rem ;
+}
+.adminDashBoard-input>input[type="file" i]{
+    width: 100%;
+    margin-left: 3rem;
+    color: red;
+    font-family: inherit;
+}

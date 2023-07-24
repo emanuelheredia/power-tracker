@@ -1,5 +1,10 @@
 .userDashBoard-container{
-    width: 530px;
+    margin-top: 90px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .userDashBoard-container-headTable{
     background-color: rgb(238, 165, 29);
@@ -21,48 +26,71 @@
 .userDashBoard-container-rowTable{
     font-size: .7rem;
     margin: .5rem 0 .5rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.userDashBoard-item-celda{
-    display: flex;
-    flex-direction: column;
-}
-.userDashBoard-item-celda>p{
-    margin: 0;
-}
-.userDashBoard-item-celda>p:first-child{
+    border: 1px solid;
+    box-shadow: 3px 3px 3px rgb(100, 100, 100);
+    border-radius: 5px;
+    display: grid;
     width: 100%;
-    background-color: rgb(238, 165, 29);
-}
-.userDashBoard-container-rowTable>div{
-    width: 16.3%;
-    height: 40px;
-    margin: 0;
-    padding: 0;
-    border: 1px solid black;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+    grid-template-areas: 
+     "code category category"
+     "modelo modelo price"
+     "proveedor marca moreInfo";
+    grid-template-columns: 2fr 2fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr;
     overflow: hidden;
 }
-.userDashBoard-container-rowTable>div:nth-child(2){
-    justify-content: start;
-    align-items: start;
-    cursor: pointer;
+.userDashBoard-item-celdaCode{
+    grid-area: code;
 }
-.userDashBoard-container-rowTable>div:nth-child(3){
+.userDashBoard-item-celdaModelo{
+    grid-area: modelo;
+}
+.userDashBoard-item-celdaCategory{
+    grid-area: category;
+}
+.userDashBoard-item-celdaProveedor{
+    grid-area: proveedor;
+}
+.userDashBoard-item-celdaPrice{
+    grid-area: price;
+}
+.userDashBoard-item-celdaMorInfo{
+    grid-area: moreInfo;
+}
+.userDashBoard-item-celdaMarca{
+    grid-area: marca;
+}
+.userDashBoard-item-celdaCode,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
+    display: flex;
+    width: 100%;
+    height: 1.5rem;
+    align-items: center;
+    border: 0.1px solid gray;
+    gap: .5rem;
+}
+.userDashBoard-item-celdaCode>p:first-child,.userDashBoard-item-celdaCategory>p:first-child,.userDashBoard-item-celdaModelo>p:first-child,.userDashBoard-item-celdaProveedor>p:first-child,.userDashBoard-item-celdaPrice>p:first-child,.userDashBoard-item-celdaMoreInfo>p:first-child,.userDashBoard-item-celdaMarca>p:first-child{
+    width: 70px;
+    height: 100%;
+    background-color: rgb(48, 47, 47);
+    color: rgb(255, 145, 0);
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 }
-.userDashBoard-container-rowTable>div:nth-child(3):hover{
-    background-color: rgb(245, 195, 103);
-    padding:0 2px 0 2px;
-    overflow-wrap:unset;
-    height: auto;
-    min-height: 50px;
-    width: 100px;
+.userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMoreInfo>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
+ height: 100%;
+ display: flex;
+ justify-content: start;
+ align-items: center;
+ overflow: hidden;
+}
+.userDashBoard-item-celdaPrice>p:nth-child(2){
+    padding: 0 0 0 1rem;
+    font-size: 1.1rem;
+    color: green;
 }
 .userDashBoard-container-inputsSearch{
     display: flex;

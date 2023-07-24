@@ -25,9 +25,17 @@ const AdminDashBoard = () => {
 	};
 
 	return (
-		<div>
-			<input type="file" onChange={(e) => handleExcelChange(e)} />
-			<button onClick={handleUpload}>Upload</button>
+		<div className="adminDashBoard-container">
+			<h2>Actualización de listas</h2>
+			<div className="adminDashBoard-input">
+				<input type="file" onChange={(e) => handleExcelChange(e)} />
+			</div>
+			<button
+				className="adminDachBoard-buttonUpload"
+				onClick={handleUpload}
+			>
+				Subir Lista
+			</button>
 		</div>
 	);
 };

@@ -44,3 +44,4 @@ export const getAllProductsDB = async () => {
 	);
 	return docs;
 };
+export const auth = getAuth(app);

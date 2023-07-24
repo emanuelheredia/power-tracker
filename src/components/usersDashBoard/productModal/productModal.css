@@ -1,15 +1,18 @@
-.productModal-text-container{}
-.productModal-title{
-    margin: 0 0 0 2rem;
+.productModal-text-container{
+    height: auto;
 }
 .productModal-image-coontainer{
     display: flex;
     justify-content: center;
-    margin: 2rem 0 2rem 0;
-    gap: 2rem;
+    margin: 1rem 0 0rem 0;
+    gap: 1rem;
 }
 .productModal-image{
     width: 200px;
     height: 200px;
     border-radius: 5px;
+}
+.productModal-title{
+    text-align: center;
+    margin: 0;
 }
