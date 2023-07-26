@@ -17,13 +17,15 @@ const Header = () => {
 		dispatch(signOutLogin());
 		navigate("/");
 	};
-
+	const goToList = (e) => {
+		navigate("/");
+	};
 	console.log(auth);
 
 	return (
 		<div className="header-container">
-			<img src={Logo} alt="logo" className="header-logo" />
 			<nav className="header-linksContainer">
+				<a onClick={goToList}>Listas</a>
 				<a onClick={goToAdmin}>Admin</a>
 				{auth.login && <a onClick={logOut}>Log Out</a>}
 			</nav>

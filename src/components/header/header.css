@@ -4,14 +4,19 @@
     top: 0;
     padding: 0;
     margin: 0;
-    background: rgb(255,154,0);
+    height: 100px;
+/*     background: rgb(255,154,0);
     background: linear-gradient(90deg, rgba(255,154,0,0.8127626050420168) 0%, rgba(242,231,0,0.8183648459383753) 100%);    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;    height: 80px;
+ */ 
+    background-image:url("../../assets//imgHeader.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
 }
 .header-logo{
     width: 50px;
@@ -21,14 +26,13 @@
 
 .header-linksContainer{
     display: flex;
-    gap: .8rem;
     font-weight: bolder;
     color: gainsboro;
     font-size: .9rem;
 }
 .header-linksContainer>a{
-    color: black;
-    margin: 0 3rem 0 0;
+    color: orange;
+    margin: 0 1.5rem 0 0;
     cursor: pointer;
 }
 .header-linksContainer>a:hover{
@@ -38,7 +42,8 @@
 }
 @media (min-width:780px){
     .header-container{
-        padding-right: 3rem;
+    background-image:url("../../assets//repuestocba-headerREPUESTOCBA.jpg");
+
     }
     .header-linksContainer{
         gap: 2rem;
@@ -46,10 +51,9 @@
     }
 }
 @media (min-width:1230px){
-    .header-container{
-        padding-right: 3rem;
+        .header-container{
+    background-repeat: repeat-x;
+
     }
-    .header-linksContainer{
-        gap: 4rem;
-    }
+
 }

@@ -76,8 +76,19 @@ const UserDashBoard = () => {
 			padding: 0,
 		}),
 	});
+	const getProductImage = (code) => {
+		let images = [];
+		guiaImageAndCategorie.categories.map((el) => {
+			if (el.includes(code)) {
+				images = el[1];
+			}
+		});
+		return images;
+	};
+
 	return (
 		<div className="userDashBoard-container">
+			<h2>Lista de Precios</h2>
 			<div className="userDashBoard-container-inputsSearch">
 				<input
 					onChange={(e) =>
@@ -160,6 +171,16 @@ const UserDashBoard = () => {
 									  el.price.toFixed(1).replace(".", ",")
 									: ""}
 							</p>
+						</div>
+						<div className="userDashBoard-item-celdaImages">
+							<img src={getProductImage(el.code)[0]} />
+							{getProductImage(el.code)[1] && (
+								<img
+									className="productModal-image"
+									src={getProductImage(el.code)[1]}
+									alt=""
+								/>
+							)}
 						</div>
 					</div>
 				))}

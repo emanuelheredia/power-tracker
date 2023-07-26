@@ -19,7 +19,7 @@ const customStyles = {
 	},
 };
 Modal.setAppElement("*");
-const ProductModal = ({ openModal, product, setOpennModal, categorie }) => {
+const ProductModal = ({ product, setOpennModal, categorie, opennModal }) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 
 	function openModal() {
@@ -38,6 +38,7 @@ const ProductModal = ({ openModal, product, setOpennModal, categorie }) => {
 		});
 		return images;
 	};
+
 	return (
 		<p
 			style={{

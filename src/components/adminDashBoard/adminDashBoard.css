@@ -1,10 +1,18 @@
 .adminDashBoard-container{
-    margin-top: 100px;
+    border: solid 1px orange;
+    padding: 1rem 1rem 2rem 1rem;
+    border-radius: 10px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 120px 1rem 0 1rem;
 }
 .adminDachBoard-buttonUpload{
     background-color: orange;
-    margin-top: 4rem;
+    margin-top: 1rem;
     padding: .5rem;
     height: 3rem;
     width: 70%;
@@ -17,13 +25,28 @@
 }
 .adminDashBoard-input{
     display: flex;
-    justify-content: center;
     width: 100%;
-    margin-top: 4rem ;
+    justify-content: center;
 }
 .adminDashBoard-input>input[type="file" i]{
     width: 100%;
-    margin-left: 3rem;
-    color: red;
+    font-family: inherit;
+    padding: 1rem;
     font-family: inherit;
 }
+.adminDashBoard-input {
+background: rgb(255,154,0);
+background: linear-gradient(90deg, rgba(255,154,0,0.47102591036414565) 0%, rgba(242,231,0,0.5998774509803921) 100%);
+border-radius: 10px;}
+@media (min-width:780px){
+.adminDashBoard-container{
+    width: 70%;
+}}
+@media (min-width:1030px){
+.adminDashBoard-container{
+    width: 50%;
+}}
+@media (min-width:1700px){
+.adminDashBoard-container{
+    width: 30%;
+}}

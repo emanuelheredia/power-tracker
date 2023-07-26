@@ -23,6 +23,7 @@ export default function productsReducer(state = initialState, action) {
 			return {
 				...state,
 				loading: true,
+				msg: "",
 			};
 		case UPLOAD_ALL_PRODUCTS_EXITO:
 			return {

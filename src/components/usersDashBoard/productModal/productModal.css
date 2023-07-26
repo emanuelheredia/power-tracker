@@ -16,3 +16,15 @@
     text-align: center;
     margin: 0;
 }
+@media (min-width:780px){
+.ReactModal__Content--after-open{
+    width: 60% !important;
+}}
+@media (min-width:780px){
+.ReactModal__Content--after-open{
+    width: 50% !important;
+}}
+@media (min-width:1200px){
+.ReactModal__Content--after-open{
+    width: 30% !important;
+}}
