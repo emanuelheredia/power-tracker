@@ -1,6 +1,5 @@
-import { addDoc, collection, doc, setDoc, query } from "firebase/firestore";
-import { db } from "../firebase/firebase";
 import { getStructureFarad } from "./faradHelper";
+import { guiaMarcas } from "./guide";
 
 const tableHeaders = [
 	"CODIGO",
@@ -30,14 +29,15 @@ let headerStructure = [];
 export const estructureTable = (table) => {
 	let firstClean;
 	const proveedor = table[1][0]?.split(" ")[0] || "ZT";
-	if (proveedor === "FARAD") {
+	const proveedorRealName = guiaMarcas[proveedor];
+	if (proveedorRealName === "FARAD") {
 		firstClean = getStructureFarad(table);
 		return firstClean;
 	} else {
 		firstClean = table.filter((el) => !isNull(el));
 		const headerIndexs = getStructuredRow(headerStructure);
 		const tableStructured = firstClean.map((row) =>
-			orderColumn(row, headerIndexs, proveedor),
+			orderColumn(row, headerIndexs, proveedorRealName),
 		);
 		return tableStructured;
 	}
@@ -103,7 +103,7 @@ const orderColumn = (row, headerIndexs, proveedor) => {
 	return {
 		code: row[headerIndexs[0] ? headerIndexs[0] : 0]
 			? row[headerIndexs[0] ? headerIndexs[0] : 0]
-			: "sin dato",
+			: "sin datos",
 		vehiculo: row[headerIndexs[1] ? headerIndexs[1] : 0]
 			? row[headerIndexs[1] ? headerIndexs[1] : 0]
 			: "sin datos",

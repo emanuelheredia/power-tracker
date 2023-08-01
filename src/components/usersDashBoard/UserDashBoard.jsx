@@ -39,7 +39,6 @@ const UserDashBoard = () => {
 					getProductCategorie(el.code).includes(categoriaSelect),
 			),
 		);
-		console.log(categoriaSelect);
 	}, [codeInput, marcaInput, modeloInput, categoriaSelect]);
 
 	const getProductCategorie = (code) => {
@@ -52,17 +51,23 @@ const UserDashBoard = () => {
 		return categorie;
 	};
 	const getCategorieFromGuide = () => {
-		const categories = guiaImageAndCategorie.categories.map((el) => {
+		let categories = [];
+		guiaImageAndCategorie.categories.map((el) => {
+			if (!categories.includes(el[0])) {
+				categories.push(el[0]);
+			}
+		});
+		const categoriesStructured = categories.map((el) => {
 			return {
-				label: el[0],
-				value: el[0],
+				label: el,
+				value: el,
 			};
 		});
-		const orderedCategoty = categories.sort((a, b) =>
+		const orderedCategoty = categoriesStructured.sort((a, b) =>
 			a.label.localeCompare(b.label),
 		);
 		orderedCategoty.unshift({ label: "Sin categoria", value: "" });
-		return categories;
+		return orderedCategoty;
 	};
 
 	const selectStyles = () => ({

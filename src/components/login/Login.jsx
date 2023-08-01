@@ -72,7 +72,6 @@ const Login = () => {
 			setShowSpinner(false);
 		}
 	}, [auth, resetPass]);
-	console.log(auth);
 	const showAlert = ({ title, text, icon }) => {
 		swal({
 			title: title,

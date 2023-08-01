@@ -20,7 +20,6 @@ const Header = () => {
 	const goToList = (e) => {
 		navigate("/");
 	};
-	console.log(auth);
 
 	return (
 		<div className="header-container">

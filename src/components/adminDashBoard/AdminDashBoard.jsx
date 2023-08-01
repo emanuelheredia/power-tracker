@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { estructureTable } from "../../../helps/helpers";
 import { uploadOrUpdateProducts } from "../../../helps/redux/actions/products.actions";
 import swal from "sweetalert";
-
 import { Spinner } from "../spinner/Spinner";
 const AdminDashBoard = () => {
 	const dispatch = useDispatch();
@@ -31,7 +30,6 @@ const AdminDashBoard = () => {
 		}
 	}, [data]);
 	useEffect(() => {
-		console.log(products.msg);
 		setShowSpinner(false);
 	}, [products]);
 	useEffect(() => {
@@ -76,7 +74,6 @@ const AdminDashBoard = () => {
 			}
 		});
 	};
-	console.log(dataCleaned);
 	return (
 		<div className="adminDashBoard-container">
 			<h2>Actualización de listas</h2>
