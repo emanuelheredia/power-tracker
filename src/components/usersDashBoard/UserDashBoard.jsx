@@ -81,6 +81,7 @@ const UserDashBoard = () => {
 			...baseStyles,
 			fontSize: ".8rem",
 			padding: 0,
+			color: "red",
 		}),
 	});
 	const getProductImage = (code) => {
