@@ -6,6 +6,34 @@
     justify-content: center;
     align-items: center;
 }
+.btn-ocultarPrice{
+    position: fixed;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    top: 50vh;
+    right: 0;
+    color: rgb(255, 104, 3);
+    padding: 0;
+    margin-right: 1rem;
+    width: auto;
+    height: 1.3rem;
+}
+.btn-whatsapp{
+    position: fixed;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    top: 90vh;
+    right: 0;
+    color: green;
+    padding: 0;
+    margin-right: 1rem;
+    width: auto;
+    height: 1.5;
+
+}
+.btn-whatsapp:hover{
+    font-size: 1.8rem;
+}
 .userDashBoard-container-headTable{
     background-color: rgb(238, 165, 29);
     font-size: .8rem;
@@ -24,7 +52,7 @@
     align-items: center;
 }
 .userDashBoard-container-rowTable{
-    font-size: .7rem;
+    font-size: .6rem;
     margin: .5rem 0 .5rem 0;
     border: 1px solid;
     box-shadow: 3px 3px 3px rgb(100, 100, 100);
@@ -32,11 +60,13 @@
     display: grid;
     width: 100%;
     grid-template-areas: 
-     "code category category"
-     "modelo modelo price"
-     "proveedor marca moreInfo";
-    grid-template-columns: 2fr 2fr 3fr;
-    grid-template-rows: 1fr 1fr 1fr;
+     "modelo  productColor"
+     "code  proveedor"
+     "marca  price"
+     "category  category"
+     ;
+    grid-template-columns: 6fr  4fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     overflow: hidden;
 }
 .userDashBoard-item-celdaCode{
@@ -54,43 +84,51 @@
 .userDashBoard-item-celdaPrice{
     grid-area: price;
 }
-.userDashBoard-item-celdaMorInfo{
+.userDashBoard-item-celdaMoreInfo{
     grid-area: moreInfo;
+    display: none;
 }
 .userDashBoard-item-celdaMarca{
     grid-area: marca;
 }
-.userDashBoard-item-celdaCode,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
+.userDashBoard-item-celdaColor{
+    grid-area: productColor;
+}
+.userDashBoard-item-celdaSubCategory{
+    grid-area: subCategory;
+    display: none;
+}
+.userDashBoard-item-celdaCode,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMarca{
     display: flex;
     width: 100%;
-    height: 1.5rem;
+    height: 1.3rem;
     align-items: center;
     border: 0.1px solid gray;
     gap: .5rem;
+    overflow: hidden;
 }
-.userDashBoard-item-celdaCode>p:first-child,.userDashBoard-item-celdaCategory>p:first-child,.userDashBoard-item-celdaModelo>p:first-child,.userDashBoard-item-celdaProveedor>p:first-child,.userDashBoard-item-celdaPrice>p:first-child,.userDashBoard-item-celdaMoreInfo>p:first-child,.userDashBoard-item-celdaMarca>p:first-child{
-    width: 70px;
+.userDashBoard-item-celdaCode>p:first-child,.userDashBoard-item-celdaColor>p:first-child,.userDashBoard-item-celdaCategory>p:first-child,.userDashBoard-item-celdaModelo>p:first-child,.userDashBoard-item-celdaProveedor>p:first-child,.userDashBoard-item-celdaPrice>p:first-child,.userDashBoard-item-celdaMarca>p:first-child{
+    min-width: 70px;
     height: 100%;
     background-color: rgb(48, 47, 47);
     color: rgb(255, 145, 0);
-    font-weight: bolder;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMoreInfo>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
+.userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
  height: 100%;
  display: flex;
  justify-content: start;
  align-items: center;
- overflow: hidden;
 }
 .userDashBoard-item-celdaPrice>p:nth-child(2){
     padding: 0 0 0 1rem;
-    font-size: 1.1rem;
-    color: green;
+    font-size: .7rem;
+    color: red;
+    font-weight: bolder;
 }
 .userDashBoard-container-inputsSearch{
     display: flex;
@@ -118,17 +156,96 @@
     grid-area:  imagesLargeView;
     display: none;
 }
+@media (min-width:780px){
+    .userDashBoard-item-celdaSubCategory{
+    display: flex;
+    width: 100%;
+    height: 1.3rem;
+    align-items: center;
+    border: 0.1px solid gray;
+    gap: .5rem;
+    }
+    .btn-ocultarPrice{
+    font-size: 1.5rem;
+    height: 1.5rem;
+}
+    .userDashBoard-item-celdaSubCategory>p:first-child{
+    min-width: 70px;
+    height: 100%;
+    background-color: rgb(48, 47, 47);
+    color: rgb(255, 145, 0);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .userDashBoard-container-rowTable{
+            grid-template-areas: 
+     "modelo  productColor"
+     "code  proveedor"
+     "marca  price"
+     "category  subCategory"
+     ;
+
+    }
+}
 @media (min-width:1000px){
+        .btn-ocultarPrice{
+    font-size: 1.8rem;
+    height: 1.8rem;
+}
+
+    .userDashBoard-container-rowTable{
+        font-size: .8rem;
+    }
     .logoShowModal{
         display: none;
     }
+    .userDashBoard-item-celdaPrice>p:nth-child(2){
+    font-size: 1rem;
+}
+.btn-whatsapp{
+    font-size: 2rem;
+    height: 2;
+
+}
+.btn-whatsapp:hover{
+    font-size:2.3rem;
+}
+
+    .userDashBoard-item-celdaMoreInfo{
+    display: flex;
+    width: 100%;
+    height: 1.5rem;
+    align-items: center;
+    border: 0.1px solid gray;
+    gap: .5rem;
+    }
+    .userDashBoard-item-celdaMoreInfo>p:first-child{
+    min-width: 70px;
+    height: 100%;
+    background-color: rgb(48, 47, 47);
+    color: rgb(255, 145, 0);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+.userDashBoard-item-celdaColor>p:first-child,.userDashBoard-item-celdaMoreInfo>p:first-child,.userDashBoard-item-celdaSubCategory>p:first-child,.userDashBoard-item-celdaCode>p:first-child,.userDashBoard-item-celdaColor>p:first-child,.userDashBoard-item-celdaCategory>p:first-child,.userDashBoard-item-celdaModelo>p:first-child,.userDashBoard-item-celdaProveedor>p:first-child,.userDashBoard-item-celdaPrice>p:first-child,.userDashBoard-item-celdaMarca>p:first-child{
+    min-width: 100px;
+}
 .userDashBoard-container-rowTable{
     grid-template-areas: 
-     "code category category imagesLargeView"
-     "modelo modelo price imagesLargeView"
-     "proveedor marca moreInfo imagesLargeView";
-    grid-template-columns: 2fr 2fr 2fr 3fr;
-    grid-template-rows: 1fr 1fr 1fr;
+     "modelo modelo productColor imagesLargeView"
+     "code code proveedor imagesLargeView"
+     "category category moreInfo imagesLargeView"
+    "subCategory subCategory price imagesLargeView"
+    "marca marca marca imagesLargeView"
+     ;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     overflow: hidden;
 }
 .userDashBoard-item-celdaImages{
@@ -139,7 +256,25 @@
 }.userDashBoard-item-celdaImages > img{
     width: 90px;
     height: 90px;}
-.userDashBoard-item-celdaCode,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
-    height: 2rem;
+.userDashBoard-item-celdaCode,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
+    height: 1.5rem;
 }
+}
+@media (min-width:1500px){
+        .btn-ocultarPrice{
+    font-size: 2.5rem;
+    height: 2.5rem;
+}
+.btn-whatsapp{
+    font-size: 3rem;
+    height: 3;
+
+}
+.userDashBoard-container{
+    width: 70%;
+}
+.btn-whatsapp:hover{
+    font-size: 3.2rem;
+}
+
 }

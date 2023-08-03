@@ -846,7 +846,7 @@ export const guiaImageAndCategorie = {
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/02/Barras-Ecosport-Gris-Oscuro.jpg",
 				],
 				subCategoria: "BARRAS FORD ECO SPORT KINETIC ALUMINIO",
-				color: "sin datos",
+				color: "en descripcion",
 			},
 			"DC01GC",
 			"DC01GO",

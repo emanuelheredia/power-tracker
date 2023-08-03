@@ -5,6 +5,7 @@ import { getAllProducts } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie } from "../../../helps/guide";
 import ProductModal from "./productModal/ProductModal";
 import Select from "react-select";
+import { FaEye, FaEyeSlash, FaWhatsapp } from "react-icons/fa";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const UserDashBoard = () => {
 	const [categoriaSelect, setCategoriaSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
 	const [opennModal, setOpennModal] = useState(false);
+	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		dispatch(getAllProducts());
 	}, []);
@@ -90,7 +92,24 @@ const UserDashBoard = () => {
 		});
 		return images;
 	};
-
+	const getProductColor = (code) => {
+		let color = "";
+		guiaImageAndCategorie.categories.map((el) => {
+			if (el.includes(code)) {
+				color = el[0].color;
+			}
+		});
+		return color;
+	};
+	const getProductsubCateg = (code) => {
+		let color = "";
+		guiaImageAndCategorie.categories.map((el) => {
+			if (el.includes(code)) {
+				color = el[0].subCategoria;
+			}
+		});
+		return color;
+	};
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
@@ -168,14 +187,31 @@ const UserDashBoard = () => {
 								{el.moreInfo !== "sin datos" ? el.moreInfo : ""}
 							</p>
 						</div>
+						<div className="userDashBoard-item-celdaColor">
+							<p>Color</p>
+							<p>
+								{getProductColor(el.code).toLocaleUpperCase()}
+							</p>
+						</div>
+						<div className="userDashBoard-item-celdaSubCategory">
+							<p>SubCategoria</p>
+							<p>
+								{getProductsubCateg(
+									el.code,
+								).toLocaleUpperCase()}
+							</p>
+						</div>
 						<div className="userDashBoard-item-celdaPrice">
 							<p>Precio</p>
-							<p>
-								{el.price !== "sin datos" && !isNaN(el.price)
-									? "$ " +
-									  el.price.toFixed(1).replace(".", ",")
-									: ""}
-							</p>
+							{!ocultarPrice && (
+								<p>
+									{el.price !== "sin datos" &&
+									!isNaN(el.price)
+										? "$ " +
+										  el.price.toFixed(1).replace(".", ",")
+										: ""}
+								</p>
+							)}
 						</div>
 						<div className="userDashBoard-item-celdaImages">
 							<img src={getProductImage(el.code)[0]} />
@@ -189,6 +225,21 @@ const UserDashBoard = () => {
 						</div>
 					</div>
 				))}
+			<button
+				onClick={() => setOcultarPrice(!ocultarPrice)}
+				className="btn-ocultarPrice"
+			>
+				{ocultarPrice && <FaEye />}
+				{!ocultarPrice && <FaEyeSlash />}
+			</button>
+			<a
+				href={"https://wa.me/5493516537131"}
+				target="_blank"
+				rel="noreferrer"
+				className="btn-whatsapp"
+			>
+				<FaWhatsapp />
+			</a>
 		</div>
 	);
 };

@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutLogin } from "../../../helps/redux/actions/auth.actions";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/logo/logo.png";
-
+import logo from "../../assets/logo/logo.jpeg";
 const Header = () => {
 	const [admin, setAdmin] = useState(false);
 	const auth = useSelector((state) => state.auth);
@@ -23,6 +22,7 @@ const Header = () => {
 
 	return (
 		<div className="header-container">
+			<img className="header-logo" src={logo} alt="" />
 			<nav className="header-linksContainer">
 				<a onClick={goToList}>Listas</a>
 				<a onClick={goToAdmin}>Admin</a>
