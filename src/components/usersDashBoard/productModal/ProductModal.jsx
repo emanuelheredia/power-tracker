@@ -32,7 +32,7 @@ const ProductModal = ({ product, setOpennModal, categorie }) => {
 		let images = [];
 		guiaImageAndCategorie.categories.map((el) => {
 			if (el.includes(code)) {
-				images = el[1];
+				images = el[0].imagenes;
 			}
 		});
 		return images;

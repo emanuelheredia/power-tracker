@@ -1,12 +1,15 @@
 export const guiaImageAndCategorie = {
 	categories: [
 		[
-			"LONAS",
-			[
-				"https://www.flashcover.com.br/wp-content/uploads/2021/04/ACABAMENTO.jpg.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_664670-MLA31651837263_082019-O.webp",
-			],
-			"FLASHCOVER LINEA FORCE",
+			{
+				categoria: "LONAS",
+				imagenes: [
+					"https://www.flashcover.com.br/wp-content/uploads/2021/04/ACABAMENTO.jpg.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_664670-MLA31651837263_082019-O.webp",
+				],
+				subCategoria: "FLASHCOVER LINEA FORCE",
+				color: "sin datos",
+			},
 			"019FF",
 			"929FF",
 			"177FF",
@@ -68,11 +71,14 @@ export const guiaImageAndCategorie = {
 			"962FF",
 		],
 		[
-			"LONAS",
-			[
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_eb_tjvvh7Pb_AICoBaW8wzilD7nNsJZj1Q&usqp=CAU",
-			],
-			"FLASHCOVER LINEA ROLLER",
+			{
+				categoria: "LONAS",
+				imagenes: [
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_eb_tjvvh7Pb_AICoBaW8wzilD7nNsJZj1Q&usqp=CAU",
+				],
+				subCategoria: "FLASHCOVER LINEA ROLLER",
+				color: "sin datos",
+			},
 			"019RP",
 			"929RP",
 			"177RP",
@@ -119,7 +125,12 @@ export const guiaImageAndCategorie = {
 			"601RP",
 		],
 		[
-			"REPUESTOS DE LONA",
+			{
+				categoria: "REPUESTOS DE LONA",
+				imagenes: [],
+				subCategoria: "RESPUESTOS DE LONA",
+				color: "sin datos",
+			},
 			"AR796P",
 			"AR1252P IZQ",
 			"AR1252P DER",
@@ -129,13 +140,16 @@ export const guiaImageAndCategorie = {
 			"AT001",
 		],
 		[
-			"TAPA RETRACTIL",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_948562-MLA47526912143_092021-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_932818-MLA31475858046_072019-O.webp",
-				"https://i.ytimg.com/vi/3WzaHoJ38f0/maxresdefault.jpg",
-			],
-			"TAPA RETRACTIL CON RODAMIENTOS",
+			{
+				categoria: "TAPA RETRACTIL",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_948562-MLA47526912143_092021-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_932818-MLA31475858046_072019-O.webp",
+					"https://i.ytimg.com/vi/3WzaHoJ38f0/maxresdefault.jpg",
+				],
+				subCategoria: "TAPA RETRACTIL CON RODAMIENTOS",
+				color: "sin datos",
+			},
 			"KTR1",
 			"KTR7",
 			"KTR2",
@@ -153,11 +167,14 @@ export const guiaImageAndCategorie = {
 			"KTR6",
 		],
 		[
-			"BAULES DE HERRAMIENTAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_699591-MLA43198322888_082020-O.webp",
-			],
-			"BAUL LATERAL RETRACTIL",
+			{
+				categoria: "BAULES DE HERRAMIENTAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_699591-MLA43198322888_082020-O.webp",
+				],
+				subCategoria: "BAUL LATERAL RETRACTIL",
+				color: "sin datos",
+			},
 			"KBL1 IZQ",
 			"KBL1 DER",
 			"KBL2 IZQ",
@@ -179,99 +196,131 @@ export const guiaImageAndCategorie = {
 			"KAI",
 		],
 		[
-			"BAULES DE HERRAMIENTAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_866746-MLA51631532891_092022-O.webp",
-				"https://mlpower.com.ar/wp-content/uploads/2023/04/baul-univ-1-600x600.png",
-			],
-			"BAUL HERRAMIENTAS UNIVERSAL",
+			{
+				categoria: "BAULES DE HERRAMIENTAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_866746-MLA51631532891_092022-O.webp",
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/baul-univ-1-600x600.png",
+				],
+				subCategoria: "BAUL HERRAMIENTAS UNIVERSAL",
+				color: "sin datos",
+			},
 			"E030007",
 		],
 		[
-			"DIVISOR DE CARGA",
-			[
-				"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/d_866089-mla49065112571_022022-o-6977f87f882dbad16016448566751156-1024-1024.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_748543-MLA26410549664_112017-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_726219-MLA47328431549_092021-O.webp",
-			],
-			"DIVISOR DE CAJA",
+			{
+				categoria: "DIVISOR DE CARGA",
+				imagenes: [
+					"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/d_866089-mla49065112571_022022-o-6977f87f882dbad16016448566751156-1024-1024.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_748543-MLA26410549664_112017-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_726219-MLA47328431549_092021-O.webp",
+				],
+				subCategoria: "DIVISOR DE CAJA",
+				color: "sin datos",
+			},
 			"KDCP",
 			"KDCR",
 			"KDCU",
 		],
 		[
-			"BOLSOS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_667103-MLA28103545873_092018-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_832571-MLA28103549813_092018-O.webp",
-			],
-			"BOLSO DE CAJA LATERAL PICK UP",
+			{
+				categoria: "BOLSOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_667103-MLA28103545873_092018-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_832571-MLA28103549813_092018-O.webp",
+				],
+				subCategoria: "BOLSO DE CAJA LATERAL PICK UP",
+				color: "sin datos",
+			},
 			"KBOLA IZQ",
 			"KBOLA DER",
 			"KBOLC IZQ",
 			"KBOLC DER",
 		],
 		[
-			"BOLSOS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_680701-MLA40008204344_122019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_936485-MLA40008203340_122019-O.webp",
-			],
-			"BOLSO DE CAJA MODELO C",
+			{
+				categoria: "BOLSOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_680701-MLA40008204344_122019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_936485-MLA40008203340_122019-O.webp",
+				],
+				subCategoria: "BOLSO DE CAJA MODELO C",
+				color: "sin datos",
+			},
 			"KBOC",
 		],
 		[
-			"BOLSOS",
-			["https://http2.mlstatic.com/D_733314-MLA32892310772_112019-F.jpg"],
-			"BOLSO DE CAJA MODELO D y T",
+			{
+				categoria: "BOLSOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_733314-MLA32892310772_112019-F.jpg",
+				],
+				subCategoria: "BOLSO DE CAJA MODELO D y T",
+				color: "sin datos",
+			},
 			"KBOD",
 			"KBOT",
 		],
 		[
-			"BOLSOS",
-			[
-				"https://http2.mlstatic.com/D_851223-MLA29579513015_032019-F.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_736892-MLA28512324161_102018-O.webp",
-			],
-			"BOLSO DE CAJA MODELO A",
+			{
+				categoria: "BOLSOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_851223-MLA29579513015_032019-F.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_736892-MLA28512324161_102018-O.webp",
+				],
+				subCategoria: "BOLSO DE CAJA MODELO A",
+				color: "sin datos",
+			},
 			"KBOA",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_619139-MLA45976167827_052021-O.webp",
-			],
-			"BARRAS PORTA EQUIPAJE PARA CAJA",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_619139-MLA45976167827_052021-O.webp",
+				],
+				subCategoria: "BARRAS PORTA EQUIPAJE PARA CAJA",
+				color: "sin datos",
+			},
 			"PCR2",
 			"PCFRL",
 			"PCO",
 			"PCT",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_885115-MLA52167897913_102022-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_808597-MLA52167897915_102022-O.webp",
-			],
-			"PORTA BICICLETA PARA BARRAS DE CAJA",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_885115-MLA52167897913_102022-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_808597-MLA52167897915_102022-O.webp",
+				],
+				subCategoria: "PORTA BICICLETA PARA BARRAS DE CAJA",
+				color: "sin datos",
+			},
 			"KPBCR",
 			"KPBEP",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2021/11/Portabici1.jpg",
-			],
-			"PORTA BICICLETA PARA PORTON DE CAJA",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/11/Portabici1.jpg",
+				],
+				subCategoria: "PORTA BICICLETA PARA PORTON DE CAJA",
+				color: "sin datos",
+			},
 			"KPBPCP",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2022/03/BARRA-ACERO-KRAKEN-AMAROK3.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_710143-MLA51089539505_082022-O.webp",
-			],
-			"ANTIVUELCO KRAKEN OFF ROAD NEGRO",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2022/03/BARRA-ACERO-KRAKEN-AMAROK3.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_710143-MLA51089539505_082022-O.webp",
+				],
+				subCategoria: "ANTIVUELCO KRAKEN OFF ROAD NEGRO",
+				color: "negro",
+			},
 			"KBA A",
 			"KBA TH",
 			"KBA THMV",
@@ -282,11 +331,14 @@ export const guiaImageAndCategorie = {
 			"KBA DR",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2022/03/BARRA-ACERO-KRAKEN-AMAROK3.jpg",
-			],
-			"ANTIVUELCO KRAKEN OFF ROAD ACERO",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2022/03/BARRA-ACERO-KRAKEN-AMAROK3.jpg",
+				],
+				subCategoria: "ANTIVUELCO KRAKEN OFF ROAD ACERO",
+				color: "cromado",
+			},
 			"KBAC A",
 			"KBAC TH",
 			"KBAC FR",
@@ -296,22 +348,28 @@ export const guiaImageAndCategorie = {
 			"KBAC DR",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			[
-				"https://mlpower.com.ar/wp-content/uploads/2023/04/Parrilla-1.png",
-			],
-			"PARRILLA PARA BARRA ANTIVUELCO OFF ROAD",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/Parrilla-1.png",
+				],
+				subCategoria: "PARRILLA PARA BARRA ANTIVUELCO OFF ROAD",
+				color: "sin datos",
+			},
 			"KPAR1",
 			"KPAR2",
 			"KPAR3",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2022/01/Estribos-kraken-hilux2.jpg",
-				"https://mlpower.com.ar/wp-content/uploads/2023/04/estribos-kraken-2.png",
-			],
-			"ESTRIBOS KRAKEN OFF ROAD",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2022/01/Estribos-kraken-hilux2.jpg",
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/estribos-kraken-2.png",
+				],
+				subCategoria: "ESTRIBOS KRAKEN OFF ROAD",
+				color: "sin datos",
+			},
 			"KE 19 - B15139",
 			"KE 21 - B15136",
 			"KE 21 - B15780",
@@ -324,11 +382,14 @@ export const guiaImageAndCategorie = {
 			"KE 21 - B15164",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_701588-MLA46586430496_072021-O.webp",
-			],
-			"ESTRIBO DE CAJA RETRACTIL",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_701588-MLA46586430496_072021-O.webp",
+				],
+				subCategoria: "ESTRIBO DE CAJA RETRACTIL",
+				color: "sin datos",
+			},
 			"KER 1P",
 			"KER 1N",
 			"KER 2P",
@@ -341,12 +402,15 @@ export const guiaImageAndCategorie = {
 			"KER 5N",
 		],
 		[
-			"TRABA RUEDA DE AUXILIO",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_724037-MLA51078795874_082022-O.webp",
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antirrobo-de-auxilio-Hilux-2016.jpg",
-			],
-			"ANTIRROBO DE AUXILIO",
+			{
+				categoria: "TRABA RUEDA DE AUXILIO",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_724037-MLA51078795874_082022-O.webp",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antirrobo-de-auxilio-Hilux-2016.jpg",
+				],
+				subCategoria: "ANTIRROBO DE AUXILIO",
+				color: "sin datos",
+			},
 			"KANT2",
 			"KANT1",
 			"KANT9",
@@ -363,11 +427,14 @@ export const guiaImageAndCategorie = {
 			"KANT14",
 		],
 		[
-			"TRABA RUEDA DE AUXILIO",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_859282-MLA48871874625_012022-O.webp",
-			],
-			"ANTIRROBO Y REPARACION DE MALACATE",
+			{
+				categoria: "TRABA RUEDA DE AUXILIO",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_859282-MLA48871874625_012022-O.webp",
+				],
+				subCategoria: "ANTIRROBO Y REPARACION DE MALACATE",
+				color: "sin datos",
+			},
 			"KANT1 - KKRA",
 			"KANT2 - KKRA",
 			"KANT8 - KKRR",
@@ -375,39 +442,51 @@ export const guiaImageAndCategorie = {
 			"KANT10 - KKRM",
 		],
 		[
-			"BURLETE DE PORTON",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2021/11/Burlete-porton1.jpg",
-			],
-			"BURLETE DE PORTON",
+			{
+				categoria: "BURLETE DE PORTON",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/11/Burlete-porton1.jpg",
+				],
+				subCategoria: "BURLETE DE PORTON",
+				color: "sin datos",
+			},
 			"KBP",
 		],
 		[
-			"CORNAMUSAS DE OROCH",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_610538-MLA40786872374_022020-O.webp",
-			],
-			"CORNAMUSAS DE OROCH",
+			{
+				categoria: "CORNAMUSAS DE OROCH",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_610538-MLA40786872374_022020-O.webp",
+				],
+				subCategoria: "CORNAMUSAS DE OROCH",
+				color: "sin datos",
+			},
 			"KCO",
 		],
 		[
-			"PLANCHA DE DESATASCO",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2021/12/Plancha-kraken2.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_848973-MLA52574989107_112022-O.webp",
-			],
-			"PLANCHA DE DESATASCO",
+			{
+				categoria: "PLANCHA DE DESATASCO",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/12/Plancha-kraken2.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_848973-MLA52574989107_112022-O.webp",
+				],
+				subCategoria: "PLANCHA DE DESATASCO",
+				color: "sin datos",
+			},
 			"KPDD",
 			"KPDDR",
 			"KPDDN",
 			"KPDDG",
 		],
 		[
-			"AMORTIGUADOR DE PORTON / CAPOT",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_930142-MLA52766776859_122022-O.webp",
-			],
-			"AMORTIGUADOR DE PORTON / CAPOT",
+			{
+				categoria: "AMORTIGUADOR DE PORTON / CAPOT",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_930142-MLA52766776859_122022-O.webp",
+				],
+				subCategoria: "AMORTIGUADOR DE PORTON / CAPOT",
+				color: "sin datos",
+			},
 			"TG01",
 			"TG02",
 			"TG03",
@@ -421,13 +500,17 @@ export const guiaImageAndCategorie = {
 			"KLC04",
 		],
 		[
-			"TUERCAS ANTIRROBO",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/Starlock-Bulon.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_689670-MLA29033025041_122018-O.webp",
-				"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/d_826874-mla49065508203_022022-o-e5eb7931bc6b748add16448521397419-1024-1024.jpg",
-			],
-			"TUERCAS ANTIRROBO MODELO GALAXY LOCK CABEZAL GIRATORIO",
+			{
+				categoria: "TUERCAS ANTIRROBO",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/Starlock-Bulon.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_689670-MLA29033025041_122018-O.webp",
+					"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/d_826874-mla49065508203_022022-o-e5eb7931bc6b748add16448521397419-1024-1024.jpg",
+				],
+				subCategoria:
+					"TUERCAS ANTIRROBO MODELO GALAXY LOCK CABEZAL GIRATORIO",
+				color: "sin datos",
+			},
 			"A1C/M",
 			"A2C/M",
 			"BE8/M",
@@ -441,13 +524,16 @@ export const guiaImageAndCategorie = {
 			"HA4/M",
 		],
 		[
-			"TUERCAS ANTIRROBO",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708425-MLA27378730351_052018-O.webp",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvw17c7xTFbtZ9favlcPdrOlhJHQeXoPvAtg&usqp=CAU",
-				"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/d_759412-mla49065433466_022022-o-d8224e470f3ce117b416448521299765-1024-1024.jpg",
-			],
-			"TUERCAS ANTIRROBO MODELO STAR LOCK CABEZAL GIRATORIO",
+			{
+				categoria: "TUERCAS ANTIRROBO",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708425-MLA27378730351_052018-O.webp",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvw17c7xTFbtZ9favlcPdrOlhJHQeXoPvAtg&usqp=CAU",
+				],
+				subCategoria:
+					"TUERCAS ANTIRROBO MODELO STAR LOCK CABEZAL GIRATORIO",
+				color: "sin datos",
+			},
 			"A1C/E",
 			"A2C/E",
 			"BE8/E",
@@ -460,12 +546,16 @@ export const guiaImageAndCategorie = {
 			"AC1/E",
 		],
 		[
-			"TUERCAS ANTIRROBO",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_716885-MLA28530301402_102018-O.webp",
-				"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/d_680835-mla49065508205_022022-o-946cf6c6b3082df74716448521548283-1024-1024.jpg",
-			],
-			"TUERCAS ANTIRROBO MODELO FLOWER LOCK CABEZAL GIRATORIO",
+			{
+				categoria: "TUERCAS ANTIRROBO",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_716885-MLA28530301402_102018-O.webp",
+					"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/d_680835-mla49065508205_022022-o-946cf6c6b3082df74716448521548283-1024-1024.jpg",
+				],
+				subCategoria:
+					"TUERCAS ANTIRROBO MODELO FLOWER LOCK CABEZAL GIRATORIO",
+				color: "sin datos",
+			},
 			"BV2/D",
 			"B02/D",
 			"BE8/D",
@@ -477,13 +567,24 @@ export const guiaImageAndCategorie = {
 			"D4/D",
 			"D22/D",
 		],
-		["PORTA BICICLETAS DE ALUMINIO", "90732"],
 		[
-			"ESLINGAS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/XL-GRILLETES.jpg",
-			],
-			"ESLINGAS DE REMOLQUE",
+			{
+				categoria: "PORTA BICICLETAS DE ALUMINIO",
+				imagenes: [],
+				subCategoria: "PORTA BICICLETAS DE ALUMINIO",
+				color: "sin datos",
+			},
+			"90732",
+		],
+		[
+			{
+				categoria: "ESLINGAS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/XL-GRILLETES.jpg",
+				],
+				subCategoria: "ESLINGAS DE REMOLQUE",
+				color: "sin datos",
+			},
 			"50PRX-3",
 			"50PRX-5",
 			"75PRX-5",
@@ -492,27 +593,41 @@ export const guiaImageAndCategorie = {
 			"3000-9",
 		],
 		[
-			"ESLINGAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_900941-MLA43361926631_092020-O.webp",
-				"https://images-na.ssl-images-amazon.com/images/I/41TftcGcaKL.jpg",
-			],
-			"GRILLETES PARA ESLINGA",
+			{
+				categoria: "ESLINGAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_900941-MLA43361926631_092020-O.webp",
+					"https://images-na.ssl-images-amazon.com/images/I/41TftcGcaKL.jpg",
+				],
+				subCategoria: "GRILLETES PARA ESLINGA",
+				color: "sin datos",
+			},
 			"AE91",
 			"AE81",
 		],
 		[
-			"ESLINGAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_952337-MLA53861649573_022023-O.webp",
-			],
-			"CINTA DE AMARRE CON CRIQUE",
+			{
+				categoria: "ESLINGAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_952337-MLA53861649573_022023-O.webp",
+				],
+				subCategoria: "CINTA DE AMARRE CON CRIQUE",
+				color: "sin datos",
+			},
 			"EC0800-4J",
 			"EC2000-4J",
 			"EC2000-6J",
 		],
 		[
-			"ALFOMBRAS ZIEL TECHNOLOGY",
+			{
+				categoria: "ALFOMBRAS ZIEL TECHNOLOGY",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_677473-MLA49473263767_032022-O.webp",
+					"https://i.imgur.com/9FHId85.jpg",
+				],
+				subCategoria: "ALFOMBRAS ZIEL TECHNOLOGY",
+				color: "sin datos",
+			},
 			"ZTCBE",
 			"ZTCBECS",
 			"ZTP308",
@@ -603,14 +718,72 @@ export const guiaImageAndCategorie = {
 			"ZTVWT",
 			"ZTCT2",
 			"ZTCT5",
+			"ZTR1116",
+			"ZTD1120",
+			"ZTClips",
+			"ZTCajas",
+			"ZTCompressor",
+			"ZTCompressorXXL",
+			"ZTBSeat",
+			"ZTPR",
+			"ZTOM",
+			"ZTKRN",
+			"ZTShine",
+			"ZTDC",
+			"TCORO110",
+			"AA03124",
+			"TH001",
+			"VWGF7139",
+			"TCORO110",
+			"TSW43RDTR108",
+			"FR102",
+			"TSW43RDTR108",
+			"TIN114",
+			"TLCR113",
+			"HTUCS120",
+			"NP300 111",
+			"DJOURN130",
+			"HFIT140",
+			"RSAND128",
+			"FFIES132",
+			"HSTAFE119",
+			"HCRV115",
+			"HCIV116",
+			"CBERL109",
+			"FTOR105L",
+			"RKOL127",
+			"GMCR121",
+			"KSPORT126",
+			"VWAM104L",
+			"P3008118",
+			"P308117",
+			"GMS10106",
+			"HCIV141",
+			"FFOCU131",
+			"JREN134",
+			"AA04 125",
+			"VWGOL107",
+			"VWGF6122",
+			"FTOR105D",
+			"RAM112O",
+			"VWAM104D",
+			"ZTFMA",
+			"ZTVWS",
+			"ZTFTEG2",
+			"ZTPLT",
+			"ZTFRP703",
+			"ZTJCOM",
 		],
 		[
-			"BARRAS AERODINAMICAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_833082-MLA28225239862_092018-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_811908-MLA28360596621_102018-O.webp",
-			],
-			"BARRAS AERODINAMICAS ALUMINIO COLOR GRIS",
+			{
+				categoria: "BARRAS AERODINAMICAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_833082-MLA28225239862_092018-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_811908-MLA28360596621_102018-O.webp",
+				],
+				subCategoria: "BARRAS AERODINAMICAS ALUMINIO COLOR GRIS",
+				color: "gris",
+			},
 			"DC04G",
 			"DC05G",
 			"DC02G",
@@ -633,23 +806,62 @@ export const guiaImageAndCategorie = {
 			"DC28G",
 		],
 		[
-			"BARRAS AERODINAMICAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_878349-MLA44816822360_022021-O.webp",
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2021/02/Barras-Ecosport-Gris-Oscuro.jpg",
-			],
-			"BARRAS FORD ECO SPORT KINETIC ALUMINIO",
+			{
+				categoria: "BARRAS AERODINAMICAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_817711-MLA53468234425_012023-O.webp",
+				],
+				subCategoria: "BARRAS AERODINAMICAS ALUMINIO COLOR NEGRO",
+				color: "negro",
+			},
+			"DC04N",
+			"DC05N",
+			"DC19N",
+			"DC02N",
+			"DC08N",
+			"DC11N",
+			"DC13N",
+			"DC15N",
+			"DC16N",
+			"DC09N",
+			"DC24N",
+			"DC25N",
+			"DC06N",
+			"DC23N",
+			"DC03N",
+			"DC21N",
+			"DC07N",
+			"DC22N",
+			"DC06N",
+			"DC18N",
+			"DC26N",
+			"DC28N",
+		],
+
+		[
+			{
+				categoria: "BARRAS AERODINAMICAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_878349-MLA44816822360_022021-O.webp",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/02/Barras-Ecosport-Gris-Oscuro.jpg",
+				],
+				subCategoria: "BARRAS FORD ECO SPORT KINETIC ALUMINIO",
+				color: "sin datos",
+			},
 			"DC01GC",
 			"DC01GO",
 			"DC01N",
 		],
 		[
-			"COBERTORES / CUBRE LOMOS",
-			[
-				"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/img101-690d77587a4eeb34c816487361257768-640-0.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_881544-MLA48465336083_122021-O.webp",
-			],
-			"COBERTOR DE CAJA",
+			{
+				categoria: "COBERTORES / CUBRE LOMOS",
+				imagenes: [
+					"https://d3ugyf2ht6aenh.cloudfront.net/stores/190/572/products/img101-690d77587a4eeb34c816487361257768-640-0.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_881544-MLA48465336083_122021-O.webp",
+				],
+				subCategoria: "COBERTOR DE CAJA",
+				color: "sin datos",
+			},
 			501,
 			503,
 			"332N",
@@ -668,13 +880,15 @@ export const guiaImageAndCategorie = {
 			"630N",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Elegance-Negra.jpg",
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ELEGANCE-CROMADA.jpg",
-			],
-			"BARRA ANTIVUELCO ELEGANCE",
-			"negro",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Elegance-Negra.jpg",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ELEGANCE-CROMADA.jpg",
+				],
+				subCategoria: "BARRA ANTIVUELCO ELEGANCE",
+				color: "negro",
+			},
 			"B1654PT",
 			"B1653PT",
 			"B1650PT",
@@ -683,13 +897,15 @@ export const guiaImageAndCategorie = {
 			"B1652PT",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Elegance-Negra.jpg",
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ELEGANCE-CROMADA.jpg",
-			],
-			"BARRA ANTIVUELCO ELEGANCE",
-			"cromado",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Elegance-Negra.jpg",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ELEGANCE-CROMADA.jpg",
+				],
+				subCategoria: "BARRA ANTIVUELCO ELEGANCE",
+				color: "cromado",
+			},
 			"B1654CT",
 			"B1653CT",
 			"B1650CT",
@@ -700,10 +916,14 @@ export const guiaImageAndCategorie = {
 		],
 
 		[
-			"JAULAS ANTIVUELCO",
-			["https://mlpower.com.ar/wp-content/uploads/2023/04/B3-CN.png"],
-			"BARRA ANTIVUELCO B3 DEPORTIVO",
-			"cromado",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/B3-CN.png",
+				],
+				subCategoria: "BARRA ANTIVUELCO B3 DEPORTIVO",
+				color: "cromado",
+			},
 			"B1680",
 			"B1679",
 			"B1678",
@@ -713,10 +933,14 @@ export const guiaImageAndCategorie = {
 			"B1682",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			["https://mlpower.com.ar/wp-content/uploads/2023/04/B3-CN.png"],
-			"BARRA ANTIVUELCO B3 DEPORTIVO",
-			"negro",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/B3-CN.png",
+				],
+				subCategoria: "BARRA ANTIVUELCO B3 DEPORTIVO",
+				color: "negro",
+			},
 			"B1680A",
 			"B1679A",
 			"B1678A",
@@ -726,85 +950,101 @@ export const guiaImageAndCategorie = {
 			"B1682A",
 		],
 		[
-			"ALERONES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-				"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
-			],
-			"ALERON CHEVROLET S10 HIGH COUNTRY",
-			"sin datos",
+			{
+				categoria: "ALERONES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
+					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+				],
+				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
+				color: "sin datos",
+			},
 			"B1692",
 			"210RP",
 		],
 		[
-			"ALERONES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-				"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
-			],
-			"ALERON CHEVROLET S10 HIGH COUNTRY",
-			"negro",
+			{
+				categoria: "ALERONES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
+					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+				],
+				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
+				color: "negro",
+			},
 			"B1692A",
 		],
 		[
-			"ALERONES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-				"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
-			],
-			"ALERON CHEVROLET S10 HIGH COUNTRY",
-			"blanco",
+			{
+				categoria: "ALERONES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
+					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+				],
+				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
+				color: "blanco",
+			},
 			"B1692BS",
 		],
 		[
-			"ALERONES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-				"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
-			],
-			"ALERON CHEVROLET S10 HIGH COUNTRY",
-			"gris",
+			{
+				categoria: "ALERONES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
+					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+				],
+				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
+				color: "gris",
+			},
 			"B1692PS",
 		],
 		[
-			"ALERONES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-				"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
-			],
-			"ALERON CHEVROLET S10 HIGH COUNTRY",
-			"rojo",
+			{
+				categoria: "ALERONES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
+					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+				],
+				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
+				color: "rojo",
+			},
 			"B1692VC",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			[
-				"https://www.duosantti.com/files/resized/products/antivuelco-xreme-bepo-hilux-2016.300x150.png",
-			],
-			"BARRA ANTIVUELCO EXTREME",
-			"sin datos",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://www.duosantti.com/files/resized/products/antivuelco-xreme-bepo-hilux-2016.300x150.png",
+				],
+				subCategoria: "BARRA ANTIVUELCO EXTREME",
+				color: "sin datos",
+			},
 			"B1530A",
 			"B1531A",
 		],
 		[
-			"JAULAS ANTIVUELCO",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Slim.jpg",
-			],
-			"BARRA ANTIVUELCO SLIM",
-			"sin datos",
+			{
+				categoria: "JAULAS ANTIVUELCO",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Slim.jpg",
+				],
+				subCategoria: "BARRA ANTIVUELCO SLIM",
+				color: "sin datos",
+			},
 			"B1696A",
 			"B1690A",
 			"B1695A",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
-			],
-			"ESTRIBOS G3 ALUMINIO C/SOPORTE",
-			"pulido",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
+				],
+				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
+				color: "pulido",
+			},
 			"B1221 - B15139",
 			"B1220 - B15137",
 			"B1221 - B15101",
@@ -819,13 +1059,15 @@ export const guiaImageAndCategorie = {
 			"B1220 - B15130",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
-			],
-			"ESTRIBOS G3 ALUMINIO C/SOPORTE",
-			"negro",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
+				],
+				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
+				color: "negro",
+			},
 			"B1221A - B15139",
 			"B1220A - B15137",
 			"B1221A - B15101",
@@ -840,13 +1082,15 @@ export const guiaImageAndCategorie = {
 			"B1220A - B15130",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
-			],
-			"ESTRIBOS G3 ALUMINIO C/SOPORTE",
-			"negro y pulido",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
+				],
+				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
+				color: "negro y pulido",
+			},
 			"B1233FP-B15139",
 			"B1233FP-B15137",
 			"B1233FP-B15101",
@@ -861,12 +1105,14 @@ export const guiaImageAndCategorie = {
 			"B1233FP-B15130",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_831985-MLA40173336568_122019-O.webp",
-			],
-			"ESTRIBOS G2 CAB. SIMPLE ALUMINIO C/SOPORTE",
-			"pulido",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_831985-MLA40173336568_122019-O.webp",
+				],
+				subCategoria: "ESTRIBOS G2 CAB. SIMPLE ALUMINIO C/SOPORTE",
+				color: "pulido",
+			},
 			"B1208 - B15129",
 			"B1208 - B15128",
 			"B1209 - B15172",
@@ -874,12 +1120,14 @@ export const guiaImageAndCategorie = {
 			"B1208 - B15125",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-G2-PULIDOS.jpg",
-			],
-			"ESTRIBOS G2 ALUMINIO C/SOPORTE",
-			"pulido",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-G2-PULIDOS.jpg",
+				],
+				subCategoria: "ESTRIBOS G2 ALUMINIO C/SOPORTE",
+				color: "pulido",
+			},
 			"B1206 - B15139",
 			"B1205 - B15137",
 			"B1205 - B15101",
@@ -892,12 +1140,14 @@ export const guiaImageAndCategorie = {
 			"B1205 - B15130",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-G2-PULIDOS.jpg",
-			],
-			"ESTRIBOS G2 ALUMINIO C/SOPORTE",
-			"negro",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-G2-PULIDOS.jpg",
+				],
+				subCategoria: "ESTRIBOS G2 ALUMINIO C/SOPORTE",
+				color: "negro",
+			},
 			"B1206A - B15139",
 			"B1205A - B15137",
 			"B1205A - B15101",
@@ -910,12 +1160,16 @@ export const guiaImageAndCategorie = {
 			"B1205A - B15130",
 		],
 		[
-			"ESTRIBOS",
-			"B379",
-			["https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-C-1.png"],
-			"ESTRIBOS OVALADOS C/SOPORTE",
-			"cromado",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-C-1.png",
+				],
+				subCategoria: "ESTRIBOS OVALADOS C/SOPORTE",
+				color: "cromado",
+			},
 			"B627",
+			"B379",
 			"B842",
 			"B891",
 			"B991",
@@ -925,11 +1179,15 @@ export const guiaImageAndCategorie = {
 			"B1281",
 		],
 		[
-			"ESTRIBOS",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-C-1.png",
+				],
+				subCategoria: "ESTRIBOS OVALADOS C/SOPORTE",
+				color: "negro",
+			},
 			"B379",
-			["https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-C-1.png"],
-			"ESTRIBOS OVALADOS C/SOPORTE",
-			"negro",
 			"B379A",
 			"B627A",
 			"B842A",
@@ -941,12 +1199,14 @@ export const guiaImageAndCategorie = {
 		],
 
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/10/8-Estribos-Inyectados.jpg",
-			],
-			"ESTRIBOS PLASTICO INYECTADO",
-			"sin datos",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/10/8-Estribos-Inyectados.jpg",
+				],
+				subCategoria: "ESTRIBOS PLASTICO INYECTADO",
+				color: "sin datos",
+			},
 			"B1238",
 			"B1236",
 			"B1243",
@@ -956,12 +1216,14 @@ export const guiaImageAndCategorie = {
 			"B1235",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_603787-MLA47899876780_102021-O.webp",
-			],
-			"negro",
-			"ESTRIBOS EXTREME",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_603787-MLA47899876780_102021-O.webp",
+				],
+				subCategoria: "ESTRIBOS EXTREME",
+				color: "negro",
+			},
 			"B1491A - B15139",
 			"B1491A - B15101",
 			"B1490A - B15137",
@@ -974,12 +1236,14 @@ export const guiaImageAndCategorie = {
 			"B1490A - B15780",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-PULIDOS.jpg",
-			],
-			"ESTRIBOS SUV ALUMINIO",
-			"pulido",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-PULIDOS.jpg",
+				],
+				subCategoria: "ESTRIBOS SUV ALUMINIO",
+				color: "pulido",
+			},
 			"B1215P - B15133",
 			"B1215P - B15787",
 			"B1218P - B15169",
@@ -992,12 +1256,14 @@ export const guiaImageAndCategorie = {
 			"B1215P - B15146",
 		],
 		[
-			"ESTRIBOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-PULIDOS.jpg",
-			],
-			"ESTRIBOS SUV ALUMINIO",
-			"negro",
+			{
+				categoria: "ESTRIBOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-PULIDOS.jpg",
+				],
+				subCategoria: "ESTRIBOS SUV ALUMINIO",
+				color: "negro",
+			},
 			"B1215A - B15133",
 			"B1215A - B15787",
 			"B1218A - B15169",
@@ -1011,13 +1277,15 @@ export const guiaImageAndCategorie = {
 		],
 
 		[
-			"DEFENSAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_920860-MLA31012874754_062019-O.webp",
-				"https://http2.mlstatic.com/D_617777-MLA31044211514_062019-O.webp",
-			],
-			"DEFENSA BAJA TALAMPAYA",
-			"cromado",
+			{
+				categoria: "DEFENSAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_920860-MLA31012874754_062019-O.webp",
+					"https://http2.mlstatic.com/D_617777-MLA31044211514_062019-O.webp",
+				],
+				subCategoria: "DEFENSA BAJA TALAMPAYA",
+				color: "cromado",
+			},
 			"B1264",
 			"B1254",
 			"B1257",
@@ -1029,13 +1297,15 @@ export const guiaImageAndCategorie = {
 			"B1266",
 		],
 		[
-			"DEFENSAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_920860-MLA31012874754_062019-O.webp",
-				"https://http2.mlstatic.com/D_617777-MLA31044211514_062019-O.webp",
-			],
-			"DEFENSA BAJA TALAMPAYA",
-			"negro",
+			{
+				categoria: "DEFENSAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_920860-MLA31012874754_062019-O.webp",
+					"https://http2.mlstatic.com/D_617777-MLA31044211514_062019-O.webp",
+				],
+				subCategoria: "DEFENSA BAJA TALAMPAYA",
+				color: "negro",
+			},
 			"B1264A",
 			"B1254A",
 			"B1257A",
@@ -1048,52 +1318,67 @@ export const guiaImageAndCategorie = {
 		],
 
 		[
-			"DEFENSAS",
-			["https://mlpower.com.ar/wp-content/uploads/2023/04/B1372.png"],
-			"DEFENSA URBANA PLASTICA",
-			"cromado",
+			{
+				categoria: "DEFENSAS",
+				imagenes: [
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/B1372.png",
+				],
+				subCategoria: "DEFENSA URBANA PLASTICA",
+				color: "cromado",
+			},
 			"B1417",
 		],
 		[
-			"DEFENSAS",
-			["https://mlpower.com.ar/wp-content/uploads/2023/04/B1372.png"],
-			"DEFENSA URBANA PLASTICA",
-			"gris",
+			{
+				categoria: "DEFENSAS",
+				imagenes: [
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/B1372.png",
+				],
+				subCategoria: "DEFENSA URBANA PLASTICA",
+				color: "gris",
+			},
 			"B1372",
 		],
 
 		[
-			"DEFLECTORES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_833513-MLA31011368993_062019-O.webp",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdCj42MERMyy1bUuBzDdniflgx3-w7LBhvew&usqp=CAU",
-			],
-			"DEFLECTORES DE VENTANA",
+			{
+				categoria: "DEFLECTORES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_833513-MLA31011368993_062019-O.webp",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdCj42MERMyy1bUuBzDdniflgx3-w7LBhvew&usqp=CAU",
+				],
+				subCategoria: "DEFLECTORES DE VENTANA",
+				color: "sin datos",
+			},
 			"B617",
 			"B614",
 			"B623",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2021/03/D_NQ_NP_930767-MLA31118155424_062019-O.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_870802-MLA31610933329_072019-O.webp",
-			],
-			"BARRAS LONGITUDINALES ALUMINIO",
-			"pulido",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/03/D_NQ_NP_930767-MLA31118155424_062019-O.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_870802-MLA31610933329_072019-O.webp",
+				],
+				subCategoria: "BARRAS LONGITUDINALES ALUMINIO",
+				color: "pulido",
+			},
 			"B1093C",
 			"B1088C",
 			"B1092C",
 			"B1129C",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2021/03/D_NQ_NP_930767-MLA31118155424_062019-O.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_870802-MLA31610933329_072019-O.webp",
-			],
-			"BARRAS LONGITUDINALES ALUMINIO",
-			"negro",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/03/D_NQ_NP_930767-MLA31118155424_062019-O.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_870802-MLA31610933329_072019-O.webp",
+				],
+				subCategoria: "BARRAS LONGITUDINALES ALUMINIO",
+				color: "negro",
+			},
 			"B1093A",
 			"B1088A",
 			"B1092A",
@@ -1101,96 +1386,118 @@ export const guiaImageAndCategorie = {
 		],
 
 		[
-			"PORTAEQUIPAJES",
-			["https://http2.mlstatic.com/D_823229-MLA43732068569_102020-F.jpg"],
-			"BARRAS TRANSVERSALES ALUMINIO",
-			"puido",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_823229-MLA43732068569_102020-F.jpg",
+				],
+				subCategoria: "BARRAS TRANSVERSALES ALUMINIO",
+				color: "puido",
+			},
 			"B1097C",
 			"B1095C",
 			"B1095C",
 		],
 		[
-			"PORTAEQUIPAJES",
-			["https://http2.mlstatic.com/D_823229-MLA43732068569_102020-F.jpg"],
-			"BARRAS TRANSVERSALES ALUMINIO",
-			"negro",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_823229-MLA43732068569_102020-F.jpg",
+				],
+				subCategoria: "BARRAS TRANSVERSALES ALUMINIO",
+				color: "negro",
+			},
 			"B1097A",
 			"B1095A",
 			"B1095A",
 		],
 
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_189115-MLA25133989687_102016-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_975215-MLA25133136605_102016-O.webp",
-			],
-			"RACK DE BARRAS ALUMINIO",
-			"pulido",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_189115-MLA25133989687_102016-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_975215-MLA25133136605_102016-O.webp",
+				],
+				subCategoria: "RACK DE BARRAS ALUMINIO",
+				color: "pulido",
+			},
 			"B1093C - B1097C",
 			"B1088C - B1095C",
 			"B1092C - B1095C",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_189115-MLA25133989687_102016-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_975215-MLA25133136605_102016-O.webp",
-			],
-			"RACK DE BARRAS ALUMINIO",
-			"negro",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_189115-MLA25133989687_102016-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_975215-MLA25133136605_102016-O.webp",
+				],
+				subCategoria: "RACK DE BARRAS ALUMINIO",
+				color: "negro",
+			},
 			"B1093A - B1097A",
 			"B1088A - B1095A",
 			"B1092A - B1095A",
 		],
 
 		[
-			"PORTAEQUIPAJES",
-			[
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQv6BXpZOiU5wAE4urdWNX-EnHl1jK_ZXksnCueEUK24Opnxl8y64G-OwvLlj96QOPRzU&usqp=CAU",
-			],
-			"RACK DE TECHO",
-			"negro",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQv6BXpZOiU5wAE4urdWNX-EnHl1jK_ZXksnCueEUK24Opnxl8y64G-OwvLlj96QOPRzU&usqp=CAU",
+				],
+				subCategoria: "RACK DE TECHO",
+				color: "negro",
+			},
 			"B303",
 			"B303A",
 			"B1382",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[""],
-			"BARRAS PORTAEQUIPAJE ALUMINIO",
-			"pulido",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [""],
+				subCategoria: "BARRAS PORTAEQUIPAJE ALUMINIO",
+				color: "pulido",
+			},
 			"B1134",
 			"B1127",
 		],
 		[
-			"PORTAEQUIPAJES",
-			[""],
-			"BARRAS PORTAEQUIPAJE ALUMINIO",
-			"negro",
+			{
+				categoria: "PORTAEQUIPAJES",
+				imagenes: [""],
+				subCategoria: "BARRAS PORTAEQUIPAJE ALUMINIO",
+				color: "negro",
+			},
 			"B1134A",
 			"B1127A",
 		],
 
 		[
-			"BAULES DE HERRAMIENTAS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_672086-MLA25853131890_082017-O.webp",
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/10/3-Baul-Bepo.jpg",
-			],
-			"BAUL DE HERRAMIENTAS",
-			"sin datos",
+			{
+				categoria: "BAULES DE HERRAMIENTAS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_672086-MLA25853131890_082017-O.webp",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/10/3-Baul-Bepo.jpg",
+				],
+				subCategoria: "BAUL DE HERRAMIENTAS",
+				color: "sin datos",
+			},
 			"B081R",
 			"B081U",
 		],
 		[
-			"COBERTORES / CUBRE LOMOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2022/09/Cobertor-frontier2.jpg",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTObXsmHK1VOozLWyhygzQ9x8EonV0Yt4UMw&usqp=CAU",
-			],
-			"COBERTOR DE CAJA",
-			"sin datos",
+			{
+				categoria: "COBERTORES / CUBRE LOMOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2022/09/Cobertor-frontier2.jpg",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTObXsmHK1VOozLWyhygzQ9x8EonV0Yt4UMw&usqp=CAU",
+				],
+				subCategoria: "COBERTOR DE CAJA",
+				color: "sin datos",
+			},
 			"B962A",
 			"B967",
 			"B965",
@@ -1198,13 +1505,15 @@ export const guiaImageAndCategorie = {
 			"B995",
 		],
 		[
-			"COBERTORES / CUBRE LOMOS",
-			[
-				"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Lomos-Laterales.jpg",
-				"https://http2.mlstatic.com/D_NQ_NP_671329-MLA45726905278_042021-O.webp",
-			],
-			"LOMOS DE CAJA LATERALES",
-			"sin datos",
+			{
+				categoria: "COBERTORES / CUBRE LOMOS",
+				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Lomos-Laterales.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_671329-MLA45726905278_042021-O.webp",
+				],
+				subCategoria: "LOMOS DE CAJA LATERALES",
+				color: "sin datos",
+			},
 			"B960C",
 			"B962C",
 			"B967C",
@@ -1213,13 +1522,15 @@ export const guiaImageAndCategorie = {
 			"B995A",
 		],
 		[
-			"COBERTORES / CUBRE LOMOS",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_669087-MLA31353228447_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_275721-MLA20837480582_072016-O.webp",
-			],
-			"LOMO DE PORTON DE CAJA",
-			"sin datos",
+			{
+				categoria: "COBERTORES / CUBRE LOMOS",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_669087-MLA31353228447_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_275721-MLA20837480582_072016-O.webp",
+				],
+				subCategoria: "LOMO DE PORTON DE CAJA",
+				color: "sin datos",
+			},
 			"B962B",
 			"B965B",
 			"B960D",
@@ -1229,123 +1540,145 @@ export const guiaImageAndCategorie = {
 			"B967B",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"blanco oxford",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "blanco oxford",
+			},
 			"B439B",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"negro perlado",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "negro perlado",
+			},
 			"B439N",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"negro ebony",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "negro ebony",
+			},
 			"B439A",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"gris plata",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "gris plata",
+			},
 			"B439U",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"rojo bari",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "rojo bari",
+			},
 			"B439V",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"rojo metalico",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "rojo metalico",
+			},
 			"B439VM",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"rojo marte",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "rojo marte",
+			},
 			"B439L",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"perla ocre",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "perla ocre",
+			},
 			"B439PR",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"azul belice",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "azul belice",
+			},
 			"B439AB",
 		],
 		[
-			"CUBRE RUEDA",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-				"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
-			],
-			"CUBRE RUEDA ECOSPORT",
-			"cobre andino",
+			{
+				categoria: "CUBRE RUEDA",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+				],
+				subCategoria: "CUBRE RUEDA ECOSPORT",
+				color: "cobre andino",
+			},
 			"B439MT",
 		],
-		["EXHIBIDOR BEPO", [""], "B0390"],
 		[
-			"ENGANCHE REFORZADO CON BOCHA",
-			[
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlqpgV3hM0CcFCexspHOqZDmiRDDdjwMXKTg&usqp=CAU",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSXrosDZRJxH9AqMZ9xSX3hURpv0UJ1ewFD99VRWFS0ED_LVKVKVvWkyJ97tNk1aNBmd0&usqp=CAU",
-			],
-			"ENGANCHE REFORZADO CON BOCHA",
+			{
+				categoria: "EXHIBIDOR BEPO",
+				imagenes: [""],
+				subCategoria: "EXHIBIDOR BEPO",
+				color: "sin datos",
+			},
+			"B0390",
+		],
+		[
+			{
+				categoria: "ENGANCHE REFORZADO CON BOCHA",
+				imagenes: [
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlqpgV3hM0CcFCexspHOqZDmiRDDdjwMXKTg&usqp=CAU",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSXrosDZRJxH9AqMZ9xSX3hURpv0UJ1ewFD99VRWFS0ED_LVKVKVvWkyJ97tNk1aNBmd0&usqp=CAU",
+				],
+				subCategoria: "ENGANCHE REFORZADO CON BOCHA",
+				color: "sin datos",
+			},
 			"B1712",
 			"B1713",
 			"B1714",
@@ -1354,13 +1687,15 @@ export const guiaImageAndCategorie = {
 			"B1719",
 		],
 		[
-			"ALERONES",
-			[
-				"https://http2.mlstatic.com/D_NQ_NP_969043-MLA50316101335_062022-O.webp",
-				"https://dgbstore.com.ar/wp-content/uploads/2022/07/ANTIVUELCO-EXTREME8.jpg",
-			],
-			"ALERON AMAROK V6 EXTREME",
-			"en descripcion",
+			{
+				categoria: "ALERONES",
+				imagenes: [
+					"https://http2.mlstatic.com/D_NQ_NP_969043-MLA50316101335_062022-O.webp",
+					"https://dgbstore.com.ar/wp-content/uploads/2022/07/ANTIVUELCO-EXTREME8.jpg",
+				],
+				subCategoria: "ALERON AMAROK V6 EXTREME",
+				color: "en descripcion",
+			},
 			4200,
 			4212,
 			4202,
@@ -1386,4 +1721,62 @@ export const guiaMarcas = {
 	BEPO: "BEPO",
 	FLASHCOVER: "FLASHCOVER",
 	KRAKEN: "KRAKEN",
+};
+export const headersColumProveedores = {
+	FLASHCOVER: {
+		codigoColum: 1,
+		vehiculoColum: 2,
+		masInfoColum: null,
+		precioColum: 4,
+		marcaColum: null,
+	},
+	ZT: {
+		codigoColum: 3,
+		vehiculoColum: 4,
+		masInfoColum: 5,
+		precioColum: 11,
+		marcaColum: 1,
+	},
+	ALERONES: {
+		codigoColum: 1,
+		vehiculoColum: 2,
+		masInfoColum: null,
+		precioColum: 4,
+		marcaColum: null,
+	},
+	COBERTORES: {
+		codigoColum: 1,
+		vehiculoColum: 2,
+		masInfoColum: null,
+		precioColum: 4,
+		marcaColum: null,
+	},
+	KRAKEN: {
+		codigoColum: 1,
+		vehiculoColum: 2,
+		masInfoColum: null,
+		precioColum: 4,
+		marcaColum: null,
+	},
+	BEPO: {
+		codigoColum: 1,
+		vehiculoColum: 2,
+		masInfoColum: null,
+		precioColum: 4,
+		marcaColum: null,
+	},
+	ESLINGAS: {
+		codigoColum: 1,
+		vehiculoColum: 2,
+		masInfoColum: null,
+		precioColum: 4,
+		marcaColum: null,
+	},
+	DC: {
+		codigoColum: 1,
+		vehiculoColum: 2,
+		masInfoColum: null,
+		precioColum: 4,
+		marcaColum: null,
+	},
 };

@@ -45,7 +45,7 @@ const UserDashBoard = () => {
 		let categorie = "";
 		guiaImageAndCategorie.categories.map((el) => {
 			if (el.includes(code)) {
-				categorie = el[0];
+				categorie = el[0].categoria;
 			}
 		});
 		return categorie;
@@ -53,8 +53,8 @@ const UserDashBoard = () => {
 	const getCategorieFromGuide = () => {
 		let categories = [];
 		guiaImageAndCategorie.categories.map((el) => {
-			if (!categories.includes(el[0])) {
-				categories.push(el[0]);
+			if (!categories.includes(el[0].categoria)) {
+				categories.push(el[0].categoria);
 			}
 		});
 		const categoriesStructured = categories.map((el) => {
@@ -85,7 +85,7 @@ const UserDashBoard = () => {
 		let images = [];
 		guiaImageAndCategorie.categories.map((el) => {
 			if (el.includes(code)) {
-				images = el[1];
+				images = el[0].imagenes;
 			}
 		});
 		return images;

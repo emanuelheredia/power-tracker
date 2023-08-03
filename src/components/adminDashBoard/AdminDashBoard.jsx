@@ -17,7 +17,6 @@ const AdminDashBoard = () => {
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 
 	const handleExcelChange = async (e) => {
-		setDataCleaned([]);
 		setShowSpinner(true);
 		const data = await readXlsxFile(e.target.files[0]);
 		setData(data);
@@ -26,7 +25,8 @@ const AdminDashBoard = () => {
 	};
 	useEffect(() => {
 		if (data.length > 0) {
-			setDataCleaned(estructureTable(data));
+			const dataEstructured = estructureTable(data);
+			setDataCleaned(dataEstructured);
 		}
 	}, [data]);
 	useEffect(() => {
