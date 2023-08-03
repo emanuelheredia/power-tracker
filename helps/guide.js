@@ -315,7 +315,6 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "JAULAS ANTIVUELCO",
 				imagenes: [
-					"https://accesoriosjorge.com.ar/wp-content/uploads/2022/03/BARRA-ACERO-KRAKEN-AMAROK3.jpg",
 					"https://http2.mlstatic.com/D_NQ_NP_710143-MLA51089539505_082022-O.webp",
 				],
 				subCategoria: "ANTIVUELCO KRAKEN OFF ROAD NEGRO",
@@ -884,7 +883,6 @@ export const guiaImageAndCategorie = {
 				categoria: "JAULAS ANTIVUELCO",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Elegance-Negra.jpg",
-					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ELEGANCE-CROMADA.jpg",
 				],
 				subCategoria: "BARRA ANTIVUELCO ELEGANCE",
 				color: "negro",
@@ -900,7 +898,6 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "JAULAS ANTIVUELCO",
 				imagenes: [
-					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Antivuelco-Elegance-Negra.jpg",
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ELEGANCE-CROMADA.jpg",
 				],
 				subCategoria: "BARRA ANTIVUELCO ELEGANCE",
@@ -919,7 +916,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "JAULAS ANTIVUELCO",
 				imagenes: [
-					"https://mlpower.com.ar/wp-content/uploads/2023/04/B3-CN.png",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/01/b3-alaskan-cromada.jpg",
 				],
 				subCategoria: "BARRA ANTIVUELCO B3 DEPORTIVO",
 				color: "cromado",
@@ -936,7 +933,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "JAULAS ANTIVUELCO",
 				imagenes: [
-					"https://mlpower.com.ar/wp-content/uploads/2023/04/B3-CN.png",
+					"https://sistemfilm4x4.com.ar/wp-content/uploads/2022/03/B1680A-601x400.webp",
 				],
 				subCategoria: "BARRA ANTIVUELCO B3 DEPORTIVO",
 				color: "negro",
@@ -966,8 +963,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ALERONES",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+					"https://http2.mlstatic.com/D_NQ_NP_881411-MLA31623646821_072019-O.webp",
 				],
 				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
 				color: "negro",
@@ -978,8 +974,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ALERONES",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+					"https://http2.mlstatic.com/D_NQ_NP_660805-MLA28597403695_112018-O.webp",
 				],
 				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
 				color: "blanco",
@@ -990,8 +985,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ALERONES",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+					"https://scontent.fcor11-2.fna.fbcdn.net/v/t1.6435-9/90564515_1612528952227420_3713725600851034112_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9267fe&_nc_ohc=fKwyZxNRLiMAX8apU05&_nc_ht=scontent.fcor11-2.fna&oh=00_AfCHGVSiRz-IEG5kSCKYI9MvADJ89MswkkgDHy7Af-2Rfw&oe=64F389E7",
 				],
 				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
 				color: "gris",
@@ -1002,8 +996,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ALERONES",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_728406-MLA31631443939_072019-O.webp",
-					"https://d2r9epyceweg5n.cloudfront.net/stores/001/622/423/products/diseno-sin-titulo-91-9e7dc3eceadd96990716524639141611-1024-1024.png",
+					"https://http2.mlstatic.com/D_NQ_NP_867140-MLA31652714329_082019-O.webp",
 				],
 				subCategoria: "ALERON CHEVROLET S10 HIGH COUNTRY",
 				color: "rojo",
@@ -1040,7 +1033,6 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
-					"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
 				],
 				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
 				color: "pulido",
@@ -1062,7 +1054,6 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ESTRIBOS",
 				imagenes: [
-					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
 					"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
 				],
 				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
@@ -1086,7 +1077,6 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
-					"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
 				],
 				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
 				color: "negro y pulido",
@@ -1143,7 +1133,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ESTRIBOS",
 				imagenes: [
-					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-G2-PULIDOS.jpg",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/10/6-ESTRIBOS-G2-NEGROS.jpg",
 				],
 				subCategoria: "ESTRIBOS G2 ALUMINIO C/SOPORTE",
 				color: "negro",
@@ -1163,7 +1153,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ESTRIBOS",
 				imagenes: [
-					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-C-1.png",
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-4.png",
 				],
 				subCategoria: "ESTRIBOS OVALADOS C/SOPORTE",
 				color: "cromado",
@@ -1182,7 +1172,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ESTRIBOS",
 				imagenes: [
-					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-C-1.png",
+					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-1.png",
 				],
 				subCategoria: "ESTRIBOS OVALADOS C/SOPORTE",
 				color: "negro",
@@ -1259,7 +1249,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ESTRIBOS",
 				imagenes: [
-					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-PULIDOS.jpg",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-NEGROS.jpg",
 				],
 				subCategoria: "ESTRIBOS SUV ALUMINIO",
 				color: "negro",
@@ -1281,7 +1271,6 @@ export const guiaImageAndCategorie = {
 				categoria: "DEFENSAS",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_920860-MLA31012874754_062019-O.webp",
-					"https://http2.mlstatic.com/D_617777-MLA31044211514_062019-O.webp",
 				],
 				subCategoria: "DEFENSA BAJA TALAMPAYA",
 				color: "cromado",
@@ -1300,7 +1289,6 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "DEFENSAS",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_920860-MLA31012874754_062019-O.webp",
 					"https://http2.mlstatic.com/D_617777-MLA31044211514_062019-O.webp",
 				],
 				subCategoria: "DEFENSA BAJA TALAMPAYA",
@@ -1358,7 +1346,6 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
-					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/03/D_NQ_NP_930767-MLA31118155424_062019-O.jpg",
 					"https://http2.mlstatic.com/D_NQ_NP_870802-MLA31610933329_072019-O.webp",
 				],
 				subCategoria: "BARRAS LONGITUDINALES ALUMINIO",
@@ -1374,7 +1361,6 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/03/D_NQ_NP_930767-MLA31118155424_062019-O.jpg",
-					"https://http2.mlstatic.com/D_NQ_NP_870802-MLA31610933329_072019-O.webp",
 				],
 				subCategoria: "BARRAS LONGITUDINALES ALUMINIO",
 				color: "negro",
@@ -1402,7 +1388,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
-					"https://http2.mlstatic.com/D_823229-MLA43732068569_102020-F.jpg",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaBgdpIBkZxGC3mlADIEHDzIwa_o-8LIqF6Vt2I1uBz-7aLJHHfsbue0BpwdUPVE7yWdY&usqp=CAU",
 				],
 				subCategoria: "BARRAS TRANSVERSALES ALUMINIO",
 				color: "negro",
@@ -1416,7 +1402,6 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_189115-MLA25133989687_102016-O.webp",
 					"https://http2.mlstatic.com/D_NQ_NP_975215-MLA25133136605_102016-O.webp",
 				],
 				subCategoria: "RACK DE BARRAS ALUMINIO",
@@ -1431,7 +1416,6 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_189115-MLA25133989687_102016-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_975215-MLA25133136605_102016-O.webp",
 				],
 				subCategoria: "RACK DE BARRAS ALUMINIO",
 				color: "negro",
@@ -1543,9 +1527,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
 					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_896056-MLA41294106796_032020-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "blanco oxford",
@@ -1557,7 +1539,6 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "negro perlado",
@@ -1569,7 +1550,6 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "negro ebony",
@@ -1580,8 +1560,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://guzman.vtexassets.com/arquivos/ids/163271-800-auto?v=637504706318700000&width=800&height=auto&aspect=true",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "gris plata",
@@ -1592,8 +1571,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://guzman.vtexassets.com/arquivos/ids/163272-1200-auto?v=637504713364730000&width=1200&height=auto&aspect=true",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "rojo bari",
@@ -1604,8 +1582,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_779023-MLA31009887554_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "rojo metalico",
@@ -1616,8 +1593,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_898908-MLA31061701506_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "rojo marte",
@@ -1628,8 +1604,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_735975-MLA31009872269_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "perla ocre",
@@ -1640,8 +1615,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://guzman.vtexassets.com/arquivos/ids/160070/006406-CUBRE-RUEDA-FORD-ECOSPORT-12--KINETIC-AZUL-NUEVO-BEPO-01.png?v=636785952915870000",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "azul belice",
@@ -1652,8 +1626,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "CUBRE RUEDA",
 				imagenes: [
-					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
-					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_923690-MLA28091447280_092018-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "cobre andino",
