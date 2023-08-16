@@ -60,14 +60,15 @@
     display: grid;
     width: 100%;
     grid-template-areas: 
-     "modelo  productColor"
-     "code  proveedor"
-     "marca  price"
-     "category  category"
+     "modelo  imagesLargeView"
+     "code  imagesLargeView"
+     "marca  imagesLargeView"
+     "category  productColor"
      "subCategory subCategory"
+    "proveedor price"
      ;
     grid-template-columns: 6fr  4fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     overflow: hidden;
 }
 .userDashBoard-item-celdaCode{
@@ -97,6 +98,9 @@
 }
 .userDashBoard-item-celdaSubCategory{
     grid-area: subCategory;
+}
+.userDashBoard-item-celdaImages{
+    grid-area:  imagesLargeView;
 }
 .userDashBoard-item-celdaCode,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMarca{
     display: flex;
@@ -141,35 +145,48 @@
     gap: .4rem;
 }
 .userDashBoard-container-inputsSearch>input{
-    width: 31%;
-    height: 1.7rem;
+    width: 97.5%;
+    height: 2rem;
     font-size: .8rem;
     text-align: center;
     border: 1px solid rgba(128, 128, 128, 0.432);
-    border-radius: 3px;
+    border-radius: 5px;
     letter-spacing: .4px;
 }
-.userDashBoard-container-inputsSearch>div{
+.userDashboard-selectsContainer{
+    display: flex;
+    flex-direction: column;
+    gap:.45rem;
     width: 99%;
 }
 .userDashBoard-item-celdaImages{
-    grid-area:  imagesLargeView;
-    display: none;
-}
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;}
+
+.userDashBoard-item-celdaImages > img{
+    width: 60px;
+    height: 60px;}
 @media (min-width:780px){
     .btn-ocultarPrice{
     font-size: 1.5rem;
     height: 1.5rem;
 }
-    .userDashBoard-container-rowTable{
-            grid-template-areas: 
-     "modelo  productColor"
-     "code  proveedor"
-     "marca  price"
-     "category  subCategory"
-     ;
-     grid-template-rows: 1fr 1fr 1fr 1fr;
-    }
+
+
+.userDashboard-selectsContainer{
+    flex-direction: row;
+    justify-content: center;
+    gap:.45rem;
+    width: 99%;
+}
+.userDashboard-selectsContainer>div{
+    width: 48.5%;
+}
+.userDashBoard-container-inputsSearch>input{
+    width: 31%;
+}
 
 }
 @media (min-width:1000px){
@@ -230,18 +247,14 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     overflow: hidden;
 }
-.userDashBoard-item-celdaImages{
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-}.userDashBoard-item-celdaImages > img{
+.userDashBoard-item-celdaImages > img{
     width: 90px;
     height: 90px;}
 .userDashBoard-item-celdaCode,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
     height: 1.5rem;
 }
 }
+
 @media (min-width:1500px){
         .btn-ocultarPrice{
     font-size: 2.5rem;

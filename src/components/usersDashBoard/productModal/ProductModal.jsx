@@ -1,8 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
-import { guiaImageAndCategorie } from "../../../../helps/guide";
-import { FaImage } from "react-icons/fa";
 import "./productModal.css";
+import "../userDashBoard.css";
 const customStyles = {
 	content: {
 		top: "50%",
@@ -19,7 +18,12 @@ const customStyles = {
 	},
 };
 Modal.setAppElement("*");
-const ProductModal = ({ product, setOpennModal, categorie }) => {
+const ProductModal = ({
+	product,
+	setOpennModal,
+	categorie,
+	getProductAttribute,
+}) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	function openModal() {
 		setIsOpen(true);
@@ -28,34 +32,21 @@ const ProductModal = ({ product, setOpennModal, categorie }) => {
 		setIsOpen(false);
 		setOpennModal(false);
 	}
-	const getProductImage = (code) => {
-		let images = [];
-		guiaImageAndCategorie.categories.map((el) => {
-			if (el.includes(code)) {
-				images = el[0].imagenes;
-			}
-		});
-		return images;
-	};
 
 	return (
-		<p
-			style={{
-				width: "80%",
-				display: "flex",
-				justifyContent: "space-between",
-			}}
-		>
-			<p style={{ margin: "0px" }}>{categorie}</p>
-			<FaImage
-				style={{
-					padding: "0 1rem 0 0",
-					fontSize: "20px",
-					cursor: "pointer",
-				}}
+		<div className="userDashBoard-item-celdaImages">
+			<img
 				onClick={openModal}
-				title="Ver Imagen"
+				src={getProductAttribute(product.code, "imagenes")[0]}
 			/>
+			{getProductAttribute(product.code, "imagenes")[1] && (
+				<img
+					onClick={openModal}
+					className="productModal-image"
+					src={getProductAttribute(product.code, "imagenes")[1]}
+					alt=""
+				/>
+			)}
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
@@ -77,20 +68,27 @@ const ProductModal = ({ product, setOpennModal, categorie }) => {
 					<div className="productModal-image-coontainer">
 						<img
 							className="productModal-image"
-							src={getProductImage(product.code)[0]}
+							src={
+								getProductAttribute(product.code, "imagenes")[0]
+							}
 							alt=""
 						/>
-						{getProductImage(product.code)[1] && (
+						{getProductAttribute(product.code, "imagenes")[1] && (
 							<img
 								className="productModal-image"
-								src={getProductImage(product.code)[1]}
+								src={
+									getProductAttribute(
+										product.code,
+										"imagenes",
+									)[1]
+								}
 								alt=""
 							/>
 						)}
 					</div>
 				</div>
 			</Modal>
-		</p>
+		</div>
 	);
 };
 export default ProductModal;

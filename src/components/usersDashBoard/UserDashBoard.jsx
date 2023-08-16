@@ -14,6 +14,7 @@ const UserDashBoard = () => {
 	const [modeloInput, setModeloInput] = useState("");
 	const [marcaInput, setMarcaInput] = useState("");
 	const [categoriaSelect, setCategoriaSelect] = useState("");
+	const [colorSelect, setColorSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
 	const [opennModal, setOpennModal] = useState(false);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
@@ -38,38 +39,39 @@ const UserDashBoard = () => {
 						.toString()
 						.toLowerCase()
 						.includes(modeloInput) &&
-					getProductCategorie(el.code).includes(categoriaSelect),
+					getProductAttribute(el.code, "categoria").includes(
+						categoriaSelect,
+					) &&
+					getProductAttribute(el.code, "color").includes(colorSelect),
 			),
 		);
-	}, [codeInput, marcaInput, modeloInput, categoriaSelect]);
+	}, [codeInput, marcaInput, modeloInput, categoriaSelect, colorSelect]);
 
-	const getProductCategorie = (code) => {
-		let categorie = "";
+	const getAttributeValuesFromGuide = (atribute, categoriesToInclude) => {
+		let values = [];
 		guiaImageAndCategorie.categories.map((el) => {
-			if (el.includes(code)) {
-				categorie = el[0].categoria;
+			if (
+				!values.includes(el[0][atribute]) &&
+				(!categoriesToInclude
+					? true
+					: categoriesToInclude.includes(
+							el[0].categoria.toLowerCase(),
+					  ))
+			) {
+				values.push(el[0][atribute]);
 			}
 		});
-		return categorie;
-	};
-	const getCategorieFromGuide = () => {
-		let categories = [];
-		guiaImageAndCategorie.categories.map((el) => {
-			if (!categories.includes(el[0].categoria)) {
-				categories.push(el[0].categoria);
-			}
-		});
-		const categoriesStructured = categories.map((el) => {
+		const valuesStructured = values.map((el) => {
 			return {
-				label: el,
+				label: el.toUpperCase(),
 				value: el,
 			};
 		});
-		const orderedCategoty = categoriesStructured.sort((a, b) =>
+		const orderedValues = valuesStructured.sort((a, b) =>
 			a.label.localeCompare(b.label),
 		);
-		orderedCategoty.unshift({ label: "Sin categoria", value: "" });
-		return orderedCategoty;
+		orderedValues.unshift({ label: "- SIN SELECCION -", value: "" });
+		return orderedValues;
 	};
 
 	const selectStyles = () => ({
@@ -81,36 +83,20 @@ const UserDashBoard = () => {
 			...baseStyles,
 			fontSize: ".8rem",
 			padding: 0,
-			color: "red",
+			color: "black",
+			backgroundColor: "white",
 		}),
 	});
-	const getProductImage = (code) => {
-		let images = [];
+	const getProductAttribute = (code, attribute) => {
+		let value;
 		guiaImageAndCategorie.categories.map((el) => {
 			if (el.includes(code)) {
-				images = el[0].imagenes;
+				value = el[0][attribute];
 			}
 		});
-		return images;
+		return value;
 	};
-	const getProductColor = (code) => {
-		let color = "";
-		guiaImageAndCategorie.categories.map((el) => {
-			if (el.includes(code)) {
-				color = el[0].color;
-			}
-		});
-		return color;
-	};
-	const getProductsubCateg = (code) => {
-		let color = "";
-		guiaImageAndCategorie.categories.map((el) => {
-			if (el.includes(code)) {
-				color = el[0].subCategoria;
-			}
-		});
-		return color;
-	};
+
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
@@ -133,15 +119,30 @@ const UserDashBoard = () => {
 						setMarcaInput(e.target.value.toString().toLowerCase())
 					}
 				/>
-				<Select
-					name="categorie"
-					className="userInfo-teamSelect"
-					placeholder="Seleccione una categoria"
-					options={getCategorieFromGuide()}
-					type="text"
-					styles={selectStyles()}
-					onChange={(e) => setCategoriaSelect(e.value)}
-				/>
+				<div className="userDashboard-selectsContainer">
+					<Select
+						name="color"
+						className="userInfo-teamSelect"
+						placeholder="Seleccione el color"
+						options={getAttributeValuesFromGuide("color", [
+							"jaulas antivuelvo",
+							"estribos",
+							"defensas",
+						])}
+						type="text"
+						styles={selectStyles()}
+						onChange={(e) => setColorSelect(e.value)}
+					/>
+					<Select
+						name="categorie"
+						className="userInfo-teamSelect"
+						placeholder="Seleccione una categoria"
+						options={getAttributeValuesFromGuide("categoria")}
+						type="text"
+						styles={selectStyles()}
+						onChange={(e) => setCategoriaSelect(e.value)}
+					/>
+				</div>
 			</div>
 			{productsFiltered.length > 0 &&
 				productsFiltered.map((el, index) => (
@@ -156,14 +157,18 @@ const UserDashBoard = () => {
 						</div>
 						<div className="userDashBoard-item-celdaCategory">
 							<p>Categoria</p>
-							<ProductModal
-								product={el}
-								productImage={"hola"}
-								opennModal={opennModal}
-								setOpennModal={setOpennModal}
-								categorie={getProductCategorie(el.code)}
-							/>
+							<p>{getProductAttribute(el.code, "categoria")}</p>
 						</div>
+						<ProductModal
+							product={el}
+							productImage={"hola"}
+							getProductAttribute={getProductAttribute}
+							setOpennModal={setOpennModal}
+							categorie={getProductAttribute(
+								el.code,
+								"categoria",
+							)}
+						/>
 						<div className="userDashBoard-item-celdaModelo">
 							<p>Vehículos</p>
 							<p>
@@ -191,14 +196,18 @@ const UserDashBoard = () => {
 						<div className="userDashBoard-item-celdaColor">
 							<p>Color</p>
 							<p>
-								{getProductColor(el.code).toLocaleUpperCase()}
+								{getProductAttribute(
+									el.code,
+									"color",
+								).toLocaleUpperCase()}
 							</p>
 						</div>
 						<div className="userDashBoard-item-celdaSubCategory">
 							<p>SubCategoria</p>
 							<p>
-								{getProductsubCateg(
+								{getProductAttribute(
 									el.code,
+									"subCategoria",
 								).toLocaleUpperCase()}
 							</p>
 						</div>
@@ -212,16 +221,6 @@ const UserDashBoard = () => {
 										  el.price.toFixed(1).replace(".", ",")
 										: ""}
 								</p>
-							)}
-						</div>
-						<div className="userDashBoard-item-celdaImages">
-							<img src={getProductImage(el.code)[0]} />
-							{getProductImage(el.code)[1] && (
-								<img
-									className="productModal-image"
-									src={getProductImage(el.code)[1]}
-									alt=""
-								/>
 							)}
 						</div>
 					</div>

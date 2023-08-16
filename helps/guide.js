@@ -933,7 +933,7 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "JAULAS ANTIVUELCO",
 				imagenes: [
-					"https://sistemfilm4x4.com.ar/wp-content/uploads/2022/03/B1680A-601x400.webp",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4MmPfVoRfGV7hZ0LaO0F-oWisEk54YpHrAG8CksXL5NNnfiRFpCBSs_0U3k79g53tErQ&usqp=CAU",
 				],
 				subCategoria: "BARRA ANTIVUELCO B3 DEPORTIVO",
 				color: "negro",
@@ -1378,7 +1378,7 @@ export const guiaImageAndCategorie = {
 					"https://http2.mlstatic.com/D_823229-MLA43732068569_102020-F.jpg",
 				],
 				subCategoria: "BARRAS TRANSVERSALES ALUMINIO",
-				color: "puido",
+				color: "pulido",
 			},
 			"B1097C",
 			"B1095C",
