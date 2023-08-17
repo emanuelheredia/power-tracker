@@ -115,6 +115,9 @@
 .userDashBoard-item-celdaImages{
     grid-area:  imagesLargeView;
 }
+.userDashBoard-item-celdaModelo>p:last-child{
+    font-weight: bolder;
+}
 .userDashBoard-item-celdaCode,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMarca{
     display: flex;
     width: 100%;
@@ -142,8 +145,6 @@
  align-items: center;
 }
 .userDashBoard-item-celdaPrice>p:nth-child(2){
-    padding: 0 0 0 1rem;
-    font-size: .7rem;
     color: red;
     font-weight: bolder;
 }

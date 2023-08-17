@@ -115,7 +115,7 @@ const UserDashBoard = () => {
 					/>
 				</div>
 				<div>
-					<h5>Modelo Vehiculo</h5>
+					<h5>Vehiculo</h5>
 					<input
 						onChange={(e) =>
 							setModeloInput(
@@ -135,7 +135,7 @@ const UserDashBoard = () => {
 					/>
 				</div>
 				<div>
-					<h5>Color Producto</h5>
+					<h5>Color</h5>
 					<Select
 						placeholder=""
 						name="color"
@@ -234,7 +234,7 @@ const UserDashBoard = () => {
 									{el.price !== "sin datos" &&
 									!isNaN(el.price)
 										? "$ " +
-										  el.price.toFixed(1).replace(".", ",")
+										  el.price.toFixed(0).replace(".", ",")
 										: ""}
 								</p>
 							)}

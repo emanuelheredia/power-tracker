@@ -18,12 +18,7 @@ const customStyles = {
 	},
 };
 Modal.setAppElement("*");
-const ProductModal = ({
-	product,
-	setOpennModal,
-	categorie,
-	getProductAttribute,
-}) => {
+const ProductModal = ({ product, categorie, getProductAttribute }) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	function openModal() {
 		setIsOpen(true);
