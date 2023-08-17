@@ -5,7 +5,7 @@ import { getAllProducts } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie } from "../../../helps/guide";
 import ProductModal from "./productModal/ProductModal";
 import Select from "react-select";
-import { FaEye, FaEyeSlash, FaWhatsapp } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
@@ -95,7 +95,9 @@ const UserDashBoard = () => {
 		});
 		return value;
 	};
-
+	const scrollToUp = () => {
+		window.scrollTo(0, 0);
+	};
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
@@ -246,6 +248,7 @@ const UserDashBoard = () => {
 				{ocultarPrice && <FaEye />}
 				{!ocultarPrice && <FaEyeSlash />}
 			</button>
+			<FaArrowUp onClick={() => scrollToUp()} className="btn-scrollUp" />
 			<a
 				href={"https://wa.me/5493516537131"}
 				target="_blank"
