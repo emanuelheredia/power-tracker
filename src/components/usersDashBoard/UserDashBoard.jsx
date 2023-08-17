@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import "./userDashBoard.css";
 import { getAllProducts } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie } from "../../../helps/guide";
-import ProductModal from "./productModal/ProductModal";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
+import CardProduct from "./CardProduct";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
@@ -163,83 +163,12 @@ const UserDashBoard = () => {
 			</div>
 			{productsFiltered.length > 0 &&
 				productsFiltered.map((el, index) => (
-					<div
-						className="userDashBoard-container-rowTable"
+					<CardProduct
+						product={el}
 						key={index}
-					>
-						{" "}
-						<div className="userDashBoard-item-celdaCode">
-							<p>Codigo</p>
-							<p>{el.code ? el.code : "sin datos"}</p>
-						</div>
-						<div className="userDashBoard-item-celdaCategory">
-							<p>Categoria</p>
-							<p>{getProductAttribute(el.code, "categoria")}</p>
-						</div>
-						<ProductModal
-							product={el}
-							productImage={"hola"}
-							getProductAttribute={getProductAttribute}
-							categorie={getProductAttribute(
-								el.code,
-								"categoria",
-							)}
-						/>
-						<div className="userDashBoard-item-celdaModelo">
-							<p>Vehículos</p>
-							<p>
-								{el.vehiculo !== "sin datos" ? el.vehiculo : ""}
-							</p>
-						</div>
-						<div className="userDashBoard-item-celdaProveedor">
-							<p>Marca</p>
-							<p>
-								{el.proveedor !== "sin datos"
-									? el.proveedor
-									: ""}
-							</p>
-						</div>
-						<div className="userDashBoard-item-celdaMarca">
-							<p>Marca Auto</p>
-							<p>{el.marca !== "sin datos" ? el.marca : ""}</p>
-						</div>
-						<div className="userDashBoard-item-celdaMoreInfo">
-							<p>Mas info</p>
-							<p>
-								{el.moreInfo !== "sin datos" ? el.moreInfo : ""}
-							</p>
-						</div>
-						<div className="userDashBoard-item-celdaColor">
-							<p>Color</p>
-							<p>
-								{getProductAttribute(
-									el.code,
-									"color",
-								).toLocaleUpperCase()}
-							</p>
-						</div>
-						<div className="userDashBoard-item-celdaSubCategory">
-							<p>SubCategoria</p>
-							<p>
-								{getProductAttribute(
-									el.code,
-									"subCategoria",
-								).toLocaleUpperCase()}
-							</p>
-						</div>
-						<div className="userDashBoard-item-celdaPrice">
-							<p>Precio</p>
-							{!ocultarPrice && (
-								<p>
-									{el.price !== "sin datos" &&
-									!isNaN(el.price)
-										? "$ " +
-										  el.price.toFixed(0).replace(".", ",")
-										: ""}
-								</p>
-							)}
-						</div>
-					</div>
+						getProductAttribute={getProductAttribute}
+						ocultarPrice={ocultarPrice}
+					/>
 				))}
 			<button
 				onClick={() => setOcultarPrice(!ocultarPrice)}
