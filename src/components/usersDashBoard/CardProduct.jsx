@@ -3,16 +3,15 @@ import ProductModal from "./productModal/ProductModal";
 import "./cardProduct.css";
 const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
 	const formatearPrecio = (precio) => {
-		console.log(precio);
-		let cantidadDigitos = precio.length();
+		let cantidadDigitos = precio.split("").length;
 		let indexToAddPoint1 = cantidadDigitos - 3;
 		let indexToAddPoint2 = cantidadDigitos - 6;
 		let priceAsArray = precio.split("");
-		priceAsArray.insert(indexToAddPoint1, ".");
+		priceAsArray.splice(indexToAddPoint1, 0, ".");
 		if (indexToAddPoint2 > 0) {
-			priceAsArray.insert(indexToAddPoint2, ".");
+			priceAsArray.splice(indexToAddPoint2, 0, ".");
 		}
-		return priceAsArray.toString();
+		return priceAsArray.join("");
 	};
 	return (
 		<div className="userDashBoard-container-rowTable">
