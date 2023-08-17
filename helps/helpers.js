@@ -3,7 +3,7 @@ import { guiaMarcas, headersColumProveedores } from "./guide";
 
 const wordsFromHeaders = [
 	"CODIGO",
-	"PRECIO IVA INCLUIDO",
+	"PRECIO",
 	"CAMIONETA / COLOR",
 	"PRECIO",
 	"Nueva Etiqueta",

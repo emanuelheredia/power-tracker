@@ -2,6 +2,18 @@ import React from "react";
 import ProductModal from "./productModal/ProductModal";
 import "./cardProduct.css";
 const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
+	const formatearPrecio = (precio) => {
+		console.log(precio);
+		let cantidadDigitos = precio.length();
+		let indexToAddPoint1 = cantidadDigitos - 3;
+		let indexToAddPoint2 = cantidadDigitos - 6;
+		let priceAsArray = precio.split("");
+		priceAsArray.insert(indexToAddPoint1, ".");
+		if (indexToAddPoint2 > 0) {
+			priceAsArray.insert(indexToAddPoint2, ".");
+		}
+		return priceAsArray.toString();
+	};
 	return (
 		<div className="userDashBoard-container-rowTable">
 			{" "}
@@ -64,7 +76,10 @@ const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
 				{!ocultarPrice && (
 					<p>
 						{product.price !== "sin datos" && !isNaN(product.price)
-							? "$ " + product.price.toFixed(0).replace(".", ",")
+							? "$ " +
+							  formatearPrecio(
+									product.price.toFixed(0).replace(".", ","),
+							  )
 							: ""}
 					</p>
 				)}
