@@ -30,7 +30,6 @@ const ProductModal = ({
 	}
 	function closeModal() {
 		setIsOpen(false);
-		setOpennModal(false);
 	}
 
 	return (

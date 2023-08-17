@@ -16,7 +16,6 @@ const UserDashBoard = () => {
 	const [categoriaSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
-	const [opennModal, setOpennModal] = useState(false);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		dispatch(getAllProducts());
@@ -101,29 +100,44 @@ const UserDashBoard = () => {
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
 			<div className="userDashBoard-container-inputsSearch">
-				<input
-					onChange={(e) =>
-						setCodeInput(e.target.value.toString().toLowerCase())
-					}
-					placeholder="Código"
-				/>
-				<input
-					placeholder="Modelo Vehículo"
-					onChange={(e) =>
-						setModeloInput(e.target.value.toString().toLowerCase())
-					}
-				/>
-				<input
-					placeholder="Marca Producto"
-					onChange={(e) =>
-						setMarcaInput(e.target.value.toString().toLowerCase())
-					}
-				/>
-				<div className="userDashboard-selectsContainer">
+				<div>
+					<h5>Categoria</h5>
 					<Select
+						placeholder=""
+						name="categorie"
+						className="userInfo-teamSelect"
+						options={getAttributeValuesFromGuide("categoria")}
+						type="text"
+						styles={selectStyles()}
+						onChange={(e) => setCategoriaSelect(e.value)}
+					/>
+				</div>
+				<div>
+					<h5>Modelo Vehiculo</h5>
+					<input
+						onChange={(e) =>
+							setModeloInput(
+								e.target.value.toString().toLowerCase(),
+							)
+						}
+					/>
+				</div>
+				<div>
+					<h5>Marca Producto</h5>
+					<input
+						onChange={(e) =>
+							setMarcaInput(
+								e.target.value.toString().toLowerCase(),
+							)
+						}
+					/>
+				</div>
+				<div>
+					<h5>Color Producto</h5>
+					<Select
+						placeholder=""
 						name="color"
 						className="userInfo-teamSelect"
-						placeholder="Seleccione el color"
 						options={getAttributeValuesFromGuide("color", [
 							"jaulas antivuelvo",
 							"estribos",
@@ -133,14 +147,15 @@ const UserDashBoard = () => {
 						styles={selectStyles()}
 						onChange={(e) => setColorSelect(e.value)}
 					/>
-					<Select
-						name="categorie"
-						className="userInfo-teamSelect"
-						placeholder="Seleccione una categoria"
-						options={getAttributeValuesFromGuide("categoria")}
-						type="text"
-						styles={selectStyles()}
-						onChange={(e) => setCategoriaSelect(e.value)}
+				</div>
+				<div>
+					<h5>Codigo Producto</h5>
+					<input
+						onChange={(e) =>
+							setCodeInput(
+								e.target.value.toString().toLowerCase(),
+							)
+						}
 					/>
 				</div>
 			</div>
@@ -163,7 +178,6 @@ const UserDashBoard = () => {
 							product={el}
 							productImage={"hola"}
 							getProductAttribute={getProductAttribute}
-							setOpennModal={setOpennModal}
 							categorie={getProductAttribute(
 								el.code,
 								"categoria",

@@ -144,20 +144,21 @@
     flex-wrap: wrap;
     gap: .4rem;
 }
-.userDashBoard-container-inputsSearch>input{
+.userDashBoard-container-inputsSearch>div>input{
     width: 97.5%;
     height: 2rem;
     font-size: .8rem;
     text-align: center;
     border: 1px solid rgba(128, 128, 128, 0.432);
-    border-radius: 5px;
+    border-radius: 4px;
     letter-spacing: .4px;
 }
-.userDashboard-selectsContainer{
-    display: flex;
-    flex-direction: column;
-    gap:.45rem;
+.userDashBoard-container-inputsSearch>div{
     width: 99%;
+}
+.userDashBoard-container-inputsSearch>div>h5{
+    margin: 5px 0 0 0;
+    color: rgb(255, 145, 0);
 }
 .userDashBoard-item-celdaImages{
     display: flex;
@@ -173,19 +174,15 @@
     font-size: 1.5rem;
     height: 1.5rem;
 }
-
-
-.userDashboard-selectsContainer{
-    flex-direction: row;
-    justify-content: center;
-    gap:.45rem;
-    width: 99%;
+.userDashBoard-container-inputsSearch>div{
+    width: 400px;
 }
-.userDashboard-selectsContainer>div{
-    width: 48.5%;
+.userDashBoard-container-inputsSearch>input:last-child{
+    width: 100%;
+    margin: 0 40% 0 40% ;
 }
 .userDashBoard-container-inputsSearch>input{
-    width: 31%;
+    width: 395px;
 }
 
 }
@@ -254,7 +251,15 @@
     height: 1.5rem;
 }
 }
+@media (min-width:1290px){
+.userDashBoard-container-inputsSearch>div{
+    width: 450px;
+}
+.userDashBoard-container-inputsSearch>input{
+    width: 445px;
+}
 
+}
 @media (min-width:1500px){
         .btn-ocultarPrice{
     font-size: 2.5rem;
