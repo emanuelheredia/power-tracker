@@ -31,16 +31,20 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 		<div className="userDashBoard-item-celdaImages">
 			<img
 				onClick={openModal}
-				src={getProductAttribute(product.code, "imagenes")[0]}
+				src={
+					product.code !== "sin datos" &&
+					getProductAttribute(product.code, "imagenes")[0]
+				}
 			/>
-			{getProductAttribute(product.code, "imagenes")[1] && (
-				<img
-					onClick={openModal}
-					className="productModal-image"
-					src={getProductAttribute(product.code, "imagenes")[1]}
-					alt=""
-				/>
-			)}
+			{product.code !== "sin datos" &&
+				getProductAttribute(product.code, "imagenes")[1] && (
+					<img
+						onClick={openModal}
+						className="productModal-image"
+						src={getProductAttribute(product.code, "imagenes")[1]}
+						alt=""
+					/>
+				)}
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
@@ -63,22 +67,28 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 						<img
 							className="productModal-image"
 							src={
+								product.code !== "sin datos" &&
 								getProductAttribute(product.code, "imagenes")[0]
 							}
 							alt=""
 						/>
-						{getProductAttribute(product.code, "imagenes")[1] && (
-							<img
-								className="productModal-image"
-								src={
-									getProductAttribute(
-										product.code,
-										"imagenes",
-									)[1]
-								}
-								alt=""
-							/>
-						)}
+						{product.code !== "sin datos" &&
+							getProductAttribute(
+								product.code,
+								"imagenes",
+							)[1] && (
+								<img
+									className="productModal-image"
+									src={
+										product.code !== "sin datos" &&
+										getProductAttribute(
+											product.code,
+											"imagenes",
+										)[1]
+									}
+									alt=""
+								/>
+							)}
 					</div>
 				</div>
 			</Modal>

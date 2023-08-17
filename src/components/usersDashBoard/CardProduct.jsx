@@ -55,19 +55,21 @@ const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
 			<div className="userDashBoard-item-celdaColor">
 				<p>Color</p>
 				<p>
-					{getProductAttribute(
-						product.code,
-						"color",
-					).toLocaleUpperCase()}
+					{product.code !== "sin datos" &&
+						getProductAttribute(
+							product.code,
+							"color",
+						).toLocaleUpperCase()}
 				</p>
 			</div>
 			<div className="userDashBoard-item-celdaSubCategory">
 				<p>SubCategoria</p>
 				<p>
-					{getProductAttribute(
-						product.code,
-						"subCategoria",
-					).toLocaleUpperCase()}
+					{product.code !== "sin datos" &&
+						getProductAttribute(
+							product.code,
+							"subCategoria",
+						).toLocaleUpperCase()}
 				</p>
 			</div>
 			<div className="userDashBoard-item-celdaPrice">
