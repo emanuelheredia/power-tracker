@@ -32,19 +32,23 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 			<img
 				onClick={openModal}
 				src={
-					product.code !== "sin datos" &&
-					getProductAttribute(product.code, "imagenes")[0]
+					product.code !== "sin datos"
+						? getProductAttribute(product.code, "imagenes")[0]
+						: null
 				}
 			/>
-			{product.code !== "sin datos" &&
-				getProductAttribute(product.code, "imagenes")[1] && (
-					<img
-						onClick={openModal}
-						className="productModal-image"
-						src={getProductAttribute(product.code, "imagenes")[1]}
-						alt=""
-					/>
-				)}
+			{product.code !== "sin datos"
+				? getProductAttribute(product.code, "imagenes")[1] && (
+						<img
+							onClick={openModal}
+							className="productModal-image"
+							src={
+								getProductAttribute(product.code, "imagenes")[1]
+							}
+							alt=""
+						/>
+				  )
+				: null}
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
