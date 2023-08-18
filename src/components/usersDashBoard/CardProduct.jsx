@@ -3,10 +3,16 @@ import ProductModal from "./productModal/ProductModal";
 import "./cardProduct.css";
 const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
 	const formatearPrecio = (precio) => {
-		let cantidadDigitos = precio.split("").length;
+		if (product.proveedor == "ZIEL TECHNOLOGY") {
+			let indexOfPoint = precio.toString().indexOf(".");
+			let firstClean = precio.toString().slice(0, indexOfPoint + 4);
+			return firstClean;
+		}
+		let firstClean = precio.toFixed(0).replace(".", ",");
+		let cantidadDigitos = firstClean.split("").length;
 		let indexToAddPoint1 = cantidadDigitos - 3;
 		let indexToAddPoint2 = cantidadDigitos - 6;
-		let priceAsArray = precio.split("");
+		let priceAsArray = firstClean.split("");
 		priceAsArray.splice(indexToAddPoint1, 0, ".");
 		if (indexToAddPoint2 > 0) {
 			priceAsArray.splice(indexToAddPoint2, 0, ".");
@@ -77,10 +83,7 @@ const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
 				{!ocultarPrice && (
 					<p>
 						{product.price !== "sin datos" && !isNaN(product.price)
-							? "$ " +
-							  formatearPrecio(
-									product.price.toFixed(0).replace(".", ","),
-							  )
+							? "$ " + formatearPrecio(product.price)
 							: ""}
 					</p>
 				)}

@@ -627,6 +627,7 @@ export const guiaImageAndCategorie = {
 				subCategoria: "ALFOMBRAS ZIEL TECHNOLOGY",
 				color: "sin datos",
 			},
+			"sin datos",
 			"ZTCBE",
 			"ZTCBECS",
 			"ZTP308",
