@@ -6,6 +6,7 @@ import { guiaImageAndCategorie } from "../../../helps/guide";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
 import CardProduct from "./CardProduct";
+import { Spinner } from "../spinner/Spinner";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
@@ -161,6 +162,7 @@ const UserDashBoard = () => {
 					/>
 				</div>
 			</div>
+			{products.loading && <Spinner />}
 			{productsFiltered.length > 0 &&
 				productsFiltered.map((el, index) => (
 					<CardProduct
