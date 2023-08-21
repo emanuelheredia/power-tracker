@@ -1,6 +1,6 @@
 # AccesoriosParaVehiculos App - README
 
-![AccesoriosVehiculo App](src/assets/imgReadme/Captura%20desde%202023-08-21%2020-32-11.png)
+![AccesoriosVehiculo App](src/assets/imgReadme/Captura%20desde%202023-08-21%2020-31-32.png)
 
 [Acceso a App](https://power-tracker.vercel.app/)
 
