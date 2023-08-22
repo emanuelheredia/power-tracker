@@ -31,7 +31,7 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 		<div className="userDashBoard-item-celdaImages">
 			<img
 				onClick={openModal}
-				style={{ cursor: "pointer" }}
+				style={{ cursor: "pointer", borderRadius: "5px" }}
 				src={
 					product.code !== "sin datos"
 						? getProductAttribute(product.code, "imagenes")[0]
