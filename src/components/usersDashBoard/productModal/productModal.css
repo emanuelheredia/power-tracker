@@ -9,7 +9,7 @@
 }
 .productModal-image{
     width: 180px;
-    height: 155px;
+    height: 150px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -22,10 +22,18 @@
     width: 50% !important;
 }.productModal-image{
     width: 210px;
-    height: 180px;
+    height: 170px;
 }}
 @media (min-width:1200px){.productModal-image{
     width: 240px;
     height: 210px;
+}
+}@media (min-width:1300px){
+.ReactModal__Content--after-open{
+    width: 35% !important;
+}}
+@media (min-width:1200px){.productModal-image{
+    width: 320px;
+    height: 260px;
 }
 }
