@@ -8,9 +8,10 @@
     gap: 1rem;
 }
 .productModal-image{
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 155px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .productModal-title{
     text-align: center;
@@ -18,13 +19,13 @@
 }
 @media (min-width:780px){
 .ReactModal__Content--after-open{
-    width: 60% !important;
-}}
-@media (min-width:780px){
-.ReactModal__Content--after-open{
     width: 50% !important;
+}.productModal-image{
+    width: 210px;
+    height: 180px;
 }}
-@media (min-width:1200px){
-.ReactModal__Content--after-open{
-    width: 30% !important;
-}}
+@media (min-width:1200px){.productModal-image{
+    width: 240px;
+    height: 210px;
+}
+}

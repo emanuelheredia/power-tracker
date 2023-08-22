@@ -116,8 +116,8 @@
     align-items: center;}
 
 .userDashBoard-item-celdaImages > img{
-    width: 60px;
-    height: 60px;}
+    width: 70px;
+    height: 57px;}
 
     @media (min-width:1000px){
 
@@ -163,8 +163,8 @@
     overflow: hidden;
 }
 .userDashBoard-item-celdaImages > img{
-    width: 90px;
-    height: 90px;}
+    width: 100px;
+    height: 85px;}
 .userDashBoard-item-celdaCode,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
     height: 1.5rem;
 }
