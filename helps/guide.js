@@ -75,6 +75,7 @@ export const guiaImageAndCategorie = {
 				categoria: "LONAS",
 				imagenes: [
 					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_eb_tjvvh7Pb_AICoBaW8wzilD7nNsJZj1Q&usqp=CAU",
+					"https://http2.mlstatic.com/D_NQ_NP_840486-MLA41304605042_042020-O.webp",
 				],
 				subCategoria: "FLASHCOVER LINEA ROLLER",
 				color: "sin datos",
@@ -145,7 +146,6 @@ export const guiaImageAndCategorie = {
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_948562-MLA47526912143_092021-O.webp",
 					"https://http2.mlstatic.com/D_NQ_NP_932818-MLA31475858046_072019-O.webp",
-					"https://i.ytimg.com/vi/3WzaHoJ38f0/maxresdefault.jpg",
 				],
 				subCategoria: "TAPA RETRACTIL CON RODAMIENTOS",
 				color: "sin datos",
@@ -1034,6 +1034,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/Estribos-G3-Pulidos.jpg",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/g3PulidosAmarok2.jpg",
 				],
 				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
 				color: "pulido",
@@ -1055,7 +1056,9 @@ export const guiaImageAndCategorie = {
 			{
 				categoria: "ESTRIBOS",
 				imagenes: [
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/g3PulidosAmarok2.jpg",
 					"https://http2.mlstatic.com/D_NQ_NP_953729-MLA41265488536_032020-O.webp",
+					,
 				],
 				subCategoria: "ESTRIBOS G3 ALUMINIO C/SOPORTE",
 				color: "negro",
@@ -1115,6 +1118,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-G2-PULIDOS.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_808460-MLA31644045802_072019-O.webp",
 				],
 				subCategoria: "ESTRIBOS G2 ALUMINIO C/SOPORTE",
 				color: "pulido",
@@ -1135,6 +1139,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/10/6-ESTRIBOS-G2-NEGROS.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_922748-MLA26461243371_112017-O.webp",
 				],
 				subCategoria: "ESTRIBOS G2 ALUMINIO C/SOPORTE",
 				color: "negro",
@@ -1155,6 +1160,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-4.png",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/estribos-maxi-oval2.jpg",
 				],
 				subCategoria: "ESTRIBOS OVALADOS C/SOPORTE",
 				color: "cromado",
@@ -1174,6 +1180,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://mlpower.com.ar/wp-content/uploads/2023/04/OVAL-1.png",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/EstriboOvalNegroDuster4.jpg",
 				],
 				subCategoria: "ESTRIBOS OVALADOS C/SOPORTE",
 				color: "negro",
@@ -1194,6 +1201,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/10/8-Estribos-Inyectados.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_892949-MLA48321913368_112021-O.webp",
 				],
 				subCategoria: "ESTRIBOS PLASTICO INYECTADO",
 				color: "sin datos",
@@ -1211,6 +1219,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_603787-MLA47899876780_102021-O.webp",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKnfmxZIyqnQbFvD16EX17xOif37t2ttZ7-NXqEILUHP4tL4BpmEphDkLTlwCbo3AMyQM&usqp=CAU",
 				],
 				subCategoria: "ESTRIBOS EXTREME",
 				color: "negro",
@@ -1231,6 +1240,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-PULIDOS.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_881995-MLA42089302973_062020-O.webp",
 				],
 				subCategoria: "ESTRIBOS SUV ALUMINIO",
 				color: "pulido",
@@ -1251,6 +1261,7 @@ export const guiaImageAndCategorie = {
 				categoria: "ESTRIBOS",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/11/ESTRIBOS-SUV-2-NEGROS.jpg",
+					"https://http2.mlstatic.com/D_NQ_NP_735460-MLA41926795073_052020-O.webp",
 				],
 				subCategoria: "ESTRIBOS SUV ALUMINIO",
 				color: "negro",
@@ -1272,6 +1283,7 @@ export const guiaImageAndCategorie = {
 				categoria: "DEFENSAS",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_920860-MLA31012874754_062019-O.webp",
+					"https://acdn.mitiendanube.com/stores/190/572/products/d_666263-mla44042215565_112020-o-a9b035af8a3fd0961e16448549452649-1024-1024.jpg",
 				],
 				subCategoria: "DEFENSA BAJA TALAMPAYA",
 				color: "cromado",
@@ -1291,6 +1303,7 @@ export const guiaImageAndCategorie = {
 				categoria: "DEFENSAS",
 				imagenes: [
 					"https://http2.mlstatic.com/D_617777-MLA31044211514_062019-O.webp",
+					"https://guzman.vtexassets.com/arquivos/ids/162151/012271-BRACCO-DEFENSA-TALAMPAYA-TOYOTA-HILUX-2016--NEGRA-T-80-05.jpg?v=637045827622730000",
 				],
 				subCategoria: "DEFENSA BAJA TALAMPAYA",
 				color: "negro",
@@ -1311,6 +1324,7 @@ export const guiaImageAndCategorie = {
 				categoria: "DEFENSAS",
 				imagenes: [
 					"https://mlpower.com.ar/wp-content/uploads/2023/04/B1372.png",
+					"https://http2.mlstatic.com/D_NQ_NP_908778-MLA49159350679_022022-O.webp",
 				],
 				subCategoria: "DEFENSA URBANA PLASTICA",
 				color: "cromado",
@@ -1322,6 +1336,7 @@ export const guiaImageAndCategorie = {
 				categoria: "DEFENSAS",
 				imagenes: [
 					"https://mlpower.com.ar/wp-content/uploads/2023/04/B1372.png",
+					"https://www.tecniplast.com.ar/adjuntos/tinyContents/600/defensaplastica.jpg",
 				],
 				subCategoria: "DEFENSA URBANA PLASTICA",
 				color: "gris",
@@ -1348,6 +1363,7 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_870802-MLA31610933329_072019-O.webp",
+					"https://negrillo.es/wp-content/uploads/2023/04/Barras-longitudinales-Turtle-Crown-gris-8.jpg",
 				],
 				subCategoria: "BARRAS LONGITUDINALES ALUMINIO",
 				color: "pulido",
@@ -1362,6 +1378,7 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://accesoriosjorge.com.ar/wp-content/uploads/2021/03/D_NQ_NP_930767-MLA31118155424_062019-O.jpg",
+					"https://accessorypart.es/wp-content/uploads/2023/07/ANA_GORSEL_tek_ayak_siyah_SBUVSXm.jpg",
 				],
 				subCategoria: "BARRAS LONGITUDINALES ALUMINIO",
 				color: "negro",
@@ -1377,6 +1394,7 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://http2.mlstatic.com/D_823229-MLA43732068569_102020-F.jpg",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/Rack-Pulido.jpg",
 				],
 				subCategoria: "BARRAS TRANSVERSALES ALUMINIO",
 				color: "pulido",
@@ -1390,6 +1408,7 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaBgdpIBkZxGC3mlADIEHDzIwa_o-8LIqF6Vt2I1uBz-7aLJHHfsbue0BpwdUPVE7yWdY&usqp=CAU",
+					"https://http2.mlstatic.com/D_NQ_NP_778013-MLM31216805162_062019-O.webp",
 				],
 				subCategoria: "BARRAS TRANSVERSALES ALUMINIO",
 				color: "negro",
@@ -1404,6 +1423,7 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_975215-MLA25133136605_102016-O.webp",
+					"https://accesoriosjorge.com.ar/wp-content/uploads/2020/12/Rack-Pulido.jpg",
 				],
 				subCategoria: "RACK DE BARRAS ALUMINIO",
 				color: "pulido",
@@ -1417,6 +1437,7 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_189115-MLA25133989687_102016-O.webp",
+					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaBgdpIBkZxGC3mlADIEHDzIwa_o-8LIqF6Vt2I1uBz-7aLJHHfsbue0BpwdUPVE7yWdY&usqp=CAU",
 				],
 				subCategoria: "RACK DE BARRAS ALUMINIO",
 				color: "negro",
@@ -1431,6 +1452,7 @@ export const guiaImageAndCategorie = {
 				categoria: "PORTAEQUIPAJES",
 				imagenes: [
 					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQv6BXpZOiU5wAE4urdWNX-EnHl1jK_ZXksnCueEUK24Opnxl8y64G-OwvLlj96QOPRzU&usqp=CAU",
+					"https://http2.mlstatic.com/D_NQ_NP_852413-MLA32556818470_102019-O.webp",
 				],
 				subCategoria: "RACK DE TECHO",
 				color: "negro",
@@ -1529,6 +1551,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_876983-MLA31035797345_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_822356-MLA41294112932_032020-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "blanco oxford",
@@ -1540,6 +1563,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_616100-MLA31611251244_072019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "negro perlado",
@@ -1551,6 +1575,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_708852-MLA31605520408_072019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_721911-MLA31009802922_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "negro ebony",
@@ -1562,6 +1587,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://guzman.vtexassets.com/arquivos/ids/163271-800-auto?v=637504706318700000&width=800&height=auto&aspect=true",
+					"https://http2.mlstatic.com/D_NQ_NP_983824-MLA31063484950_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "gris plata",
@@ -1573,6 +1599,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://guzman.vtexassets.com/arquivos/ids/163272-1200-auto?v=637504713364730000&width=1200&height=auto&aspect=true",
+					"https://guzman.vtexassets.com/arquivos/ids/163274/14248-CUBRE-RUEDA-FORD-ECOSPORT-12--KINETIC-ROJO-BARI-BEPO-03.png?v=637504713618600000",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "rojo bari",
@@ -1584,6 +1611,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_779023-MLA31009887554_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_815496-MLA31112706365_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "rojo metalico",
@@ -1595,6 +1623,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_898908-MLA31061701506_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_927442-MLA31061689195_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "rojo marte",
@@ -1606,6 +1635,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_735975-MLA31009872269_062019-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_639268-MLA31611238208_072019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "perla ocre",
@@ -1617,6 +1647,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://guzman.vtexassets.com/arquivos/ids/160070/006406-CUBRE-RUEDA-FORD-ECOSPORT-12--KINETIC-AZUL-NUEVO-BEPO-01.png?v=636785952915870000",
+					"https://http2.mlstatic.com/D_NQ_NP_818901-MLA31036505860_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "azul belice",
@@ -1628,6 +1659,7 @@ export const guiaImageAndCategorie = {
 				categoria: "CUBRE RUEDA",
 				imagenes: [
 					"https://http2.mlstatic.com/D_NQ_NP_923690-MLA28091447280_092018-O.webp",
+					"https://http2.mlstatic.com/D_NQ_NP_845287-MLA31063216351_062019-O.webp",
 				],
 				subCategoria: "CUBRE RUEDA ECOSPORT",
 				color: "cobre andino",
