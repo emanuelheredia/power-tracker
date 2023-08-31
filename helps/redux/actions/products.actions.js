@@ -5,10 +5,18 @@ import {
 	UPDATE_ALL_PRODUCTS,
 	UPDATE_ALL_PRODUCTS_EXITO,
 	UPDATE_ALL_PRODUCTS_ERROR,
+	UPDATE_IMAGES_SUBCATEGORIES,
+	UPDATE_IMAGES_SUBCATEGORIES_EXITO,
+	UPDATE_IMAGES_SUBCATEGORIES_ERROR,
 	GET_ALL_PRODUCTS,
 	GET_ALL_PRODUCTS_ERROR,
 	GET_ALL_PRODUCTS_EXITO,
+	GET_CATEGORY_COLORS,
+	GET_CATEGORY_COLORS_EXITO,
+	GET_CATEGORY_COLORS_ERROR,
 } from "../types";
+import axios from "axios";
+
 import { collection, addDoc, deleteDoc } from "firebase/firestore";
 import {
 	db,
@@ -22,10 +30,11 @@ export const uploadProducts = (products) => {
 	return async (dispatch) => {
 		dispatch(uploadAllProducts());
 		try {
-			products.forEach(async (element) => {
-				let refDoc = collection(db, "productos");
-				await addDoc(refDoc, element);
-			});
+			let resp = await axios.post(
+				"http://localhost:3001/products",
+				products,
+			);
+			console.log(resp);
 			dispatch(uploadAllProductsExito("Almacenado exitoso"));
 		} catch (error) {
 			dispatch(
@@ -107,4 +116,62 @@ const getProductsExito = (res) => ({
 const getProductsError = (res) => ({
 	payload: res,
 	type: GET_ALL_PRODUCTS_ERROR,
+});
+export const getCategoryColors = (category) => {
+	return async (dispatch) => {
+		dispatch(getCategoryColorsDB());
+		try {
+			let resp = await axios.post(
+				"http://localhost:3001/color-category",
+				{ category },
+			);
+			dispatch(getCategoryColorsDBExito(resp.data.data));
+		} catch (error) {
+			dispatch(
+				getCategoryColorsDBError(
+					"Error en el almacenado de los productos",
+				),
+				console.log(error),
+			);
+		}
+	};
+};
+
+const getCategoryColorsDB = () => ({ type: GET_CATEGORY_COLORS });
+
+const getCategoryColorsDBExito = (res) => ({
+	payload: res,
+	type: GET_CATEGORY_COLORS_EXITO,
+});
+const getCategoryColorsDBError = (res) => ({
+	payload: res,
+	type: GET_CATEGORY_COLORS_ERROR,
+});
+
+export const updateImagesSubCategoriesProducts = () => {
+	return async (dispatch) => {
+		dispatch(updateImagesSubCategories());
+		try {
+			const allProducts = await getAllProductsDB();
+			dispatch(updateImagesSubCategoriesExito(allProducts));
+		} catch (error) {
+			dispatch(
+				updateImagesSubCategoriesError(
+					"Error en la obtención de los productos",
+				),
+				console.log(error),
+			);
+		}
+	};
+};
+
+const updateImagesSubCategories = () => ({ type: UPDATE_IMAGES_SUBCATEGORIES });
+
+const updateImagesSubCategoriesExito = (res) => ({
+	payload: res,
+	type: UPDATE_IMAGES_SUBCATEGORIES_EXITO,
+});
+const updateImagesSubCategoriesError = (res) => ({
+	payload: res,
+	type: UPDATE_IMAGES_SUBCATEGORIES_ERROR,
 });

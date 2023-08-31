@@ -8,15 +8,20 @@ import {
 	GET_ALL_PRODUCTS_EXITO,
 	GET_ALL_PRODUCTS_ERROR,
 	GET_ALL_PRODUCTS,
+	GET_CATEGORY_COLORS,
+	GET_CATEGORY_COLORS_EXITO,
+	GET_CATEGORY_COLORS_ERROR,
 } from "../types";
 const initialState = {
 	products: [],
+	colorsCategory: [],
 	msg: "",
 	loading: false,
 	error: false,
 };
 export default function productsReducer(state = initialState, action) {
 	switch (action.type) {
+		case GET_CATEGORY_COLORS:
 		case UPLOAD_ALL_PRODUCTS:
 		case UPDATE_ALL_PRODUCTS:
 		case GET_ALL_PRODUCTS:
@@ -46,6 +51,13 @@ export default function productsReducer(state = initialState, action) {
 				error: false,
 				products: action.payload,
 			};
+		case GET_CATEGORY_COLORS_EXITO:
+			return {
+				...state,
+				loading: false,
+				error: false,
+				colorsCategory: action.payload,
+			};
 		case UPLOAD_ALL_PRODUCTS_ERROR:
 			return {
 				...state,
@@ -67,6 +79,14 @@ export default function productsReducer(state = initialState, action) {
 				error: true,
 				msg: action.payload,
 			};
+		case GET_CATEGORY_COLORS_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: true,
+				msg: action.payload,
+			};
+
 		default:
 			return state;
 	}

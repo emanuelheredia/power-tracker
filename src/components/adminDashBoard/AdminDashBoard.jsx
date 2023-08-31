@@ -3,7 +3,14 @@ import readXlsxFile from "read-excel-file";
 import "./adminDashBoard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { estructureTable } from "../../../helps/helpers";
-import { uploadOrUpdateProducts } from "../../../helps/redux/actions/products.actions";
+import {
+	uploadOrUpdateProducts,
+	uploadProducts,
+	getCategoryColors,
+} from "../../../helps/redux/actions/products.actions";
+import { guiaImageAndCategorie, guiaSubCategories } from "../../../helps/guide";
+import Select from "react-select";
+
 import swal from "sweetalert";
 import { Spinner } from "../spinner/Spinner";
 const AdminDashBoard = () => {
@@ -15,6 +22,7 @@ const AdminDashBoard = () => {
 	const [showButtonUpload, setShowButtonUpload] = useState(false);
 	const [msgSwap, setMsgSwap] = useState({});
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
+	const [categorieSelect, setCategoriaSelect] = useState("");
 
 	const handleExcelChange = async (e) => {
 		setShowSpinner(true);
@@ -32,6 +40,9 @@ const AdminDashBoard = () => {
 	useEffect(() => {
 		setShowSpinner(false);
 	}, [products]);
+	useEffect(() => {
+		dispatch(getCategoryColors(categorieSelect));
+	}, [categorieSelect]);
 	useEffect(() => {
 		if (products.msg !== "" && "Actualización exitoso") {
 			setMsgSwap({
@@ -54,12 +65,34 @@ const AdminDashBoard = () => {
 	}, [products]);
 	const handleUpload = () => {
 		setShowSpinner(true);
-		dispatch(
+		const dataCleanComplete = dataCleaned.map((el) => {
+			el.category = getProductAttribute(el.code, "categoria");
+			el.subCategory = getProductAttribute(el.code, "subCategoria");
+			el.images = getProductAttribute(el.code, "imagenes");
+			el.color = getProductAttribute(el.code, "color");
+			if (el.price === "X") {
+				el.price = 0;
+			}
+			return el;
+		});
+		console.log(dataCleanComplete);
+		dispatch(uploadProducts(dataCleanComplete));
+		/* 		dispatch(
 			uploadOrUpdateProducts(
 				dataCleaned,
 				dataCleaned[0]?.proveedor || dataCleaned[0][5]?.proveedor,
 			),
 		);
+ */
+	};
+	const getProductAttribute = (code, attribute) => {
+		let value;
+		guiaImageAndCategorie.categories.map((el) => {
+			if (el.includes(code)) {
+				value = el[0][attribute];
+			}
+		});
+		return value;
 	};
 	const showAlert = ({ title, text, icon }) => {
 		swal({
@@ -74,6 +107,20 @@ const AdminDashBoard = () => {
 			}
 		});
 	};
+	const selectStyles = () => ({
+		control: (baseStyles) => ({
+			...baseStyles,
+			fontSize: ".8rem",
+		}),
+		option: (baseStyles) => ({
+			...baseStyles,
+			fontSize: ".8rem",
+			padding: 0,
+			color: "black",
+			backgroundColor: "white",
+		}),
+	});
+	console.log(products);
 	return (
 		<div className="adminDashBoard-container">
 			<h2>Actualización de listas</h2>
@@ -90,6 +137,37 @@ const AdminDashBoard = () => {
 				</button>
 			)}
 			{showAlertSumbit && showAlert(msgSwap)}
+			<h2>Administrar Imágenes</h2>
+			<div style={{ width: "90%" }}>
+				<h5>Categoria</h5>
+				<Select
+					placeholder=""
+					name="categorie"
+					className="adminInfo-teamSelect"
+					options={guiaSubCategories.map((el) => {
+						return { label: el.toUpperCase(), value: el };
+					})}
+					type="text"
+					styles={selectStyles()}
+					onChange={(e) => setCategoriaSelect(e.value)}
+				/>
+			</div>
+			{products.colorsCategory.length > 0 && (
+				<div style={{ width: "90%" }}>
+					<h5>Color</h5>
+					<Select
+						placeholder=""
+						name="color"
+						className="adminInfo-teamSelect"
+						options={products.colorsCategory.map((el) => {
+							return { label: el.toUpperCase(), value: el };
+						})}
+						type="text"
+						styles={selectStyles()}
+						onChange={(e) => setCategoriaSelect(e.value)}
+					/>
+				</div>
+			)}
 		</div>
 	);
 };
