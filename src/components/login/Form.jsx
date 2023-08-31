@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "../spinner/Spinner";
@@ -7,8 +7,11 @@ const initialState = {
 	email: "",
 	password: "",
 };
-const Form = ({ handleSubmit, register, showSpinner, setResetPass }) => {
-	const [user, setUser] = useState(initialState);
+const Form = ({ handleSubmit, register, showSpinner, setStorageData }) => {
+	const [user, setUser] = useState(
+		JSON.parse(localStorage.getItem("userData")) || initialState,
+	);
+	const [checkRememberme, setCheckRememberme] = useState(false);
 	const navigate = useNavigate();
 	const handleSubmitForm = (e) => {
 		e.preventDefault();
@@ -25,6 +28,13 @@ const Form = ({ handleSubmit, register, showSpinner, setResetPass }) => {
 	const goToLogin = () => {
 		navigate("/login");
 	};
+	useEffect(() => {
+		if (checkRememberme) {
+			setStorageData(user);
+		} else {
+			setStorageData(null);
+		}
+	}, [checkRememberme]);
 	return (
 		<form className="form" onSubmit={handleSubmitForm}>
 			<div className="form-container">
@@ -38,6 +48,7 @@ const Form = ({ handleSubmit, register, showSpinner, setResetPass }) => {
 						name="email"
 						type="email"
 						id="email"
+						value={user.email}
 						placeholder="Ingresá tu email"
 						onChange={handleChange}
 						required
@@ -50,6 +61,7 @@ const Form = ({ handleSubmit, register, showSpinner, setResetPass }) => {
 						id="password"
 						name="password"
 						type="password"
+						value={user.password}
 						placeholder={
 							register
 								? "Ingresá un password"
@@ -67,6 +79,23 @@ const Form = ({ handleSubmit, register, showSpinner, setResetPass }) => {
 					</p>
 				)}
 				{showSpinner && <Spinner />}
+				<div
+					style={{
+						display: "flex",
+						gap: "1rem",
+						marginTop: "1rem",
+						marginBottom: ".5rem",
+					}}
+				>
+					<label style={{ color: "white" }} htmlFor="rememberme">
+						Recordarme
+					</label>
+					<input
+						type="checkbox"
+						id="rememberme"
+						onClick={(e) => setCheckRememberme(e.target.checked)}
+					/>
+				</div>
 			</div>
 		</form>
 	);

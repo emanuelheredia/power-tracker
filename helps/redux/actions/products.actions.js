@@ -14,9 +14,11 @@ import {
 	GET_CATEGORY_COLORS,
 	GET_CATEGORY_COLORS_EXITO,
 	GET_CATEGORY_COLORS_ERROR,
+	GET_COLORS_TO_FILTER,
+	GET_COLORS_TO_FILTER_EXITO,
+	GET_COLORS_TO_FILTER_ERROR,
 } from "../types";
-import axios from "axios";
-
+import clienteAxios from "../../../src/axios";
 import { collection, addDoc, deleteDoc } from "firebase/firestore";
 import {
 	db,
@@ -30,10 +32,11 @@ export const uploadProducts = (products) => {
 	return async (dispatch) => {
 		dispatch(uploadAllProducts());
 		try {
-			let resp = await axios.post(
-				"http://localhost:3001/products",
-				products,
-			);
+			let resp = await clienteAxios({
+				method: "post",
+				url: "products",
+				body: products,
+			});
 			console.log(resp);
 			dispatch(uploadAllProductsExito("Almacenado exitoso"));
 		} catch (error) {
@@ -96,8 +99,11 @@ export const getAllProducts = () => {
 	return async (dispatch) => {
 		dispatch(getProducts());
 		try {
-			const allProducts = await getAllProductsDB();
-			dispatch(getProductsExito(allProducts));
+			const allProducts = await clienteAxios({
+				url: "products",
+			});
+			console.log(allProducts.data.data);
+			dispatch(getProductsExito(allProducts.data.data));
 		} catch (error) {
 			dispatch(
 				getProductsError("Error en la obtención de los productos"),
@@ -121,10 +127,11 @@ export const getCategoryColors = (category) => {
 	return async (dispatch) => {
 		dispatch(getCategoryColorsDB());
 		try {
-			let resp = await axios.post(
-				"http://localhost:3001/color-category",
-				{ category },
-			);
+			let resp = await clienteAxios({
+				method: "post",
+				url: "color-category",
+				data: { category },
+			});
 			dispatch(getCategoryColorsDBExito(resp.data.data));
 		} catch (error) {
 			dispatch(
@@ -147,7 +154,37 @@ const getCategoryColorsDBError = (res) => ({
 	payload: res,
 	type: GET_CATEGORY_COLORS_ERROR,
 });
+export const getProductsColorsToFilter = (categories) => {
+	return async (dispatch) => {
+		dispatch(getProductsColorsToFilterDB());
+		try {
+			let resp = await clienteAxios({
+				method: "post",
+				url: "color-filter-values",
+				data: { categories },
+			});
+			dispatch(getProductsColorsToFilterDBExito(resp.data.data));
+		} catch (error) {
+			dispatch(
+				getProductsColorsToFilterDBError(
+					"Error en la obtención de los colores",
+				),
+				console.log(error),
+			);
+		}
+	};
+};
 
+const getProductsColorsToFilterDB = () => ({ type: GET_COLORS_TO_FILTER });
+
+const getProductsColorsToFilterDBExito = (res) => ({
+	payload: res,
+	type: GET_COLORS_TO_FILTER_EXITO,
+});
+const getProductsColorsToFilterDBError = (res) => ({
+	payload: res,
+	type: GET_COLORS_TO_FILTER_ERROR,
+});
 export const updateImagesSubCategoriesProducts = () => {
 	return async (dispatch) => {
 		dispatch(updateImagesSubCategories());

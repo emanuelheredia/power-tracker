@@ -28,13 +28,12 @@ const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
 			</div>
 			<div className="userDashBoard-item-celdaCategory">
 				<p>Categoria</p>
-				<p>{getProductAttribute(product.code, "categoria")}</p>
+				<p>{product.category}</p>
 			</div>
 			<ProductModal
 				product={product}
 				productImage={"hola"}
-				getProductAttribute={getProductAttribute}
-				categorie={getProductAttribute(product.code, "categoria")}
+				categorie={product.category}
 			/>
 			<div className="userDashBoard-item-celdaModelo">
 				<p>Vehículos</p>
@@ -60,29 +59,17 @@ const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
 			</div>
 			<div className="userDashBoard-item-celdaColor">
 				<p>Color</p>
-				<p>
-					{product.code !== "sin datos" &&
-						getProductAttribute(
-							product.code,
-							"color",
-						).toLocaleUpperCase()}
-				</p>
+				<p>{product.color?.toLocaleUpperCase()}</p>
 			</div>
 			<div className="userDashBoard-item-celdaSubCategory">
 				<p>SubCategoria</p>
-				<p>
-					{product.code !== "sin datos" &&
-						getProductAttribute(
-							product.code,
-							"subCategoria",
-						).toLocaleUpperCase()}
-				</p>
+				<p>{product.subCategory?.toLocaleUpperCase()}</p>
 			</div>
 			<div className="userDashBoard-item-celdaPrice">
 				<p>Precio</p>
 				{!ocultarPrice && (
 					<p>
-						{product.price !== "sin datos" && !isNaN(product.price)
+						{product.price !== 0 && !isNaN(product.price)
 							? "$ " + formatearPrecio(product.price)
 							: ""}
 					</p>

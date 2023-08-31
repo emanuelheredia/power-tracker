@@ -32,21 +32,16 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 			<img
 				onClick={openModal}
 				style={{ cursor: "pointer", borderRadius: "5px" }}
-				src={
-					product.code !== "sin datos"
-						? getProductAttribute(product.code, "imagenes")[0]
-						: null
-				}
+				src={product.images[0] || ""}
 			/>
-			{product.code !== "sin datos" &&
-				getProductAttribute(product.code, "imagenes")[1] && (
-					<img
-						onClick={openModal}
-						className="productModal-image"
-						src={getProductAttribute(product.code, "imagenes")[1]}
-						alt=""
-					/>
-				)}
+			{product.code !== "sin datos" && product.images[1] && (
+				<img
+					onClick={openModal}
+					className="productModal-image"
+					src={product.images[1]}
+					alt=""
+				/>
+			)}
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
@@ -70,27 +65,17 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 							className="productModal-image"
 							src={
 								product.code !== "sin datos" &&
-								getProductAttribute(product.code, "imagenes")[0]
+								product.images[0]
 							}
 							alt=""
 						/>
-						{product.code !== "sin datos" &&
-							getProductAttribute(
-								product.code,
-								"imagenes",
-							)[1] && (
-								<img
-									className="productModal-image"
-									src={
-										product.code !== "sin datos" &&
-										getProductAttribute(
-											product.code,
-											"imagenes",
-										)[1]
-									}
-									alt=""
-								/>
-							)}
+						{product.code !== "sin datos" && product.images[1] && (
+							<img
+								className="productModal-image"
+								src={product.images[1]}
+								alt=""
+							/>
+						)}
 					</div>
 				</div>
 			</Modal>

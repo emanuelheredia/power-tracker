@@ -41,7 +41,9 @@ const AdminDashBoard = () => {
 		setShowSpinner(false);
 	}, [products]);
 	useEffect(() => {
-		dispatch(getCategoryColors(categorieSelect));
+		if (categorieSelect) {
+			dispatch(getCategoryColors(categorieSelect));
+		}
 	}, [categorieSelect]);
 	useEffect(() => {
 		if (products.msg !== "" && "Actualización exitoso") {

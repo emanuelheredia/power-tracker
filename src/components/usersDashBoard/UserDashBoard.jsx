@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./userDashBoard.css";
-import { getAllProducts } from "../../../helps/redux/actions/products.actions";
-import { guiaImageAndCategorie } from "../../../helps/guide";
+import {
+	getAllProducts,
+	getProductsColorsToFilter,
+} from "../../../helps/redux/actions/products.actions";
+import { guiaImageAndCategorie, categories } from "../../../helps/guide";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
 import CardProduct from "./CardProduct";
@@ -22,6 +25,15 @@ const UserDashBoard = () => {
 		dispatch(getAllProducts());
 	}, []);
 	useEffect(() => {
+		dispatch(
+			getProductsColorsToFilter([
+				"defensas",
+				"estribos",
+				"jaulas antivuelvo",
+			]),
+		);
+	}, []);
+	useEffect(() => {
 		if (products.products?.length > 0) {
 			setProductsFiltered(products.products);
 		}
@@ -30,7 +42,7 @@ const UserDashBoard = () => {
 		setProductsFiltered(
 			products.products.filter(
 				(el) =>
-					el.code.toString().toLowerCase().includes(codeInput) &&
+					el.code?.toLowerCase().includes(codeInput) &&
 					el.proveedor
 						.toString()
 						.toLowerCase()
@@ -39,10 +51,8 @@ const UserDashBoard = () => {
 						.toString()
 						.toLowerCase()
 						.includes(modeloInput) &&
-					getProductAttribute(el.code, "categoria").includes(
-						categoriaSelect,
-					) &&
-					getProductAttribute(el.code, "color").includes(colorSelect),
+					el.category.includes(categoriaSelect) &&
+					el.color.includes(colorSelect),
 			),
 		);
 	}, [codeInput, marcaInput, modeloInput, categoriaSelect, colorSelect]);
@@ -99,6 +109,8 @@ const UserDashBoard = () => {
 	const scrollToUp = () => {
 		window.scrollTo(0, 0);
 	};
+	console.log(products);
+
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
@@ -109,7 +121,9 @@ const UserDashBoard = () => {
 						placeholder=""
 						name="categorie"
 						className="userInfo-teamSelect"
-						options={getAttributeValuesFromGuide("categoria")}
+						options={categories.map((el) => {
+							return { label: el, value: el };
+						})}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setCategoriaSelect(e.value)}
@@ -141,11 +155,11 @@ const UserDashBoard = () => {
 						placeholder=""
 						name="color"
 						className="userInfo-teamSelect"
-						options={getAttributeValuesFromGuide("color", [
-							"jaulas antivuelvo",
-							"estribos",
-							"defensas",
-						])}
+						options={products.colorsFilter
+							.map((el) => {
+								return { label: el.toUpperCase(), value: el };
+							})
+							.unshift({ label: "- SIN SELECCION -", value: "" })}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setColorSelect(e.value)}

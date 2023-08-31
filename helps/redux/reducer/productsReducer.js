@@ -11,10 +11,14 @@ import {
 	GET_CATEGORY_COLORS,
 	GET_CATEGORY_COLORS_EXITO,
 	GET_CATEGORY_COLORS_ERROR,
+	GET_COLORS_TO_FILTER,
+	GET_COLORS_TO_FILTER_EXITO,
+	GET_COLORS_TO_FILTER_ERROR,
 } from "../types";
 const initialState = {
 	products: [],
 	colorsCategory: [],
+	colorsFilter: [],
 	msg: "",
 	loading: false,
 	error: false,
@@ -25,6 +29,7 @@ export default function productsReducer(state = initialState, action) {
 		case UPLOAD_ALL_PRODUCTS:
 		case UPDATE_ALL_PRODUCTS:
 		case GET_ALL_PRODUCTS:
+		case GET_COLORS_TO_FILTER:
 			return {
 				...state,
 				loading: true,
@@ -58,6 +63,14 @@ export default function productsReducer(state = initialState, action) {
 				error: false,
 				colorsCategory: action.payload,
 			};
+		case GET_COLORS_TO_FILTER_EXITO:
+			return {
+				...state,
+				loading: false,
+				error: false,
+				colorsFilter: action.payload,
+			};
+
 		case UPLOAD_ALL_PRODUCTS_ERROR:
 			return {
 				...state,
@@ -86,7 +99,13 @@ export default function productsReducer(state = initialState, action) {
 				error: true,
 				msg: action.payload,
 			};
-
+		case GET_COLORS_TO_FILTER_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: true,
+				msg: action.payload,
+			};
 		default:
 			return state;
 	}

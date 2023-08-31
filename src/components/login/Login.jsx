@@ -11,6 +11,7 @@ const Login = () => {
 	const [msgSwap, setMsgSwap] = useState({});
 	const [showSpinner, setShowSpinner] = useState(false);
 	const [resetPass, setResetPass] = useState(false);
+	const [storageData, setStorageData] = useState(null);
 	const navigate = useNavigate();
 	const auth = useSelector((state) => state.auth);
 
@@ -70,6 +71,9 @@ const Login = () => {
 			setShowAlertSumbit(false);
 			navigate("/admin");
 			setShowSpinner(false);
+			if (storageData) {
+				localStorage.setItem("userData", JSON.stringify(storageData));
+			}
 		}
 	}, [auth, resetPass]);
 	const showAlert = ({ title, text, icon }) => {
@@ -94,7 +98,9 @@ const Login = () => {
 				handleSubmit={handleSubmit}
 				showSpinner={showSpinner}
 				setResetPass={setResetPass}
+				setStorageData={setStorageData}
 			/>
+
 			{showAlertSumbit && showAlert(msgSwap)}
 		</div>
 	);
