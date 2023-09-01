@@ -12,9 +12,9 @@ import {
 } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie, guiaSubCategories } from "../../../helps/guide";
 import Select from "react-select";
-
 import swal from "sweetalert";
 import { Spinner } from "../spinner/Spinner";
+import ImageCard from "./ImageCard";
 const AdminDashBoard = () => {
 	const dispatch = useDispatch();
 	const [data, setData] = useState([]);
@@ -27,6 +27,7 @@ const AdminDashBoard = () => {
 	const [categorieSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
+	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
 	const handleExcelChange = async (e) => {
 		setShowSpinner(true);
 		const data = await readXlsxFile(e.target.files[0]);
@@ -81,7 +82,6 @@ const AdminDashBoard = () => {
 			setShowBtnGetImages(false);
 		}
 	}, [categorieSelect, colorSelect, products.colorsCategory]);
-
 	const handleUpload = () => {
 		setShowSpinner(true);
 		const dataCleanComplete = dataCleaned.map((el) => {
@@ -142,6 +142,7 @@ const AdminDashBoard = () => {
 	const handleClickGetImges = () => {
 		dispatch(getImagesOfSubCategories(categorieSelect, colorSelect || ""));
 	};
+	const handleSubmitUpdateImages = () => {};
 	return (
 		<div className="adminDashBoard-container">
 			<h2>Actualización de listas</h2>
@@ -208,13 +209,23 @@ const AdminDashBoard = () => {
 				{showBtnGetImages &&
 					products.imagesOfSubCategory.length > 0 &&
 					products.imagesOfSubCategory.map((img, index) => (
-						<img
+						<ImageCard
 							key={index}
-							className="admiDashBoard-imgOfCategories"
-							src={img}
+							index={index}
+							setShowBtnUpdateImages={setShowBtnUpdateImages}
+							imagesUrl={products.imagesOfSubCategory}
+							imgUrl={img}
 						/>
 					))}
 			</div>
+			{showBtnUpdateImages && (
+				<button
+					onClick={handleSubmitUpdateImages}
+					className="adminDashBoard-btnShowImagesCategory"
+				>
+					Guardar Cambios
+				</button>
+			)}
 		</div>
 	);
 };

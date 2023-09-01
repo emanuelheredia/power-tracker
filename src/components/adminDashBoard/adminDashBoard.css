@@ -40,10 +40,7 @@ background: linear-gradient(90deg, rgba(255,154,0,0.47102591036414565) 0%, rgba(
 border-radius: 10px;}
 .adminDashBoard-imgOfCategory-container{
     display: flex;
-}
-.admiDashBoard-imgOfCategories{
-    width: 150px;
-    height: 130px;
+    gap: 10px;
 }
 .adminDashBoard-btnShowImagesCategory{
     background-color: orange;

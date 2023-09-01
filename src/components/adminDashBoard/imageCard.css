@@ -1,0 +1,57 @@
+.imageCard-container{
+    position: relative;
+    width: 160px;
+    height: 130px;
+}
+.admiDashBoard-imgOfCategories{
+    min-width: 100%;
+    max-width: 100%;
+    height: 130px;
+    justify-content: center;
+}
+.ImageCard-editIcon{
+    position: absolute;
+    font-size: 25px;
+    top: 15px;
+    right: 15px;
+    border-radius: 50%;
+    padding: 2px;
+    color: whitesmoke;
+    background-color: orange;
+    cursor: pointer;
+}
+.ImageCard-editIcon:hover{
+transform: scale(1.1);
+}
+.imageCard-inputEdit{
+    position: absolute;
+    max-width: 91%;
+    top: 50%;
+    left: 0;
+    padding: 5px;
+}
+.imageCard-inputEdit:focus{
+    transform: scale(1.2);
+}
+.imageCard-btnCancel{
+    position: absolute;
+    font-size: 25px;
+    top: 80%;
+    right: 15px;
+    border-radius: 50%;
+    padding: 2px;
+    color: whitesmoke;
+    background-color: red;
+    cursor: pointer;
+}
+.imageCard-btnSuccess{
+    position: absolute;
+    font-size: 25px;
+    top: 80%;
+    right: 60px;
+    border-radius: 50%;
+    padding: 2px;
+    color: whitesmoke;
+    background-color: green;
+    cursor: pointer;
+}
