@@ -17,6 +17,12 @@ import {
 	GET_COLORS_TO_FILTER,
 	GET_COLORS_TO_FILTER_EXITO,
 	GET_COLORS_TO_FILTER_ERROR,
+	GET_IMAGES_SUBCATEGORIES,
+	GET_IMAGES_SUBCATEGORIES_EXITO,
+	GET_IMAGES_SUBCATEGORIES_ERROR,
+	RESET_REQUESTED_VALUES,
+	RESET_REQUESTED_VALUES_EXITO,
+	RESET_REQUESTED_VALUES_ERROR,
 } from "../types";
 import clienteAxios from "../../../src/axios";
 import { collection, addDoc, deleteDoc } from "firebase/firestore";
@@ -185,6 +191,37 @@ const getProductsColorsToFilterDBError = (res) => ({
 	payload: res,
 	type: GET_COLORS_TO_FILTER_ERROR,
 });
+export const getImagesOfSubCategories = (subCategory, color) => {
+	return async (dispatch) => {
+		dispatch(getImagesOfSubCategoriesDB());
+		try {
+			let resp = await clienteAxios({
+				method: "post",
+				url: "imagesOfSubcategory",
+				data: { subCategory, color },
+			});
+			dispatch(getImagesOfSubCategoriesDBExito(resp.data.data));
+		} catch (error) {
+			dispatch(
+				getImagesOfSubCategoriesDBError(
+					"Error en la obtención de los colores",
+				),
+				console.log(error),
+			);
+		}
+	};
+};
+
+const getImagesOfSubCategoriesDB = () => ({ type: GET_IMAGES_SUBCATEGORIES });
+
+const getImagesOfSubCategoriesDBExito = (res) => ({
+	payload: res,
+	type: GET_IMAGES_SUBCATEGORIES_EXITO,
+});
+const getImagesOfSubCategoriesDBError = (res) => ({
+	payload: res,
+	type: GET_IMAGES_SUBCATEGORIES_ERROR,
+});
 export const updateImagesSubCategoriesProducts = () => {
 	return async (dispatch) => {
 		dispatch(updateImagesSubCategories());
@@ -211,4 +248,25 @@ const updateImagesSubCategoriesExito = (res) => ({
 const updateImagesSubCategoriesError = (res) => ({
 	payload: res,
 	type: UPDATE_IMAGES_SUBCATEGORIES_ERROR,
+});
+export const resetRequestedValuesStore = () => {
+	return async (dispatch) => {
+		dispatch(resetRequestedValues());
+		try {
+			dispatch(resetRequestedValuesExito());
+		} catch (error) {
+			dispatch(resetRequestedValuesError());
+		}
+	};
+};
+
+const resetRequestedValues = () => ({ type: RESET_REQUESTED_VALUES });
+
+const resetRequestedValuesExito = (res) => ({
+	payload: res,
+	type: RESET_REQUESTED_VALUES_EXITO,
+});
+const resetRequestedValuesError = (res) => ({
+	payload: res,
+	type: RESET_REQUESTED_VALUES_ERROR,
 });

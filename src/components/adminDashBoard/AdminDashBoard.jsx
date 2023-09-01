@@ -7,6 +7,8 @@ import {
 	uploadOrUpdateProducts,
 	uploadProducts,
 	getCategoryColors,
+	getImagesOfSubCategories,
+	resetRequestedValuesStore,
 } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie, guiaSubCategories } from "../../../helps/guide";
 import Select from "react-select";
@@ -23,7 +25,8 @@ const AdminDashBoard = () => {
 	const [msgSwap, setMsgSwap] = useState({});
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	const [categorieSelect, setCategoriaSelect] = useState("");
-
+	const [colorSelect, setColorSelect] = useState("");
+	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
 	const handleExcelChange = async (e) => {
 		setShowSpinner(true);
 		const data = await readXlsxFile(e.target.files[0]);
@@ -65,6 +68,20 @@ const AdminDashBoard = () => {
 			setShowButtonUpload(false);
 		}
 	}, [products]);
+
+	useEffect(() => {
+		if (
+			categorieSelect &&
+			categorieSelect !== "- SIN SELECCION -" &&
+			((products.colorsCategory.length > 0 && colorSelect) ||
+				products.colorsCategory.length == 0)
+		) {
+			setShowBtnGetImages(true);
+		} else {
+			setShowBtnGetImages(false);
+		}
+	}, [categorieSelect, colorSelect, products.colorsCategory]);
+
 	const handleUpload = () => {
 		setShowSpinner(true);
 		const dataCleanComplete = dataCleaned.map((el) => {
@@ -122,7 +139,9 @@ const AdminDashBoard = () => {
 			backgroundColor: "white",
 		}),
 	});
-	console.log(products);
+	const handleClickGetImges = () => {
+		dispatch(getImagesOfSubCategories(categorieSelect, colorSelect || ""));
+	};
 	return (
 		<div className="adminDashBoard-container">
 			<h2>Actualización de listas</h2>
@@ -139,9 +158,9 @@ const AdminDashBoard = () => {
 				</button>
 			)}
 			{showAlertSumbit && showAlert(msgSwap)}
-			<h2>Administrar Imágenes</h2>
+			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
 			<div style={{ width: "90%" }}>
-				<h5>Categoria</h5>
+				<h5 style={{ marginTop: "0" }}>Categoria</h5>
 				<Select
 					placeholder=""
 					name="categorie"
@@ -151,7 +170,11 @@ const AdminDashBoard = () => {
 					})}
 					type="text"
 					styles={selectStyles()}
-					onChange={(e) => setCategoriaSelect(e.value)}
+					onChange={(e) => {
+						setCategoriaSelect(e.value);
+						setColorSelect("");
+						dispatch(resetRequestedValuesStore());
+					}}
 				/>
 			</div>
 			{products.colorsCategory.length > 0 && (
@@ -166,10 +189,32 @@ const AdminDashBoard = () => {
 						})}
 						type="text"
 						styles={selectStyles()}
-						onChange={(e) => setCategoriaSelect(e.value)}
+						onChange={(e) => {
+							setColorSelect(e.value);
+							dispatch(resetRequestedValuesStore());
+						}}
 					/>
 				</div>
 			)}
+			{showBtnGetImages && (
+				<button
+					onClick={handleClickGetImges}
+					className="adminDashBoard-btnShowImagesCategory"
+				>
+					Ver Imagenes Cargadas
+				</button>
+			)}
+			<div className="adminDashBoard-imgOfCategory-container">
+				{showBtnGetImages &&
+					products.imagesOfSubCategory.length > 0 &&
+					products.imagesOfSubCategory.map((img, index) => (
+						<img
+							key={index}
+							className="admiDashBoard-imgOfCategories"
+							src={img}
+						/>
+					))}
+			</div>
 		</div>
 	);
 };

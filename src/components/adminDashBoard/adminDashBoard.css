@@ -38,6 +38,26 @@
 background: rgb(255,154,0);
 background: linear-gradient(90deg, rgba(255,154,0,0.47102591036414565) 0%, rgba(242,231,0,0.5998774509803921) 100%);
 border-radius: 10px;}
+.adminDashBoard-imgOfCategory-container{
+    display: flex;
+}
+.admiDashBoard-imgOfCategories{
+    width: 150px;
+    height: 130px;
+}
+.adminDashBoard-btnShowImagesCategory{
+    background-color: orange;
+    margin-top: 1rem;
+    padding: .5rem;
+    height: 3rem;
+    width: auto;
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 @media (min-width:780px){
 .adminDashBoard-container{
     width: 70%;
