@@ -200,6 +200,7 @@ export const getImagesOfSubCategories = (subCategory, color) => {
 				url: "imagesOfSubcategory",
 				data: { subCategory, color },
 			});
+			console.log(resp.data.data);
 			dispatch(getImagesOfSubCategoriesDBExito(resp.data.data));
 		} catch (error) {
 			dispatch(

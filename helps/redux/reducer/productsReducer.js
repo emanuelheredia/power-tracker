@@ -98,11 +98,12 @@ export default function productsReducer(state = initialState, action) {
 				imagesOfSubCategory: [],
 			};
 		case UPDATE_IMAGES_SUBCATEGORIES_EXITO:
+			console.log(action.payload);
 			return {
 				...state,
 				loading: false,
 				error: false,
-				msg: action.payload.msg,
+				msg: action.payload,
 			};
 		case UPLOAD_ALL_PRODUCTS_ERROR:
 			return {

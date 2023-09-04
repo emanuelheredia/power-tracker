@@ -52,25 +52,15 @@ const AdminDashBoard = () => {
 		}
 	}, [categorieSelect]);
 	useEffect(() => {
-		if (products.msg !== "" && "Actualización exitoso") {
+		if (showAlertSumbit && !products.loading) {
 			setMsgSwap({
-				title: "Actualización exitosa",
-				text: "La lista de precio se actualizó correctamente",
-				icon: "success",
+				title: products.msg,
+				text: "",
+				icon: products.error ? "danger" : "success",
 			});
-			setShowAlertSumbit(true);
-			setShowButtonUpload(false);
+			showAlert(msgSwap);
 		}
-		if (products.error) {
-			setMsgSwap({
-				title: "Error en la actualización",
-				text: "La lista de precio no se logró actualizar con exito",
-				icon: "danger",
-			});
-			setShowAlertSumbit(true);
-			setShowButtonUpload(false);
-		}
-	}, [products]);
+	}, [products.msg]);
 	useEffect(() => {
 		if (
 			categorieSelect &&
@@ -101,9 +91,9 @@ const AdminDashBoard = () => {
 			uploadOrUpdateProducts(
 				dataCleaned,
 				dataCleaned[0]?.proveedor || dataCleaned[0][5]?.proveedor,
-			),
-		);
- */
+				),
+				);
+				*/
 	};
 	const getProductAttribute = (code, attribute) => {
 		let value;
@@ -151,8 +141,8 @@ const AdminDashBoard = () => {
 				newUrlImages,
 			),
 		);
+		setShowAlertSumbit(true);
 	};
-	console.log(products.imagesOfSubCategory);
 	return (
 		<div className="adminDashBoard-container">
 			<h2>Actualización de listas</h2>
@@ -216,8 +206,7 @@ const AdminDashBoard = () => {
 				</button>
 			)}
 			<div className="adminDashBoard-imgOfCategory-container">
-				{showBtnGetImages &&
-					products.imagesOfSubCategory.length > 0 &&
+				{products.imagesOfSubCategory.length > 0 &&
 					products.imagesOfSubCategory.map((img, index) => (
 						<ImageCard
 							key={index}
