@@ -110,7 +110,6 @@ const UserDashBoard = () => {
 	const scrollToUp = () => {
 		window.scrollTo(0, 0);
 	};
-	console.log(productsFiltered);
 
 	return (
 		<div className="userDashBoard-container">

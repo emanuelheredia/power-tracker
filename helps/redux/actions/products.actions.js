@@ -108,7 +108,6 @@ export const getAllProducts = () => {
 			const allProducts = await clienteAxios({
 				url: "products",
 			});
-			console.log(allProducts.data.data);
 			dispatch(getProductsExito(allProducts.data.data));
 		} catch (error) {
 			dispatch(
@@ -200,7 +199,6 @@ export const getImagesOfSubCategories = (subCategory, color) => {
 				url: "imagesOfSubcategory",
 				data: { subCategory, color },
 			});
-			console.log(resp.data.data);
 			dispatch(getImagesOfSubCategoriesDBExito(resp.data.data));
 		} catch (error) {
 			dispatch(

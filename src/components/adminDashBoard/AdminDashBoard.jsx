@@ -29,6 +29,7 @@ const AdminDashBoard = () => {
 	const [colorSelect, setColorSelect] = useState("");
 	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
 	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
+	const [showBtnAddImage, setShowBtnAddImage] = useState(false);
 	const [newUrlImages, setNewUrlImages] = useState([]);
 	const handleExcelChange = async (e) => {
 		setShowSpinner(true);
@@ -43,6 +44,12 @@ const AdminDashBoard = () => {
 			setDataCleaned(dataEstructured);
 		}
 	}, [data]);
+	useEffect(() => {
+		dispatch(resetRequestedValuesStore());
+	}, []);
+	useEffect(() => {
+		setNewUrlImages(products.imagesOfSubCategory);
+	}, [products.imagesOfSubCategory]);
 	useEffect(() => {
 		setShowSpinner(false);
 	}, [products]);
@@ -132,6 +139,7 @@ const AdminDashBoard = () => {
 	});
 	const handleClickGetImges = () => {
 		dispatch(getImagesOfSubCategories(categorieSelect, colorSelect || ""));
+		setShowBtnAddImage(true);
 	};
 	const handleSubmitUpdateImages = () => {
 		dispatch(
@@ -175,6 +183,7 @@ const AdminDashBoard = () => {
 						setCategoriaSelect(e.value);
 						setColorSelect("");
 						dispatch(resetRequestedValuesStore());
+						setShowBtnAddImage(false);
 					}}
 				/>
 			</div>
@@ -193,6 +202,7 @@ const AdminDashBoard = () => {
 						onChange={(e) => {
 							setColorSelect(e.value);
 							dispatch(resetRequestedValuesStore());
+							setShowBtnAddImage(false);
 						}}
 					/>
 				</div>
@@ -206,17 +216,28 @@ const AdminDashBoard = () => {
 				</button>
 			)}
 			<div className="adminDashBoard-imgOfCategory-container">
-				{products.imagesOfSubCategory.length > 0 &&
-					products.imagesOfSubCategory.map((img, index) => (
+				{newUrlImages.length > 0 &&
+					newUrlImages.map((img, index) => (
 						<ImageCard
 							key={index}
 							index={index}
 							setShowBtnUpdateImages={setShowBtnUpdateImages}
-							imagesUrl={products.imagesOfSubCategory}
+							imagesUrl={newUrlImages}
 							imgUrl={img}
 							setNewUrlImages={setNewUrlImages}
+							update={true}
 						/>
 					))}
+				{showBtnAddImage && (
+					<ImageCard
+						index={newUrlImages.length}
+						setShowBtnUpdateImages={setShowBtnUpdateImages}
+						imagesUrl={newUrlImages}
+						imgUrl="https://img.freepik.com/vector-premium/agregar-icono-agregar-publicacion-video-foto-imagenes-vectoriales_292645-294.jpg?w=2000"
+						setNewUrlImages={setNewUrlImages}
+						update={false}
+					/>
+				)}
 			</div>
 			{showBtnUpdateImages && (
 				<button

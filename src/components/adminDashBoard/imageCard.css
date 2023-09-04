@@ -20,6 +20,18 @@
     background-color: orange;
     cursor: pointer;
 }
+.ImageCard-deleteIcon{
+    position: absolute;
+    font-size: 25px;
+    top: 15px;
+    left: 15px;
+    border-radius: 50%;
+    padding: 2px;
+    color: whitesmoke;
+    background-color: orange;
+    cursor: pointer;
+
+}
 .ImageCard-editIcon:hover{
 transform: scale(1.1);
 }
@@ -54,4 +66,7 @@ transform: scale(1.1);
     color: whitesmoke;
     background-color: green;
     cursor: pointer;
+}
+.deleted{
+    display: none;
 }
