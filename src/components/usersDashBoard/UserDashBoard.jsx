@@ -38,6 +38,7 @@ const UserDashBoard = () => {
 			setProductsFiltered(products.products);
 		}
 	}, [products]);
+	console.log(products);
 	useEffect(() => {
 		setProductsFiltered(
 			products.products.filter(
@@ -109,7 +110,7 @@ const UserDashBoard = () => {
 	const scrollToUp = () => {
 		window.scrollTo(0, 0);
 	};
-	console.log(products);
+	console.log(productsFiltered);
 
 	return (
 		<div className="userDashBoard-container">
@@ -155,11 +156,9 @@ const UserDashBoard = () => {
 						placeholder=""
 						name="color"
 						className="userInfo-teamSelect"
-						options={products.colorsFilter
-							.map((el) => {
-								return { label: el.toUpperCase(), value: el };
-							})
-							.unshift({ label: "- SIN SELECCION -", value: "" })}
+						options={products.colorsFilter.map((el) => {
+							return { label: el.toUpperCase(), value: el };
+						})}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setColorSelect(e.value)}

@@ -222,16 +222,26 @@ const getImagesOfSubCategoriesDBError = (res) => ({
 	payload: res,
 	type: GET_IMAGES_SUBCATEGORIES_ERROR,
 });
-export const updateImagesSubCategoriesProducts = () => {
+export const updateImagesSubCategoriesProducts = (
+	subCategory,
+	color,
+	newImages,
+) => {
 	return async (dispatch) => {
+		console.log("ingrese");
 		dispatch(updateImagesSubCategories());
 		try {
-			const allProducts = await getAllProductsDB();
-			dispatch(updateImagesSubCategoriesExito(allProducts));
+			let resp = await clienteAxios({
+				method: "post",
+				url: "update-subCategoryImages",
+				data: { subCategory, color, newImages },
+			});
+			console.log(resp.data);
+			dispatch(updateImagesSubCategoriesExito(resp.data.msg));
 		} catch (error) {
 			dispatch(
 				updateImagesSubCategoriesError(
-					"Error en la obtención de los productos",
+					"Error en la actualización de las imagenes",
 				),
 				console.log(error),
 			);
@@ -262,8 +272,7 @@ export const resetRequestedValuesStore = () => {
 
 const resetRequestedValues = () => ({ type: RESET_REQUESTED_VALUES });
 
-const resetRequestedValuesExito = (res) => ({
-	payload: res,
+const resetRequestedValuesExito = () => ({
 	type: RESET_REQUESTED_VALUES_EXITO,
 });
 const resetRequestedValuesError = (res) => ({

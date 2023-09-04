@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./imageCard.css";
 import { FiEdit3, FiCheck, FiX } from "react-icons/fi";
 
-const ImageCard = ({ imgUrl, imagesUrl, setShowBtnUpdateImages, index }) => {
+const ImageCard = ({
+	imgUrl,
+	imagesUrl,
+	setShowBtnUpdateImages,
+	index,
+	setNewUrlImages,
+}) => {
 	const [showInput, setShowInput] = useState(false);
 	const [showBtnSucces, setShowBtnSucces] = useState(false);
 	const [urlInput, setUrlInput] = useState("");
@@ -18,6 +24,16 @@ const ImageCard = ({ imgUrl, imagesUrl, setShowBtnUpdateImages, index }) => {
 			setShowBtnSucces(false);
 		}
 	}, [urlInput]);
+	useEffect(() => {
+		if (urlNewImage) {
+			const copyArrayImagesDB = [...imagesUrl];
+			copyArrayImagesDB[index] = urlNewImage;
+			setNewUrlImages(copyArrayImagesDB);
+		}
+	}, [urlNewImage]);
+
+	useEffect(() => {}, []);
+
 	const handleOnclickBtnSucces = () => {
 		setUrlNewImage(urlInput);
 		setShowInput(false);
@@ -29,7 +45,10 @@ const ImageCard = ({ imgUrl, imagesUrl, setShowBtnUpdateImages, index }) => {
 				className="admiDashBoard-imgOfCategories"
 				src={urlNewImage || imgUrl}
 			/>
-			<FiEdit3 onClick={handleBtnEdit} className="ImageCard-editIcon" />
+			<FiEdit3
+				onClick={() => handleBtnEdit()}
+				className="ImageCard-editIcon"
+			/>
 			{showInput && (
 				<input
 					type="text"
@@ -39,11 +58,14 @@ const ImageCard = ({ imgUrl, imagesUrl, setShowBtnUpdateImages, index }) => {
 				/>
 			)}
 			{showInput && (
-				<FiX onClick={handleBtnEdit} className="imageCard-btnCancel" />
+				<FiX
+					onClick={() => handleBtnEdit()}
+					className="imageCard-btnCancel"
+				/>
 			)}
 			{showBtnSucces && (
 				<FiCheck
-					onClick={handleOnclickBtnSucces}
+					onClick={() => handleOnclickBtnSucces()}
 					className="imageCard-btnSuccess"
 				/>
 			)}

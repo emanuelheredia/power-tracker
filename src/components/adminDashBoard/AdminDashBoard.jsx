@@ -9,6 +9,7 @@ import {
 	getCategoryColors,
 	getImagesOfSubCategories,
 	resetRequestedValuesStore,
+	updateImagesSubCategoriesProducts,
 } from "../../../helps/redux/actions/products.actions";
 import { guiaImageAndCategorie, guiaSubCategories } from "../../../helps/guide";
 import Select from "react-select";
@@ -28,6 +29,7 @@ const AdminDashBoard = () => {
 	const [colorSelect, setColorSelect] = useState("");
 	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
 	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
+	const [newUrlImages, setNewUrlImages] = useState([]);
 	const handleExcelChange = async (e) => {
 		setShowSpinner(true);
 		const data = await readXlsxFile(e.target.files[0]);
@@ -69,7 +71,6 @@ const AdminDashBoard = () => {
 			setShowButtonUpload(false);
 		}
 	}, [products]);
-
 	useEffect(() => {
 		if (
 			categorieSelect &&
@@ -142,7 +143,16 @@ const AdminDashBoard = () => {
 	const handleClickGetImges = () => {
 		dispatch(getImagesOfSubCategories(categorieSelect, colorSelect || ""));
 	};
-	const handleSubmitUpdateImages = () => {};
+	const handleSubmitUpdateImages = () => {
+		dispatch(
+			updateImagesSubCategoriesProducts(
+				categorieSelect,
+				colorSelect,
+				newUrlImages,
+			),
+		);
+	};
+	console.log(products.imagesOfSubCategory);
 	return (
 		<div className="adminDashBoard-container">
 			<h2>Actualización de listas</h2>
@@ -215,6 +225,7 @@ const AdminDashBoard = () => {
 							setShowBtnUpdateImages={setShowBtnUpdateImages}
 							imagesUrl={products.imagesOfSubCategory}
 							imgUrl={img}
+							setNewUrlImages={setNewUrlImages}
 						/>
 					))}
 			</div>

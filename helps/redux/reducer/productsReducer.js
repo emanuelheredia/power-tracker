@@ -20,6 +20,9 @@ import {
 	RESET_REQUESTED_VALUES,
 	RESET_REQUESTED_VALUES_EXITO,
 	RESET_REQUESTED_VALUES_ERROR,
+	UPDATE_IMAGES_SUBCATEGORIES,
+	UPDATE_IMAGES_SUBCATEGORIES_EXITO,
+	UPDATE_IMAGES_SUBCATEGORIES_ERROR,
 } from "../types";
 const initialState = {
 	products: [],
@@ -39,6 +42,7 @@ export default function productsReducer(state = initialState, action) {
 		case GET_COLORS_TO_FILTER:
 		case GET_IMAGES_SUBCATEGORIES:
 		case RESET_REQUESTED_VALUES:
+		case UPDATE_IMAGES_SUBCATEGORIES:
 			return {
 				...state,
 				loading: true,
@@ -93,6 +97,13 @@ export default function productsReducer(state = initialState, action) {
 				error: false,
 				imagesOfSubCategory: [],
 			};
+		case UPDATE_IMAGES_SUBCATEGORIES_EXITO:
+			return {
+				...state,
+				loading: false,
+				error: false,
+				msg: action.payload.msg,
+			};
 		case UPLOAD_ALL_PRODUCTS_ERROR:
 			return {
 				...state,
@@ -140,6 +151,13 @@ export default function productsReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				error: true,
+			};
+		case UPDATE_IMAGES_SUBCATEGORIES_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: true,
+				msg: action.payload.msg,
 			};
 		default:
 			return state;
