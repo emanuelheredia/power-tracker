@@ -38,7 +38,6 @@ const UserDashBoard = () => {
 			setProductsFiltered(products.products);
 		}
 	}, [products]);
-	console.log(products);
 	useEffect(() => {
 		setProductsFiltered(
 			products.products.filter(

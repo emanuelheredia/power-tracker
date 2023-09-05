@@ -7,12 +7,13 @@
     align-items: center;
 }
 .form-container{
+    position: relative;
     width: 300px;
     display: flex;
     padding: 2rem;
     flex-direction: column;
     justify-content: center;
-    height: 400px;
+    height: 450px;
     gap: 1rem;
     align-items: center;
 }
@@ -86,7 +87,10 @@
     text-align: center;
     cursor: pointer;
 }
-
+.form-spinnerContainer{
+    position: absolute ;
+    top:500px
+}
 @media (min-width:780px){
 .form-container{
     gap: 1rem;

@@ -4,7 +4,7 @@ import "./adminDashBoard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { estructureTable } from "../../../helps/helpers";
 import {
-	uploadOrUpdateProducts,
+	updateProducts,
 	uploadProducts,
 	getCategoryColors,
 	getImagesOfSubCategories,
@@ -80,27 +80,22 @@ const AdminDashBoard = () => {
 			setShowBtnGetImages(false);
 		}
 	}, [categorieSelect, colorSelect, products.colorsCategory]);
+	console.log(dataCleaned);
 	const handleUpload = () => {
 		setShowSpinner(true);
 		const dataCleanComplete = dataCleaned.map((el) => {
-			el.category = getProductAttribute(el.code, "categoria");
+			/* 			el.category = getProductAttribute(el.code, "categoria");
 			el.subCategory = getProductAttribute(el.code, "subCategoria");
 			el.images = getProductAttribute(el.code, "imagenes");
 			el.color = getProductAttribute(el.code, "color");
-			if (el.price === "X") {
+ */ if (el.price === "X") {
 				el.price = 0;
 			}
 			return el;
 		});
 		console.log(dataCleanComplete);
-		dispatch(uploadProducts(dataCleanComplete));
-		/* 		dispatch(
-			uploadOrUpdateProducts(
-				dataCleaned,
-				dataCleaned[0]?.proveedor || dataCleaned[0][5]?.proveedor,
-				),
-				);
-				*/
+		/* 		dispatch(uploadProducts(dataCleanComplete));
+		 */ dispatch(updateProducts(dataCleaned));
 	};
 	const getProductAttribute = (code, attribute) => {
 		let value;
@@ -233,7 +228,7 @@ const AdminDashBoard = () => {
 						index={newUrlImages.length}
 						setShowBtnUpdateImages={setShowBtnUpdateImages}
 						imagesUrl={newUrlImages}
-						imgUrl="https://img.freepik.com/vector-premium/agregar-icono-agregar-publicacion-video-foto-imagenes-vectoriales_292645-294.jpg?w=2000"
+						imgUrl="https://thumbs.dreamstime.com/b/c%C3%A1mara-agregar-icono-o-logotipo-s%C3%ADmbolo-aislado-vector-ilustraci%C3%B3n-alta-calidad-negro-estilo-iconos-211039809.jpg"
 						setNewUrlImages={setNewUrlImages}
 						update={false}
 					/>

@@ -78,7 +78,9 @@ const Form = ({ handleSubmit, register, showSpinner, setStorageData }) => {
 						Para loguearte click acá
 					</p>
 				)}
-				{showSpinner && <Spinner />}
+				<div className="form-spinnerContainer">
+					{showSpinner && <Spinner />}
+				</div>
 				<div
 					style={{
 						display: "flex",

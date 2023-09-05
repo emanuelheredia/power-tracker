@@ -67,18 +67,17 @@ const uploadAllProductsError = (res) => ({
 	type: UPLOAD_ALL_PRODUCTS_ERROR,
 });
 
-export const uploadOrUpdateProducts = (products, proveedor) => {
+export const updateProducts = (products) => {
 	return async (dispatch) => {
 		dispatch(updateAllProducts());
 		try {
-			const query = queryToDeleteDocs(proveedor);
-			const productsIDs = await getProductsIDByConsulta(query);
-			productsIDs.map((el) => deleteProductByID(el));
-			products.forEach(async (element) => {
-				let refDoc = collection(db, "productos");
-				await addDoc(refDoc, element);
+			let resp = await clienteAxios({
+				method: "post",
+				url: "update-products",
+				data: products,
 			});
-			dispatch(updateAllProductsExito("Actualización exitoso"));
+			console.log(resp);
+			dispatch(updateAllProductsExito("Actualización exitosa"));
 		} catch (error) {
 			dispatch(
 				updateAllProductsError(
