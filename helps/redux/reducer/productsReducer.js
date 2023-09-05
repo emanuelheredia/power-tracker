@@ -93,7 +93,7 @@ export default function productsReducer(state = initialState, action) {
 		case RESET_REQUESTED_VALUES_EXITO:
 			return {
 				...state,
-				loading: false,
+				loading: true,
 				error: false,
 				imagesOfSubCategory: [],
 			};

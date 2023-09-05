@@ -1,0 +1,45 @@
+.filesAdministration-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    background-color: rgba(255, 174, 0, 0.445);
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 80%;
+}
+.adminDachBoard-buttonUpload{
+    background-color: orange;
+    margin-top: 1rem;
+    padding: .5rem;
+    height: 3rem;
+    width: 70%;
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.adminDashBoard-input{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.adminDashBoard-input>input[type="file" i]{
+    width: 100%;
+    font-family: inherit;
+    padding: 1rem;
+    font-family: inherit;
+}
+.adminDashBoard-input {
+    background-color: rgba(0, 0, 0, 0.13);
+border-radius: 10px;
+}
+@media (min-width:1030px){
+    .filesAdministration-container{
+    min-height: 500px;
+    width: 40%;
+}
+
+}

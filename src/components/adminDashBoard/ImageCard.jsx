@@ -39,12 +39,14 @@ const ImageCard = ({ imgUrl, imagesUrl, index, setNewUrlImages, update }) => {
 	const handleBtnDelete = (e) => {
 		const copyArrayImagesDB = [...imagesUrl];
 		copyArrayImagesDB.splice(index, 1);
-		console.log(copyArrayImagesDB);
 		setNewUrlImages(copyArrayImagesDB);
 	};
 
 	return (
-		<div className="imageCard-container">
+		<div
+			className="imageCard-container"
+			style={{ cursor: !update ? "pointer" : "" }}
+		>
 			<img
 				className="admiDashBoard-imgOfCategories"
 				src={update ? urlInput || imgUrl : imgUrl}
