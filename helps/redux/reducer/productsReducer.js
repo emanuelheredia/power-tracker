@@ -30,6 +30,7 @@ const initialState = {
 	colorsFilter: [],
 	imagesOfSubCategory: [],
 	msg: "",
+	text: "",
 	loading: false,
 	error: false,
 };
@@ -60,7 +61,8 @@ export default function productsReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				error: false,
-				msg: action.payload,
+				msg: action.payload.msg,
+				text: action.payload.text,
 			};
 		case GET_ALL_PRODUCTS_EXITO:
 			return {
@@ -98,12 +100,12 @@ export default function productsReducer(state = initialState, action) {
 				imagesOfSubCategory: [],
 			};
 		case UPDATE_IMAGES_SUBCATEGORIES_EXITO:
-			console.log(action.payload);
 			return {
 				...state,
 				loading: false,
 				error: false,
 				msg: action.payload,
+				text: "",
 			};
 		case UPLOAD_ALL_PRODUCTS_ERROR:
 			return {
@@ -159,6 +161,7 @@ export default function productsReducer(state = initialState, action) {
 				loading: false,
 				error: true,
 				msg: action.payload.msg,
+				text: "",
 			};
 		default:
 			return state;

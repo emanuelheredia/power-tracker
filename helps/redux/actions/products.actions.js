@@ -77,7 +77,12 @@ export const updateProducts = (products) => {
 				data: products,
 			});
 			console.log(resp);
-			dispatch(updateAllProductsExito("Actualización exitosa"));
+			dispatch(
+				updateAllProductsExito({
+					msg: "Actualización Exitosa",
+					text: resp.data.msg,
+				}),
+			);
 		} catch (error) {
 			dispatch(
 				updateAllProductsError(
@@ -226,7 +231,6 @@ export const updateImagesSubCategoriesProducts = (
 	newImages,
 ) => {
 	return async (dispatch) => {
-		console.log("ingrese");
 		dispatch(updateImagesSubCategories());
 		try {
 			let resp = await clienteAxios({
@@ -234,7 +238,6 @@ export const updateImagesSubCategoriesProducts = (
 				url: "update-subCategoryImages",
 				data: { subCategory, color, newImages },
 			});
-			console.log(resp.data);
 			dispatch(updateImagesSubCategoriesExito(resp.data.msg));
 		} catch (error) {
 			dispatch(

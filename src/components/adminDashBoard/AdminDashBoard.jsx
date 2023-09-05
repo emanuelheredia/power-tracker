@@ -30,7 +30,7 @@ const AdminDashBoard = () => {
 		}
 		setMsgSwap({
 			title: products.msg,
-			text: "",
+			text: products.text || "",
 			icon: products.error ? "danger" : "success",
 		});
 	}, [products.msg]);
