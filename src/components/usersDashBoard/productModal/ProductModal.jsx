@@ -2,6 +2,9 @@ import React from "react";
 import Modal from "react-modal";
 import "./productModal.css";
 import "../userDashBoard.css";
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
+
 const customStyles = {
 	content: {
 		top: "50%",
@@ -10,8 +13,8 @@ const customStyles = {
 		bottom: "auto",
 		marginRight: "-50%",
 		transform: "translate(-50%, -50%)",
-		width: "85%",
-		height: "auto",
+		width: "350px",
+		height: "350px",
 		display: "flex",
 		flexDirection: "column",
 		backgroundColor: "rgb(238, 165, 29)",
@@ -41,7 +44,7 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 					src={product.images[1]}
 					alt=""
 				/>
-			)}
+			)}{" "}
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
@@ -61,20 +64,18 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 				<div className="productModal-text-container">
 					<h4 className="productModal-title">{categorie}</h4>
 					<div className="productModal-image-coontainer">
-						<img
-							className="productModal-image"
-							src={
-								product.code !== "sin datos" &&
-								product.images[0]
-							}
-							alt=""
-						/>
-						{product.code !== "sin datos" && product.images[1] && (
-							<img
-								className="productModal-image"
-								src={product.images[1]}
-								alt=""
-							/>
+						{product.images.length > 0 && (
+							<AwesomeSlider>
+								{product.images.map((image, index) => (
+									<div>
+										<img
+											key={index}
+											src={image}
+											className="productModal-image"
+										/>
+									</div>
+								))}
+							</AwesomeSlider>
 						)}
 					</div>
 				</div>
