@@ -25,7 +25,7 @@ const ImagesAdministration = () => {
 	const [newUrlImages, setNewUrlImages] = useState([]);
 	useEffect(() => {
 		dispatch(resetRequestedValuesStore());
-		dispatch(getSubCategories());
+		if (products.subCategories.length === 0) dispatch(getSubCategories());
 	}, []);
 	useEffect(() => {
 		setNewUrlImages(products.imagesOfSubCategory);
