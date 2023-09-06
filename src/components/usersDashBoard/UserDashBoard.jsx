@@ -99,6 +99,7 @@ const UserDashBoard = () => {
 				<div>
 					<h5>Vehiculo</h5>
 					<input
+						style={{ color: "black" }}
 						onChange={(e) =>
 							setModeloInput(
 								e.target.value.toString().toLowerCase(),
@@ -109,6 +110,7 @@ const UserDashBoard = () => {
 				<div>
 					<h5>Marca Producto</h5>
 					<input
+						style={{ color: "black" }}
 						onChange={(e) =>
 							setMarcaInput(
 								e.target.value.toString().toLowerCase(),
@@ -131,6 +133,7 @@ const UserDashBoard = () => {
 				<div>
 					<h5>Codigo Producto</h5>
 					<input
+						style={{ color: "black" }}
 						onChange={(e) =>
 							setCodeInput(
 								e.target.value.toString().toLowerCase(),
