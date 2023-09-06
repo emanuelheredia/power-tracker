@@ -1,6 +1,6 @@
 export const structuringSelectValues = (array) => {
 	let allValuesStructured = array.map((el) => {
-		return { label: el, value: el };
+		return { label: el.toUpperCase(), value: el };
 	});
 	allValuesStructured.unshift({
 		label: " -- SIN SELECCION -- ",

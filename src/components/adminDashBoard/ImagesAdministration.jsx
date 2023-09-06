@@ -6,7 +6,7 @@ import {
 	getImagesOfSubCategories,
 	resetRequestedValuesStore,
 	updateImagesSubCategoriesProducts,
-	getSubCategoriesToFilter,
+	getSubCategories,
 } from "../../../helps/redux/actions/products.actions";
 import Select from "react-select";
 import ImageCard from "./ImageCard";
@@ -25,18 +25,18 @@ const ImagesAdministration = () => {
 	const [newUrlImages, setNewUrlImages] = useState([]);
 	useEffect(() => {
 		dispatch(resetRequestedValuesStore());
-		dispatch(getSubCategoriesToFilter());
+		dispatch(getSubCategories());
 	}, []);
 	useEffect(() => {
 		setNewUrlImages(products.imagesOfSubCategory);
 	}, [products.imagesOfSubCategory]);
 	useEffect(() => {
-		if (products.subCategoriesToFilter?.length > 0) {
+		if (products.subCategories?.length > 0) {
 			setAllSubCategoriesSelect(
-				structuringSelectValues(products.subCategoriesToFilter),
+				structuringSelectValues(products.subCategories),
 			);
 		}
-	}, [products.subCategoriesToFilter]);
+	}, [products.subCategories]);
 	useEffect(() => {
 		if (categorieSelect) {
 			dispatch(getCategoryColors(categorieSelect));

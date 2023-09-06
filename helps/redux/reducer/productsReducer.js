@@ -11,9 +11,9 @@ import {
 	GET_CATEGORY_COLORS,
 	GET_CATEGORY_COLORS_EXITO,
 	GET_CATEGORY_COLORS_ERROR,
-	GET_COLORS_TO_FILTER,
-	GET_COLORS_TO_FILTER_EXITO,
-	GET_COLORS_TO_FILTER_ERROR,
+	GET_COLORS,
+	GET_COLORS_EXITO,
+	GET_COLORS_ERROR,
 	GET_IMAGES_SUBCATEGORIES,
 	GET_IMAGES_SUBCATEGORIES_EXITO,
 	GET_IMAGES_SUBCATEGORIES_ERROR,
@@ -23,19 +23,19 @@ import {
 	UPDATE_IMAGES_SUBCATEGORIES,
 	UPDATE_IMAGES_SUBCATEGORIES_EXITO,
 	UPDATE_IMAGES_SUBCATEGORIES_ERROR,
-	GET_CATEGORIES_TO_FILTER,
-	GET_CATEGORIES_TO_FILTER_EXITO,
-	GET_CATEGORIES_TO_FILTER_ERROR,
-	GET_SUBCATEGORIES_TO_FILTER,
-	GET_SUBCATEGORIES_TO_FILTER_EXITO,
-	GET_SUBCATEGORIES_TO_FILTER_ERROR,
+	GET_CATEGORIES,
+	GET_CATEGORIES_EXITO,
+	GET_CATEGORIES_ERROR,
+	GET_SUBCATEGORIES,
+	GET_SUBCATEGORIES_EXITO,
+	GET_SUBCATEGORIES_ERROR,
 } from "../types";
 const initialState = {
 	products: [],
 	colorsCategory: [],
 	colorsFilter: [],
-	categoriesToFilter: [],
-	subCategoriesToFilter: [],
+	categories: [],
+	subCategories: [],
 	imagesOfSubCategory: [],
 	msg: "",
 	text: "",
@@ -48,12 +48,12 @@ export default function productsReducer(state = initialState, action) {
 		case UPLOAD_ALL_PRODUCTS:
 		case UPDATE_ALL_PRODUCTS:
 		case GET_ALL_PRODUCTS:
-		case GET_COLORS_TO_FILTER:
+		case GET_COLORS:
 		case GET_IMAGES_SUBCATEGORIES:
 		case RESET_REQUESTED_VALUES:
 		case UPDATE_IMAGES_SUBCATEGORIES:
-		case GET_CATEGORIES_TO_FILTER:
-		case GET_SUBCATEGORIES_TO_FILTER:
+		case GET_CATEGORIES:
+		case GET_SUBCATEGORIES:
 			return {
 				...state,
 				loading: true,
@@ -88,26 +88,26 @@ export default function productsReducer(state = initialState, action) {
 				error: false,
 				colorsCategory: action.payload,
 			};
-		case GET_COLORS_TO_FILTER_EXITO:
+		case GET_COLORS_EXITO:
 			return {
 				...state,
 				loading: false,
 				error: false,
 				colorsFilter: action.payload,
 			};
-		case GET_CATEGORIES_TO_FILTER_EXITO:
+		case GET_CATEGORIES_EXITO:
 			return {
 				...state,
 				loading: false,
 				error: false,
-				categoriesToFilter: action.payload,
+				categories: action.payload,
 			};
-		case GET_SUBCATEGORIES_TO_FILTER_EXITO:
+		case GET_SUBCATEGORIES_EXITO:
 			return {
 				...state,
 				loading: false,
 				error: false,
-				subCategoriesToFilter: action.payload,
+				subCategories: action.payload,
 			};
 		case GET_IMAGES_SUBCATEGORIES_EXITO:
 			return {
@@ -159,21 +159,21 @@ export default function productsReducer(state = initialState, action) {
 				error: true,
 				msg: action.payload,
 			};
-		case GET_SUBCATEGORIES_TO_FILTER_ERROR:
+		case GET_SUBCATEGORIES_ERROR:
 			return {
 				...state,
 				loading: false,
 				error: true,
-				subCategoriesToFilter: action.payload,
+				subCategories: action.payload,
 			};
-		case GET_COLORS_TO_FILTER_ERROR:
+		case GET_COLORS_ERROR:
 			return {
 				...state,
 				loading: false,
 				error: true,
 				msg: action.payload,
 			};
-		case GET_CATEGORIES_TO_FILTER_ERROR:
+		case GET_CATEGORIES_ERROR:
 			return {
 				...state,
 				loading: false,

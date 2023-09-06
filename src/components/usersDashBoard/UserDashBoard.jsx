@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "./userDashBoard.css";
 import {
 	getAllProducts,
-	getProductsColorsToFilter,
-	getProductsCategoriesToFilter,
+	getProductsColors,
+	getProductsCategories,
 } from "../../../helps/redux/actions/products.actions";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
@@ -25,27 +25,18 @@ const UserDashBoard = () => {
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		dispatch(getAllProducts());
-		dispatch(getProductsCategoriesToFilter());
+		dispatch(getProductsCategories());
 		dispatch(
-			getProductsColorsToFilter([
-				"defensas",
-				"estribos",
-				"jaulas antivuelvo",
-			]),
+			getProductsColors(["defensas", "estribos", "jaulas antivuelvo"]),
 		);
 	}, []);
 	useEffect(() => {
-		if (products.products?.length > 0) {
-			setProductsFiltered(products.products);
-		}
-	}, [products]);
-	useEffect(() => {
-		if (products.categoriesToFilter?.length > 0) {
+		if (products.categories?.length > 0) {
 			setAllCategoriesSelect(
-				structuringSelectValues(products.categoriesToFilter),
+				structuringSelectValues(products.categories),
 			);
 		}
-	}, [products.categoriesToFilter]);
+	}, [products.categories]);
 	useEffect(() => {
 		setProductsFiltered(
 			products.products.filter(
@@ -63,6 +54,15 @@ const UserDashBoard = () => {
 					el.color.includes(colorSelect),
 			),
 		);
+		if (
+			!codeInput &&
+			!marcaInput &&
+			!modeloInput &&
+			!categoriaSelect &&
+			!colorSelect
+		) {
+			setProductsFiltered([]);
+		}
 	}, [codeInput, marcaInput, modeloInput, categoriaSelect, colorSelect]);
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
@@ -122,9 +122,7 @@ const UserDashBoard = () => {
 						placeholder=""
 						name="color"
 						className="userInfo-teamSelect"
-						options={products.colorsFilter.map((el) => {
-							return { label: el.toUpperCase(), value: el };
-						})}
+						options={structuringSelectValues(products.colorsFilter)}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setColorSelect(e.value)}

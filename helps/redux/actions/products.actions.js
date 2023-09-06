@@ -14,21 +14,21 @@ import {
 	GET_CATEGORY_COLORS,
 	GET_CATEGORY_COLORS_EXITO,
 	GET_CATEGORY_COLORS_ERROR,
-	GET_COLORS_TO_FILTER,
-	GET_COLORS_TO_FILTER_EXITO,
-	GET_COLORS_TO_FILTER_ERROR,
+	GET_COLORS,
+	GET_COLORS_EXITO,
+	GET_COLORS_ERROR,
 	GET_IMAGES_SUBCATEGORIES,
 	GET_IMAGES_SUBCATEGORIES_EXITO,
 	GET_IMAGES_SUBCATEGORIES_ERROR,
 	RESET_REQUESTED_VALUES,
 	RESET_REQUESTED_VALUES_EXITO,
 	RESET_REQUESTED_VALUES_ERROR,
-	GET_CATEGORIES_TO_FILTER,
-	GET_CATEGORIES_TO_FILTER_EXITO,
-	GET_CATEGORIES_TO_FILTER_ERROR,
-	GET_SUBCATEGORIES_TO_FILTER,
-	GET_SUBCATEGORIES_TO_FILTER_EXITO,
-	GET_SUBCATEGORIES_TO_FILTER_ERROR,
+	GET_CATEGORIES,
+	GET_CATEGORIES_EXITO,
+	GET_CATEGORIES_ERROR,
+	GET_SUBCATEGORIES,
+	GET_SUBCATEGORIES_EXITO,
+	GET_SUBCATEGORIES_ERROR,
 } from "../types";
 import clienteAxios from "../../../src/axios";
 
@@ -161,19 +161,19 @@ const getCategoryColorsDBError = (res) => ({
 	payload: res,
 	type: GET_CATEGORY_COLORS_ERROR,
 });
-export const getProductsColorsToFilter = (categories) => {
+export const getProductsColors = (categories) => {
 	return async (dispatch) => {
-		dispatch(getProductsColorsToFilterDB());
+		dispatch(getProductsColorsDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "color-filter-values",
 				data: { categories },
 			});
-			dispatch(getProductsColorsToFilterDBExito(resp.data.data));
+			dispatch(getProductsColorsDBExito(resp.data.data));
 		} catch (error) {
 			dispatch(
-				getProductsColorsToFilterDBError(
+				getProductsColorsDBError(
 					"Error en la obtención de los colores",
 				),
 				console.log(error),
@@ -182,29 +182,29 @@ export const getProductsColorsToFilter = (categories) => {
 	};
 };
 
-const getProductsColorsToFilterDB = () => ({ type: GET_COLORS_TO_FILTER });
+const getProductsColorsDB = () => ({ type: GET_COLORS });
 
-const getProductsColorsToFilterDBExito = (res) => ({
+const getProductsColorsDBExito = (res) => ({
 	payload: res,
-	type: GET_COLORS_TO_FILTER_EXITO,
+	type: GET_COLORS_EXITO,
 });
-const getProductsColorsToFilterDBError = (res) => ({
+const getProductsColorsDBError = (res) => ({
 	payload: res,
-	type: GET_COLORS_TO_FILTER_ERROR,
+	type: GET_COLORS_ERROR,
 });
 
-export const getProductsCategoriesToFilter = () => {
+export const getProductsCategories = () => {
 	return async (dispatch) => {
-		dispatch(getProductsCategoriesToFilterDB());
+		dispatch(getProductsCategoriesDB());
 		try {
 			let resp = await clienteAxios({
 				method: "get",
 				url: "categories-filter-values",
 			});
-			dispatch(getProductsCategoriesToFilterDBExito(resp.data.data));
+			dispatch(getProductsCategoriesDBExito(resp.data.data));
 		} catch (error) {
 			dispatch(
-				getProductsCategoriesToFilterDBError(
+				getProductsCategoriesDBError(
 					"Error en la obtención de las categorias",
 				),
 				console.log(error),
@@ -213,30 +213,30 @@ export const getProductsCategoriesToFilter = () => {
 	};
 };
 
-const getProductsCategoriesToFilterDB = () => ({
-	type: GET_CATEGORIES_TO_FILTER,
+const getProductsCategoriesDB = () => ({
+	type: GET_CATEGORIES,
 });
-const getProductsCategoriesToFilterDBExito = (res) => ({
+const getProductsCategoriesDBExito = (res) => ({
 	payload: res,
-	type: GET_CATEGORIES_TO_FILTER_EXITO,
+	type: GET_CATEGORIES_EXITO,
 });
-const getProductsCategoriesToFilterDBError = (res) => ({
+const getProductsCategoriesDBError = (res) => ({
 	payload: res,
-	type: GET_CATEGORIES_TO_FILTER_ERROR,
+	type: GET_CATEGORIES_ERROR,
 });
 
-export const getSubCategoriesToFilter = () => {
+export const getSubCategories = () => {
 	return async (dispatch) => {
-		dispatch(getSubCategoriesToFilterDB());
+		dispatch(getSubCategoriesDB());
 		try {
 			let resp = await clienteAxios({
 				method: "get",
 				url: "subCategories-filter-values",
 			});
-			dispatch(getSubCategoriesToFilterDBExito(resp.data.data));
+			dispatch(getSubCategoriesDBExito(resp.data.data));
 		} catch (error) {
 			dispatch(
-				getSubCategoriesToFilterDBError(
+				getSubCategoriesDBError(
 					"Error en la obtención de las sub categorias",
 				),
 				console.log(error),
@@ -245,16 +245,16 @@ export const getSubCategoriesToFilter = () => {
 	};
 };
 
-const getSubCategoriesToFilterDB = () => ({
-	type: GET_SUBCATEGORIES_TO_FILTER,
+const getSubCategoriesDB = () => ({
+	type: GET_SUBCATEGORIES,
 });
-const getSubCategoriesToFilterDBExito = (res) => ({
+const getSubCategoriesDBExito = (res) => ({
 	payload: res,
-	type: GET_SUBCATEGORIES_TO_FILTER_EXITO,
+	type: GET_SUBCATEGORIES_EXITO,
 });
-const getSubCategoriesToFilterDBError = (res) => ({
+const getSubCategoriesDBError = (res) => ({
 	payload: res,
-	type: GET_SUBCATEGORIES_TO_FILTER_ERROR,
+	type: GET_SUBCATEGORIES_ERROR,
 });
 
 export const getImagesOfSubCategories = (subCategory, color) => {
