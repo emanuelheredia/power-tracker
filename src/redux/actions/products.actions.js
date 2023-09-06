@@ -41,7 +41,6 @@ export const uploadProducts = (products) => {
 				url: "products",
 				body: products,
 			});
-			console.log(resp);
 			dispatch(uploadAllProductsExito("Almacenado exitoso"));
 		} catch (error) {
 			dispatch(
@@ -74,7 +73,6 @@ export const updateProducts = (products) => {
 				url: "update-products",
 				data: products,
 			});
-			console.log(resp);
 			dispatch(
 				updateAllProductsExito({
 					msg: "Actualización Exitosa",
