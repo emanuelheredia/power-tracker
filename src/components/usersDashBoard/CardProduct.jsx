@@ -1,7 +1,7 @@
 import React from "react";
 import ProductModal from "./productModal/ProductModal";
 import "./cardProduct.css";
-const CardProduct = ({ product, getProductAttribute, ocultarPrice }) => {
+const CardProduct = ({ product, ocultarPrice }) => {
 	const formatearPrecio = (precio) => {
 		if (product.proveedor == "ZIEL TECHNOLOGY") {
 			let indexOfPoint = precio.toString().indexOf(".");

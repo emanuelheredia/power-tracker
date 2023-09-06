@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import readXlsxFile from "read-excel-file";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { estructureTable } from "../../../helps/helpers";
 import {
 	updateProducts,
 	uploadProducts,
 } from "../../../helps/redux/actions/products.actions";
-import { guiaImageAndCategorie, guiaSubCategories } from "../../../helps/guide";
 import { Spinner } from "../spinner/Spinner";
 
 import "./filesAdministration.css";
@@ -52,15 +51,6 @@ const FilesAdministrator = ({ showSpinner, setShowSpinner }) => {
 		dispatch(uploadProducts(dataCleanComplete));
 		 */
 		dispatch(updateProducts(dataCleaned));
-	};
-	const getProductAttribute = (code, attribute) => {
-		let value;
-		guiaImageAndCategorie.categories.map((el) => {
-			if (el.includes(code)) {
-				value = el[0][attribute];
-			}
-		});
-		return value;
 	};
 
 	return (

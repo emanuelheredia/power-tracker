@@ -1,21 +1,7 @@
 import React, { useEffect, useState } from "react";
-import readXlsxFile from "read-excel-file";
 import "./adminDashBoard.css";
-import { useDispatch, useSelector } from "react-redux";
-import { estructureTable } from "../../../helps/helpers";
-import {
-	updateProducts,
-	uploadProducts,
-	getCategoryColors,
-	getImagesOfSubCategories,
-	resetRequestedValuesStore,
-	updateImagesSubCategoriesProducts,
-} from "../../../helps/redux/actions/products.actions";
-import { guiaImageAndCategorie, guiaSubCategories } from "../../../helps/guide";
-import Select from "react-select";
+import { useSelector } from "react-redux";
 import swal from "sweetalert";
-import { Spinner } from "../spinner/Spinner";
-import ImageCard from "./ImageCard";
 import ImagesAdministration from "./ImagesAdministration";
 import FilesAdministrator from "./FilesAdministration";
 const AdminDashBoard = () => {
@@ -54,10 +40,7 @@ const AdminDashBoard = () => {
 				setShowSpinner={setShowSpinner}
 			/>
 			{showAlertSumbit && showAlert(msgSwap)}
-			<ImagesAdministration
-				showSpinner={showSpinner}
-				setShowSpinner={setShowSpinner}
-			/>{" "}
+			<ImagesAdministration />{" "}
 		</div>
 	);
 };

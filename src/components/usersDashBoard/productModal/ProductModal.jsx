@@ -21,7 +21,7 @@ const customStyles = {
 	},
 };
 Modal.setAppElement("*");
-const ProductModal = ({ product, categorie, getProductAttribute }) => {
+const ProductModal = ({ product, categorie }) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	function openModal() {
 		setIsOpen(true);
@@ -67,7 +67,7 @@ const ProductModal = ({ product, categorie, getProductAttribute }) => {
 						{product.images.length > 0 && (
 							<AwesomeSlider>
 								{product.images.map((image, index) => (
-									<div>
+									<div key={index}>
 										<img
 											key={index}
 											src={image}

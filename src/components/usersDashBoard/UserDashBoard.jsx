@@ -4,12 +4,13 @@ import "./userDashBoard.css";
 import {
 	getAllProducts,
 	getProductsColorsToFilter,
+	getProductsCategoriesToFilter,
 } from "../../../helps/redux/actions/products.actions";
-import { guiaImageAndCategorie, categories } from "../../../helps/guide";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
 import CardProduct from "./CardProduct";
 import { Spinner } from "../spinner/Spinner";
+import { structuringSelectValues } from "../helpers/helpers.js";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
@@ -17,14 +18,14 @@ const UserDashBoard = () => {
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
 	const [marcaInput, setMarcaInput] = useState("");
+	const [allCategoriesSelect, setAllCategoriesSelect] = useState([]);
 	const [categoriaSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		dispatch(getAllProducts());
-	}, []);
-	useEffect(() => {
+		dispatch(getProductsCategoriesToFilter());
 		dispatch(
 			getProductsColorsToFilter([
 				"defensas",
@@ -38,6 +39,13 @@ const UserDashBoard = () => {
 			setProductsFiltered(products.products);
 		}
 	}, [products]);
+	useEffect(() => {
+		if (products.categoriesToFilter?.length > 0) {
+			setAllCategoriesSelect(
+				structuringSelectValues(products.categoriesToFilter),
+			);
+		}
+	}, [products.categoriesToFilter]);
 	useEffect(() => {
 		setProductsFiltered(
 			products.products.filter(
@@ -56,34 +64,6 @@ const UserDashBoard = () => {
 			),
 		);
 	}, [codeInput, marcaInput, modeloInput, categoriaSelect, colorSelect]);
-
-	const getAttributeValuesFromGuide = (atribute, categoriesToInclude) => {
-		let values = [];
-		guiaImageAndCategorie.categories.map((el) => {
-			if (
-				!values.includes(el[0][atribute]) &&
-				(!categoriesToInclude
-					? true
-					: categoriesToInclude.includes(
-							el[0].categoria.toLowerCase(),
-					  ))
-			) {
-				values.push(el[0][atribute]);
-			}
-		});
-		const valuesStructured = values.map((el) => {
-			return {
-				label: el.toUpperCase(),
-				value: el,
-			};
-		});
-		const orderedValues = valuesStructured.sort((a, b) =>
-			a.label.localeCompare(b.label),
-		);
-		orderedValues.unshift({ label: "- SIN SELECCION -", value: "" });
-		return orderedValues;
-	};
-
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -97,19 +77,9 @@ const UserDashBoard = () => {
 			backgroundColor: "white",
 		}),
 	});
-	const getProductAttribute = (code, attribute) => {
-		let value;
-		guiaImageAndCategorie.categories.map((el) => {
-			if (el.includes(code)) {
-				value = el[0][attribute];
-			}
-		});
-		return value;
-	};
 	const scrollToUp = () => {
 		window.scrollTo(0, 0);
 	};
-
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
@@ -120,9 +90,7 @@ const UserDashBoard = () => {
 						placeholder=""
 						name="categorie"
 						className="userInfo-teamSelect"
-						options={categories.map((el) => {
-							return { label: el, value: el };
-						})}
+						options={allCategoriesSelect}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setCategoriaSelect(e.value)}
@@ -179,7 +147,6 @@ const UserDashBoard = () => {
 					<CardProduct
 						product={el}
 						key={index}
-						getProductAttribute={getProductAttribute}
 						ocultarPrice={ocultarPrice}
 					/>
 				))}

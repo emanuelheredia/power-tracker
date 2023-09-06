@@ -1,33 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "./imagesAdministration.css";
 import { useDispatch, useSelector } from "react-redux";
-import { guiaImageAndCategorie, guiaSubCategories } from "../../../helps/guide";
 import {
 	getCategoryColors,
 	getImagesOfSubCategories,
 	resetRequestedValuesStore,
 	updateImagesSubCategoriesProducts,
+	getSubCategoriesToFilter,
 } from "../../../helps/redux/actions/products.actions";
 import Select from "react-select";
 import ImageCard from "./ImageCard";
+import { structuringSelectValues } from "../helpers/helpers.js";
 
-const ImagesAdministration = ({ showSpinner, setShowSpinner }) => {
+const ImagesAdministration = () => {
 	const dispatch = useDispatch();
 	const { products } = useSelector((state) => state);
-	const [msgSwap, setMsgSwap] = useState({});
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	const [categorieSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
+	const [allSubCategoriesSelect, setAllSubCategoriesSelect] = useState([]);
 	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
 	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
 	const [showBtnAddImage, setShowBtnAddImage] = useState(false);
 	const [newUrlImages, setNewUrlImages] = useState([]);
 	useEffect(() => {
 		dispatch(resetRequestedValuesStore());
+		dispatch(getSubCategoriesToFilter());
 	}, []);
 	useEffect(() => {
 		setNewUrlImages(products.imagesOfSubCategory);
 	}, [products.imagesOfSubCategory]);
+	useEffect(() => {
+		if (products.subCategoriesToFilter?.length > 0) {
+			setAllSubCategoriesSelect(
+				structuringSelectValues(products.subCategoriesToFilter),
+			);
+		}
+	}, [products.subCategoriesToFilter]);
 	useEffect(() => {
 		if (categorieSelect) {
 			dispatch(getCategoryColors(categorieSelect));
@@ -52,6 +61,7 @@ const ImagesAdministration = ({ showSpinner, setShowSpinner }) => {
 			setShowBtnGetImages(false);
 		}
 	}, [categorieSelect, colorSelect, products.colorsCategory]);
+
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -79,7 +89,6 @@ const ImagesAdministration = ({ showSpinner, setShowSpinner }) => {
 		);
 		setShowAlertSumbit(true);
 	};
-
 	return (
 		<div className="imagesAdministration-container">
 			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
@@ -89,9 +98,7 @@ const ImagesAdministration = ({ showSpinner, setShowSpinner }) => {
 					placeholder=""
 					name="categorie"
 					className="adminInfo-teamSelect"
-					options={guiaSubCategories.map((el) => {
-						return { label: el.toUpperCase(), value: el };
-					})}
+					options={allSubCategoriesSelect}
 					type="text"
 					styles={selectStyles()}
 					onChange={(e) => {

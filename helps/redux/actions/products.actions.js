@@ -23,16 +23,14 @@ import {
 	RESET_REQUESTED_VALUES,
 	RESET_REQUESTED_VALUES_EXITO,
 	RESET_REQUESTED_VALUES_ERROR,
+	GET_CATEGORIES_TO_FILTER,
+	GET_CATEGORIES_TO_FILTER_EXITO,
+	GET_CATEGORIES_TO_FILTER_ERROR,
+	GET_SUBCATEGORIES_TO_FILTER,
+	GET_SUBCATEGORIES_TO_FILTER_EXITO,
+	GET_SUBCATEGORIES_TO_FILTER_ERROR,
 } from "../types";
 import clienteAxios from "../../../src/axios";
-import { collection, addDoc, deleteDoc } from "firebase/firestore";
-import {
-	db,
-	deleteProductByID,
-	getAllProductsDB,
-	getProductsIDByConsulta,
-	queryToDeleteDocs,
-} from "../../../firebase/firebase";
 
 export const uploadProducts = (products) => {
 	return async (dispatch) => {
@@ -194,6 +192,71 @@ const getProductsColorsToFilterDBError = (res) => ({
 	payload: res,
 	type: GET_COLORS_TO_FILTER_ERROR,
 });
+
+export const getProductsCategoriesToFilter = () => {
+	return async (dispatch) => {
+		dispatch(getProductsCategoriesToFilterDB());
+		try {
+			let resp = await clienteAxios({
+				method: "get",
+				url: "categories-filter-values",
+			});
+			dispatch(getProductsCategoriesToFilterDBExito(resp.data.data));
+		} catch (error) {
+			dispatch(
+				getProductsCategoriesToFilterDBError(
+					"Error en la obtención de las categorias",
+				),
+				console.log(error),
+			);
+		}
+	};
+};
+
+const getProductsCategoriesToFilterDB = () => ({
+	type: GET_CATEGORIES_TO_FILTER,
+});
+const getProductsCategoriesToFilterDBExito = (res) => ({
+	payload: res,
+	type: GET_CATEGORIES_TO_FILTER_EXITO,
+});
+const getProductsCategoriesToFilterDBError = (res) => ({
+	payload: res,
+	type: GET_CATEGORIES_TO_FILTER_ERROR,
+});
+
+export const getSubCategoriesToFilter = () => {
+	return async (dispatch) => {
+		dispatch(getSubCategoriesToFilterDB());
+		try {
+			let resp = await clienteAxios({
+				method: "get",
+				url: "subCategories-filter-values",
+			});
+			dispatch(getSubCategoriesToFilterDBExito(resp.data.data));
+		} catch (error) {
+			dispatch(
+				getSubCategoriesToFilterDBError(
+					"Error en la obtención de las sub categorias",
+				),
+				console.log(error),
+			);
+		}
+	};
+};
+
+const getSubCategoriesToFilterDB = () => ({
+	type: GET_SUBCATEGORIES_TO_FILTER,
+});
+const getSubCategoriesToFilterDBExito = (res) => ({
+	payload: res,
+	type: GET_SUBCATEGORIES_TO_FILTER_EXITO,
+});
+const getSubCategoriesToFilterDBError = (res) => ({
+	payload: res,
+	type: GET_SUBCATEGORIES_TO_FILTER_ERROR,
+});
+
 export const getImagesOfSubCategories = (subCategory, color) => {
 	return async (dispatch) => {
 		dispatch(getImagesOfSubCategoriesDB());
