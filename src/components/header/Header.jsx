@@ -1,7 +1,7 @@
 import "./header.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signOutLogin } from "../../../helps/redux/actions/auth.actions";
+import { signOutLogin } from "../../../src/redux/actions/auth.actions";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo/logo.jpeg";
 const Header = () => {

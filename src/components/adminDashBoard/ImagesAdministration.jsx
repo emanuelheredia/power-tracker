@@ -7,7 +7,7 @@ import {
 	resetRequestedValuesStore,
 	updateImagesSubCategoriesProducts,
 	getSubCategories,
-} from "../../../helps/redux/actions/products.actions";
+} from "../../../src/redux/actions/products.actions";
 import Select from "react-select";
 import ImageCard from "./ImageCard";
 import { structuringSelectValues } from "../helpers/helpers.js";

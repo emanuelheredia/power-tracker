@@ -5,7 +5,7 @@ import {
 	getAllProducts,
 	getProductsColors,
 	getProductsCategories,
-} from "../../../helps/redux/actions/products.actions";
+} from "../../../src/redux/actions/products.actions";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
 import CardProduct from "./CardProduct";

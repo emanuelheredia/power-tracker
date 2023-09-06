@@ -5,7 +5,7 @@ import { estructureTable } from "../../../helps/helpers";
 import {
 	updateProducts,
 	uploadProducts,
-} from "../../../helps/redux/actions/products.actions";
+} from "../../../src/redux/actions/products.actions";
 import { Spinner } from "../spinner/Spinner";
 
 import "./filesAdministration.css";

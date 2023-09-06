@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signOutLogin } from "../../../helps/redux/actions/auth.actions";
+import { signOutLogin } from "../../../src/redux/actions/auth.actions";
 
 const ProtectedRoute = ({ children }) => {
 	const { login } = useSelector((state) => state.auth);
