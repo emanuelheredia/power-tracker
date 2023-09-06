@@ -24,11 +24,16 @@ const UserDashBoard = () => {
 	const [productsFiltered, setProductsFiltered] = useState([]);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
-		dispatch(getAllProducts());
-		dispatch(getProductsCategories());
-		dispatch(
-			getProductsColors(["defensas", "estribos", "jaulas antivuelvo"]),
-		);
+		if (products.products.length === 0) dispatch(getAllProducts());
+		if (products.categories.length === 0) dispatch(getProductsCategories());
+		if (products.colorsFilter.length === 0)
+			dispatch(
+				getProductsColors([
+					"defensas",
+					"estribos",
+					"jaulas antivuelvo",
+				]),
+			);
 	}, []);
 	useEffect(() => {
 		if (products.categories?.length > 0) {
@@ -80,6 +85,7 @@ const UserDashBoard = () => {
 	const scrollToUp = () => {
 		window.scrollTo(0, 0);
 	};
+	console.log(products);
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
