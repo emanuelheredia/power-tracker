@@ -39,11 +39,12 @@
     gap: .5rem;
     color: orange;
     font-weight: 900;
-}
-.form-campos>input{
-    padding: .7rem;
-    border-radius: 5px;
-    border: solid thin;
+
+    input{
+        padding: .7rem;
+        border-radius: 5px;
+        border: solid thin;
+    }
 }
 .form-boton{
     background-color: orange;
@@ -57,9 +58,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-.form-boton:hover{
-    background-color: orangered;
+
+    &:hover{
+        background-color: orangered;
+    }
 }
 .form_background{
     position: absolute;
@@ -73,26 +75,28 @@
 }
 .form-linkToRegistrer{
     cursor: pointer;
-}
-.form-linkToRegistrer:hover{
+
+    &:hover{
     font-weight: bolder;
+    }
 }
 .form-Container-OlvidePass_GoToRegister{
     display: flex;
     gap: .8rem;
     justify-content: center;
-}
-.form-Container-OlvidePass_GoToRegister>p{
-    width: 45%;
-    text-align: center;
-    cursor: pointer;
+
+    p{
+        width: 45%;
+        text-align: center;
+        cursor: pointer;
+    }
 }
 .form-spinnerContainer{
     position: absolute ;
     top:500px
 }
 @media (min-width:780px){
-.form-container{
-    gap: 1rem;
-}
+    .form-container{
+        gap: 1rem;
+    }
 }
