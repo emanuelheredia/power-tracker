@@ -6,7 +6,7 @@ import {
 	getImagesOfSubCategories,
 	resetRequestedValuesStore,
 	updateImagesSubCategoriesProducts,
-	getSubCategories,
+	getValuesAttributeSelects,
 } from "../../../src/redux/actions/products.actions";
 import Select from "react-select";
 import ImageCard from "./ImageCard";
@@ -25,18 +25,12 @@ const ImagesAdministration = () => {
 	const [newUrlImages, setNewUrlImages] = useState([]);
 	useEffect(() => {
 		dispatch(resetRequestedValuesStore());
-		if (products.subCategories.length === 0) dispatch(getSubCategories());
+		if (products.subCategories.length === 0)
+			dispatch(getValuesAttributeSelects("subCategory"));
 	}, []);
 	useEffect(() => {
 		setNewUrlImages(products.imagesOfSubCategory);
 	}, [products.imagesOfSubCategory]);
-	useEffect(() => {
-		if (products.subCategories?.length > 0) {
-			setAllSubCategoriesSelect(
-				structuringSelectValues(products.subCategories),
-			);
-		}
-	}, [products.subCategories]);
 	useEffect(() => {
 		if (categorieSelect) {
 			dispatch(getCategoryColors(categorieSelect));
@@ -98,7 +92,9 @@ const ImagesAdministration = () => {
 					placeholder=""
 					name="categorie"
 					className="adminInfo-teamSelect"
-					options={allSubCategoriesSelect}
+					options={structuringSelectValues(
+						products.valuesFilter.subCategory,
+					)}
 					type="text"
 					styles={selectStyles()}
 					onChange={(e) => {

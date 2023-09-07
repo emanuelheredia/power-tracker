@@ -14,24 +14,19 @@ import {
 	GET_CATEGORY_COLORS,
 	GET_CATEGORY_COLORS_EXITO,
 	GET_CATEGORY_COLORS_ERROR,
-	GET_COLORS,
-	GET_COLORS_EXITO,
-	GET_COLORS_ERROR,
 	GET_IMAGES_SUBCATEGORIES,
 	GET_IMAGES_SUBCATEGORIES_EXITO,
 	GET_IMAGES_SUBCATEGORIES_ERROR,
 	RESET_REQUESTED_VALUES,
 	RESET_REQUESTED_VALUES_EXITO,
 	RESET_REQUESTED_VALUES_ERROR,
-	GET_CATEGORIES,
-	GET_CATEGORIES_EXITO,
-	GET_CATEGORIES_ERROR,
-	GET_SUBCATEGORIES,
-	GET_SUBCATEGORIES_EXITO,
-	GET_SUBCATEGORIES_ERROR,
+	GET_VALUES_ATTRIBUTES_SELECTS,
+	GET_VALUES_ATTRIBUTES_SELECTS_EXITO,
+	GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
 } from "../types";
 import clienteAxios from "../../../src/axios";
 
+//UPLOAD NEW PRICES LIST TO DB
 export const uploadProducts = (products) => {
 	return async (dispatch) => {
 		dispatch(uploadAllProducts());
@@ -64,6 +59,7 @@ const uploadAllProductsError = (res) => ({
 	type: UPLOAD_ALL_PRODUCTS_ERROR,
 });
 
+// UPDATE PRICES FROM DB
 export const updateProducts = (products) => {
 	return async (dispatch) => {
 		dispatch(updateAllProducts());
@@ -101,6 +97,7 @@ const updateAllProductsError = (res) => ({
 	type: UPDATE_ALL_PRODUCTS_ERROR,
 });
 
+// GET ALL PRODUCTS FROM DB
 export const getAllProducts = () => {
 	return async (dispatch) => {
 		dispatch(getProducts());
@@ -128,6 +125,47 @@ const getProductsError = (res) => ({
 	payload: res,
 	type: GET_ALL_PRODUCTS_ERROR,
 });
+
+//GET VALUES OF SOME ATTRIBUTE FROM DB TO SELECTS
+export const getValuesAttributeSelects = (attribute, info) => {
+	return async (dispatch) => {
+		dispatch(getValuesAttributeSelectsDB());
+		try {
+			let resp = await clienteAxios({
+				method: "post",
+				url: "values-attribute-select",
+				data: { attribute, info },
+			});
+			dispatch(
+				getValuesAttributeSelectsDBExito({
+					attribute,
+					data: resp.data.data,
+				}),
+			);
+		} catch (error) {
+			dispatch(
+				getValuesAttributeSelectsDBError(
+					"Error en el almacenado de los productos",
+				),
+				console.log(error),
+			);
+		}
+	};
+};
+
+const getValuesAttributeSelectsDB = () => ({
+	type: GET_VALUES_ATTRIBUTES_SELECTS,
+});
+
+const getValuesAttributeSelectsDBExito = (res) => ({
+	payload: res,
+	type: GET_VALUES_ATTRIBUTES_SELECTS_EXITO,
+});
+const getValuesAttributeSelectsDBError = (res) => ({
+	payload: res,
+	type: GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
+});
+
 export const getCategoryColors = (category) => {
 	return async (dispatch) => {
 		dispatch(getCategoryColorsDB());
@@ -159,102 +197,8 @@ const getCategoryColorsDBError = (res) => ({
 	payload: res,
 	type: GET_CATEGORY_COLORS_ERROR,
 });
-export const getProductsColors = (categories) => {
-	return async (dispatch) => {
-		dispatch(getProductsColorsDB());
-		try {
-			let resp = await clienteAxios({
-				method: "post",
-				url: "color-filter-values",
-				data: { categories },
-			});
-			dispatch(getProductsColorsDBExito(resp.data.data));
-		} catch (error) {
-			dispatch(
-				getProductsColorsDBError(
-					"Error en la obtención de los colores",
-				),
-				console.log(error),
-			);
-		}
-	};
-};
 
-const getProductsColorsDB = () => ({ type: GET_COLORS });
-
-const getProductsColorsDBExito = (res) => ({
-	payload: res,
-	type: GET_COLORS_EXITO,
-});
-const getProductsColorsDBError = (res) => ({
-	payload: res,
-	type: GET_COLORS_ERROR,
-});
-
-export const getProductsCategories = () => {
-	return async (dispatch) => {
-		dispatch(getProductsCategoriesDB());
-		try {
-			let resp = await clienteAxios({
-				method: "get",
-				url: "categories-filter-values",
-			});
-			dispatch(getProductsCategoriesDBExito(resp.data.data));
-		} catch (error) {
-			dispatch(
-				getProductsCategoriesDBError(
-					"Error en la obtención de las categorias",
-				),
-				console.log(error),
-			);
-		}
-	};
-};
-
-const getProductsCategoriesDB = () => ({
-	type: GET_CATEGORIES,
-});
-const getProductsCategoriesDBExito = (res) => ({
-	payload: res,
-	type: GET_CATEGORIES_EXITO,
-});
-const getProductsCategoriesDBError = (res) => ({
-	payload: res,
-	type: GET_CATEGORIES_ERROR,
-});
-
-export const getSubCategories = () => {
-	return async (dispatch) => {
-		dispatch(getSubCategoriesDB());
-		try {
-			let resp = await clienteAxios({
-				method: "get",
-				url: "subCategories-filter-values",
-			});
-			dispatch(getSubCategoriesDBExito(resp.data.data));
-		} catch (error) {
-			dispatch(
-				getSubCategoriesDBError(
-					"Error en la obtención de las sub categorias",
-				),
-				console.log(error),
-			);
-		}
-	};
-};
-
-const getSubCategoriesDB = () => ({
-	type: GET_SUBCATEGORIES,
-});
-const getSubCategoriesDBExito = (res) => ({
-	payload: res,
-	type: GET_SUBCATEGORIES_EXITO,
-});
-const getSubCategoriesDBError = (res) => ({
-	payload: res,
-	type: GET_SUBCATEGORIES_ERROR,
-});
-
+// Get Images From Sub Category
 export const getImagesOfSubCategories = (subCategory, color) => {
 	return async (dispatch) => {
 		dispatch(getImagesOfSubCategoriesDB());
@@ -286,6 +230,8 @@ const getImagesOfSubCategoriesDBError = (res) => ({
 	payload: res,
 	type: GET_IMAGES_SUBCATEGORIES_ERROR,
 });
+
+//Update Images Products By Sub Category
 export const updateImagesSubCategoriesProducts = (
 	subCategory,
 	color,
@@ -321,6 +267,8 @@ const updateImagesSubCategoriesError = (res) => ({
 	payload: res,
 	type: UPDATE_IMAGES_SUBCATEGORIES_ERROR,
 });
+
+//Reset Values Images Store
 export const resetRequestedValuesStore = () => {
 	return async (dispatch) => {
 		dispatch(resetRequestedValues());

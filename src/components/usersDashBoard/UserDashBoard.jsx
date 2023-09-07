@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./userDashBoard.css";
 import {
 	getAllProducts,
-	getProductsColors,
-	getProductsCategories,
+	getValuesAttributeSelects,
 } from "../../../src/redux/actions/products.actions";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
@@ -18,30 +17,23 @@ const UserDashBoard = () => {
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
 	const [marcaInput, setMarcaInput] = useState("");
-	const [allCategoriesSelect, setAllCategoriesSelect] = useState([]);
 	const [categoriaSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		if (products.products.length === 0) dispatch(getAllProducts());
-		if (products.categories.length === 0) dispatch(getProductsCategories());
-		if (products.colorsFilter.length === 0)
+		if (products.valuesFilter.category.length === 0)
+			dispatch(getValuesAttributeSelects("category"));
+		if (products.valuesFilter.color.length === 0)
 			dispatch(
-				getProductsColors([
+				getValuesAttributeSelects("color", [
 					"defensas",
 					"estribos",
 					"jaulas antivuelvo",
 				]),
 			);
 	}, []);
-	useEffect(() => {
-		if (products.categories?.length > 0) {
-			setAllCategoriesSelect(
-				structuringSelectValues(products.categories),
-			);
-		}
-	}, [products.categories]);
 	useEffect(() => {
 		setProductsFiltered(
 			products.products.filter(
@@ -95,7 +87,9 @@ const UserDashBoard = () => {
 						placeholder=""
 						name="categorie"
 						className="userInfo-teamSelect"
-						options={allCategoriesSelect}
+						options={structuringSelectValues(
+							products.valuesFilter.category,
+						)}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setCategoriaSelect(e.value)}
@@ -129,7 +123,9 @@ const UserDashBoard = () => {
 						placeholder=""
 						name="color"
 						className="userInfo-teamSelect"
-						options={structuringSelectValues(products.colorsFilter)}
+						options={structuringSelectValues(
+							products.valuesFilter.color,
+						)}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setColorSelect(e.value)}
