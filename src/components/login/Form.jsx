@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./form.css";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "../spinner/Spinner";
 
