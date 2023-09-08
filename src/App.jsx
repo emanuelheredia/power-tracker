@@ -1,4 +1,5 @@
 import "./App.css";
+import "./styles/styles.scss";
 import { Route, Routes } from "react-router-dom";
 import UserDashBoard from "./components/usersDashBoard/UserDashBoard";
 import AdminDashBoard from "./components/adminDashBoard/AdminDashBoard";
