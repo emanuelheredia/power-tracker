@@ -49,7 +49,7 @@ const CardProduct = ({ product, ocultarPrice }) => {
 			</div>
 			<div className="userDashBoard-item-celdaMarca">
 				<p>Marca Auto</p>
-				<p>{product.marca !== "sin datos" ? product.marca : ""}</p>
+				<p>{product.mark !== "sin datos" ? product.mark : ""}</p>
 			</div>
 			<div className="userDashBoard-item-celdaMoreInfo">
 				<p>Mas info</p>
