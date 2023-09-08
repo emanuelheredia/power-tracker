@@ -28,7 +28,7 @@ const initialState = {
 	products: [],
 	colorsCategory: [],
 	colorsFilter: [],
-	valuesFilter: { color: [], category: [], subCategory: [] },
+	valuesFilter: { color: [], category: [], subCategory: [], mark: [] },
 	categories: [],
 	subCategories: [],
 	imagesOfSubCategory: [],

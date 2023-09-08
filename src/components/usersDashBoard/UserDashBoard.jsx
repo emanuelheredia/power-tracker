@@ -16,8 +16,9 @@ const UserDashBoard = () => {
 	const { products } = useSelector((state) => state);
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
-	const [marcaInput, setMarcaInput] = useState("");
+	const [proveedorInput, setProveedorInput] = useState("");
 	const [categoriaSelect, setCategoriaSelect] = useState("");
+	const [marcaSelect, setMarcaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
@@ -25,6 +26,8 @@ const UserDashBoard = () => {
 		if (products.products.length === 0) dispatch(getAllProducts());
 		if (products.valuesFilter.category.length === 0)
 			dispatch(getValuesAttributeSelects("category"));
+		if (products.valuesFilter.mark.length === 0)
+			dispatch(getValuesAttributeSelects("mark"));
 		if (products.valuesFilter.color.length === 0)
 			dispatch(
 				getValuesAttributeSelects("color", [
@@ -40,27 +43,36 @@ const UserDashBoard = () => {
 				(el) =>
 					el.code?.toLowerCase().includes(codeInput) &&
 					el.proveedor
-						.toString()
+						?.toString()
 						.toLowerCase()
-						.includes(marcaInput) &&
+						.includes(proveedorInput) &&
 					el.vehiculo
-						.toString()
+						?.toString()
 						.toLowerCase()
 						.includes(modeloInput) &&
-					el.category.includes(categoriaSelect) &&
-					el.color.includes(colorSelect),
+					el.category?.includes(categoriaSelect) &&
+					el.color?.includes(colorSelect) &&
+					el.mark?.includes(marcaSelect),
 			),
 		);
 		if (
 			!codeInput &&
-			!marcaInput &&
+			!proveedorInput &&
 			!modeloInput &&
 			!categoriaSelect &&
-			!colorSelect
+			!colorSelect &&
+			!marcaSelect
 		) {
 			setProductsFiltered([]);
 		}
-	}, [codeInput, marcaInput, modeloInput, categoriaSelect, colorSelect]);
+	}, [
+		codeInput,
+		proveedorInput,
+		modeloInput,
+		categoriaSelect,
+		colorSelect,
+		marcaSelect,
+	]);
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -96,6 +108,21 @@ const UserDashBoard = () => {
 					/>
 				</div>
 				<div>
+					<h5>Marca Vehiculo</h5>
+					<Select
+						placeholder=""
+						name="marca"
+						className="userInfo-teamSelect"
+						options={structuringSelectValues(
+							products.valuesFilter.mark,
+						)}
+						type="text"
+						styles={selectStyles()}
+						onChange={(e) => setMarcaSelect(e.value)}
+					/>
+				</div>
+
+				<div>
 					<h5>Vehiculo</h5>
 					<input
 						style={{ color: "black" }}
@@ -111,7 +138,7 @@ const UserDashBoard = () => {
 					<input
 						style={{ color: "black" }}
 						onChange={(e) =>
-							setMarcaInput(
+							setProveedorInput(
 								e.target.value.toString().toLowerCase(),
 							)
 						}
