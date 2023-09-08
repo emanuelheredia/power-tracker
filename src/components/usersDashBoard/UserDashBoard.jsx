@@ -99,6 +99,7 @@ const UserDashBoard = () => {
 						className="userInfo-teamSelect"
 						options={structuringSelectValues(
 							products.valuesFilter.category,
+							true,
 						)}
 						type="text"
 						styles={selectStyles()}
@@ -113,6 +114,7 @@ const UserDashBoard = () => {
 						className="userInfo-teamSelect"
 						options={structuringSelectValues(
 							products.valuesFilter.mark,
+							true,
 						)}
 						type="text"
 						styles={selectStyles()}
@@ -139,6 +141,7 @@ const UserDashBoard = () => {
 						className="userInfo-teamSelect"
 						options={structuringSelectValues(
 							products.valuesFilter.proveedor,
+							true,
 						)}
 						type="text"
 						styles={selectStyles()}
@@ -153,6 +156,7 @@ const UserDashBoard = () => {
 						className="userInfo-teamSelect"
 						options={structuringSelectValues(
 							products.valuesFilter.color,
+							true,
 						)}
 						type="text"
 						styles={selectStyles()}

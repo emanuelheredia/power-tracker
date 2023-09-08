@@ -8,9 +8,9 @@ import {
 	GET_ALL_PRODUCTS_EXITO,
 	GET_ALL_PRODUCTS_ERROR,
 	GET_ALL_PRODUCTS,
-	GET_CATEGORY_COLORS,
-	GET_CATEGORY_COLORS_EXITO,
-	GET_CATEGORY_COLORS_ERROR,
+	GET_OPTIONS_TO_UPDATE_IMAGES,
+	GET_OPTIONS_TO_UPDATE_IMAGES_EXITO,
+	GET_OPTIONS_TO_UPDATE_IMAGES_ERROR,
 	GET_IMAGES_SUBCATEGORIES,
 	GET_IMAGES_SUBCATEGORIES_EXITO,
 	GET_IMAGES_SUBCATEGORIES_ERROR,
@@ -26,8 +26,7 @@ import {
 } from "../types";
 const initialState = {
 	products: [],
-	colorsCategory: [],
-	colorsFilter: [],
+	optionUpdateImage: { color: [], mark: [] },
 	valuesFilter: {
 		color: [],
 		category: [],
@@ -45,7 +44,7 @@ const initialState = {
 };
 export default function productsReducer(state = initialState, action) {
 	switch (action.type) {
-		case GET_CATEGORY_COLORS:
+		case GET_OPTIONS_TO_UPDATE_IMAGES:
 		case UPLOAD_ALL_PRODUCTS:
 		case UPDATE_ALL_PRODUCTS:
 		case GET_ALL_PRODUCTS:
@@ -80,12 +79,15 @@ export default function productsReducer(state = initialState, action) {
 				error: false,
 				products: action.payload,
 			};
-		case GET_CATEGORY_COLORS_EXITO:
+		case GET_OPTIONS_TO_UPDATE_IMAGES_EXITO:
 			return {
 				...state,
 				loading: false,
 				error: false,
-				colorsCategory: action.payload,
+				optionUpdateImage: {
+					...state.optionUpdateImage,
+					[action.payload.attribute]: action.payload.data,
+				},
 			};
 		case GET_VALUES_ATTRIBUTES_SELECTS_EXITO:
 			return {
@@ -147,7 +149,7 @@ export default function productsReducer(state = initialState, action) {
 				error: true,
 				msg: action.payload,
 			};
-		case GET_CATEGORY_COLORS_ERROR:
+		case GET_OPTIONS_TO_UPDATE_IMAGES_ERROR:
 			return {
 				...state,
 				loading: false,

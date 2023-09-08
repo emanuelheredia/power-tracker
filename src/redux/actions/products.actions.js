@@ -11,9 +11,9 @@ import {
 	GET_ALL_PRODUCTS,
 	GET_ALL_PRODUCTS_ERROR,
 	GET_ALL_PRODUCTS_EXITO,
-	GET_CATEGORY_COLORS,
-	GET_CATEGORY_COLORS_EXITO,
-	GET_CATEGORY_COLORS_ERROR,
+	GET_OPTIONS_TO_UPDATE_IMAGES,
+	GET_OPTIONS_TO_UPDATE_IMAGES_EXITO,
+	GET_OPTIONS_TO_UPDATE_IMAGES_ERROR,
 	GET_IMAGES_SUBCATEGORIES,
 	GET_IMAGES_SUBCATEGORIES_EXITO,
 	GET_IMAGES_SUBCATEGORIES_ERROR,
@@ -166,19 +166,24 @@ const getValuesAttributeSelectsDBError = (res) => ({
 	type: GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
 });
 
-export const getCategoryColors = (category) => {
+export const getOptionsSelectToUpdateImage = (subCategory, attribute) => {
 	return async (dispatch) => {
-		dispatch(getCategoryColorsDB());
+		dispatch(getOptionsSelectToUpdateImageDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
-				url: "color-category",
-				data: { category },
+				url: "options-update-image",
+				data: { subCategory, attribute },
 			});
-			dispatch(getCategoryColorsDBExito(resp.data.data));
+			dispatch(
+				getOptionsSelectToUpdateImageDBExito({
+					attribute,
+					data: resp.data.data,
+				}),
+			);
 		} catch (error) {
 			dispatch(
-				getCategoryColorsDBError(
+				getOptionsSelectToUpdateImageDBError(
 					"Error en el almacenado de los productos",
 				),
 				console.log(error),
@@ -187,26 +192,28 @@ export const getCategoryColors = (category) => {
 	};
 };
 
-const getCategoryColorsDB = () => ({ type: GET_CATEGORY_COLORS });
-
-const getCategoryColorsDBExito = (res) => ({
-	payload: res,
-	type: GET_CATEGORY_COLORS_EXITO,
+const getOptionsSelectToUpdateImageDB = () => ({
+	type: GET_OPTIONS_TO_UPDATE_IMAGES,
 });
-const getCategoryColorsDBError = (res) => ({
+
+const getOptionsSelectToUpdateImageDBExito = (res) => ({
 	payload: res,
-	type: GET_CATEGORY_COLORS_ERROR,
+	type: GET_OPTIONS_TO_UPDATE_IMAGES_EXITO,
+});
+const getOptionsSelectToUpdateImageDBError = (res) => ({
+	payload: res,
+	type: GET_OPTIONS_TO_UPDATE_IMAGES_ERROR,
 });
 
 // Get Images From Sub Category
-export const getImagesOfSubCategories = (subCategory, color) => {
+export const getImagesOfSubCategories = (subCategory, color, marca) => {
 	return async (dispatch) => {
 		dispatch(getImagesOfSubCategoriesDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "imagesOfSubcategory",
-				data: { subCategory, color },
+				data: { subCategory, query: { color, marca } },
 			});
 			dispatch(getImagesOfSubCategoriesDBExito(resp.data.data));
 		} catch (error) {
@@ -234,8 +241,9 @@ const getImagesOfSubCategoriesDBError = (res) => ({
 //Update Images Products By Sub Category
 export const updateImagesSubCategoriesProducts = (
 	subCategory,
-	color,
 	newImages,
+	color,
+	marca,
 ) => {
 	return async (dispatch) => {
 		dispatch(updateImagesSubCategories());
@@ -243,7 +251,7 @@ export const updateImagesSubCategoriesProducts = (
 			let resp = await clienteAxios({
 				method: "post",
 				url: "update-subCategoryImages",
-				data: { subCategory, color, newImages },
+				data: { subCategory, newImages, query: { color, marca } },
 			});
 			dispatch(updateImagesSubCategoriesExito(resp.data.msg));
 		} catch (error) {

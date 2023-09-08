@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./imagesAdministration.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-	getCategoryColors,
+	getOptionsSelectToUpdateImage,
 	getImagesOfSubCategories,
 	resetRequestedValuesStore,
 	updateImagesSubCategoriesProducts,
@@ -11,14 +11,13 @@ import {
 import Select from "react-select";
 import ImageCard from "./ImageCard";
 import { structuringSelectValues } from "../helpers/helpers.js";
-
 const ImagesAdministration = () => {
 	const dispatch = useDispatch();
 	const { products } = useSelector((state) => state);
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	const [categorieSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
-	const [allSubCategoriesSelect, setAllSubCategoriesSelect] = useState([]);
+	const [marcaSelect, setMarcaSelect] = useState("");
 	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
 	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
 	const [showBtnAddImage, setShowBtnAddImage] = useState(false);
@@ -33,7 +32,8 @@ const ImagesAdministration = () => {
 	}, [products.imagesOfSubCategory]);
 	useEffect(() => {
 		if (categorieSelect) {
-			dispatch(getCategoryColors(categorieSelect));
+			dispatch(getOptionsSelectToUpdateImage(categorieSelect, "color"));
+			dispatch(getOptionsSelectToUpdateImage(categorieSelect, "mark"));
 		}
 	}, [categorieSelect]);
 	useEffect(() => {
@@ -46,15 +46,20 @@ const ImagesAdministration = () => {
 	useEffect(() => {
 		if (
 			categorieSelect &&
-			categorieSelect !== "- SIN SELECCION -" &&
-			((products.colorsCategory.length > 0 && colorSelect) ||
-				products.colorsCategory.length == 0)
+			marcaSelect &&
+			((products.optionUpdateImage.color.length > 0 && colorSelect) ||
+				products.optionUpdateImage.color.length == 0)
 		) {
 			setShowBtnGetImages(true);
 		} else {
 			setShowBtnGetImages(false);
 		}
-	}, [categorieSelect, colorSelect, products.colorsCategory]);
+	}, [
+		categorieSelect,
+		colorSelect,
+		products.optionUpdateImage.color,
+		marcaSelect,
+	]);
 
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
@@ -70,19 +75,35 @@ const ImagesAdministration = () => {
 		}),
 	});
 	const handleClickGetImges = () => {
-		dispatch(getImagesOfSubCategories(categorieSelect, colorSelect || ""));
+		dispatch(
+			getImagesOfSubCategories(
+				categorieSelect,
+				colorSelect || "",
+				marcaSelect || "",
+			),
+		);
 		setShowBtnAddImage(true);
 	};
 	const handleSubmitUpdateImages = () => {
-		dispatch(
-			updateImagesSubCategoriesProducts(
-				categorieSelect,
-				colorSelect,
-				newUrlImages,
-			),
-		);
+		let aplicarTodasMarcas =
+			marcaSelect === "all"
+				? confirm(
+						"Estas seguro de realizar el cambio en todas las marcas? Recordá que perderás las imágenes particulares de cada una de ellas",
+				  )
+				: true;
+		console.log(aplicarTodasMarcas);
+		if (aplicarTodasMarcas)
+			dispatch(
+				updateImagesSubCategoriesProducts(
+					categorieSelect,
+					newUrlImages,
+					colorSelect,
+					marcaSelect,
+				),
+			);
 		setShowAlertSumbit(true);
 	};
+	console.log(marcaSelect);
 	return (
 		<div className="imagesAdministration-container">
 			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
@@ -94,6 +115,7 @@ const ImagesAdministration = () => {
 					className="adminInfo-teamSelect"
 					options={structuringSelectValues(
 						products.valuesFilter.subCategory,
+						false,
 					)}
 					type="text"
 					styles={selectStyles()}
@@ -105,16 +127,41 @@ const ImagesAdministration = () => {
 					}}
 				/>
 			</div>
-			{products.colorsCategory.length > 0 && (
+			{products.optionUpdateImage.mark.length > 0 && (
+				<div style={{ width: "90%" }}>
+					<h5>Marca</h5>
+					<Select
+						placeholder=""
+						name="marca"
+						className="adminInfo-teamSelect"
+						options={structuringSelectValues(
+							products.optionUpdateImage.mark,
+							true,
+							"--  TODAS  --",
+							"all",
+						)}
+						type="text"
+						styles={selectStyles()}
+						onChange={(e) => {
+							setMarcaSelect(e.value);
+							setShowBtnAddImage(false);
+						}}
+					/>
+				</div>
+			)}
+			{products.optionUpdateImage.color.length > 0 && (
 				<div style={{ width: "90%" }}>
 					<h5>Color</h5>
 					<Select
 						placeholder=""
 						name="color"
 						className="adminInfo-teamSelect"
-						options={products.colorsCategory.map((el) => {
-							return { label: el.toUpperCase(), value: el };
-						})}
+						options={structuringSelectValues(
+							products.optionUpdateImage.color,
+							true,
+							"--  APLICAR A TODOS  --",
+							"all",
+						)}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => {
