@@ -16,7 +16,7 @@ const UserDashBoard = () => {
 	const { products } = useSelector((state) => state);
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
-	const [proveedorInput, setProveedorInput] = useState("");
+	const [proveedorSelect, setProveedorSelect] = useState("");
 	const [categoriaSelect, setCategoriaSelect] = useState("");
 	const [marcaSelect, setMarcaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
@@ -28,6 +28,8 @@ const UserDashBoard = () => {
 			dispatch(getValuesAttributeSelects("category"));
 		if (products.valuesFilter.mark.length === 0)
 			dispatch(getValuesAttributeSelects("mark"));
+		if (products.valuesFilter.proveedor.length === 0)
+			dispatch(getValuesAttributeSelects("proveedor"));
 		if (products.valuesFilter.color.length === 0)
 			dispatch(
 				getValuesAttributeSelects("color", [
@@ -42,22 +44,19 @@ const UserDashBoard = () => {
 			products.products.filter(
 				(el) =>
 					el.code?.toLowerCase().includes(codeInput) &&
-					el.proveedor
-						?.toString()
-						.toLowerCase()
-						.includes(proveedorInput) &&
 					el.vehiculo
 						?.toString()
 						.toLowerCase()
 						.includes(modeloInput) &&
 					el.category?.includes(categoriaSelect) &&
 					el.color?.includes(colorSelect) &&
-					el.mark?.includes(marcaSelect),
+					el.mark?.includes(marcaSelect) &&
+					el.proveedor?.includes(proveedorSelect),
 			),
 		);
 		if (
 			!codeInput &&
-			!proveedorInput &&
+			!proveedorSelect &&
 			!modeloInput &&
 			!categoriaSelect &&
 			!colorSelect &&
@@ -67,7 +66,7 @@ const UserDashBoard = () => {
 		}
 	}, [
 		codeInput,
-		proveedorInput,
+		proveedorSelect,
 		modeloInput,
 		categoriaSelect,
 		colorSelect,
@@ -89,6 +88,7 @@ const UserDashBoard = () => {
 	const scrollToUp = () => {
 		window.scrollTo(0, 0);
 	};
+	console.log(products.valuesFilter);
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
@@ -134,14 +134,17 @@ const UserDashBoard = () => {
 					/>
 				</div>
 				<div>
-					<h5>Marca Producto</h5>
-					<input
-						style={{ color: "black" }}
-						onChange={(e) =>
-							setProveedorInput(
-								e.target.value.toString().toLowerCase(),
-							)
-						}
+					<h5>Marca</h5>
+					<Select
+						placeholder=""
+						name="proveedor"
+						className="userInfo-teamSelect"
+						options={structuringSelectValues(
+							products.valuesFilter.proveedor,
+						)}
+						type="text"
+						styles={selectStyles()}
+						onChange={(e) => setProveedorSelect(e.value)}
 					/>
 				</div>
 				<div>
