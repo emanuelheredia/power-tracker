@@ -46,13 +46,21 @@ const ImagesAdministration = () => {
 	useEffect(() => {
 		if (
 			categorieSelect &&
-			marcaSelect &&
+			(products.optionUpdateImage.mark.length === 0 || marcaSelect) &&
 			((products.optionUpdateImage.color.length > 0 && colorSelect) ||
 				products.optionUpdateImage.color.length == 0)
 		) {
 			setShowBtnGetImages(true);
+			console.log("entre");
 		} else {
 			setShowBtnGetImages(false);
+			console.log("entre3");
+		}
+		if (marcaSelect === "all" || colorSelect === "all") {
+			dispatch(resetRequestedValuesStore());
+			console.log("entre2");
+			setShowBtnGetImages(false);
+			setShowBtnAddImage(true);
 		}
 	}, [
 		categorieSelect,
@@ -60,7 +68,10 @@ const ImagesAdministration = () => {
 		products.optionUpdateImage.color,
 		marcaSelect,
 	]);
-
+	useEffect(() => {
+		if (products.optionUpdateImage.mark.length === 0) setMarcaSelect("");
+		if (products.optionUpdateImage.color.length === 0) setColorSelect("");
+	}, [products.optionUpdateImage.color, products.optionUpdateImage.mark]);
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -88,11 +99,17 @@ const ImagesAdministration = () => {
 		let aplicarTodasMarcas =
 			marcaSelect === "all"
 				? confirm(
-						"Estas seguro de realizar el cambio en todas las marcas? Recordá que perderás las imágenes particulares de cada una de ellas",
+						"Estas seguro de realizar el cambio en todas las marcas? Recordá que perderás las imágenes asignadas específicamente a cada una de ellas",
 				  )
 				: true;
-		console.log(aplicarTodasMarcas);
-		if (aplicarTodasMarcas)
+		let aplicarTodosColores =
+			colorSelect === "all"
+				? confirm(
+						"Estas seguro de realizar el cambio en todos los colores? Recordá que perderás las imágenes asignadas específicamente a cada uno de ellos",
+				  )
+				: true;
+
+		if (aplicarTodasMarcas && aplicarTodosColores)
 			dispatch(
 				updateImagesSubCategoriesProducts(
 					categorieSelect,
@@ -103,7 +120,7 @@ const ImagesAdministration = () => {
 			);
 		setShowAlertSumbit(true);
 	};
-	console.log(marcaSelect);
+	console.log(showBtnAddImage);
 	return (
 		<div className="imagesAdministration-container">
 			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
@@ -143,6 +160,7 @@ const ImagesAdministration = () => {
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => {
+							dispatch(resetRequestedValuesStore());
 							setMarcaSelect(e.value);
 							setShowBtnAddImage(false);
 						}}
