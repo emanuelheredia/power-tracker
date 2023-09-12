@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import swal from "sweetalert";
 import ImagesAdministration from "./ImagesAdministration";
 import FilesAdministrator from "./FilesAdministration";
+import AddNewProduct from "./AddNewProduct";
 const AdminDashBoard = () => {
 	const { products } = useSelector((state) => state);
 	const [showSpinner, setShowSpinner] = useState(false);
@@ -38,8 +39,9 @@ const AdminDashBoard = () => {
 				showSpinner={showSpinner}
 				setShowSpinner={setShowSpinner}
 			/>
+			<AddNewProduct />
+			<ImagesAdministration />
 			{showAlertSumbit && showAlert(msgSwap)}
-			<ImagesAdministration />{" "}
 		</div>
 	);
 };
