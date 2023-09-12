@@ -8,8 +8,6 @@ import {
 } from "../../../src/redux/actions/products.actions";
 import { Spinner } from "../spinner/Spinner";
 
-import "./filesAdministration.css";
-
 const FilesAdministrator = ({ showSpinner, setShowSpinner }) => {
 	const dispatch = useDispatch();
 	const [data, setData] = useState([]);

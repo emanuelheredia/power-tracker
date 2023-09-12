@@ -1,5 +1,5 @@
 //IU Settings
-
+@import "./variables/colors";
 
 
 
@@ -7,6 +7,12 @@
 @import "./components/login";
 @import "./components/userDashBoard";
 @import "./components/cardProduct";
+@import "./components/productModal";
+@import "./components/imagesAdministration";
+@import "./components/adminDashBoard.scss";
+@import "./components/filesAdministration";
+@import "./components/imageCard";
+@import "./components/header";
 
 
 //Screens

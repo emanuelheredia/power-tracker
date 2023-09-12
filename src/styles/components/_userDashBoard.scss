@@ -12,11 +12,15 @@
     border-radius: 50%;
     top: 50vh;
     right: 0;
-    color: rgb(255, 104, 3);
+    color: $color-principal;
     padding: 0;
     margin-right: 1rem;
     width: auto;
     height: 1.3rem;
+    &:hover{
+        color: $color-hover;
+        }
+
 }
 .btn-scrollUp{
     position: fixed;
@@ -24,12 +28,16 @@
     border-radius: 50%;
     top: 60vh;
     right: 0;
-    color: rgb(255, 104, 3);
+    color: $color-principal;
     padding: 0;
     margin-right: 1rem;
     width: auto;
     height: 1.3rem;
     cursor: pointer;
+    &:hover{
+        color: $color-hover;
+    }
+
 }
 .btn-whatsapp{
     position: fixed;

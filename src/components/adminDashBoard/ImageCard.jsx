@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./imageCard.css";
 import { FiEdit3, FiCheck, FiX, FiTrash2 } from "react-icons/fi";
 
 const ImageCard = ({ imgUrl, imagesUrl, index, setNewUrlImages, update }) => {

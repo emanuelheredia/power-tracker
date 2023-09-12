@@ -17,8 +17,11 @@
     border-radius: 50%;
     padding: 2px;
     color: whitesmoke;
-    background-color: orange;
+    background-color: $color-principal;
     cursor: pointer;
+    &:hover{
+        transform: scale(1.1);
+    }
 }
 .ImageCard-deleteIcon{
     position: absolute;
@@ -28,12 +31,11 @@
     border-radius: 50%;
     padding: 2px;
     color: whitesmoke;
-    background-color: orange;
+    background-color: $color-principal;
     cursor: pointer;
-
-}
-.ImageCard-editIcon:hover{
-transform: scale(1.1);
+    &:hover{
+        transform: scale(1.1);
+    }
 }
 .imageCard-inputEdit{
     position: absolute;
@@ -41,9 +43,10 @@ transform: scale(1.1);
     top: 50%;
     left: 0;
     padding: 5px;
-}
-.imageCard-inputEdit:focus{
-    transform: scale(1.2);
+
+    &:focus{
+        transform: scale(1.2);
+    }   
 }
 .imageCard-btnCancel{
     position: absolute;

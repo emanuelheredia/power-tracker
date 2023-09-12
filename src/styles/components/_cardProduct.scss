@@ -80,7 +80,7 @@
     min-width: 70px;
     height: 100%;
     background-color: rgb(48, 47, 47);
-    color: rgb(255, 145, 0);
+    color: $color-principal;
     margin: 0;
     padding: 0;
     display: flex;
@@ -118,7 +118,7 @@
 }
 .userDashBoard-container-inputsSearch>div>h5{
     margin: 5px 0 0 0;
-    color: rgb(255, 145, 0);
+    color: $color-principal;
 }
 @media (min-width:1000px){
 
@@ -141,7 +141,7 @@
         min-width: 70px;
         height: 100%;
         background-color: rgb(48, 47, 47);
-        color: rgb(255, 145, 0);
+        color: $color-principal;
         margin: 0;
         padding: 0;
         display: flex;

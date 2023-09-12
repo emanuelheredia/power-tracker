@@ -37,7 +37,7 @@
     width: 100%;
     flex-direction: column;
     gap: .5rem;
-    color: orange;
+    color: $color-principal;
     font-weight: 900;
 
     input{
@@ -47,7 +47,7 @@
     }
 }
 .form-boton{
-    background-color: orange;
+    background-color: $color-principal;
     margin-top: 1rem;
     padding: .5rem;
     height: 3rem;
@@ -60,7 +60,7 @@
     cursor: pointer;
 
     &:hover{
-        background-color: orangered;
+        background-color: $color-hover;
     }
 }
 .form_background{

@@ -17,7 +17,7 @@
     flex-wrap: wrap;
 }
 .adminDashBoard-btnShowImagesCategory{
-    background-color: orange;
+    background-color: $color-principal;
     margin-top: 1rem;
     padding: .5rem;
     height: 3rem;
@@ -28,6 +28,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    &:hover{
+        background-color: $color-hover;
+    }
 }
 @media (min-width:1030px){
     .imagesAdministration-container{

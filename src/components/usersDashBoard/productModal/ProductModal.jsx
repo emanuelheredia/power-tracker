@@ -1,6 +1,5 @@
 import React from "react";
 import Modal from "react-modal";
-import "./productModal.css";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 

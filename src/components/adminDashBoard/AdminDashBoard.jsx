@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./adminDashBoard.css";
 import { useSelector } from "react-redux";
 import swal from "sweetalert";
 import ImagesAdministration from "./ImagesAdministration";
