@@ -52,8 +52,8 @@
     height: 1.5;
 
     &:hover{
-    font-size: 1.8rem;
-    }
+        color:rgb(0, 88, 0);
+        }
 }
 .userDashBoard-container-headTable{
     background-color: rgb(238, 165, 29);
@@ -87,10 +87,9 @@
     .btn-whatsapp{
         font-size: 2rem;
         height: 2;
-
-        :hover{
-            font-size:2.3rem;
-        }
+        &:hover{
+            color:rgb(0, 88, 0);
+            }
     }
 }
 @media (min-width:1500px){
@@ -101,8 +100,8 @@
     .btn-whatsapp{
         font-size: 3rem;
         height: 3;  
-        :hover{
-            font-size: 3.2rem;
+        &:hover{
+            color:rgb(0, 88, 0);
             }
     }
     .userDashBoard-container{
