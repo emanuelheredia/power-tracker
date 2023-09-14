@@ -23,6 +23,15 @@ import {
 	GET_VALUES_ATTRIBUTES_SELECTS,
 	GET_VALUES_ATTRIBUTES_SELECTS_EXITO,
 	GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
+	ADD_NEW_PRODUCT,
+	ADD_NEW_PRODUCT_EXITO,
+	ADD_NEW_PRODUCT_ERROR,
+	DELETE_ONE_PRODUCT,
+	DELETE_ONE_PRODUCT_EXITO,
+	DELETE_ONE_PRODUCT_ERROR,
+	RESET_RESPONSE_MSGS,
+	RESET_RESPONSE_MSGS_EXITO,
+	RESET_RESPONSE_MSGS_ERROR,
 } from "../types";
 import clienteAxios from "../../../src/axios";
 
@@ -57,6 +66,82 @@ const uploadAllProductsExito = (res) => ({
 const uploadAllProductsError = (res) => ({
 	payload: res,
 	type: UPLOAD_ALL_PRODUCTS_ERROR,
+});
+
+//ADD NEW PRODUCT
+export const addNewProduct = (product) => {
+	return async (dispatch) => {
+		dispatch(addNewProductDB());
+		try {
+			let resp = await clienteAxios({
+				method: "post",
+				url: "add-new-product",
+				data: product,
+			});
+			dispatch(
+				addNewProductDBExito({
+					msg: "Almacenamiento Exitoso",
+					text: resp.data.msg,
+				}),
+			);
+		} catch (error) {
+			dispatch(
+				addNewProductDBError({
+					msg: "Error en el almacenado",
+					text: error.response.data.msg,
+				}),
+			);
+		}
+	};
+};
+
+const addNewProductDB = () => ({ type: ADD_NEW_PRODUCT });
+
+const addNewProductDBExito = (res) => ({
+	payload: res,
+	type: ADD_NEW_PRODUCT_EXITO,
+});
+const addNewProductDBError = (res) => ({
+	payload: res,
+	type: ADD_NEW_PRODUCT_ERROR,
+});
+
+//ADD NEW PRODUCT
+export const deleteProduct = (id) => {
+	return async (dispatch) => {
+		dispatch(deleteProductDB());
+		try {
+			let resp = await clienteAxios({
+				method: "delete",
+				url: "products",
+				data: { id: id },
+			});
+			dispatch(
+				deleteProductDBExito({
+					msg: "Eliminación Exitosa",
+					text: resp.data.msg,
+				}),
+			);
+		} catch (error) {
+			dispatch(
+				deleteProductDBError({
+					msg: "Error en la eliminación",
+					text: error.response.data.msg,
+				}),
+			);
+		}
+	};
+};
+
+const deleteProductDB = () => ({ type: DELETE_ONE_PRODUCT });
+
+const deleteProductDBExito = (res) => ({
+	payload: res,
+	type: DELETE_ONE_PRODUCT_EXITO,
+});
+const deleteProductDBError = (res) => ({
+	payload: res,
+	type: DELETE_ONE_PRODUCT_ERROR,
 });
 
 // UPDATE PRICES FROM DB
@@ -296,4 +381,26 @@ const resetRequestedValuesExito = () => ({
 const resetRequestedValuesError = (res) => ({
 	payload: res,
 	type: RESET_REQUESTED_VALUES_ERROR,
+});
+
+//Reset Values Images Store
+export const resetResponseMsgsStore = () => {
+	return async (dispatch) => {
+		dispatch(resetResponseMsgs());
+		try {
+			dispatch(resetResponseMsgsExito());
+		} catch (error) {
+			dispatch(resetResponseMsgsError());
+		}
+	};
+};
+
+const resetResponseMsgs = () => ({ type: RESET_RESPONSE_MSGS });
+
+const resetResponseMsgsExito = () => ({
+	type: RESET_RESPONSE_MSGS_EXITO,
+});
+const resetResponseMsgsError = (res) => ({
+	payload: res,
+	type: RESET_RESPONSE_MSGS_ERROR,
 });

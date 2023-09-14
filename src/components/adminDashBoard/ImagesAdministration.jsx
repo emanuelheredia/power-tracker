@@ -12,8 +12,7 @@ import ImageCard from "./ImageCard";
 import { structuringSelectValues } from "../helpers/helpers.js";
 const ImagesAdministration = () => {
 	const dispatch = useDispatch();
-	const { products } = useSelector((state) => state);
-	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
+	const products = useSelector((state) => state.products);
 	const [categorieSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [marcaSelect, setMarcaSelect] = useState("");
@@ -21,6 +20,10 @@ const ImagesAdministration = () => {
 	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
 	const [showBtnAddImage, setShowBtnAddImage] = useState(false);
 	const [newUrlImages, setNewUrlImages] = useState([]);
+	const [getImagesBy, setGetImagesBy] = useState({
+		categorySearch: true,
+		codeSearch: false,
+	});
 	useEffect(() => {
 		dispatch(resetRequestedValuesStore());
 		if (products.subCategories.length === 0)
@@ -50,14 +53,11 @@ const ImagesAdministration = () => {
 				products.optionUpdateImage.color.length == 0)
 		) {
 			setShowBtnGetImages(true);
-			console.log("entre");
 		} else {
 			setShowBtnGetImages(false);
-			console.log("entre3");
 		}
 		if (marcaSelect === "all" || colorSelect === "all") {
 			dispatch(resetRequestedValuesStore());
-			console.log("entre2");
 			setShowBtnGetImages(false);
 			setShowBtnAddImage(true);
 		}
@@ -107,7 +107,6 @@ const ImagesAdministration = () => {
 						"Estas seguro de realizar el cambio en todos los colores? Recordá que perderás las imágenes asignadas específicamente a cada uno de ellos",
 				  )
 				: true;
-
 		if (aplicarTodasMarcas && aplicarTodosColores)
 			dispatch(
 				updateImagesSubCategoriesProducts(
@@ -117,12 +116,41 @@ const ImagesAdministration = () => {
 					marcaSelect,
 				),
 			);
-		setShowAlertSumbit(true);
 	};
-	console.log(showBtnAddImage);
+	const handleChangeRadio = (e) => {
+		let anotherAttribute =
+			e.target.value === "codeSearch" ? "categorySearch" : "codeSearch";
+		setGetImagesBy({
+			...getImagesBy,
+			[e.target.value]: true,
+			[anotherAttribute]: false,
+		});
+	};
 	return (
 		<div className="imagesAdministration-container">
 			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
+			<div style={{ display: "flex", gap: "1rem" }}>
+				<div>
+					<input
+						type="radio"
+						name="search"
+						id="categorySearch"
+						value="categorySearch"
+						onClick={handleChangeRadio}
+					/>
+					<label htmlFor="categorySearch">Por Categoría</label>
+				</div>
+				<div>
+					<input
+						type="radio"
+						name="search"
+						id="codeSearch"
+						value="codeSearch"
+						onClick={handleChangeRadio}
+					/>
+					<label htmlFor="codeSearch">Por Código</label>
+				</div>
+			</div>
 			<div style={{ width: "90%" }}>
 				<h5 style={{ marginTop: "0" }}>Categoria</h5>
 				<Select

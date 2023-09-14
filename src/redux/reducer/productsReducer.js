@@ -23,6 +23,15 @@ import {
 	GET_VALUES_ATTRIBUTES_SELECTS,
 	GET_VALUES_ATTRIBUTES_SELECTS_EXITO,
 	GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
+	ADD_NEW_PRODUCT,
+	ADD_NEW_PRODUCT_EXITO,
+	ADD_NEW_PRODUCT_ERROR,
+	DELETE_ONE_PRODUCT,
+	DELETE_ONE_PRODUCT_EXITO,
+	DELETE_ONE_PRODUCT_ERROR,
+	RESET_RESPONSE_MSGS,
+	RESET_RESPONSE_MSGS_EXITO,
+	RESET_RESPONSE_MSGS_ERROR,
 } from "../types";
 const initialState = {
 	products: [],
@@ -47,8 +56,11 @@ export default function productsReducer(state = initialState, action) {
 		case GET_OPTIONS_TO_UPDATE_IMAGES:
 		case UPLOAD_ALL_PRODUCTS:
 		case UPDATE_ALL_PRODUCTS:
+		case ADD_NEW_PRODUCT:
 		case GET_ALL_PRODUCTS:
+		case DELETE_ONE_PRODUCT:
 		case GET_IMAGES_SUBCATEGORIES:
+		case RESET_RESPONSE_MSGS:
 		case RESET_REQUESTED_VALUES:
 		case UPDATE_IMAGES_SUBCATEGORIES:
 		case GET_VALUES_ATTRIBUTES_SELECTS:
@@ -65,6 +77,22 @@ export default function productsReducer(state = initialState, action) {
 				msg: action.payload,
 			};
 		case UPDATE_ALL_PRODUCTS_EXITO:
+			return {
+				...state,
+				loading: false,
+				error: false,
+				msg: action.payload.msg,
+				text: action.payload.text,
+			};
+		case ADD_NEW_PRODUCT_EXITO:
+			return {
+				...state,
+				loading: false,
+				error: false,
+				msg: action.payload.msg,
+				text: action.payload.text,
+			};
+		case DELETE_ONE_PRODUCT_EXITO:
 			return {
 				...state,
 				loading: false,
@@ -109,7 +137,15 @@ export default function productsReducer(state = initialState, action) {
 		case RESET_REQUESTED_VALUES_EXITO:
 			return {
 				...state,
-				loading: true,
+				loading: false,
+				error: false,
+				msg: initialState.msg,
+				text: initialState.text,
+			};
+		case RESET_RESPONSE_MSGS_EXITO:
+			return {
+				...state,
+				loading: false,
 				error: false,
 				imagesOfSubCategory: [],
 			};
@@ -134,6 +170,22 @@ export default function productsReducer(state = initialState, action) {
 				loading: false,
 				error: true,
 				msg: action.payload.msg,
+			};
+		case DELETE_ONE_PRODUCT_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: true,
+				msg: action.payload.msg,
+				text: action.payload.text,
+			};
+		case ADD_NEW_PRODUCT_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: true,
+				msg: action.payload.msg,
+				text: action.payload.text,
 			};
 		case GET_ALL_PRODUCTS_ERROR:
 			return {
@@ -162,6 +214,12 @@ export default function productsReducer(state = initialState, action) {
 				loading: false,
 				error: true,
 				msg: action.payload,
+			};
+		case RESET_REQUESTED_VALUES_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: true,
 			};
 		case RESET_REQUESTED_VALUES_ERROR:
 			return {

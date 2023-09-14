@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { structuringSelectValues } from "../helpers/helpers";
-import { useSelector } from "react-redux";
-import AddNewSeccions from "./AddNewSeccions";
+import { useSelector, useDispatch } from "react-redux";
+import AddNewProductSeccions from "./AddNewProductSeccions";
+import {
+	getValuesAttributeSelects,
+	addNewProduct,
+} from "../../redux/actions/products.actions";
 
 const initialProductInfo = {
 	code: "",
@@ -10,39 +14,35 @@ const initialProductInfo = {
 	color: "",
 	proveedor: "",
 	moreInfo: "",
-	price: 0,
 	mark: "",
+	vehiculo: "",
 	images: [],
+	price: 0,
 };
 const AddNewProduct = () => {
-	const { products } = useSelector((state) => state.products);
+	const products = useSelector((state) => state.products);
 	const [productInfo, setProductInfo] = useState(initialProductInfo);
-	/* 	useEffect(() => {
-		dispatch(resetRequestedValuesStore());
-		if (products.subCategories.length === 0)
-			dispatch(getValuesAttributeSelects("subCategory"));
-		if (products.subCategories.length === 0)
-			dispatch(getValuesAttributeSelects("subCategory"));
+	const dispatch = useDispatch();
+	useEffect(() => {
+		if (products.valuesFilter.category.length === 0)
+			dispatch(getValuesAttributeSelects("category"));
+		if (products.valuesFilter.mark.length === 0)
+			dispatch(getValuesAttributeSelects("mark"));
+		if (products.valuesFilter.proveedor.length === 0)
+			dispatch(getValuesAttributeSelects("proveedor"));
+		if (products.valuesFilter.color.length < 6)
+			dispatch(getValuesAttributeSelects("color"));
 	}, []);
- */
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		dispatch(addNewProduct(productInfo));
+	};
 	return (
-		<form className="addNewProduct-container">
+		<form className="addNewProduct-container" onSubmit={handleSubmit}>
 			<h2>Agregar Nuevo Producto</h2>
-			<div className="addNewProduct-campos">
-				{/* 				<label htmlFor="code">Codigo</label>
-				<input
-					name="code"
-					type="code"
-					id="code"
-					placeholder="Ingresá tel código del producto"
-					onChange={handleChange}
-					required
-				/>
- */}{" "}
-			</div>
-			<div className="addNewProduct-campos" style={{ width: "90%" }}>
+			<div style={{ width: "90%" }}>
 				{Object.entries(initialProductInfo).map((seccion, index) => (
-					<AddNewSeccions
+					<AddNewProductSeccions
 						key={index}
 						productInfo={productInfo}
 						setProductInfo={setProductInfo}
@@ -50,6 +50,9 @@ const AddNewProduct = () => {
 					/>
 				))}
 			</div>
+			<button type="submit" className="addNewProduct-btnSubmit">
+				Guardar Producto
+			</button>
 		</form>
 	);
 };

@@ -2,40 +2,61 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
     background-color: rgba(255, 174, 0, 0.445);
     border-radius: 10px;
     padding: 1.5rem;
-    width: 60%;
+    width: 80%;
+}
+.addNewProduct-campos-container{
+    width: 100%;
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    font-weight: 900;
+        & label{
+            color: $color-principal;
+        }
+        & input{
+            padding: .7rem;
+            border-radius: 5px;
+            border: none;
+            width: 90%;
+            margin-top: .5rem;
+        }
 }
 .addNewProduct-campos{
     display: flex;
     width: 100%;
-    flex-direction: column;
-    align-items: center;
     gap: .5rem;
+    align-items: center;
     color: $color-principal;
-    font-weight: 900;
-    & label{
-        color: $color-principal;
-    }
-    & input{
-        padding: .7rem;
-        border-radius: 5px;
-        border: solid thin;
-        width: 90%;
-    }
 }
 .addNewProduct-IconoPlus{
-    background-color: whitesmoke;
+    color: whitesmoke;
+    background-color: $color-principal;
+    border-color: whitesmoke;
     cursor: pointer;
     border: 2px solid $color-principal ;
     padding: .5rem;
     border-radius: 50%;
-    font-size: 2rem;
+    font-size: .7rem;
     &:hover{
-        border-color: whitesmoke;
-        color: whitesmoke;
-        background-color: $color-principal;
+        background-color: whitesmoke;
+            color: $color-principal;
+    }
+}
+.addNewProduct-btnSubmit{
+    background-color: $color-principal;
+    margin-top: 1rem;
+    padding: .5rem;
+    height: 3rem;
+    width: 90%;
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: $color-hover;
     }
 }

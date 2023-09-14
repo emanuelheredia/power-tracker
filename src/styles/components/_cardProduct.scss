@@ -1,4 +1,5 @@
 .userDashBoard-container-rowTable{
+    position: relative;
     font-size: .6rem;
     margin: .5rem 0 .5rem 0;
     border: 1px solid;
@@ -119,6 +120,23 @@
 .userDashBoard-container-inputsSearch>div>h5{
     margin: 5px 0 0 0;
     color: $color-principal;
+}
+.cardProduct-deleteIcon{
+    position: absolute;
+    background-color:whitesmoke ;
+    color: $color-principal;
+    border: solid 2px $color-principal;
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 2rem;
+    right: 0;
+    cursor: pointer;
+    &:hover{
+        background-color: $color-principal;
+        color: whitesmoke;
+        border: inherit whitesmoke;
+        
+    }
 }
 @media (min-width:1000px){
 

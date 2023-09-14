@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	getAllProducts,
 	getValuesAttributeSelects,
+	resetResponseMsgsStore,
 } from "../../../src/redux/actions/products.actions";
 import Select from "react-select";
 import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
@@ -12,7 +13,8 @@ import { structuringSelectValues } from "../helpers/helpers.js";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
-	const { products } = useSelector((state) => state);
+	const products = useSelector((state) => state.products);
+	const [msgSwap, setMsgSwap] = useState({});
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
 	const [proveedorSelect, setProveedorSelect] = useState("");
@@ -20,6 +22,7 @@ const UserDashBoard = () => {
 	const [marcaSelect, setMarcaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
+	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		if (products.products.length === 0) dispatch(getAllProducts());
@@ -42,7 +45,7 @@ const UserDashBoard = () => {
 		setProductsFiltered(
 			products.products.filter(
 				(el) =>
-					el.code?.toLowerCase().includes(codeInput) &&
+					el.code?.toLowerCase().includes(codeInput.toLowerCase()) &&
 					el.vehiculo
 						?.toString()
 						.toLowerCase()
@@ -71,6 +74,30 @@ const UserDashBoard = () => {
 		colorSelect,
 		marcaSelect,
 	]);
+	useEffect(() => {
+		if (!products.loading && products.msg) {
+			setShowAlertSumbit(true);
+		}
+		setMsgSwap({
+			title: products.msg,
+			text: products.text || "",
+			icon: products.error ? "error" : "success",
+		});
+	}, [products.msg, products.error, products.text]);
+	const showAlert = ({ title, text, icon }) => {
+		swal({
+			title: title,
+			text: text,
+			icon: icon,
+			button: "Aceptar",
+		}).then((respuesta) => {
+			if (respuesta) {
+				setShowAlertSumbit(false);
+				setMsgSwap({});
+				dispatch(resetResponseMsgsStore());
+			}
+		});
+	};
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -200,6 +227,7 @@ const UserDashBoard = () => {
 			>
 				<FaWhatsapp />
 			</a>
+			{showAlertSumbit && showAlert(msgSwap)}
 		</div>
 	);
 };

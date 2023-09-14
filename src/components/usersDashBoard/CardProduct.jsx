@@ -1,7 +1,12 @@
 import React from "react";
 import ProductModal from "./productModal/ProductModal";
+import { FiTrash2 } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProduct } from "../../redux/actions/products.actions";
 
 const CardProduct = ({ product, ocultarPrice }) => {
+	const auth = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 	const formatearPrecio = (precio) => {
 		if (product.proveedor == "ZIEL TECHNOLOGY") {
 			let indexOfPoint = precio.toString().indexOf(".");
@@ -19,9 +24,21 @@ const CardProduct = ({ product, ocultarPrice }) => {
 		}
 		return priceAsArray.join("");
 	};
+	const handleDelete = () => {
+		if (confirm("Está seguro que desea eliminar este producto?")) {
+			dispatch(deleteProduct(product._id));
+		} else {
+			console.log("no confirmado");
+		}
+	};
 	return (
 		<div className="userDashBoard-container-rowTable">
-			{" "}
+			{auth.login && (
+				<FiTrash2
+					className="cardProduct-deleteIcon"
+					onClick={handleDelete}
+				/>
+			)}
 			<div className="userDashBoard-item-celdaCode">
 				<p>Codigo</p>
 				<p>{product.code ? product.code : "sin datos"}</p>

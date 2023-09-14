@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import ImagesAdministration from "./ImagesAdministration";
 import FilesAdministrator from "./FilesAdministration";
 import AddNewProduct from "./AddNewProduct";
+import { resetResponseMsgsStore } from "../../redux/actions/products.actions";
 const AdminDashBoard = () => {
-	const { products } = useSelector((state) => state);
+	const dispatch = useDispatch();
+	const products = useSelector((state) => state.products);
 	const [showSpinner, setShowSpinner] = useState(false);
 	const [msgSwap, setMsgSwap] = useState({});
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
@@ -17,9 +19,9 @@ const AdminDashBoard = () => {
 		setMsgSwap({
 			title: products.msg,
 			text: products.text || "",
-			icon: products.error ? "danger" : "success",
+			icon: products.error ? "error" : "success",
 		});
-	}, [products.msg]);
+	}, [products.msg, products.error, products.text]);
 	const showAlert = ({ title, text, icon }) => {
 		swal({
 			title: title,
@@ -30,6 +32,7 @@ const AdminDashBoard = () => {
 			if (respuesta) {
 				setShowAlertSumbit(false);
 				setMsgSwap({});
+				dispatch(resetResponseMsgsStore());
 			}
 		});
 	};
@@ -39,7 +42,7 @@ const AdminDashBoard = () => {
 				showSpinner={showSpinner}
 				setShowSpinner={setShowSpinner}
 			/>
-			<AddNewProduct />
+			<AddNewProduct setShowSpinner={setShowSpinner} />
 			<ImagesAdministration />
 			{showAlertSumbit && showAlert(msgSwap)}
 		</div>
