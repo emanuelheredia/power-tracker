@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	getOptionsSelectToUpdateImage,
-	getImagesOfSubCategories,
+	getImagesProduct,
 	resetRequestedValuesStore,
-	updateImagesSubCategoriesProducts,
+	updateImagesProduct,
 	getValuesAttributeSelects,
 } from "../../../src/redux/actions/products.actions";
 import Select from "react-select";
@@ -13,25 +13,34 @@ import { structuringSelectValues } from "../helpers/helpers.js";
 const ImagesAdministration = () => {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products);
+	const { mark: markOptions, color: colorOptions } =
+		products.optionUpdateImage;
+	const { subCategories: subCategoryOptions, imagesProduct } = products;
 	const [categorieSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [marcaSelect, setMarcaSelect] = useState("");
+	const [codeInput, setCodeInput] = useState("");
 	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
 	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
 	const [showBtnAddImage, setShowBtnAddImage] = useState(false);
-	const [newUrlImages, setNewUrlImages] = useState([]);
+	const [newUrl, setNewUrl] = useState([]);
 	const [getImagesBy, setGetImagesBy] = useState({
 		categorySearch: true,
 		codeSearch: false,
 	});
 	useEffect(() => {
-		dispatch(resetRequestedValuesStore());
-		if (products.subCategories.length === 0)
+		if (subCategoryOptions.length === 0)
 			dispatch(getValuesAttributeSelects("subCategory"));
+		dispatch(resetRequestedValuesStore());
 	}, []);
 	useEffect(() => {
-		setNewUrlImages(products.imagesOfSubCategory);
-	}, [products.imagesOfSubCategory]);
+		if (products.error) {
+			setShowBtnAddImage(false);
+		}
+	}, [products.error]);
+	useEffect(() => {
+		setNewUrl(imagesProduct);
+	}, [imagesProduct]);
 	useEffect(() => {
 		if (categorieSelect) {
 			dispatch(getOptionsSelectToUpdateImage(categorieSelect, "color"));
@@ -39,21 +48,24 @@ const ImagesAdministration = () => {
 		}
 	}, [categorieSelect]);
 	useEffect(() => {
-		if (newUrlImages !== products.imagesOfSubCategory) {
+		if (newUrl !== imagesProduct && newUrl.length !== 0) {
 			setShowBtnUpdateImages(true);
 		} else {
 			setShowBtnUpdateImages(false);
 		}
-	}, [newUrlImages]);
+	}, [newUrl]);
+	console.log(imagesProduct, colorOptions, markOptions);
 	useEffect(() => {
 		if (
 			categorieSelect &&
-			(products.optionUpdateImage.mark.length === 0 || marcaSelect) &&
-			((products.optionUpdateImage.color.length > 0 && colorSelect) ||
-				products.optionUpdateImage.color.length == 0)
+			(markOptions.length === 0 || marcaSelect) &&
+			((colorOptions.length > 0 && colorSelect) ||
+				colorOptions.length == 0)
 		) {
+			console.log("entre si");
 			setShowBtnGetImages(true);
 		} else {
+			console.log("entre no");
 			setShowBtnGetImages(false);
 		}
 		if (marcaSelect === "all" || colorSelect === "all") {
@@ -61,16 +73,11 @@ const ImagesAdministration = () => {
 			setShowBtnGetImages(false);
 			setShowBtnAddImage(true);
 		}
-	}, [
-		categorieSelect,
-		colorSelect,
-		products.optionUpdateImage.color,
-		marcaSelect,
-	]);
+	}, [categorieSelect, colorSelect, colorOptions, marcaSelect, markOptions]);
 	useEffect(() => {
-		if (products.optionUpdateImage.mark.length === 0) setMarcaSelect("");
-		if (products.optionUpdateImage.color.length === 0) setColorSelect("");
-	}, [products.optionUpdateImage.color, products.optionUpdateImage.mark]);
+		if (markOptions.length === 0) setMarcaSelect("");
+		if (colorOptions.length === 0) setColorSelect("");
+	}, [colorOptions, markOptions]);
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -86,7 +93,8 @@ const ImagesAdministration = () => {
 	});
 	const handleClickGetImges = () => {
 		dispatch(
-			getImagesOfSubCategories(
+			getImagesProduct(
+				codeInput,
 				categorieSelect,
 				colorSelect || "",
 				marcaSelect || "",
@@ -109,9 +117,10 @@ const ImagesAdministration = () => {
 				: true;
 		if (aplicarTodasMarcas && aplicarTodosColores)
 			dispatch(
-				updateImagesSubCategoriesProducts(
+				updateImagesProduct(
+					codeInput,
 					categorieSelect,
-					newUrlImages,
+					newUrl,
 					colorSelect,
 					marcaSelect,
 				),
@@ -125,6 +134,15 @@ const ImagesAdministration = () => {
 			[e.target.value]: true,
 			[anotherAttribute]: false,
 		});
+		if (e.target.value === "categorySearch") setCodeInput("");
+		setShowBtnGetImages(false);
+		setShowBtnAddImage(false);
+		dispatch(resetRequestedValuesStore());
+	};
+	const handleChangeInput = (e) => {
+		setNewUrl([]);
+		setShowBtnAddImage(false);
+		setCodeInput(e.target.value.toUpperCase());
 	};
 	return (
 		<div className="imagesAdministration-container">
@@ -151,73 +169,83 @@ const ImagesAdministration = () => {
 					<label htmlFor="codeSearch">Por Código</label>
 				</div>
 			</div>
-			<div style={{ width: "90%" }}>
-				<h5 style={{ marginTop: "0" }}>Categoria</h5>
-				<Select
-					placeholder=""
-					name="categorie"
-					className="adminInfo-teamSelect"
-					options={structuringSelectValues(
-						products.valuesFilter.subCategory,
-						false,
+			{getImagesBy.categorySearch && (
+				<div className="imagesAdministration-container">
+					<div style={{ width: "90%" }}>
+						<h5 style={{ marginTop: "0" }}>Categoria</h5>
+						<Select
+							placeholder=""
+							name="categorie"
+							className="adminInfo-teamSelect"
+							options={structuringSelectValues(
+								products.valuesFilter.subCategory,
+								false,
+							)}
+							type="text"
+							styles={selectStyles()}
+							onChange={(e) => {
+								setCategoriaSelect(e.value);
+								setColorSelect("");
+								dispatch(resetRequestedValuesStore());
+								setShowBtnAddImage(false);
+							}}
+						/>
+					</div>
+					{markOptions.length > 0 && (
+						<div style={{ width: "90%" }}>
+							<h5>Marca</h5>
+							<Select
+								placeholder=""
+								name="marca"
+								className="adminInfo-teamSelect"
+								options={structuringSelectValues(
+									markOptions,
+									true,
+									"--  TODAS  --",
+									"all",
+								)}
+								type="text"
+								styles={selectStyles()}
+								onChange={(e) => {
+									dispatch(resetRequestedValuesStore());
+									setMarcaSelect(e.value);
+									setShowBtnAddImage(false);
+								}}
+							/>
+						</div>
 					)}
-					type="text"
-					styles={selectStyles()}
-					onChange={(e) => {
-						setCategoriaSelect(e.value);
-						setColorSelect("");
-						dispatch(resetRequestedValuesStore());
-						setShowBtnAddImage(false);
-					}}
+					{colorOptions.length > 0 && (
+						<div style={{ width: "90%" }}>
+							<h5>Color</h5>
+							<Select
+								placeholder=""
+								name="color"
+								className="adminInfo-teamSelect"
+								options={structuringSelectValues(
+									colorOptions,
+									true,
+									"--  APLICAR A TODOS  --",
+									"all",
+								)}
+								type="text"
+								styles={selectStyles()}
+								onChange={(e) => {
+									setColorSelect(e.value);
+									dispatch(resetRequestedValuesStore());
+									setShowBtnAddImage(false);
+								}}
+							/>
+						</div>
+					)}
+				</div>
+			)}
+			{getImagesBy.codeSearch && (
+				<input
+					onChange={handleChangeInput}
+					className="imagesAdministratio-codeInput"
 				/>
-			</div>
-			{products.optionUpdateImage.mark.length > 0 && (
-				<div style={{ width: "90%" }}>
-					<h5>Marca</h5>
-					<Select
-						placeholder=""
-						name="marca"
-						className="adminInfo-teamSelect"
-						options={structuringSelectValues(
-							products.optionUpdateImage.mark,
-							true,
-							"--  TODAS  --",
-							"all",
-						)}
-						type="text"
-						styles={selectStyles()}
-						onChange={(e) => {
-							dispatch(resetRequestedValuesStore());
-							setMarcaSelect(e.value);
-							setShowBtnAddImage(false);
-						}}
-					/>
-				</div>
 			)}
-			{products.optionUpdateImage.color.length > 0 && (
-				<div style={{ width: "90%" }}>
-					<h5>Color</h5>
-					<Select
-						placeholder=""
-						name="color"
-						className="adminInfo-teamSelect"
-						options={structuringSelectValues(
-							products.optionUpdateImage.color,
-							true,
-							"--  APLICAR A TODOS  --",
-							"all",
-						)}
-						type="text"
-						styles={selectStyles()}
-						onChange={(e) => {
-							setColorSelect(e.value);
-							dispatch(resetRequestedValuesStore());
-							setShowBtnAddImage(false);
-						}}
-					/>
-				</div>
-			)}
-			{showBtnGetImages && (
+			{(showBtnGetImages || (getImagesBy.codeSearch && codeInput)) && (
 				<button
 					onClick={handleClickGetImges}
 					className="adminDashBoard-btnShowImagesCategory"
@@ -226,23 +254,23 @@ const ImagesAdministration = () => {
 				</button>
 			)}
 			<div className="adminDashBoard-imgOfCategory-container">
-				{newUrlImages.length > 0 &&
-					newUrlImages.map((img, index) => (
+				{newUrl.length > 0 &&
+					newUrl.map((img, index) => (
 						<ImageCard
 							key={index}
 							index={index}
-							imagesUrl={newUrlImages}
+							imagesUrl={newUrl}
 							imgUrl={img}
-							setNewUrlImages={setNewUrlImages}
+							setNewUrl={setNewUrl}
 							update={true}
 						/>
 					))}
 				{showBtnAddImage && (
 					<ImageCard
-						index={newUrlImages.length}
-						imagesUrl={newUrlImages}
+						index={newUrl.length}
+						imagesUrl={newUrl}
 						imgUrl="https://thumbs.dreamstime.com/b/c%C3%A1mara-agregar-icono-o-logotipo-s%C3%ADmbolo-aislado-vector-ilustraci%C3%B3n-alta-calidad-negro-estilo-iconos-211039809.jpg"
-						setNewUrlImages={setNewUrlImages}
+						setNewUrl={setNewUrl}
 						update={false}
 					/>
 				)}

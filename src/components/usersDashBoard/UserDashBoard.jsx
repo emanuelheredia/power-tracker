@@ -25,7 +25,7 @@ const UserDashBoard = () => {
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
-		if (products.products.length === 0) dispatch(getAllProducts());
+		/* if (products.products.length === 0)  */ dispatch(getAllProducts());
 		if (products.valuesFilter.category.length === 0)
 			dispatch(getValuesAttributeSelects("category"));
 		if (products.valuesFilter.mark.length === 0)

@@ -32,6 +32,14 @@
         background-color: $color-hover;
     }
 }
+.imagesAdministratio-codeInput{
+    padding: .7rem;
+    border-radius: 5px;
+    border: none;
+    width: 90%;
+    margin-top: .5rem;
+
+}
 @media (min-width:1030px){
     .imagesAdministration-container{
     width: 60%;

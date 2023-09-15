@@ -5,9 +5,9 @@ import {
 	UPDATE_ALL_PRODUCTS,
 	UPDATE_ALL_PRODUCTS_EXITO,
 	UPDATE_ALL_PRODUCTS_ERROR,
-	UPDATE_IMAGES_SUBCATEGORIES,
-	UPDATE_IMAGES_SUBCATEGORIES_EXITO,
-	UPDATE_IMAGES_SUBCATEGORIES_ERROR,
+	UPDATE_IMAGES_PRODUCT,
+	UPDATE_IMAGES_PRODUCT_EXITO,
+	UPDATE_IMAGES_PRODUCT_ERROR,
 	GET_ALL_PRODUCTS,
 	GET_ALL_PRODUCTS_ERROR,
 	GET_ALL_PRODUCTS_EXITO,
@@ -106,7 +106,7 @@ const addNewProductDBError = (res) => ({
 	type: ADD_NEW_PRODUCT_ERROR,
 });
 
-//ADD NEW PRODUCT
+//DELETE NEW PRODUCT
 export const deleteProduct = (id) => {
 	return async (dispatch) => {
 		dispatch(deleteProductDB());
@@ -291,57 +291,60 @@ const getOptionsSelectToUpdateImageDBError = (res) => ({
 });
 
 // Get Images From Sub Category
-export const getImagesOfSubCategories = (subCategory, color, marca) => {
+export const getImagesProduct = (code, subCategory, color, marca) => {
 	return async (dispatch) => {
-		dispatch(getImagesOfSubCategoriesDB());
+		dispatch(getImagesProductDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "imagesOfSubcategory",
-				data: { subCategory, query: { color, marca } },
+				data: { query: { subCategory, color, marca, code } },
 			});
-			dispatch(getImagesOfSubCategoriesDBExito(resp.data.data));
+			dispatch(getImagesProductDBExito(resp.data.data));
 		} catch (error) {
+			console.log(error);
 			dispatch(
-				getImagesOfSubCategoriesDBError(
-					"Error en la obtención de los colores",
-				),
+				getImagesProductDBError({
+					msg: "Error en la obtención de las imágenes",
+					text: error.response.data.msg,
+				}),
 				console.log(error),
 			);
 		}
 	};
 };
 
-const getImagesOfSubCategoriesDB = () => ({ type: GET_IMAGES_SUBCATEGORIES });
+const getImagesProductDB = () => ({ type: GET_IMAGES_SUBCATEGORIES });
 
-const getImagesOfSubCategoriesDBExito = (res) => ({
+const getImagesProductDBExito = (res) => ({
 	payload: res,
 	type: GET_IMAGES_SUBCATEGORIES_EXITO,
 });
-const getImagesOfSubCategoriesDBError = (res) => ({
+const getImagesProductDBError = (res) => ({
 	payload: res,
 	type: GET_IMAGES_SUBCATEGORIES_ERROR,
 });
 
 //Update Images Products By Sub Category
-export const updateImagesSubCategoriesProducts = (
+export const updateImagesProduct = (
+	code,
 	subCategory,
 	newImages,
 	color,
 	marca,
 ) => {
 	return async (dispatch) => {
-		dispatch(updateImagesSubCategories());
+		dispatch(updateImagesProductDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "update-subCategoryImages",
-				data: { subCategory, newImages, query: { color, marca } },
+				data: { newImages, query: { color, marca, subCategory, code } },
 			});
-			dispatch(updateImagesSubCategoriesExito(resp.data.msg));
+			dispatch(updateImagesProductDBExito(resp.data.msg));
 		} catch (error) {
 			dispatch(
-				updateImagesSubCategoriesError(
+				updateImagesProductDBError(
 					"Error en la actualización de las imagenes",
 				),
 				console.log(error),
@@ -350,15 +353,15 @@ export const updateImagesSubCategoriesProducts = (
 	};
 };
 
-const updateImagesSubCategories = () => ({ type: UPDATE_IMAGES_SUBCATEGORIES });
+const updateImagesProductDB = () => ({ type: UPDATE_IMAGES_PRODUCT });
 
-const updateImagesSubCategoriesExito = (res) => ({
+const updateImagesProductDBExito = (res) => ({
 	payload: res,
-	type: UPDATE_IMAGES_SUBCATEGORIES_EXITO,
+	type: UPDATE_IMAGES_PRODUCT_EXITO,
 });
-const updateImagesSubCategoriesError = (res) => ({
+const updateImagesProductDBError = (res) => ({
 	payload: res,
-	type: UPDATE_IMAGES_SUBCATEGORIES_ERROR,
+	type: UPDATE_IMAGES_PRODUCT_ERROR,
 });
 
 //Reset Values Images Store

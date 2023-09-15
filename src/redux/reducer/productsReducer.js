@@ -17,9 +17,9 @@ import {
 	RESET_REQUESTED_VALUES,
 	RESET_REQUESTED_VALUES_EXITO,
 	RESET_REQUESTED_VALUES_ERROR,
-	UPDATE_IMAGES_SUBCATEGORIES,
-	UPDATE_IMAGES_SUBCATEGORIES_EXITO,
-	UPDATE_IMAGES_SUBCATEGORIES_ERROR,
+	UPDATE_IMAGES_PRODUCT,
+	UPDATE_IMAGES_PRODUCT_EXITO,
+	UPDATE_IMAGES_PRODUCT_ERROR,
 	GET_VALUES_ATTRIBUTES_SELECTS,
 	GET_VALUES_ATTRIBUTES_SELECTS_EXITO,
 	GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
@@ -45,7 +45,7 @@ const initialState = {
 	},
 	categories: [],
 	subCategories: [],
-	imagesOfSubCategory: [],
+	imagesProduct: [],
 	msg: "",
 	text: "",
 	loading: false,
@@ -62,7 +62,7 @@ export default function productsReducer(state = initialState, action) {
 		case GET_IMAGES_SUBCATEGORIES:
 		case RESET_RESPONSE_MSGS:
 		case RESET_REQUESTED_VALUES:
-		case UPDATE_IMAGES_SUBCATEGORIES:
+		case UPDATE_IMAGES_PRODUCT:
 		case GET_VALUES_ATTRIBUTES_SELECTS:
 			return {
 				...state,
@@ -132,9 +132,16 @@ export default function productsReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				error: false,
-				imagesOfSubCategory: action.payload,
+				imagesProduct: action.payload,
 			};
 		case RESET_REQUESTED_VALUES_EXITO:
+			return {
+				...state,
+				loading: false,
+				error: false,
+				imagesProduct: [],
+			};
+		case RESET_RESPONSE_MSGS_EXITO:
 			return {
 				...state,
 				loading: false,
@@ -142,14 +149,7 @@ export default function productsReducer(state = initialState, action) {
 				msg: initialState.msg,
 				text: initialState.text,
 			};
-		case RESET_RESPONSE_MSGS_EXITO:
-			return {
-				...state,
-				loading: false,
-				error: false,
-				imagesOfSubCategory: [],
-			};
-		case UPDATE_IMAGES_SUBCATEGORIES_EXITO:
+		case UPDATE_IMAGES_PRODUCT_EXITO:
 			return {
 				...state,
 				loading: false,
@@ -213,7 +213,8 @@ export default function productsReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				error: true,
-				msg: action.payload,
+				msg: action.payload.msg,
+				text: action.payload.text,
 			};
 		case RESET_REQUESTED_VALUES_ERROR:
 			return {
@@ -227,7 +228,7 @@ export default function productsReducer(state = initialState, action) {
 				loading: false,
 				error: true,
 			};
-		case UPDATE_IMAGES_SUBCATEGORIES_ERROR:
+		case UPDATE_IMAGES_PRODUCT_ERROR:
 			return {
 				...state,
 				loading: false,

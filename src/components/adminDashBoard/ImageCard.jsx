@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FiEdit3, FiCheck, FiX, FiTrash2 } from "react-icons/fi";
 
-const ImageCard = ({ imgUrl, imagesUrl, index, setNewUrlImages, update }) => {
+const ImageCard = ({ imgUrl, imagesUrl, index, setNewUrl, update }) => {
 	const [showInput, setShowInput] = useState(false);
 	const [showBtnSucces, setShowBtnSucces] = useState(false);
 	const [urlInput, setUrlInput] = useState("");
@@ -21,12 +21,12 @@ const ImageCard = ({ imgUrl, imagesUrl, index, setNewUrlImages, update }) => {
 		if (urlInput && update) {
 			const copyArrayImagesDB = [...imagesUrl];
 			copyArrayImagesDB[index] = urlInput;
-			setNewUrlImages(copyArrayImagesDB);
+			setNewUrl(copyArrayImagesDB);
 		}
 		if (urlInput && !update) {
 			const copyArrayImagesDB = [...imagesUrl];
 			copyArrayImagesDB.push(urlInput);
-			setNewUrlImages(copyArrayImagesDB);
+			setNewUrl(copyArrayImagesDB);
 		}
 		setShowInput(false);
 		setShowBtnSucces(false);
@@ -38,7 +38,7 @@ const ImageCard = ({ imgUrl, imagesUrl, index, setNewUrlImages, update }) => {
 	const handleBtnDelete = (e) => {
 		const copyArrayImagesDB = [...imagesUrl];
 		copyArrayImagesDB.splice(index, 1);
-		setNewUrlImages(copyArrayImagesDB);
+		setNewUrl(copyArrayImagesDB);
 	};
 
 	return (
