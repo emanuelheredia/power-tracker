@@ -5,6 +5,7 @@ import ImagesAdministration from "./ImagesAdministration";
 import FilesAdministrator from "./FilesAdministration";
 import AddNewProduct from "./AddNewProduct";
 import { resetResponseMsgsStore } from "../../redux/actions/products.actions";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 const AdminDashBoard = () => {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products);
@@ -38,12 +39,37 @@ const AdminDashBoard = () => {
 	};
 	return (
 		<div className="adminDashBoard-container">
-			<FilesAdministrator
+			<div className="adminDashBoard-navContainer">
+				<NavLink to="update-product">Actualizar Precios</NavLink>
+				<NavLink to="add-newProduct">Agregar Producto</NavLink>
+				<NavLink to="update-imagesProduct">Actualizar Imágenes</NavLink>
+			</div>
+			<Routes>
+				<Route
+					path="update-product"
+					element={
+						<FilesAdministrator
+							showSpinner={showSpinner}
+							setShowSpinner={setShowSpinner}
+						/>
+					}
+				/>
+				<Route
+					path="add-newProduct"
+					element={<AddNewProduct setShowSpinner={setShowSpinner} />}
+				/>
+				<Route
+					path="update-imagesProduct"
+					element={<ImagesAdministration />}
+				/>
+			</Routes>
+			{/* 			<FilesAdministrator
 				showSpinner={showSpinner}
 				setShowSpinner={setShowSpinner}
 			/>
 			<AddNewProduct setShowSpinner={setShowSpinner} />
 			<ImagesAdministration />
+ */}{" "}
 			{showAlertSumbit && showAlert(msgSwap)}
 		</div>
 	);

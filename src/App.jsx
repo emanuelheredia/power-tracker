@@ -14,7 +14,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<UserDashBoard />} />
 					<Route
-						path="/admin"
+						path="/admin/*"
 						element={
 							<ProtectedRoute>
 								<AdminDashBoard />

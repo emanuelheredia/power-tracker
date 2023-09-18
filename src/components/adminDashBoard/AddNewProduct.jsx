@@ -40,7 +40,7 @@ const AddNewProduct = () => {
 	return (
 		<form className="addNewProduct-container" onSubmit={handleSubmit}>
 			<h2>Agregar Nuevo Producto</h2>
-			<div style={{ width: "90%" }}>
+			<div className="addNewProduct-seccionsContainer">
 				{Object.entries(initialProductInfo).map((seccion, index) => (
 					<AddNewProductSeccions
 						key={index}

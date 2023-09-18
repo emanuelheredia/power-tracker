@@ -54,7 +54,6 @@ const ImagesAdministration = () => {
 			setShowBtnUpdateImages(false);
 		}
 	}, [newUrl]);
-	console.log(imagesProduct, colorOptions, markOptions);
 	useEffect(() => {
 		if (
 			categorieSelect &&
@@ -62,10 +61,8 @@ const ImagesAdministration = () => {
 			((colorOptions.length > 0 && colorSelect) ||
 				colorOptions.length == 0)
 		) {
-			console.log("entre si");
 			setShowBtnGetImages(true);
 		} else {
-			console.log("entre no");
 			setShowBtnGetImages(false);
 		}
 		if (marcaSelect === "all" || colorSelect === "all") {
@@ -170,7 +167,7 @@ const ImagesAdministration = () => {
 				</div>
 			</div>
 			{getImagesBy.categorySearch && (
-				<div className="imagesAdministration-container">
+				<div className="imagesAdministration-categoriesContainer">
 					<div style={{ width: "90%" }}>
 						<h5 style={{ marginTop: "0" }}>Categoria</h5>
 						<Select

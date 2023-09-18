@@ -23,7 +23,6 @@
         &:hover{
         background-color: $color-hover;
     }
-
 }
 .adminDashBoard-input{
     display: flex;
@@ -41,7 +40,7 @@
 }
 @media (min-width:1030px){
     .filesAdministration-container{
-        min-height: 500px;
-        width: 40%;
+        min-height: auto;
+        width: 50%;
     }
 }

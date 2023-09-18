@@ -9,16 +9,38 @@
     gap: 2rem;
     margin: 150px 1rem 0 1rem;
 }
+.adminDashBoard-navContainer{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    gap: .5rem;
+    & a{
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3rem;
+        padding: .5rem;
+        background-color: $color-principal;
+        color: whitesmoke;
+        width: 30%;
+        &:hover{
+            background-color: $color-hover;
+            color: whitesmoke;
+        }
+    }
+}
+@media (min-width:530px){
+.adminDashBoard-navContainer{
+    width: 100%;
+}}
 @media (min-width:780px){
 .adminDashBoard-container{
     width: 70%;
 }}
 @media (min-width:1030px){
     .adminDashBoard-container{
-        width: 90%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: start;
+    width: 90%;
     gap: 2rem;
     margin: 150px 1rem 0 1rem;
 }

@@ -2,15 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: rgba(255, 174, 0, 0.445);
     border-radius: 10px;
     padding: 1.5rem;
     width: 80%;
 }
+.addNewProduct-seccionsContainer{
+    width: 90%;
+}
 .addNewProduct-campos-container{
-    width: 100%;
+    background-color: rgba(0, 0, 0, 0.637);
+    padding: 1rem;
+    border-radius: 10px;
     margin-bottom: 1rem;
-    padding-bottom: 1.5rem;
     font-weight: 900;
         & label{
             color: $color-principal;
@@ -19,8 +24,8 @@
             padding: .7rem;
             border-radius: 5px;
             border: none;
-            width: 90%;
-            margin-top: .5rem;
+            width: 95%;
+            height: .85rem;
         }
 }
 .addNewProduct-campos{
@@ -58,5 +63,21 @@
     cursor: pointer;
     &:hover{
         background-color: $color-hover;
+    }
+}
+@media (min-width:1030px){
+    .addNewProduct-seccionsContainer{
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .addNewProduct-btnSubmit{
+        width: 50%;
+    }
+    .addNewProduct-campos-container{
+        width:40%
     }
 }
