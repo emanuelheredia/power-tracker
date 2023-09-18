@@ -9,13 +9,14 @@
     width: 80%;
 }
 .addNewProduct-seccionsContainer{
-    width: 90%;
+    width: 100%;
 }
 .addNewProduct-campos-container{
     background-color: rgba(0, 0, 0, 0.637);
     padding: 1rem;
     border-radius: 10px;
     margin-bottom: 1rem;
+    max-width: 100%;
     font-weight: 900;
         & label{
             color: $color-principal;
@@ -24,7 +25,8 @@
             padding: .7rem;
             border-radius: 5px;
             border: none;
-            width: 95%;
+            max-width: 100%;
+            min-width: 94%;
             height: .85rem;
             background-color: whitesmoke;
         }
