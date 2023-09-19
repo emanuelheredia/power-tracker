@@ -30,6 +30,8 @@ const AddNewProduct = () => {
 			dispatch(getValuesAttributeSelects("mark"));
 		if (products.valuesFilter.proveedor.length === 0)
 			dispatch(getValuesAttributeSelects("proveedor"));
+		if (products.valuesFilter.subCategory.length === 0)
+			dispatch(getValuesAttributeSelects("subCategory"));
 		if (products.valuesFilter.color.length < 6)
 			dispatch(getValuesAttributeSelects("color"));
 	}, []);
@@ -37,6 +39,7 @@ const AddNewProduct = () => {
 		e.preventDefault();
 		dispatch(addNewProduct(productInfo));
 	};
+	console.log(products.valuesFilter);
 	return (
 		<form className="addNewProduct-container" onSubmit={handleSubmit}>
 			<h2>Agregar Nuevo Producto</h2>
