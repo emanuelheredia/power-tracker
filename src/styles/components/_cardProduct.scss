@@ -139,6 +139,12 @@
         
     }
 }
+@media (min-width:780px){
+.userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
+ font-size:  .8rem;
+}
+}
+
 @media (min-width:1000px){
 
     .userDashBoard-container-rowTable{
@@ -196,6 +202,9 @@
 }
 .userDashBoard-container-inputsSearch>input{
     width: 445px;
+}
+.userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
+ font-size:  .9rem;
 }
 
 }

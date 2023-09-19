@@ -47,11 +47,7 @@ const CardProduct = ({ product, ocultarPrice }) => {
 				<p>Categoria</p>
 				<p>{product.category}</p>
 			</div>
-			<ProductModal
-				product={product}
-				productImage={"hola"}
-				categorie={product.category}
-			/>
+			<ProductModal product={product} categorie={product.category} />
 			<div className="userDashBoard-item-celdaModelo">
 				<p>Vehículos</p>
 				<p>
