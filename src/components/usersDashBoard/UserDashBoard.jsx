@@ -42,20 +42,35 @@ const UserDashBoard = () => {
 			);
 	}, []);
 	useEffect(() => {
-		setProductsFiltered(
-			products.products.filter(
-				(el) =>
-					el.code?.toLowerCase().includes(codeInput.toLowerCase()) &&
-					el.vehiculo
-						?.toString()
-						.toLowerCase()
-						.includes(modeloInput) &&
-					el.category?.includes(categoriaSelect) &&
-					el.color?.includes(colorSelect) &&
-					el.mark?.includes(marcaSelect) &&
-					el.proveedor?.includes(proveedorSelect),
-			),
-		);
+		// Filtra los productos basados en múltiples criterios
+		const filteredProducts = products.products.filter((el) => {
+			const codeMatch =
+				!codeInput ||
+				el.code?.toLowerCase().includes(codeInput.toLowerCase());
+			const modeloMatch =
+				!modeloInput ||
+				el.vehiculo?.toString().toLowerCase().includes(modeloInput);
+			const categoriaMatch =
+				!categoriaSelect || el.category?.includes(categoriaSelect);
+			const colorMatch = !colorSelect || el.color?.includes(colorSelect);
+			const marcaMatch = !marcaSelect || el.mark?.includes(marcaSelect);
+			const proveedorMatch =
+				!proveedorSelect || el.proveedor?.includes(proveedorSelect);
+
+			return (
+				codeMatch &&
+				modeloMatch &&
+				categoriaMatch &&
+				colorMatch &&
+				marcaMatch &&
+				proveedorMatch
+			);
+		});
+
+		// Actualiza el estado con los productos filtrados
+		setProductsFiltered(filteredProducts);
+
+		// Si no se aplican filtros, establece el estado como un array vacío
 		if (
 			!codeInput &&
 			!proveedorSelect &&

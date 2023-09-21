@@ -22,6 +22,7 @@
 .header-linksContainer{
     display: flex;
     font-weight: bolder;
+    align-items: center;
     color: gainsboro;
     font-size: .9rem;
     & a{
@@ -35,18 +36,25 @@
         }
     }
 }
+.header-cartIcon{
+    font-size: 1rem;
+    color: $color-principal;
+    margin-right: 1rem;
+}
 @media (min-width:780px){
     .header-linksContainer{
         gap: 2rem;
         font-size: 1.1rem;
     }
-
+    .header-cartIcon{
+        font-size: 1.3rem;
+    }
 }
 @media (min-width:1230px){
-.header-logo{
-    width: 150px;
-    height: 45px;
-    border-radius: 10px;
-    margin: 0 0 0 4rem;
+    .header-logo{
+        width: 150px;
+        height: 45px;
+        border-radius: 10px;
+        margin: 0 0 0 4rem;
     }
 }

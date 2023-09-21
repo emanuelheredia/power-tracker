@@ -37,11 +37,6 @@
 }
 .userDashBoard-item-celdaPrice{
     grid-area: price;
-
-    & p:nth-child(2){
-        color: red;
-        font-weight: bolder;
-    }
 }
 .userDashBoard-item-celdaMoreInfo{
     grid-area: moreInfo;
@@ -89,12 +84,17 @@
     align-items: center;
 }
 .userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
- height: 100%;
- display: flex;
- font-size:  .5rem;
- justify-content: start;
- align-items: center;
+    height: 100%;
+    display: flex;
+    font-size:  .5rem;
+    justify-content: start;
+    align-items: center;
 }
+.userDashBoard-item-celdaPrice>p:nth-child(2){
+        color: red;
+        font-size: .8rem;
+        font-weight: bolder;
+    }
 .userDashBoard-container-inputsSearch{
     display: flex;
     background-color: black;
@@ -124,36 +124,39 @@
 }
 .cardProduct-deleteIcon{
     position: absolute;
-    background-color:whitesmoke ;
     color: $color-principal;
-    border: solid 2px $color-principal;
-    border-radius: 50%;
-    padding: 2px;
-    font-size: 2rem;
-    right: 0;
+    font-size: 1.5rem;
+    top: .3rem;
+    right: .3rem;
     cursor: pointer;
     &:hover{
-        background-color: $color-principal;
-        color: whitesmoke;
-        border: inherit whitesmoke;
-        
+        color: $color-hover;       
+    }
+}
+.cardProduct-addToCartIcon{
+    position: absolute;
+    color: $color-principal;
+    font-size: 1.5rem;
+    top: .3rem;
+    right: 0.3rem;
+    cursor: pointer;
+    &:hover{
+        color: $color-hover;        
     }
 }
 @media (min-width:780px){
-.userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
- font-size:  .8rem;
-}
+    .userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
+    font-size:  .8rem;
+    }
 }
 
 @media (min-width:1000px){
-
     .userDashBoard-container-rowTable{
         font-size: .8rem;
     }
     .userDashBoard-item-celdaPrice>p:nth-child(2){
     font-size: 1rem;
 }
-
     .userDashBoard-item-celdaMoreInfo{
     display: flex;
     width: 100%;
@@ -174,37 +177,45 @@
         align-items: center;
     }
 }
-.userDashBoard-item-celdaColor>p:first-child,.userDashBoard-item-celdaMoreInfo>p:first-child,.userDashBoard-item-celdaSubCategory>p:first-child,.userDashBoard-item-celdaCode>p:first-child,.userDashBoard-item-celdaColor>p:first-child,.userDashBoard-item-celdaCategory>p:first-child,.userDashBoard-item-celdaModelo>p:first-child,.userDashBoard-item-celdaProveedor>p:first-child,.userDashBoard-item-celdaPrice>p:first-child,.userDashBoard-item-celdaMarca>p:first-child{
-    min-width: 100px;
-}
-.userDashBoard-container-rowTable{
-    grid-template-areas: 
-     "modelo modelo productColor imagesLargeView"
-     "code code proveedor imagesLargeView"
-     "category category moreInfo imagesLargeView"
-    "subCategory subCategory price imagesLargeView"
-    "marca marca marca imagesLargeView"
-     ;
-    grid-template-columns: 2fr 2fr 2fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    overflow: hidden;
-}
-.userDashBoard-item-celdaImages > img{
-    width: 100px;
-    height: 85px;}
-.userDashBoard-item-celdaCode,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
-    height: 1.5rem;
-}
+    .userDashBoard-item-celdaColor>p:first-child,.userDashBoard-item-celdaMoreInfo>p:first-child,.userDashBoard-item-celdaSubCategory>p:first-child,.userDashBoard-item-celdaCode>p:first-child,.userDashBoard-item-celdaColor>p:first-child,.userDashBoard-item-celdaCategory>p:first-child,.userDashBoard-item-celdaModelo>p:first-child,.userDashBoard-item-celdaProveedor>p:first-child,.userDashBoard-item-celdaPrice>p:first-child,.userDashBoard-item-celdaMarca>p:first-child{
+        min-width: 100px;
+    }
+    .userDashBoard-container-rowTable{
+        grid-template-areas: 
+        "modelo modelo productColor imagesLargeView"
+        "code code proveedor imagesLargeView"
+        "category category moreInfo imagesLargeView"
+        "subCategory subCategory price imagesLargeView"
+        "marca marca marca imagesLargeView"
+        ;
+        grid-template-columns: 2fr 2fr 2fr 2fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        overflow: hidden;
+    }
+    .userDashBoard-item-celdaImages > img{
+        width: 100px;
+        height: 85px;}
+    .userDashBoard-item-celdaCode,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
+        height: 1.5rem;
+    }
+    .cardProduct-deleteIcon{
+        font-size: 2rem;
+    }
+    .cardProduct-addToCartIcon{
+        font-size: 2rem;
+    }
 }
 @media (min-width:1290px){
-.userDashBoard-container-inputsSearch>div{
-    width: 450px;
-}
-.userDashBoard-container-inputsSearch>input{
-    width: 445px;
-}
-.userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
- font-size:  .9rem;
-}
-
+    .userDashBoard-container-inputsSearch>div{
+        width: 450px;
+    }
+    .userDashBoard-container-inputsSearch>input{
+        width: 445px;
+    }
+    .userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
+    font-size:  .9rem;
+    }
+    .userDashBoard-item-celdaPrice>p:nth-child(2){
+        font-size: 1.2rem;
+    }
 }

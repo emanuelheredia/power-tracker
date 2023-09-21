@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signOutLogin } from "../../../src/redux/actions/auth.actions";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo/logo.jpeg";
+import { FaShoppingCart } from "react-icons/fa";
 const Header = () => {
 	const [admin, setAdmin] = useState(false);
 	const auth = useSelector((state) => state.auth);
@@ -23,6 +24,7 @@ const Header = () => {
 						Log Out
 					</Link>
 				)}
+				{!auth.login && <FaShoppingCart className="header-cartIcon" />}
 			</nav>
 		</div>
 	);

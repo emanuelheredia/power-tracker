@@ -1,0 +1,99 @@
+.productModal-bodyContainer{
+    height: auto;
+    gap: .8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.cartModal-productInfo{
+    width: 100%;
+}
+.cartModal-title{
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+.cartModal-imagesContainer{
+    display: flex;
+    width: 100%;
+    gap: .5rem  ;
+    justify-content: center;
+}
+.cartModal-image{
+    width: 40%;
+    height: 120px;
+    border-radius: 10px;
+}
+.cartModal-counterContainer{
+    display: flex;
+    height: auto;
+    gap: 2rem;
+    & p{
+        margin: 0;
+        font-size: 2rem;
+        color: whitesmoke;
+    }
+}
+.cartModal-productInfo-seccionContainer{
+    display: flex;
+    gap: .3rem;
+    margin-bottom: .5rem;
+    width: 100%;
+    & p{
+        margin: 0;
+        font-size: .8rem;
+        text-align: start;
+    }
+    & p:first-child{
+        min-width: 30%;
+        color: black;
+        padding: 0 5px;
+        background-color: rgba(255, 68, 0, 0.295);
+    }
+    & p:last-child{
+        color: whitesmoke;
+        width: 100%;
+        padding: 0 5px;
+        background-color: rgba(0, 0, 0, 0.438);
+    }
+}
+.cartModal-symbolsCunter{
+    background-color: rgba(0, 0, 0, 0.685);
+    cursor: pointer;
+    text-align: center;
+    font-weight: bolder;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    &:hover{
+        background-color: black;
+    }
+}
+.cartModal-buttonsContainer{
+    margin-top: .5rem;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    gap: 1rem;
+    & button{
+        width: 50%;
+        color: whitesmoke;
+        background-color: rgba(0, 0, 0, 0.87);
+    }
+}
+@media (min-width:780px){
+    .ReactModal__Content--after-open{
+        width: 450px !important;
+        height: 390px !important;
+    }
+}
+@media (min-width:1300px){
+    .ReactModal__Content--after-open{
+        width: 500px !important;
+        height: 410px !important;
+    }
+}
+@media (min-width:1920px){
+    .ReactModal__Content--after-open{
+    }
+}

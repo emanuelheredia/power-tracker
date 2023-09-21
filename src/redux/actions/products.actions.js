@@ -17,9 +17,9 @@ import {
 	GET_IMAGES_SUBCATEGORIES,
 	GET_IMAGES_SUBCATEGORIES_EXITO,
 	GET_IMAGES_SUBCATEGORIES_ERROR,
-	RESET_REQUESTED_VALUES,
-	RESET_REQUESTED_VALUES_EXITO,
-	RESET_REQUESTED_VALUES_ERROR,
+	RESET_IMAGES_RECEIVED_STORE,
+	RESET_IMAGES_RECEIVED_STORE_EXITO,
+	RESET_IMAGES_RECEIVED_STORE_ERROR,
 	GET_VALUES_ATTRIBUTES_SELECTS,
 	GET_VALUES_ATTRIBUTES_SELECTS_EXITO,
 	GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
@@ -32,6 +32,9 @@ import {
 	RESET_RESPONSE_MSGS,
 	RESET_RESPONSE_MSGS_EXITO,
 	RESET_RESPONSE_MSGS_ERROR,
+	RESET_OPTIONS_RECEIVED_STORE,
+	RESET_OPTIONS_RECEIVED_STORE_EXITO,
+	RESET_OPTIONS_RECEIVED_STORE_ERROR,
 } from "../types";
 import clienteAxios from "../../../src/axios";
 
@@ -251,14 +254,15 @@ const getValuesAttributeSelectsDBError = (res) => ({
 	type: GET_VALUES_ATTRIBUTES_SELECTS_ERROR,
 });
 
-export const getOptionsSelectToUpdateImage = (subCategory, attribute) => {
+export const getOptionsSelectToUpdateImage = (query, attribute) => {
+	console.log(query);
 	return async (dispatch) => {
 		dispatch(getOptionsSelectToUpdateImageDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "options-update-image",
-				data: { subCategory, attribute },
+				data: { query: query, attribute },
 			});
 			dispatch(
 				getOptionsSelectToUpdateImageDBExito({
@@ -291,14 +295,14 @@ const getOptionsSelectToUpdateImageDBError = (res) => ({
 });
 
 // Get Images From Sub Category
-export const getImagesProduct = (code, subCategory, color, marca) => {
+export const getImagesProduct = (code, subCategory, color, marca, vehiculo) => {
 	return async (dispatch) => {
 		dispatch(getImagesProductDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "imagesOfSubcategory",
-				data: { query: { subCategory, color, marca, code } },
+				data: { query: { subCategory, color, marca, code, vehiculo } },
 			});
 			dispatch(getImagesProductDBExito(resp.data.data));
 		} catch (error) {
@@ -332,6 +336,7 @@ export const updateImagesProduct = (
 	newImages,
 	color,
 	marca,
+	vehiculo,
 ) => {
 	return async (dispatch) => {
 		dispatch(updateImagesProductDB());
@@ -339,7 +344,10 @@ export const updateImagesProduct = (
 			let resp = await clienteAxios({
 				method: "post",
 				url: "update-subCategoryImages",
-				data: { newImages, query: { color, marca, subCategory, code } },
+				data: {
+					newImages,
+					query: { color, marca, subCategory, code, vehiculo },
+				},
 			});
 			dispatch(updateImagesProductDBExito(resp.data.msg));
 		} catch (error) {
@@ -365,25 +373,46 @@ const updateImagesProductDBError = (res) => ({
 });
 
 //Reset Values Images Store
-export const resetRequestedValuesStore = () => {
+export const resetImagesReceivedStore = () => {
 	return async (dispatch) => {
-		dispatch(resetRequestedValues());
+		dispatch(resetImagesReceived());
 		try {
-			dispatch(resetRequestedValuesExito());
+			dispatch(resetImagesReceivedExito());
 		} catch (error) {
-			dispatch(resetRequestedValuesError());
+			dispatch(resetImagesReceivedError());
 		}
 	};
 };
 
-const resetRequestedValues = () => ({ type: RESET_REQUESTED_VALUES });
+const resetImagesReceived = () => ({ type: RESET_IMAGES_RECEIVED_STORE });
 
-const resetRequestedValuesExito = () => ({
-	type: RESET_REQUESTED_VALUES_EXITO,
+const resetImagesReceivedExito = () => ({
+	type: RESET_IMAGES_RECEIVED_STORE_EXITO,
 });
-const resetRequestedValuesError = (res) => ({
+const resetImagesReceivedError = (res) => ({
 	payload: res,
-	type: RESET_REQUESTED_VALUES_ERROR,
+	type: RESET_IMAGES_RECEIVED_STORE_ERROR,
+});
+
+export const resetOptionsReceivedStore = () => {
+	return async (dispatch) => {
+		dispatch(resetOptionsReceived());
+		try {
+			dispatch(resetOptionsReceivedExito());
+		} catch (error) {
+			dispatch(resetOptionsReceivedError());
+		}
+	};
+};
+
+const resetOptionsReceived = () => ({ type: RESET_OPTIONS_RECEIVED_STORE });
+
+const resetOptionsReceivedExito = () => ({
+	type: RESET_OPTIONS_RECEIVED_STORE_EXITO,
+});
+const resetOptionsReceivedError = (res) => ({
+	payload: res,
+	type: RESET_OPTIONS_RECEIVED_STORE_ERROR,
 });
 
 //Reset Values Images Store

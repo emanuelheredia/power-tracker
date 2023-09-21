@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	getOptionsSelectToUpdateImage,
 	getImagesProduct,
-	resetRequestedValuesStore,
+	resetImagesReceivedStore,
 	updateImagesProduct,
 	getValuesAttributeSelects,
+	resetOptionsReceivedStore,
 } from "../../../src/redux/actions/products.actions";
 import Select from "react-select";
 import ImageCard from "./ImageCard";
@@ -13,12 +14,16 @@ import { structuringSelectValues } from "../helpers/helpers.js";
 const ImagesAdministration = () => {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products);
-	const { mark: markOptions, color: colorOptions } =
-		products.optionUpdateImage;
+	const {
+		mark: markOptions,
+		color: colorOptions,
+		vehiculo: vehiculoOptions,
+	} = products.optionUpdateImage;
 	const { subCategories: subCategoryOptions, imagesProduct } = products;
 	const [categorieSelect, setCategoriaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [marcaSelect, setMarcaSelect] = useState("");
+	const [vehiculoSelect, setVehiculoSelect] = useState("");
 	const [codeInput, setCodeInput] = useState("");
 	const [showBtnGetImages, setShowBtnGetImages] = useState(false);
 	const [showBtnUpdateImages, setShowBtnUpdateImages] = useState(true);
@@ -31,22 +36,37 @@ const ImagesAdministration = () => {
 	useEffect(() => {
 		if (subCategoryOptions.length === 0)
 			dispatch(getValuesAttributeSelects("subCategory"));
-		dispatch(resetRequestedValuesStore());
+		dispatch(resetImagesReceivedStore());
+		dispatch(resetOptionsReceivedStore());
 	}, []);
-	useEffect(() => {
-		if (products.error) {
-			setShowBtnAddImage(false);
-		}
+	/* 	useEffect(() => {
+		setShowBtnAddImage(!products.error);
 	}, [products.error]);
-	useEffect(() => {
+ */ useEffect(() => {
 		setNewUrl(imagesProduct);
 	}, [imagesProduct]);
 	useEffect(() => {
 		if (categorieSelect) {
-			dispatch(getOptionsSelectToUpdateImage(categorieSelect, "color"));
-			dispatch(getOptionsSelectToUpdateImage(categorieSelect, "mark"));
+			dispatch(
+				getOptionsSelectToUpdateImage(
+					{ subCategory: categorieSelect },
+					"color",
+				),
+			);
+			dispatch(
+				getOptionsSelectToUpdateImage(
+					{ subCategory: categorieSelect },
+					"mark",
+				),
+			);
+			dispatch(
+				getOptionsSelectToUpdateImage(
+					{ subCategory: categorieSelect, mark: marcaSelect },
+					"vehiculo",
+				),
+			);
 		}
-	}, [categorieSelect]);
+	}, [categorieSelect, marcaSelect]);
 	useEffect(() => {
 		if (newUrl !== imagesProduct && newUrl.length !== 0) {
 			setShowBtnUpdateImages(true);
@@ -55,26 +75,43 @@ const ImagesAdministration = () => {
 		}
 	}, [newUrl]);
 	useEffect(() => {
+		const isCategorySelected = !!categorieSelect;
+		const isMarcaSelected = markOptions.length === 0 || !!marcaSelect;
+		const isColorSelected = colorOptions.length === 0 || !!colorSelect;
+		const isVehiculoSelected =
+			vehiculoOptions.length === 0 || !!vehiculoSelect;
+
+		setShowBtnGetImages(
+			isCategorySelected &&
+				isMarcaSelected &&
+				isColorSelected &&
+				isVehiculoSelected,
+		);
+
 		if (
-			categorieSelect &&
-			(markOptions.length === 0 || marcaSelect) &&
-			((colorOptions.length > 0 && colorSelect) ||
-				colorOptions.length == 0)
+			marcaSelect === "all" ||
+			colorSelect === "all" ||
+			vehiculoSelect === "all"
 		) {
-			setShowBtnGetImages(true);
-		} else {
-			setShowBtnGetImages(false);
-		}
-		if (marcaSelect === "all" || colorSelect === "all") {
-			dispatch(resetRequestedValuesStore());
-			setShowBtnGetImages(false);
+			dispatch(resetImagesReceivedStore());
 			setShowBtnAddImage(true);
+			setShowBtnGetImages(false);
 		}
-	}, [categorieSelect, colorSelect, colorOptions, marcaSelect, markOptions]);
+	}, [
+		categorieSelect,
+		colorSelect,
+		colorOptions,
+		marcaSelect,
+		markOptions,
+		vehiculoSelect,
+		vehiculoOptions,
+	]);
+
 	useEffect(() => {
 		if (markOptions.length === 0) setMarcaSelect("");
 		if (colorOptions.length === 0) setColorSelect("");
-	}, [colorOptions, markOptions]);
+		if (vehiculoOptions.length === 0) setVehiculoSelect("");
+	}, [colorOptions, markOptions, vehiculoOptions]);
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,
@@ -95,24 +132,30 @@ const ImagesAdministration = () => {
 				categorieSelect,
 				colorSelect || "",
 				marcaSelect || "",
+				vehiculoSelect || "",
 			),
 		);
 		setShowBtnAddImage(true);
 	};
 	const handleSubmitUpdateImages = () => {
-		let aplicarTodasMarcas =
+		// Comprueba si se aplicarán cambios en todas las marcas
+		const aplicarTodasMarcas =
 			marcaSelect === "all"
-				? confirm(
-						"Estas seguro de realizar el cambio en todas las marcas? Recordá que perderás las imágenes asignadas específicamente a cada una de ellas",
+				? window.confirm(
+						"¿Estás seguro de realizar el cambio en todas las marcas? Recuerda que perderás las imágenes asignadas específicamente a cada una de ellas.",
 				  )
 				: true;
-		let aplicarTodosColores =
+
+		// Comprueba si se aplicarán cambios en todos los colores
+		const aplicarTodosColores =
 			colorSelect === "all"
-				? confirm(
-						"Estas seguro de realizar el cambio en todos los colores? Recordá que perderás las imágenes asignadas específicamente a cada uno de ellos",
+				? window.confirm(
+						"¿Estás seguro de realizar el cambio en todos los colores? Recuerda que perderás las imágenes asignadas específicamente a cada uno de ellos.",
 				  )
 				: true;
-		if (aplicarTodasMarcas && aplicarTodosColores)
+
+		// Si ambas confirmaciones son verdaderas, realiza la actualización de imágenes
+		if (aplicarTodasMarcas && aplicarTodosColores) {
 			dispatch(
 				updateImagesProduct(
 					codeInput,
@@ -120,8 +163,10 @@ const ImagesAdministration = () => {
 					newUrl,
 					colorSelect,
 					marcaSelect,
+					vehiculoSelect,
 				),
 			);
+		}
 	};
 	const handleChangeRadio = (e) => {
 		let anotherAttribute =
@@ -134,7 +179,8 @@ const ImagesAdministration = () => {
 		if (e.target.value === "categorySearch") setCodeInput("");
 		setShowBtnGetImages(false);
 		setShowBtnAddImage(false);
-		dispatch(resetRequestedValuesStore());
+		dispatch(resetImagesReceivedStore());
+		dispatch(resetOptionsReceivedStore());
 	};
 	const handleChangeInput = (e) => {
 		setNewUrl([]);
@@ -151,6 +197,7 @@ const ImagesAdministration = () => {
 						name="search"
 						id="categorySearch"
 						value="categorySearch"
+						defaultChecked="true"
 						onClick={handleChangeRadio}
 					/>
 					<label htmlFor="categorySearch">Por Categoría</label>
@@ -183,7 +230,8 @@ const ImagesAdministration = () => {
 							onChange={(e) => {
 								setCategoriaSelect(e.value);
 								setColorSelect("");
-								dispatch(resetRequestedValuesStore());
+								dispatch(resetImagesReceivedStore());
+								dispatch(resetOptionsReceivedStore());
 								setShowBtnAddImage(false);
 							}}
 						/>
@@ -204,8 +252,31 @@ const ImagesAdministration = () => {
 								type="text"
 								styles={selectStyles()}
 								onChange={(e) => {
-									dispatch(resetRequestedValuesStore());
+									dispatch(resetImagesReceivedStore());
 									setMarcaSelect(e.value);
+									setShowBtnAddImage(false);
+								}}
+							/>
+						</div>
+					)}
+					{vehiculoOptions.length > 0 && (
+						<div style={{ width: "90%" }}>
+							<h5>Modelo</h5>
+							<Select
+								placeholder=""
+								name="vehiculo"
+								className="adminInfo-teamSelect"
+								options={structuringSelectValues(
+									vehiculoOptions,
+									true,
+									"--  APLICAR A TODOS  --",
+									"all",
+								)}
+								type="text"
+								styles={selectStyles()}
+								onChange={(e) => {
+									setVehiculoSelect(e.value);
+									dispatch(resetImagesReceivedStore());
 									setShowBtnAddImage(false);
 								}}
 							/>
@@ -228,7 +299,7 @@ const ImagesAdministration = () => {
 								styles={selectStyles()}
 								onChange={(e) => {
 									setColorSelect(e.value);
-									dispatch(resetRequestedValuesStore());
+									dispatch(resetImagesReceivedStore());
 									setShowBtnAddImage(false);
 								}}
 							/>

@@ -39,7 +39,6 @@ const AddNewProduct = () => {
 		e.preventDefault();
 		dispatch(addNewProduct(productInfo));
 	};
-	console.log(products.valuesFilter);
 	return (
 		<form className="addNewProduct-container" onSubmit={handleSubmit}>
 			<h2>Agregar Nuevo Producto</h2>

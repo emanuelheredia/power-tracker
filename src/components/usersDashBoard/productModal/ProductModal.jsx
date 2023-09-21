@@ -19,8 +19,9 @@ const customStyles = {
 	},
 };
 Modal.setAppElement("*");
-const ProductModal = ({ product, categorie }) => {
+const ProductModal = ({ product }) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
+	const { images, category, code } = product;
 	function openModal() {
 		setIsOpen(true);
 	}
@@ -33,13 +34,13 @@ const ProductModal = ({ product, categorie }) => {
 			<img
 				onClick={openModal}
 				style={{ cursor: "pointer", borderRadius: "5px" }}
-				src={product.images[0] || ""}
+				src={images[0] || ""}
 			/>
-			{product.code !== "sin datos" && product.images[1] && (
+			{code !== "sin datos" && images[1] && (
 				<img
 					onClick={openModal}
 					className="productModal-image"
-					src={product.images[1]}
+					src={images[1]}
 					alt=""
 				/>
 			)}{" "}
@@ -60,11 +61,11 @@ const ProductModal = ({ product, categorie }) => {
 					X
 				</button>
 				<div className="productModal-text-container">
-					<h4 className="productModal-title">{categorie}</h4>
+					<h4 className="productModal-title">{category}</h4>
 					<div className="productModal-image-coontainer">
-						{product.images.length > 0 && (
+						{images.length > 0 && (
 							<AwesomeSlider>
-								{product.images.map((image, index) => (
+								{images.map((image, index) => (
 									<div key={index}>
 										<img
 											key={index}
