@@ -255,7 +255,6 @@ const getValuesAttributeSelectsDBError = (res) => ({
 });
 
 export const getOptionsSelectToUpdateImage = (query, attribute) => {
-	console.log(query);
 	return async (dispatch) => {
 		dispatch(getOptionsSelectToUpdateImageDB());
 		try {

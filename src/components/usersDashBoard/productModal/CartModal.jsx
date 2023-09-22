@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
-import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import { FaCartPlus } from "react-icons/fa";
 import { formatingPrice } from "../../helpers/helpers";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart } from "../../../redux/actions/cart.actions";
 
 const customStyles = {
 	content: {
@@ -22,6 +23,8 @@ const customStyles = {
 };
 Modal.setAppElement("*");
 const CartModal = ({ product }) => {
+	const dispatch = useDispatch();
+	const cart = useSelector((state) => state.cart.cart);
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const {
 		category,
@@ -33,6 +36,7 @@ const CartModal = ({ product }) => {
 		images,
 		color,
 	} = product;
+	const [amount, setAmount] = useState(0);
 
 	function openModal() {
 		setIsOpen(true);
@@ -40,8 +44,32 @@ const CartModal = ({ product }) => {
 	function closeModal() {
 		setIsOpen(false);
 	}
-	const handleAddToCart = () => {};
-
+	const handlePlusAmount = () => {
+		setAmount(amount + 1);
+	};
+	const handleMinusAmount = () => {
+		setAmount(amount - 1);
+	};
+	const handleAddToCart = () => {
+		const cartCopy = [...cart];
+		cartCopy.push({ product, amount });
+		dispatch(addProductToCart(cartCopy));
+	};
+	const disabledButtonStyle = {
+		opacity: 0.2,
+		cursor: "default",
+	};
+	const isPoductIncart = () => {
+		let isInCart = cart.filter((el) => {
+			if (product._id === el.product._id) {
+				return true;
+			} else {
+				return false;
+			}
+		});
+		if (isInCart.length > 0) return isInCart;
+		else return false;
+	};
 	return (
 		<div className="userDashBoard-item-celdaImages">
 			<FaCartPlus
@@ -112,14 +140,30 @@ const CartModal = ({ product }) => {
 							</p>
 						</div>
 					</div>
-					<div className="cartModal-counterContainer">
-						<p className="cartModal-symbolsCunter">-</p>
-						<p>0</p>
-						<p className="cartModal-symbolsCunter">+</p>
+					<div className={"cartModal-counterContainer"}>
+						<p
+							className={"cartModal-symbolsCunter"}
+							onClick={amount > 0 ? handleMinusAmount : null}
+							style={amount < 1 ? disabledButtonStyle : null}
+						>
+							-
+						</p>
+						<p>{amount}</p>
+						<p
+							className="cartModal-symbolsCunter"
+							onClick={handlePlusAmount}
+						>
+							+
+						</p>
 					</div>
 					<div className="cartModal-buttonsContainer">
-						<button>Agregar al Carrito</button>
-						<button>Cancelar</button>
+						<button
+							style={amount < 1 ? disabledButtonStyle : null}
+							onClick={amount > 1 ? handleAddToCart : null}
+						>
+							Agregar al Carrito
+						</button>
+						<button onClick={closeModal}>Cancelar</button>
 					</div>
 				</div>
 			</Modal>

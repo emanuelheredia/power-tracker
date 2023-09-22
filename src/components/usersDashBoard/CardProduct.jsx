@@ -23,8 +23,6 @@ const CardProduct = ({ product, ocultarPrice }) => {
 	const handleDelete = () => {
 		if (confirm("Está seguro que desea eliminar este producto?")) {
 			dispatch(deleteProduct(product._id));
-		} else {
-			console.log("no confirmado");
 		}
 	};
 	return (

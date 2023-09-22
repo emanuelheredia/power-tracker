@@ -187,6 +187,17 @@ const ImagesAdministration = () => {
 		setShowBtnAddImage(false);
 		setCodeInput(e.target.value.toUpperCase());
 	};
+	const handleSelecChange = (e, setFunction, attribute) => {
+		console.log(attribute);
+		dispatch(resetImagesReceivedStore());
+		setFunction(e.value);
+		setShowBtnAddImage(false);
+		if (attribute === "category") {
+			setColorSelect("");
+			dispatch(resetOptionsReceivedStore());
+		}
+	};
+	console.log(marcaSelect);
 	return (
 		<div className="imagesAdministration-container">
 			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
@@ -227,13 +238,13 @@ const ImagesAdministration = () => {
 							)}
 							type="text"
 							styles={selectStyles()}
-							onChange={(e) => {
-								setCategoriaSelect(e.value);
-								setColorSelect("");
-								dispatch(resetImagesReceivedStore());
-								dispatch(resetOptionsReceivedStore());
-								setShowBtnAddImage(false);
-							}}
+							onChange={(e) =>
+								handleSelecChange(
+									e,
+									setCategoriaSelect,
+									"category",
+								)
+							}
 						/>
 					</div>
 					{markOptions.length > 0 && (
@@ -251,11 +262,9 @@ const ImagesAdministration = () => {
 								)}
 								type="text"
 								styles={selectStyles()}
-								onChange={(e) => {
-									dispatch(resetImagesReceivedStore());
-									setMarcaSelect(e.value);
-									setShowBtnAddImage(false);
-								}}
+								onChange={(e) =>
+									handleSelecChange(e, setMarcaSelect)
+								}
 							/>
 						</div>
 					)}
@@ -274,11 +283,9 @@ const ImagesAdministration = () => {
 								)}
 								type="text"
 								styles={selectStyles()}
-								onChange={(e) => {
-									setVehiculoSelect(e.value);
-									dispatch(resetImagesReceivedStore());
-									setShowBtnAddImage(false);
-								}}
+								onChange={(e) =>
+									handleSelecChange(e, setVehiculoSelect)
+								}
 							/>
 						</div>
 					)}
@@ -297,11 +304,9 @@ const ImagesAdministration = () => {
 								)}
 								type="text"
 								styles={selectStyles()}
-								onChange={(e) => {
-									setColorSelect(e.value);
-									dispatch(resetImagesReceivedStore());
-									setShowBtnAddImage(false);
-								}}
+								onChange={(e) =>
+									handleSelecChange(e, setColorSelect)
+								}
 							/>
 						</div>
 					)}

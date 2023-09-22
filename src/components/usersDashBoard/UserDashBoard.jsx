@@ -129,6 +129,17 @@ const UserDashBoard = () => {
 	const scrollToUp = () => {
 		window.scrollTo(0, 0);
 	};
+	const handleResetForm = (e) => {
+		setColorSelect("");
+		setCategoriaSelect("");
+		setCodeInput("");
+		setMarcaSelect("");
+		setModeloInput("");
+		setProveedorSelect("");
+	};
+	const valueSelectConstructor = (value) => {
+		return { value, label: value.toUpperCase() };
+	};
 	return (
 		<div className="userDashBoard-container">
 			<h2>Lista de Precios</h2>
@@ -143,6 +154,7 @@ const UserDashBoard = () => {
 							products.valuesFilter.category,
 							true,
 						)}
+						value={valueSelectConstructor(categoriaSelect)}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setCategoriaSelect(e.value)}
@@ -159,6 +171,7 @@ const UserDashBoard = () => {
 							true,
 						)}
 						type="text"
+						value={valueSelectConstructor(marcaSelect)}
 						styles={selectStyles()}
 						onChange={(e) => setMarcaSelect(e.value)}
 					/>
@@ -168,6 +181,7 @@ const UserDashBoard = () => {
 					<h5>Vehiculo</h5>
 					<input
 						style={{ color: "black" }}
+						value={modeloInput}
 						onChange={(e) =>
 							setModeloInput(
 								e.target.value.toString().toLowerCase(),
@@ -185,6 +199,7 @@ const UserDashBoard = () => {
 							products.valuesFilter.proveedor,
 							true,
 						)}
+						value={valueSelectConstructor(proveedorSelect)}
 						type="text"
 						styles={selectStyles()}
 						onChange={(e) => setProveedorSelect(e.value)}
@@ -201,14 +216,19 @@ const UserDashBoard = () => {
 							true,
 						)}
 						type="text"
+						value={valueSelectConstructor(colorSelect)}
 						styles={selectStyles()}
-						onChange={(e) => setColorSelect(e.value)}
+						onChange={(e) => {
+							setColorSelect(e.value);
+							console.log(e);
+						}}
 					/>
 				</div>
 				<div>
 					<h5>Codigo Producto</h5>
 					<input
 						style={{ color: "black" }}
+						value={codeInput}
 						onChange={(e) =>
 							setCodeInput(
 								e.target.value.toString().toLowerCase(),
@@ -216,6 +236,12 @@ const UserDashBoard = () => {
 						}
 					/>
 				</div>
+				<button
+					className="userDashBoard-btnFormReset"
+					onClick={() => handleResetForm()}
+				>
+					Resetear Filtros
+				</button>
 			</div>
 			{products.loading && <Spinner />}
 			{productsFiltered.length > 0 &&

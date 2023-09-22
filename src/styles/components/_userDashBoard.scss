@@ -72,6 +72,23 @@
     align-items: center;
     }
 }
+.userDashBoard-btnFormReset{
+    background-color: $color-principal;
+    margin: .8rem 0;
+    max-height: 2.5rem;
+    padding: .5rem;
+    height: 2.5rem;
+    width: 98%;
+    color: black;
+    font-weight: bolder;
+    font-size: .9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: $color-hover;
+        color: whitesmoke;
+    }
+}
 @media (min-width:780px){
     .btn-ocultarPrice, .btn-scrollUp{
     font-size: 1.5rem;
@@ -89,6 +106,11 @@
         &:hover{
             color:rgb(0, 88, 0);
             }
+    }
+}
+@media (min-width:1300px){
+    .userDashBoard-btnFormReset{
+        width: 905px;
     }
 }
 @media (min-width:1500px){
