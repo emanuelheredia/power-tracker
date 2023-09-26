@@ -1,3 +1,6 @@
+.ReactModal__Content--after-open{
+    width: 400px !important;
+}
 .productModal-bodyContainer{
     height: auto;
     gap: .8rem;
@@ -41,6 +44,7 @@
     width: 100%;
     & p{
         margin: 0;
+        height: 1rem;
         font-size: .8rem;
         text-align: start;
     }
@@ -80,6 +84,10 @@
         color: whitesmoke;
         background-color: rgba(0, 0, 0, 0.87);
     }
+}
+.cartModal-btnDeleteToCart{
+    background-color: red;
+    color: whitesmoke;
 }
 @media (min-width:780px){
     .ReactModal__Content--after-open{

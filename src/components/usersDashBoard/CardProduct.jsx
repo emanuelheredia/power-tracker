@@ -33,8 +33,7 @@ const CardProduct = ({ product, ocultarPrice }) => {
 					onClick={handleDelete}
 				/>
 			)}
-			{/* 			{!auth.login && <CartModal product={product} />}
-			 */}{" "}
+			{!auth.login && <CartModal product={product} />}
 			<div className="userDashBoard-item-celdaCode">
 				<p>Codigo</p>
 				<p>{code ? code : "sin datos"}</p>

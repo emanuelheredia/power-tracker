@@ -8,6 +8,7 @@ import { FaShoppingCart } from "react-icons/fa";
 const Header = () => {
 	const [admin, setAdmin] = useState(false);
 	const auth = useSelector((state) => state.auth);
+	const cart = useSelector((state) => state.cart.cart);
 	const dispatch = useDispatch();
 	const logOut = (e) => {
 		dispatch(signOutLogin());
@@ -24,7 +25,18 @@ const Header = () => {
 						Log Out
 					</Link>
 				)}
-				{!auth.login && <FaShoppingCart className="header-cartIcon" />}
+				{!auth.login && (
+					<Link to="/cart">
+						<div className="header-cartContainer">
+							<FaShoppingCart className="header-cartIcon" />
+							{cart.length > 0 && (
+								<p className="header-cartCounter">
+									{cart.length}
+								</p>
+							)}
+						</div>
+					</Link>
+				)}
 			</nav>
 		</div>
 	);

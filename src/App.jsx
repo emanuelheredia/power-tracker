@@ -6,6 +6,7 @@ import AdminDashBoard from "./components/adminDashBoard/AdminDashBoard";
 import Login from "./components/login/Login";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import Header from "./components/header/Header";
+import Cart from "./components/cart/Cart";
 function App() {
 	return (
 		<>
@@ -22,6 +23,7 @@ function App() {
 						}
 					/>
 					<Route path="/login" element={<Login />} />
+					<Route path="/cart" element={<Cart />} />
 				</Routes>
 			</div>
 		</>

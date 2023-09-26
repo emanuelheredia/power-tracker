@@ -188,7 +188,6 @@ const ImagesAdministration = () => {
 		setCodeInput(e.target.value.toUpperCase());
 	};
 	const handleSelecChange = (e, setFunction, attribute) => {
-		console.log(attribute);
 		dispatch(resetImagesReceivedStore());
 		setFunction(e.value);
 		setShowBtnAddImage(false);
@@ -196,8 +195,12 @@ const ImagesAdministration = () => {
 			setColorSelect("");
 			dispatch(resetOptionsReceivedStore());
 		}
+		if (attribute === "marca") setVehiculoSelect("");
 	};
-	console.log(marcaSelect);
+	const valueSelectConstructor = (value) => {
+		return { value, label: value.toUpperCase() };
+	};
+
 	return (
 		<div className="imagesAdministration-container">
 			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
@@ -236,6 +239,7 @@ const ImagesAdministration = () => {
 								products.valuesFilter.subCategory,
 								false,
 							)}
+							value={valueSelectConstructor(categorieSelect)}
 							type="text"
 							styles={selectStyles()}
 							onChange={(e) =>
@@ -261,9 +265,14 @@ const ImagesAdministration = () => {
 									"all",
 								)}
 								type="text"
+								value={valueSelectConstructor(marcaSelect)}
 								styles={selectStyles()}
 								onChange={(e) =>
-									handleSelecChange(e, setMarcaSelect)
+									handleSelecChange(
+										e,
+										setMarcaSelect,
+										"marca",
+									)
 								}
 							/>
 						</div>
@@ -282,6 +291,7 @@ const ImagesAdministration = () => {
 									"all",
 								)}
 								type="text"
+								value={valueSelectConstructor(vehiculoSelect)}
 								styles={selectStyles()}
 								onChange={(e) =>
 									handleSelecChange(e, setVehiculoSelect)
@@ -303,6 +313,7 @@ const ImagesAdministration = () => {
 									"all",
 								)}
 								type="text"
+								value={valueSelectConstructor(colorSelect)}
 								styles={selectStyles()}
 								onChange={(e) =>
 									handleSelecChange(e, setColorSelect)

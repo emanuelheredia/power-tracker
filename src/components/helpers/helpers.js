@@ -32,3 +32,18 @@ export const formatingPrice = (precio, proveedor) => {
 	}
 	return priceAsArray.join("");
 };
+export const formatingTotalPrice = (number) => {
+	let cantidadDigitos = number.split("").length;
+	let indexToAddPoint1 = cantidadDigitos - 3;
+	let indexToAddPoint2 = cantidadDigitos - 6;
+	let indexToAddPoint3 = cantidadDigitos - 9;
+	let priceAsArray = number.split("");
+	priceAsArray.splice(indexToAddPoint1, 0, ".");
+	if (indexToAddPoint2 > 0) {
+		priceAsArray.splice(indexToAddPoint2, 0, ".");
+	}
+	if (indexToAddPoint3 > 0) {
+		priceAsArray.splice(indexToAddPoint3, 0, ".");
+	}
+	return priceAsArray.join("");
+};
