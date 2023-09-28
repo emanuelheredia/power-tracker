@@ -37,7 +37,7 @@ const Form = ({ handleSubmit, register, showSpinner, setStorageData }) => {
 	return (
 		<form className="form" onSubmit={handleSubmitForm}>
 			<div className="form-container">
-				<h2 style={{ color: "orange" }}>
+				<h2 style={{ color: "orange", fontSize: "40px" }}>
 					{register ? "Registro" : "Login"}
 				</h2>
 				<div className="form_background"></div>
@@ -88,9 +88,7 @@ const Form = ({ handleSubmit, register, showSpinner, setStorageData }) => {
 						marginBottom: ".5rem",
 					}}
 				>
-					<label style={{ color: "white" }} htmlFor="rememberme">
-						Recordarme
-					</label>
+					<label htmlFor="rememberme">Recordarme</label>
 					<input
 						type="checkbox"
 						id="rememberme"
