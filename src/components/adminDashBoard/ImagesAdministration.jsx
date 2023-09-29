@@ -39,10 +39,7 @@ const ImagesAdministration = () => {
 		dispatch(resetImagesReceivedStore());
 		dispatch(resetOptionsReceivedStore());
 	}, []);
-	/* 	useEffect(() => {
-		setShowBtnAddImage(!products.error);
-	}, [products.error]);
- */ useEffect(() => {
+	useEffect(() => {
 		setNewUrl(imagesProduct);
 	}, [imagesProduct]);
 	useEffect(() => {

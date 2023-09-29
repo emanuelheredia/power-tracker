@@ -1,50 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import ProductCardCart from "./ProductCardCart";
-import { formatingPrice, formatingTotalPrice } from "../helpers/helpers";
+import { useCart } from "../customHooks/useCart";
 
 const Cart = () => {
-	const cart = useSelector((state) => state.cart.cart);
-	const [totalPriceFormated, setTotalPriceFormated] = useState(0);
-	const getTotalPrice = (cart) => {
-		let totalCost = 0;
-		cart.map((product) => {
-			let costo = formatingPrice(
-				product.amount * product.product.price,
-				product.product.proveedor,
-			);
-			let formatedCost = Number(costo.replaceAll(".", ""));
-			totalCost += formatedCost;
-		});
-		return totalCost;
-	};
-	useEffect(() => {
-		setTotalPriceFormated(
-			formatingTotalPrice(
-				getTotalPrice(cart).toString().replace(".", ""),
-			),
-		);
-	}, [cart]);
+	const { cartInfo, totalPriceFormated } = useCart();
 	return (
 		<div className="cart-container">
 			<h2 className="Cart-title">Carrito</h2>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					gap: "1rem",
-				}}
-			>
-				{cart.length > 0 &&
-					cart.map((product) => (
-						<ProductCardCart
-							key={product._id}
-							productInfo={product}
-							cart={cart}
-						/>
-					))}
-			</div>
-			{cart.length > 0 ? (
+			{
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						gap: "1rem",
+					}}
+				>
+					{cartInfo.length > 0 &&
+						cartInfo.map((product) => (
+							<ProductCardCart
+								key={product._id}
+								productInfo={product}
+							/>
+						))}
+				</div>
+			}
+			{cartInfo.length > 0 ? (
 				<div className="productCardCart-totalPriceContainer">
 					<p>COSTO TOTAL</p>
 					<p style={{ fontWeight: "bolder" }}>

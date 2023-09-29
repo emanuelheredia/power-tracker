@@ -10,11 +10,18 @@ import { FaEye, FaEyeSlash, FaWhatsapp, FaArrowUp } from "react-icons/fa";
 import CardProduct from "./CardProduct";
 import { Spinner } from "../spinner/Spinner";
 import { structuringSelectValues } from "../helpers/helpers.js";
+import { useAlert } from "../customHooks/useAlert";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
+	const {
+		showAlertSumbit,
+		setMsgSwap,
+		setShowAlertSumbit,
+		msgSwap,
+		showAlert,
+	} = useAlert();
 	const products = useSelector((state) => state.products);
-	const [msgSwap, setMsgSwap] = useState({});
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
 	const [proveedorSelect, setProveedorSelect] = useState("");
@@ -22,7 +29,6 @@ const UserDashBoard = () => {
 	const [marcaSelect, setMarcaSelect] = useState("");
 	const [colorSelect, setColorSelect] = useState("");
 	const [productsFiltered, setProductsFiltered] = useState([]);
-	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		/* if (products.products.length === 0)  */ dispatch(getAllProducts());
@@ -99,20 +105,6 @@ const UserDashBoard = () => {
 			icon: products.error ? "error" : "success",
 		});
 	}, [products.msg, products.error, products.text]);
-	const showAlert = ({ title, text, icon }) => {
-		swal({
-			title: title,
-			text: text,
-			icon: icon,
-			button: "Aceptar",
-		}).then((respuesta) => {
-			if (respuesta) {
-				setShowAlertSumbit(false);
-				setMsgSwap({});
-				dispatch(resetResponseMsgsStore());
-			}
-		});
-	};
 	const selectStyles = () => ({
 		control: (baseStyles) => ({
 			...baseStyles,

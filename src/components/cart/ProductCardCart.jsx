@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { formatingPrice } from "../helpers/helpers";
-import {
-	updateAmountProductCart,
-	deleteProductFromCart,
-} from "../../redux/actions/cart.actions";
-import { useDispatch } from "react-redux";
+import { useCart } from "../customHooks/useCart";
 
-const ProductCardCart = ({ productInfo, cart }) => {
-	const dispatch = useDispatch();
+const ProductCardCart = ({ productInfo }) => {
 	const { amount, product } = productInfo;
 	const { code, images, price, proveedor, vehiculo, subCategory, color } =
 		product;
-	const precioTotal = price * amount;
-	const [amountUpdated, setAmountUpdated] = useState(0);
-	useEffect(() => {
-		setAmountUpdated(amount);
-	}, [cart]);
-	const handleUpdateProductToCart = () => {
-		const cartCopy = [...cart];
-		cartCopy.map((el) => {
-			if (el.product.code === code) {
-				dispatch(
-					updateAmountProductCart({
-						product: el.product,
-						amount: amountUpdated,
-					}),
-				);
-			}
-		});
-	};
-	const hanldeDeleteProductCart = () => {
-		dispatch(deleteProductFromCart(product));
-	};
+	const {
+		amountUpdated,
+		setAmountUpdated,
+		hanldeDeleteProductCart,
+		handleUpdateProductToCart,
+		precioTotal,
+	} = useCart(amount);
 	const disabledButtonStyle = {
 		opacity: 0.2,
 		cursor: "default",
@@ -70,12 +51,12 @@ const ProductCardCart = ({ productInfo, cart }) => {
 			{amount === amountUpdated && (
 				<div className="productCardCart-priceTotalContainer">
 					<p>TOTAL</p>
-					<p>$ {formatingPrice(precioTotal, proveedor)}</p>
+					<p>$ {formatingPrice(precioTotal(price), proveedor)}</p>
 				</div>
 			)}
 			{amount !== amountUpdated && amountUpdated > 0 && (
 				<button
-					onClick={handleUpdateProductToCart}
+					onClick={() => handleUpdateProductToCart(code)}
 					className="productCardCart-btnAmountChaned"
 				>
 					Actualizar
@@ -83,7 +64,7 @@ const ProductCardCart = ({ productInfo, cart }) => {
 			)}
 			{amountUpdated === 0 && (
 				<button
-					onClick={hanldeDeleteProductCart}
+					onClick={() => hanldeDeleteProductCart(product)}
 					className="productCardCart-btnAmountChaned"
 				>
 					Quitar Producto
