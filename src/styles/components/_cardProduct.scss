@@ -95,6 +95,7 @@
         color: red;
         font-size: .8rem;
         font-weight: bolder;
+        position: relative;
     }
 .userDashBoard-container-inputsSearch{
     display: flex;
@@ -145,10 +146,45 @@
         color: $color-hover;        
     }
 }
+.editPrice-icon{
+    position: absolute;
+    cursor: pointer;
+    right:  -1.2rem;
+    color: $color-principal;
+    font-size: 1.1rem;
+    &:hover{
+        transform: scale(1.2);
+    }
+}
+.editPriceInput-container{
+    position: relative;
+    max-width: 50%;
+    display: flex;
+    & input{
+        max-width: 95%;
+    }
+}
+.editPrice-checkIcon{
+    position: absolute;
+    right: 0;
+    top: 0%;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: green;
+    color: whitesmoke;
+    border-radius: 50%;
+    &:hover{
+        transform: scale(1.2);
+    }
+}
 @media (min-width:780px){
     .userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
     font-size:  .8rem;
     }
+    .editPrice-icon{
+    right:  -1.5rem;
+}
 }
 
 @media (min-width:1000px){
@@ -219,4 +255,9 @@
     .userDashBoard-item-celdaPrice>p:nth-child(2){
         font-size: 1.2rem;
     }
+        .editPrice-icon{
+    font-size:  1.5rem;
+        right:  -1.8rem;
+
+}
 }

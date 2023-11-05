@@ -18,6 +18,10 @@ export const structuringSelectValues = (
 export const formatingPrice = (precio, proveedor) => {
 	if (proveedor == "ZIEL TECHNOLOGY") {
 		let indexOfPoint = precio.toString().indexOf(".");
+		if (indexOfPoint == -1) {
+			let firstClean = formatingTotalPrice(precio.toString());
+			return firstClean;
+		}
 		let firstClean = precio.toString().slice(0, indexOfPoint + 4);
 		return firstClean;
 	}

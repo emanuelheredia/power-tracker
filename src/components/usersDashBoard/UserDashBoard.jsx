@@ -94,6 +94,7 @@ const UserDashBoard = () => {
 		categoriaSelect,
 		colorSelect,
 		marcaSelect,
+		products.products,
 	]);
 	useEffect(() => {
 		if (!products.loading && products.msg) {

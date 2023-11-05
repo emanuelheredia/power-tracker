@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductModal from "./productModal/ProductModal";
-import { FiTrash2 } from "react-icons/fi";
+import { FiTrash2, FiEdit3, FiCheck } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct } from "../../redux/actions/products.actions";
+import {
+	deleteProduct,
+	updateProducts,
+	getAllProducts,
+} from "../../redux/actions/products.actions";
 import { formatingPrice } from "../helpers/helpers";
 import CartModal from "./productModal/CartModal";
 
 const CardProduct = ({ product, ocultarPrice }) => {
 	const auth = useSelector((state) => state.auth);
+	const [editPrice, setEditPrice] = useState(false);
+	const [newPrice, setNewPrice] = useState("");
 	const {
 		code,
 		category,
@@ -24,6 +30,14 @@ const CardProduct = ({ product, ocultarPrice }) => {
 		if (confirm("Está seguro que desea eliminar este producto?")) {
 			dispatch(deleteProduct(product._id));
 		}
+	};
+	const handleNewPriceEdit = (e) => {
+		setNewPrice(Number(e.target.value));
+	};
+	const handlePriceSubmit = () => {
+		setEditPrice(false);
+		dispatch(updateProducts([{ code: code, price: newPrice }]));
+		dispatch(getAllProducts());
 	};
 	return (
 		<div className="userDashBoard-container-rowTable">
@@ -69,12 +83,29 @@ const CardProduct = ({ product, ocultarPrice }) => {
 			</div>
 			<div className="userDashBoard-item-celdaPrice">
 				<p>Precio</p>
-				{!ocultarPrice && (
+				{!ocultarPrice && !editPrice && (
 					<p>
 						{price !== 0 && !isNaN(price)
 							? "$ " + formatingPrice(price, proveedor)
 							: ""}
+						{auth.login && (
+							<FiEdit3
+								className="editPrice-icon"
+								onClick={() => setEditPrice(true)}
+							/>
+						)}
 					</p>
+				)}
+				{editPrice && (
+					<div className="editPriceInput-container">
+						<input type="number" onChange={handleNewPriceEdit} />
+						{newPrice > 0 && (
+							<FiCheck
+								className="editPrice-checkIcon"
+								onClick={handlePriceSubmit}
+							/>
+						)}
+					</div>
 				)}
 			</div>
 		</div>

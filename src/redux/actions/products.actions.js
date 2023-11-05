@@ -147,7 +147,7 @@ const deleteProductDBError = (res) => ({
 	type: DELETE_ONE_PRODUCT_ERROR,
 });
 
-// UPDATE PRICES FROM DB
+// UPDATE PRICES TO DB
 export const updateProducts = (products) => {
 	return async (dispatch) => {
 		dispatch(updateAllProducts());
