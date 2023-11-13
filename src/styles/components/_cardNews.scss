@@ -1,0 +1,80 @@
+.newsCard-container{
+    position: relative;
+    width: 95%;
+    border: 2px solid $color-principal;
+    background-color: $color-principal;
+    box-shadow: 3px 3px 3px rgb(100, 100, 100);
+    border-radius: 0 5px 5px 5px;
+    padding: .5rem;
+}
+.cardNews-deleteIcon{
+    position: absolute;
+    cursor: pointer;
+    right: .5rem;
+    top: .5rem;
+    color: $color-principal;
+    padding: 4px;
+    font-size: 1.5rem;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+.cardNews-imagesContainer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.newsCard-detailContainer{
+    display: flex;
+    margin-bottom: .2rem;
+    & p{
+        margin: 0;
+        font-size: .8rem;
+        text-align: start;
+        background-color: rgb(31, 30, 30);
+    }
+    & p:first-child{
+        width: 20%;
+        padding-left: 5px;
+        color: $color-principal;
+        font-weight: bolder;
+    }
+    & p:last-child{
+        padding-left: 5px;
+        width: 80%;
+        color: whitesmoke;
+    }
+}
+.vahiculoNews{
+    & p:last-child{
+        font-weight: bolder;
+    }
+}
+.cardNews-image{
+    width: 170px;
+    height: 150px;
+    border-radius: 10px;
+}
+.newsCard-createDate{
+    position: absolute;
+    left: -2px;
+    top: -2.5rem;
+    color: whitesmoke;
+    background-color: $color-principal;
+    padding: 0 10px;
+    border-radius: 10px 10px 0 0;
+}
+@media (min-width:"600px"){
+    .cardNews-image{
+    width: 230px;
+    height: 210px;
+    border-radius: 10px;
+}
+.newsCard-container{
+    width: 540px;
+}
+
+}

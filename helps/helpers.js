@@ -66,3 +66,8 @@ const orderColumn = (row, headerIndexs, proveedor) => {
 		proveedor: proveedor,
 	};
 };
+export const structuringDate = (date) => {
+	let firstClean = date.split("T")[0];
+	let secondClean = firstClean.split("-");
+	return secondClean[2] + "/" + secondClean[1] + "/" + secondClean[0];
+};

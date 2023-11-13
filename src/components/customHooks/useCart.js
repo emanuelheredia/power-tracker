@@ -6,12 +6,10 @@ import {
 	deleteProductFromCart,
 } from "../../redux/actions/cart.actions";
 export function useCart(amount) {
-	console.log(amount);
 	const dispatch = useDispatch();
 	const cartInfo = useSelector((state) => state.cart.cart);
 	const [totalPriceFormated, setTotalPriceFormated] = useState(0);
 	const [amountUpdated, setAmountUpdated] = useState(0);
-	console.log(cartInfo);
 	useEffect(() => {
 		setAmountUpdated(amount);
 	}, []);

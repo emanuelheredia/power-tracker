@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductModal from "./productModal/ProductModal";
-import { FiTrash2, FiEdit3, FiCheck } from "react-icons/fi";
+import { FiTrash2, FiEdit3, FiCheck, FiFilePlus } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	deleteProduct,
@@ -9,11 +9,17 @@ import {
 } from "../../redux/actions/products.actions";
 import { formatingPrice } from "../helpers/helpers";
 import CartModal from "./productModal/CartModal";
+import {
+	addNewProductToNews,
+	deleteNews,
+} from "../../redux/actions/news.actions";
 
 const CardProduct = ({ product, ocultarPrice }) => {
+	const { news } = useSelector((state) => state.news);
 	const auth = useSelector((state) => state.auth);
 	const [editPrice, setEditPrice] = useState(false);
 	const [newPrice, setNewPrice] = useState("");
+	const [isInNews, setIsInNews] = useState({ is: false, newsId: "" });
 	const {
 		code,
 		category,
@@ -26,9 +32,28 @@ const CardProduct = ({ product, ocultarPrice }) => {
 		vehiculo,
 	} = product;
 	const dispatch = useDispatch();
+	useEffect(() => {
+		news.map((el) => {
+			if (el.code === code) setIsInNews({ is: true, newsId: el._id });
+		});
+	}, [code, news]);
 	const handleDelete = () => {
 		if (confirm("Está seguro que desea eliminar este producto?")) {
 			dispatch(deleteProduct(product._id));
+			if (isInNews.is) {
+				dispatch(deleteNews(isInNews.newsId));
+			}
+			setTimeout(() => {
+				dispatch(getAllProducts());
+			}, 1000);
+		}
+	};
+	const handleAddToNews = () => {
+		if (
+			confirm("Estás seguro que deseas enviar este producto a Novedades?")
+		) {
+			dispatch(addNewProductToNews(product));
+			setIsInNews({ is: true });
 		}
 	};
 	const handleNewPriceEdit = (e) => {
@@ -45,6 +70,12 @@ const CardProduct = ({ product, ocultarPrice }) => {
 				<FiTrash2
 					className="cardProduct-deleteIcon"
 					onClick={handleDelete}
+				/>
+			)}
+			{auth.login && !isInNews.is && (
+				<FiFilePlus
+					className="cardProduct-addToNewIcon"
+					onClick={handleAddToNews}
 				/>
 			)}
 			{!auth.login && <CartModal product={product} />}

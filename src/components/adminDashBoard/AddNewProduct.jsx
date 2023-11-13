@@ -6,6 +6,7 @@ import {
 	getValuesAttributeSelects,
 	addNewProduct,
 } from "../../redux/actions/products.actions";
+import { addNewProductToNews } from "../../redux/actions/news.actions";
 
 const initialProductInfo = {
 	code: "",
@@ -22,6 +23,7 @@ const initialProductInfo = {
 const AddNewProduct = () => {
 	const products = useSelector((state) => state.products);
 	const [productInfo, setProductInfo] = useState(initialProductInfo);
+	const [addToNews, setAddToNews] = useState(true);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		if (products.valuesFilter.category.length === 0)
@@ -38,6 +40,10 @@ const AddNewProduct = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(addNewProduct(productInfo));
+		if (addToNews) dispatch(addNewProductToNews(productInfo));
+	};
+	const handleAddToNews = (e) => {
+		setAddToNews(e.target.checked);
 	};
 	return (
 		<form className="addNewProduct-container" onSubmit={handleSubmit}>
@@ -51,6 +57,15 @@ const AddNewProduct = () => {
 						seccion={seccion}
 					/>
 				))}
+			</div>
+			<div className="checkbox-container">
+				<label htmlFor="addToNews">Agregar a Novedades</label>
+				<input
+					id="addToNews"
+					type="checkbox"
+					defaultChecked
+					onChange={handleAddToNews}
+				/>
 			</div>
 			<button type="submit" className="addNewProduct-btnSubmit">
 				Guardar Producto

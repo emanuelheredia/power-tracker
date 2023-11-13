@@ -11,6 +11,7 @@ import CardProduct from "./CardProduct";
 import { Spinner } from "../spinner/Spinner";
 import { structuringSelectValues } from "../helpers/helpers.js";
 import { useAlert } from "../customHooks/useAlert";
+import { getAllNews } from "../../redux/actions/news.actions.js";
 
 const UserDashBoard = () => {
 	const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const UserDashBoard = () => {
 		showAlert,
 	} = useAlert();
 	const products = useSelector((state) => state.products);
+	const { news } = useSelector((state) => state.news);
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
 	const [proveedorSelect, setProveedorSelect] = useState("");
@@ -32,6 +34,7 @@ const UserDashBoard = () => {
 	const [ocultarPrice, setOcultarPrice] = useState(false);
 	useEffect(() => {
 		/* if (products.products.length === 0)  */ dispatch(getAllProducts());
+		dispatch(getAllNews());
 		if (products.valuesFilter.category.length === 0)
 			dispatch(getValuesAttributeSelects("category"));
 		if (products.valuesFilter.mark.length === 0)
@@ -213,7 +216,6 @@ const UserDashBoard = () => {
 						styles={selectStyles()}
 						onChange={(e) => {
 							setColorSelect(e.value);
-							console.log(e);
 						}}
 					/>
 				</div>

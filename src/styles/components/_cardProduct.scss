@@ -124,7 +124,7 @@
     margin: 5px 0 0 0;
     color: $color-principal;
 }
-.cardProduct-deleteIcon{
+.cardProduct-deleteIcon,.cardProduct-addToNewIcon{
     position: absolute;
     color: $color-principal;
     font-size: 1.5rem;
@@ -134,6 +134,9 @@
     &:hover{
         color: $color-hover;       
     }
+}
+.cardProduct-addToNewIcon{
+    top: 3rem;
 }
 .cardProduct-addToCartIcon{
     position: absolute;
@@ -235,10 +238,7 @@
     .userDashBoard-item-celdaCode,.userDashBoard-item-celdaColor,.userDashBoard-item-celdaSubCategory,.userDashBoard-item-celdaCategory,.userDashBoard-item-celdaModelo,.userDashBoard-item-celdaProveedor,.userDashBoard-item-celdaPrice,.userDashBoard-item-celdaMoreInfo,.userDashBoard-item-celdaMarca{
         height: 1.5rem;
     }
-    .cardProduct-deleteIcon{
-        font-size: 2rem;
-    }
-    .cardProduct-addToCartIcon{
+    .cardProduct-deleteIcon,.cardProduct-addToNewIcon,.cardProduct-addToCartIcon{
         font-size: 2rem;
     }
 }

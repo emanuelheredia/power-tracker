@@ -1,0 +1,11 @@
+.news-container{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 130px;
+    & h2{
+        width: 100%;
+    }
+}

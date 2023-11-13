@@ -68,6 +68,18 @@
         background-color: $color-hover;
     }
 }
+.checkbox-container{
+    background-color: rgba(0, 0, 0, 0.637);
+    color: $color-principal;
+    font-weight: bolder;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    gap: 1rem;
+    & label,input{
+        cursor: pointer;
+    }
+}
 @media (min-width:1030px){
     .addNewProduct-seccionsContainer{
         width: 100%;

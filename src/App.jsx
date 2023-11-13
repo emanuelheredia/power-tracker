@@ -7,6 +7,7 @@ import Login from "./components/login/Login";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import Header from "./components/header/Header";
 import Cart from "./components/cart/Cart";
+import News from "./components/usersDashBoard/News";
 function App() {
 	return (
 		<>
@@ -14,6 +15,7 @@ function App() {
 			<div style={{ display: "flex", justifyContent: "center" }}>
 				<Routes>
 					<Route path="/" element={<UserDashBoard />} />
+					<Route path="/news" element={<News />} />
 					<Route
 						path="/admin/*"
 						element={
