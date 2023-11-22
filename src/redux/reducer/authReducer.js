@@ -66,14 +66,6 @@ export default function authReducer(state = initialState, action) {
 				login: false,
 				data: [],
 			};
-		case SIGN_IN_USER_EXITO:
-			return {
-				...state,
-				loading: false,
-				login: false,
-				error: false,
-				msg: "",
-			};
 		case SIGN_UP_USER_ERROR:
 		case SIGN_IN_USER_ERROR:
 		case SIGN_OUT_USER_ERROR:

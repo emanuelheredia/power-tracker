@@ -30,21 +30,18 @@ const FilesAdministrator = ({ showSpinner, setShowSpinner }) => {
 	const handleUpload = () => {
 		setShowAlertSumbit(false);
 		setShowSpinner(true);
+		/*
 		const dataCleanComplete = dataCleaned.map((el) => {
-			/*
 			-- Structuring to Upload new prices list --
 			el.category = getProductAttribute(el.code, "categoria");
 			el.subCategory = getProductAttribute(el.code, "subCategoria");
 			el.images = getProductAttribute(el.code, "imagenes");
 			el.color = getProductAttribute(el.code, "color");
- 			*/
 			if (el.price === "X") {
 				el.price = 0;
 			}
 			return el;
 		});
-		//console.log(dataCleanComplete);
-		/* 		
 		-- Upload New Prices List --
 		dispatch(uploadProducts(dataCleanComplete));
 		 */

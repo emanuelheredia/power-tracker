@@ -77,6 +77,7 @@ const signInUserError = (msg) => ({
 	type: SIGN_IN_USER_ERROR,
 	payload: msg,
 });
+
 export const signOutLogin = () => {
 	return async (dispatch) => {
 		dispatch(signOutUser());
