@@ -149,7 +149,7 @@
         color: $color-hover;        
     }
 }
-.editPrice-icon{
+.editPrice-icon,.editPrice-cancelIcon{
     position: absolute;
     cursor: pointer;
     right:  -1.2rem;
@@ -159,6 +159,7 @@
         transform: scale(1.2);
     }
 }
+
 .editPriceInput-container{
     position: relative;
     max-width: 50%;

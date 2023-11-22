@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ProductModal from "./productModal/ProductModal";
-import { FiTrash2, FiEdit3, FiCheck, FiFilePlus } from "react-icons/fi";
+import {
+	FiTrash2,
+	FiEdit3,
+	FiCheck,
+	FiFilePlus,
+	FiDelete,
+} from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	deleteProduct,
@@ -136,6 +142,10 @@ const CardProduct = ({ product, ocultarPrice }) => {
 								onClick={handlePriceSubmit}
 							/>
 						)}
+						<FiDelete
+							className="editPrice-cancelIcon"
+							onClick={() => setEditPrice(false)}
+						/>
 					</div>
 				)}
 			</div>
