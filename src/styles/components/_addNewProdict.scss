@@ -12,6 +12,7 @@
     width: 100%;
 }
 .addNewProduct-campos-container{
+    position: relative;
     background-color: rgba(0, 0, 0, 0.637);
     padding: 1rem;
     border-radius: 10px;
@@ -38,7 +39,7 @@
     align-items: center;
     color: $color-principal;
 }
-.addNewProduct-IconoPlus{
+.addNewProduct-IconoPlus,.addNewProduct-IconoCancel{
     color: whitesmoke;
     background-color: $color-principal;
     border-color: whitesmoke;
@@ -51,6 +52,11 @@
         background-color: whitesmoke;
             color: $color-principal;
     }
+}
+.addNewProduct-IconoCancel{
+    position: absolute;
+    top: 2.7rem;
+    right:  1.5rem;
 }
 .addNewProduct-btnSubmit{
     background-color: $color-principal;

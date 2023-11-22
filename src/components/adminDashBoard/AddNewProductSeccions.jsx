@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { FiPlus } from "react-icons/fi";
+import { FiPlus, FiDelete } from "react-icons/fi";
 import { structuringSelectValues } from "../helpers/helpers";
 import { useSelector } from "react-redux";
 
@@ -77,30 +77,43 @@ const AddNewProductSeccions = ({ productInfo, setProductInfo, seccion }) => {
 			) &&
 				products.valuesFilter[seccionName]?.length > 1 && (
 					<div className="addNewProduct-campos">
-						<Select
-							placeholder=""
-							name={seccionName}
-							className="form-campos"
-							options={structuringSelectValues(
-								products.valuesFilter[seccionName],
-								false,
-							)}
-							type="text"
-							styles={selectStyles()}
-							onChange={handleChangeSelect}
-							onFocus={() =>
-								setShowInputs({
-									...showInputs,
-									[seccion[0]]: false,
-								})
-							}
-							required={showInputs[seccionName] ? false : true}
-						/>
-						<FiPlus
-							className="addNewProduct-IconoPlus"
-							name={seccion[0]}
-							onClick={() => handleShowInputs(seccionName)}
-						/>
+						{!showInputs[seccionName] && (
+							<Select
+								placeholder=""
+								name={seccionName}
+								className="form-campos"
+								options={structuringSelectValues(
+									products.valuesFilter[seccionName],
+									false,
+								)}
+								type="text"
+								styles={selectStyles()}
+								onChange={handleChangeSelect}
+								onFocus={() =>
+									setShowInputs({
+										...showInputs,
+										[seccion[0]]: false,
+									})
+								}
+								required={
+									showInputs[seccionName] ? false : true
+								}
+							/>
+						)}
+						{!showInputs[seccionName] && (
+							<FiPlus
+								className="addNewProduct-IconoPlus"
+								name={seccion[0]}
+								onClick={() => handleShowInputs(seccionName)}
+							/>
+						)}
+						{showInputs[seccionName] && (
+							<FiDelete
+								className="addNewProduct-IconoCancel"
+								name={seccion[0]}
+								onClick={() => handleShowInputs(seccionName)}
+							/>
+						)}
 					</div>
 				)}
 			{showInputs[seccionName] && (
@@ -110,7 +123,7 @@ const AddNewProductSeccions = ({ productInfo, setProductInfo, seccion }) => {
 					type={seccionName === "price" ? "number" : "text"}
 					id={seccionName}
 					onChange={handleChangeInput}
-				/>
+				></input>
 			)}
 		</div>
 	);
