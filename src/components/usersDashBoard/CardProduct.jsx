@@ -70,8 +70,19 @@ const CardProduct = ({ product, ocultarPrice }) => {
 		dispatch(updateProducts([{ code: code, price: newPrice }]));
 		dispatch(getAllProducts());
 	};
+	const hoy = new Date();
+	const [day, month, year] = [
+		hoy.getDate(),
+		hoy.getUTCMonth(),
+		hoy.getFullYear(),
+	];
+	const fullDate = day + "/" + (month === 12 ? 1 : month + 1) + "/" + year;
 	return (
 		<div className="userDashBoard-container-rowTable">
+			<div className="userDashBoard_updateDateContainer">
+				<p>Precio Actualizado al :</p>
+				<p>{fullDate} 8:00hs</p>
+			</div>
 			{auth.login && (
 				<FiTrash2
 					className="cardProduct-deleteIcon"

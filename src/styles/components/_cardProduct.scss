@@ -2,7 +2,7 @@
     background-color: whitesmoke;
     position: relative;
     font-size: .6rem;
-    margin: .5rem 0 .5rem 0;
+    margin: .5rem 0 1.5rem 0;
     border: 1px solid;
     box-shadow: 3px 3px 3px rgb(100, 100, 100);
     border-radius: 5px;
@@ -18,7 +18,6 @@
      ;
     grid-template-columns: 6fr  4fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    overflow: hidden;
 }
 .userDashBoard-item-celdaCode{
     grid-area: code;
@@ -102,7 +101,7 @@
     background-color: black;
     border-radius: 5px;
     justify-content: center;
-    margin: .5rem 0 .5rem 0;
+    margin: .5rem 0 1.5rem 0;
     padding: .5rem;
     flex-wrap: wrap;
     gap: .4rem;
@@ -182,6 +181,24 @@
         transform: scale(1.2);
     }
 }
+.userDashBoard_updateDateContainer{
+    position: absolute;
+    top: -1.35rem;
+    right: 0;
+    color: black;
+    background-color: $color-principal ;
+    display: flex;
+    border-radius: 5px 5px 0 0;
+    padding: 0 5px;
+    & p{
+        margin: 3px 0;
+        font-weight: bold;
+        color: whitesmoke;
+    }
+    & p:last-child{
+        padding-left: 3px;
+    }
+}
 @media (min-width:780px){
     .userDashBoard-item-celdaCode>p:nth-child(2),.userDashBoard-item-celdaSubcategory>p:nth-child(2),.userDashBoard-item-celdaColor>p:nth-child(2),.userDashBoard-item-celdaCategory>p:nth-child(2),.userDashBoard-item-celdaModelo>p:nth-child(2),.userDashBoard-item-celdaProveedor>p:nth-child(2),.userDashBoard-item-celdaPrice>p:nth-child(2),.userDashBoard-item-celdaMarca>p:nth-child(2){
     font-size:  .8rem;
@@ -189,11 +206,21 @@
     .editPrice-icon{
     right:  -1.5rem;
 }
+.userDashBoard_updateDateContainer{
+    top: -1.65rem;
+    & p{
+        font-size: .8rem;
+    }
+}
+.userDashBoard-container-rowTable{
+    margin-top: 1.1rem;
+}
 }
 
 @media (min-width:1000px){
     .userDashBoard-container-rowTable{
         font-size: .8rem;
+        margin-top: .9rem;
     }
     .userDashBoard-item-celdaPrice>p:nth-child(2){
     font-size: 1rem;
@@ -231,7 +258,6 @@
         ;
         grid-template-columns: 2fr 2fr 2fr 2fr;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-        overflow: hidden;
     }
     .userDashBoard-item-celdaImages > img{
         width: 100px;
