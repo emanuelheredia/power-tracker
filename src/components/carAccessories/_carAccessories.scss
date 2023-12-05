@@ -1,0 +1,85 @@
+.carAccessories_container{
+    margin-top: 120px;
+    margin-bottom: 3rem;
+    position: relative;
+}
+.carAccessories_btnGoBack{
+    background-color: $color-principal;
+    width: 100px;
+    border-radius: 5px;
+    padding: 3px;
+    display: block;
+    text-decoration: none;
+    color: whitesmoke;
+    margin-top: 1rem;
+    margin-left: 2rem;    
+    align-items: start;
+    &:hover{
+        background-color: $color-hover;
+        color: white;
+    }
+}
+.carAccessories_contenContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+}
+.carAccessories_mainImage{
+    width: 90%;
+    height: 50vh;
+}
+.carAccesories_contentAccessoriesContainer{
+    width: 90%;
+}
+.dropzone{
+    text-align: center;
+    padding: 20px;
+    border: 3px dashed #eeeeee;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    margin-bottom: 20px;
+}
+.carAccessories_imageSliderContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    & h3{
+        position: absolute;
+        width: 98.5%;
+        background-color: rgba(0, 0, 0, 0.76);
+        color: $color-principal;
+        top: -1rem;
+        left: .3rem;
+    }
+}
+.carAccessories_imageSlider{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+@media (min-width:"800px") {
+.carAccessories_mainImage,.carAccesories_contentAccessoriesContainer{
+    width: 80%;
+}
+
+}
+@media (min-width:"800px") {
+.carAccessories_mainImage,.carAccesories_contentAccessoriesContainer{
+    width: 70%;
+}
+
+}
+@media (min-width:"1200px") {
+    .carAccessories_contenContainer{
+    flex-direction: row;
+}
+.carAccessories_mainImage{
+    width: 50%;
+}
+.carAccesories_contentAccessoriesContainer{
+    width: 46%;
+    padding: 4rem 2rem;
+}
+}

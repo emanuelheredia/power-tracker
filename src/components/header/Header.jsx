@@ -18,8 +18,9 @@ const Header = () => {
 		<div className="header-container">
 			<img className="header-logo" src={logo} alt="" />
 			<nav className="header-linksContainer">
+				<Link to="/">Inicio</Link>
 				<Link to="/news">Novedades</Link>
-				<Link to="/">Listas</Link>
+				<Link to="/lists">Listas</Link>
 				<Link to="/login">Admin</Link>
 				{auth.login && (
 					<Link to="/" onClick={logOut}>

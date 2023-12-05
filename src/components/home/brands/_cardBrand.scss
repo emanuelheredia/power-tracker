@@ -1,0 +1,18 @@
+.cardBrand_container{
+    width: 150px;
+    height: 160px;
+    margin-bottom: 1rem;
+    & h4{
+        margin-top: .7rem;
+        font-size: .9rem;
+    }
+}
+.cardBrand_image{
+    width: 90%;
+    height: 80%;
+    border-radius: 50%;
+    object-fit:fill;
+    &:hover{
+        transform: scale(1.2);
+    }
+}

@@ -26,6 +26,7 @@ const FilesAdministrator = ({ showSpinner, setShowSpinner }) => {
 			const dataEstructured = estructureTable(data);
 			setDataCleaned(dataEstructured);
 		}
+		console.log(dataCleaned);
 	}, [data]);
 	const handleUpload = () => {
 		setShowAlertSumbit(false);

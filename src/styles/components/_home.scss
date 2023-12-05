@@ -1,0 +1,43 @@
+.home_container{
+    margin-top: 120px;
+    z-index: 0;
+}
+
+.awssld__wrapper{
+    max-height: calc(100vh - 120px);
+}
+.awssld__bullets{
+    display: none !important;
+}
+.home_imageSliderContainer{
+    display: flex;  
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    gap: 1rem;
+}
+.home_imageSlider{
+    width: 100vw;
+    object-fit:fill;
+}
+.home_brands{
+    margin: 5rem 0;
+}
+.home_products,.home_cars{
+    margin-top: 5rem;
+}
+@media (min-width:1231px){
+.home_slider{
+    width: 100vw;
+    height: calc(100vh - 120px);
+}
+.awssld__content{
+    max-height: calc(100vh - 120px);
+}
+.awssld__wrapper{
+    max-height: calc(100vh - 120px);
+}
+.home_imageSliderContainer{
+    height: calc(100vh - 120px);
+}
+}
