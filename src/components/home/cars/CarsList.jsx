@@ -4,7 +4,6 @@ import CarCard from "./CarCard";
 
 const CarsList = () => {
 	const brands = imagesCarModels;
-	console.log(brands);
 	return (
 		<div className="carListHome_container">
 			{brands.map((el) => (

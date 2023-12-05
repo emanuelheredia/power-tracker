@@ -5,6 +5,9 @@ import {
 	GET_ACCESSORIE_IMAGES,
 	GET_ACCESSORIE_IMAGES_ERROR,
 	GET_ACCESSORIE_IMAGES_EXITO,
+	DELETE_ACCESSORIE_IMAGES,
+	DELETE_ACCESSORIE_IMAGES_ERROR,
+	DELETE_ACCESSORIE_IMAGES_EXITO,
 } from "../types/index";
 import clienteAxios from "../../../src/axios";
 
@@ -19,10 +22,12 @@ export const addNewAccessorieImage = (product) => {
 				url: "add-new-accessorie-image",
 				data: product,
 			});
+			console.log(resp);
 			dispatch(
 				addNewAccessorieImageDBExito({
 					msg: "Almacenamiento Exitoso",
 					text: resp.data.msg,
+					image: resp.data.data[0],
 				}),
 			);
 		} catch (error) {
@@ -57,7 +62,6 @@ export const getAccessorieImages = (model) => {
 				url: "get-accessorie-images",
 				data: { model: model },
 			});
-			console.log(resp);
 			dispatch(getAccessorieImagesDBExito(resp.data.data));
 		} catch (error) {
 			dispatch(
@@ -79,4 +83,42 @@ const getAccessorieImagesDBExito = (res) => ({
 const getAccessorieImagesDBError = (res) => ({
 	payload: res,
 	type: GET_ACCESSORIE_IMAGES_ERROR,
+});
+
+//DELETE IMAGE
+export const deleteImage = (id) => {
+	return async (dispatch) => {
+		dispatch(deleteImageDB());
+		try {
+			let resp = await clienteAxios({
+				method: "delete",
+				url: "accessorie-image",
+				data: { id: id },
+			});
+			dispatch(
+				deleteImageDBExito({
+					msg: "Eliminación Exitosa",
+					text: resp.data.msg,
+					id: id,
+				}),
+			);
+		} catch (error) {
+			dispatch(
+				deleteImageDBError({
+					msg: "Error en la eliminación",
+					text: error.response.data.msg,
+				}),
+			);
+		}
+	};
+};
+const deleteImageDB = () => ({ type: DELETE_ACCESSORIE_IMAGES });
+
+const deleteImageDBExito = (res) => ({
+	payload: res,
+	type: DELETE_ACCESSORIE_IMAGES_EXITO,
+});
+const deleteImageDBError = (res) => ({
+	payload: res,
+	type: DELETE_ACCESSORIE_IMAGES_ERROR,
 });
