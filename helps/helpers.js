@@ -56,7 +56,9 @@ const orderColumn = (row, headerIndexs, proveedor) => {
 			row[headerIndexs.vehiculoColum ? headerIndexs.vehiculoColum : 0] ||
 			"sin datos",
 		price:
-			row[headerIndexs.precioColum ? headerIndexs.precioColum : 0] || 0,
+			row[headerIndexs.precioColum ? headerIndexs.precioColum : 0] !== "X"
+				? row[headerIndexs.precioColum ? headerIndexs.precioColum : 0]
+				: 0,
 		moreInfo:
 			row[headerIndexs.masInfoColum ? headerIndexs.masInfoColum : 0] ||
 			"sin datos",
