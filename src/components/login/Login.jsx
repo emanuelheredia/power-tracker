@@ -19,7 +19,7 @@ const Login = () => {
 		dispatch(signIn(user));
 		setShowSpinner(true);
 		setTimeout(() => {
-			setShowAlertSumbit(true);
+			if (!auth.login) setShowAlertSumbit(true);
 			setShowSpinner(false);
 		}, 1000);
 	};

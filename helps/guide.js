@@ -71,7 +71,7 @@ export const headersColumProveedores = {
 export const imagesPorada = [
 	"https://65b663b5db.cbaul-cdnwnd.com/a747f42470439687c1904b59994c7183/200000014-3d18f3e143/700/18739638_1907384282883028_1003761569046710645_n.jpg?ph=65b663b5db",
 	"https://65b663b5db.cbaul-cdnwnd.com/a747f42470439687c1904b59994c7183/200000000-ad82bae7d2/18813989_1908582862763170_5263042207915804323_n.jpg?ph=65b663b5db",
-	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfbymRKEBZv98Wmq0hSPiCDHncWseCzsG0aCHU4Enk&s",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmNZqIF2-D33a1YPa8_i9ZvnCRXPn-_Aad6qvYZi5UDe-WLoWMfNptMhbPmZmbSxrpCvE&usqp=CAU",
 ];
 export const brands = [
 	{
@@ -136,56 +136,30 @@ export const imagesProductsHome = [
 		],
 	},
 ];
-export const imagesCarBrands = [
-	{
-		name: "Volkswagen",
-		model: "AMAROK",
-		images: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Volkswagen_Logo_till_1995.svg/1024px-Volkswagen_Logo_till_1995.svg.png",
-	},
-	{
-		name: "chevrolet",
-		model: "S10",
-		images: "https://1000marcas.net/wp-content/uploads/2020/01/Chevrolet-logo.png",
-	},
-	{
-		name: "Ford",
-		model: "RANGER",
-		images: "https://1000marcas.net/wp-content/uploads/2020/01/Ford-logo.jpg",
-	},
-	{
-		name: "Toyota",
-		model: "HILUX",
-		images: "https://i.pinimg.com/originals/28/af/9f/28af9f9e7d9a24312579eeb763670105.jpg",
-	},
-	{
-		name: "Nissan",
-		model: "FRONTIER",
-		images: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Nissan_logo.png",
-	},
-];
+
 export const imagesCarModels = [
 	{
 		name: "AMAROK",
-		img: "https://www.grandecastanhal.com.br/assets/uploads/nt_veiculos/45996-Imagem-ve--culo--440x250--png.png?v=0.2",
+		img: "https://vw.grupodietrich.com/wp-content/uploads/sites/2/2016/09/amaroknuevaThumb.png",
 	},
 	{
-		name: "S10",
-		img: "https://www.chevrolet.com.ar/content/dam/chevrolet/mercosur/argentina/espanol/index/pickups-and-trucks/2021-s10-cd/01-images/colorizer/s10-cab-dupla-switchblade-silver.jpg?imwidth=960",
-	},
-	{
-		name: "RANGER",
-		img: "https://ford-baoloc.net/wp-content/uploads/2022/07/ford-rangermoi.png",
-	},
-	{
-		name: "MAVERICK>",
-		img: "https://build.ford.com/dig/Ford/Maverick/2023/HD-TILE/Image%5B%7CFord%7CMaverick%7C2023%7C1%7C1.%7C300A.W8E.121.PKU..887.89B.SCC.52H.64T.T7R.FWD.993.58K.445.XLT.UCS.%5D/EXT/1/vehicle.png",
+		name: "FRONTIER 2020>",
+		img: "https://www.nissanautoferro.com/wp-content/uploads/2020/11/frontier-le-4x4-at.png",
 	},
 	{
 		name: "HILUX",
 		img: "https://nipponcar.com.ar/wp-content/uploads/2020/12/Color-NuevaHilux2021-BlancoPerlado.png",
 	},
 	{
-		name: "FRONTIER 2020>",
-		img: "https://www.nissanautoferro.com/wp-content/uploads/2020/11/frontier-le-4x4-at.png",
+		name: "MAVERICK>",
+		img: "https://build.ford.com/dig/Ford/Maverick/2023/HD-TILE/Image%5B%7CFord%7CMaverick%7C2023%7C1%7C1.%7C300A.W8E.121.PKU..887.89B.SCC.52H.64T.T7R.FWD.993.58K.445.XLT.UCS.%5D/EXT/1/vehicle.png",
+	},
+	{
+		name: "RANGER",
+		img: "https://www.autodashboard.com.br/wp-content/uploads/2015/02/cheverolet-s10-2015.png",
+	},
+	{
+		name: "S10",
+		img: "https://www.chevrolet.com.py/content/dam/chevrolet/south-america/paraguay/espanol/index/pickups-and-trucks/2022-s10-cabina-doble/01-images/2023/s10-cabina-doble.png?imwidth=960",
 	},
 ];

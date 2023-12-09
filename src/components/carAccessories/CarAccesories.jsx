@@ -105,9 +105,7 @@ const CarAccesories = () => {
 				{ headers: { "X-Requested-With": "XMLHttpRequest" } },
 			)
 			.then((response) => {
-				console.log(response);
 				const data = response.data;
-				console.log(data);
 			});
 	};
 	const handleCategory = (e) => {
@@ -141,7 +139,6 @@ const CarAccesories = () => {
 			handleDelete(public_id);
 		}
 	};
-	console.log(car);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">

@@ -1,5 +1,5 @@
 import React from "react";
-import { imagesCarBrands, imagesCarModels } from "../../../../helps/guide";
+import { imagesCarModels } from "../../../../helps/guide";
 import CarCard from "./CarCard";
 
 const CarsList = () => {
