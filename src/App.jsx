@@ -16,7 +16,13 @@ function App() {
 	return (
 		<>
 			<Header />
-			<div style={{ display: "flex", justifyContent: "center" }}>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					minHeight: "90vh",
+				}}
+			>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/products/:car" element={<CarAccesories />} />

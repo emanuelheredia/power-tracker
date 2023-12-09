@@ -3,18 +3,39 @@ import { Link, useParams } from "react-router-dom";
 import { imagesCarModels } from "../../../helps/guide";
 import { FiTrash2 } from "react-icons/fi";
 import sha1 from "sha1";
+import { Spinner } from "../spinner/Spinner";
 import Dropzone from "react-dropzone";
 import { FaFolderPlus } from "react-icons/fa";
 import axios from "axios";
+import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	addNewAccessorieImage,
 	deleteImage,
 	getAccessorieImages,
 } from "../../redux/actions/accesorieImages.actions";
+
+const customStyles = {
+	content: {
+		top: "50%",
+		left: "50%",
+		right: "auto",
+		bottom: "auto",
+		marginRight: "-50%",
+		transform: "translate(-50%, -50%)",
+		width: "350px",
+		height: "380px",
+		display: "flex",
+		flexDirection: "column",
+		backgroundColor: "rgb(238, 165, 29)",
+	},
+};
+Modal.setAppElement("*");
 const CarAccesories = () => {
 	const carImages = imagesCarModels;
 	const { accesoriesImages } = useSelector((state) => state);
+	const auth = useSelector((state) => state.auth);
+	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const { car } = useParams();
 	const dispatch = useDispatch();
 	const [image, setImage] = useState([]);
@@ -25,6 +46,15 @@ const CarAccesories = () => {
 	useEffect(() => {
 		dispatch(getAccessorieImages(car));
 	}, []);
+	function openModal() {
+		setIsOpen(true);
+		setLoading(false);
+	}
+	function closeModal() {
+		setIsOpen(false);
+		setImageData({});
+		setCategory("");
+	}
 	const getCarImage = (car) => {
 		return carImages.filter((el) => el.name === car)[0];
 	};
@@ -33,13 +63,13 @@ const CarAccesories = () => {
 	};
 	const handleDrop = (files) => {
 		const uploaders = files.map((file) => {
+			setLoading(true);
 			const formData = new FormData();
 			formData.append("file", file);
 			formData.append("tags", `codeinfuse, medium, gist`);
 			formData.append("upload_preset", "power-track");
 			formData.append("api_key", "554344367518936");
 			formData.append("timestamp", Date.now() / 1000) | 0;
-			setLoading(true);
 			return axios
 				.post(
 					"https://api.cloudinary.com/v1_1/daxahjyc9/image/upload",
@@ -93,9 +123,9 @@ const CarAccesories = () => {
 				public_id: imageData.public_id,
 			}),
 		);
-		alert(imageData.fileURL);
 		setImageData({});
 		setCategory("");
+		closeModal();
 	};
 	const handleNextImageClick = (add) => {
 		const imagesAccount = accesoriesImages.images.length - 1;
@@ -111,6 +141,7 @@ const CarAccesories = () => {
 			handleDelete(public_id);
 		}
 	};
+	console.log(car);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -124,7 +155,6 @@ const CarAccesories = () => {
 					alt=""
 				/>
 				<div className="carAccesories_contentAccessoriesContainer">
-					<h3>{getCarImage(car).category}</h3>
 					<div className="carAccessories_slider">
 						{accesoriesImages.images.length > 0 && (
 							<div className="carAccessoriesSlider_nextPrevContainer">
@@ -145,6 +175,9 @@ const CarAccesories = () => {
 								</button>
 							</div>
 						)}
+						{accesoriesImages.images.length === 0 && (
+							<h3>Sin accesorios por el momento</h3>
+						)}
 						{accesoriesImages.images.length > 0 && (
 							<div
 								key={
@@ -161,42 +194,46 @@ const CarAccesories = () => {
 										]?.images
 									}
 								/>
-								<FiTrash2
-									onClick={() =>
-										handleImageDelete(
-											accesoriesImages.images[
-												imgSeliderSelected
-											]?._id,
-											accesoriesImages.images[
-												imgSeliderSelected
-											]?.public_id,
-										)
-									}
-									className="carAccessoriesSlider_btnDelete"
-								/>
-							</div>
-						)}
-						{accesoriesImages.images.length > 0 && (
-							<div className="carAccessoriesSlider_prevImagesContainer">
-								{accesoriesImages.images.map((el, index) => (
-									<img
-										className={
-											index === imgSeliderSelected &&
-											"activeImgSlider"
-										}
+								{auth.login && (
+									<FiTrash2
 										onClick={() =>
-											setImgSeliderSelected(index)
+											handleImageDelete(
+												accesoriesImages.images[
+													imgSeliderSelected
+												]?._id,
+												accesoriesImages.images[
+													imgSeliderSelected
+												]?.public_id,
+											)
 										}
-										key={el.public_id}
-										src={el.images}
+										className="carAccessoriesSlider_btnDelete"
 									/>
-								))}
+								)}
 							</div>
 						)}
 					</div>
-					{
-						<form action="" onSubmit={handleSubmit}>
-							<h3>Agregá una imágen de accesorios al modelo</h3>
+					<Modal
+						isOpen={modalIsOpen}
+						onRequestClose={closeModal}
+						style={customStyles}
+						contentLabel="Example Modal"
+					>
+						<button
+							style={{
+								textAlign: "end",
+								padding: "0",
+								backgroundColor: "inherit",
+							}}
+							onClick={closeModal}
+						>
+							X
+						</button>
+						<form
+							action=""
+							className="carAccessories_formContainer"
+							onSubmit={handleSubmit}
+						>
+							<h3>Agregá una imágen de accesorio</h3>
 							<div className="carAccessories-inputAddImageContainer">
 								<label htmlFor="category">Modelo</label>
 								<input
@@ -225,7 +262,12 @@ const CarAccesories = () => {
 								value={image}
 							>
 								{({ getRootProps, getInputProps }) => (
-									<section>
+									<section
+										onClick={() => {
+											setLoading(true);
+											setImageData({});
+										}}
+									>
 										<div
 											{...getRootProps({
 												className: "dropzone",
@@ -243,6 +285,7 @@ const CarAccesories = () => {
 									</section>
 								)}
 							</Dropzone>
+							{loading && <Spinner />}
 							<img
 								style={{ width: "100px", display: "block" }}
 								src={imageData.fileURL}
@@ -256,8 +299,31 @@ const CarAccesories = () => {
 								</button>
 							)}
 						</form>
-					}
+					</Modal>
 				</div>
+				{accesoriesImages.images.length > 0 && (
+					<div className="carAccessoriesSlider_prevImagesContainer">
+						{accesoriesImages.images.map((el, index) => (
+							<img
+								className={
+									index === imgSeliderSelected &&
+									"activeImgSlider"
+								}
+								onClick={() => setImgSeliderSelected(index)}
+								key={el.public_id}
+								src={el.images}
+							/>
+						))}
+					</div>
+				)}
+				{auth.login && (
+					<button
+						onClick={openModal}
+						className="carAccessories_btnAddImage"
+					>
+						Agregar Imagen
+					</button>
+				)}
 			</div>
 		</div>
 	);

@@ -33,7 +33,6 @@ const home = () => {
 				<ProductsHomeList />
 			</div>
 			<div className="home_brands">
-				<h2>Nuestras Marcas</h2>
 				<BrandsList />
 			</div>
 		</div>

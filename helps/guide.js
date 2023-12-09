@@ -177,11 +177,15 @@ export const imagesCarModels = [
 		img: "https://ford-baoloc.net/wp-content/uploads/2022/07/ford-rangermoi.png",
 	},
 	{
+		name: "MAVERICK>",
+		img: "https://build.ford.com/dig/Ford/Maverick/2023/HD-TILE/Image%5B%7CFord%7CMaverick%7C2023%7C1%7C1.%7C300A.W8E.121.PKU..887.89B.SCC.52H.64T.T7R.FWD.993.58K.445.XLT.UCS.%5D/EXT/1/vehicle.png",
+	},
+	{
 		name: "HILUX",
 		img: "https://nipponcar.com.ar/wp-content/uploads/2020/12/Color-NuevaHilux2021-BlancoPerlado.png",
 	},
 	{
-		name: "FRONTIER",
+		name: "FRONTIER 2020>",
 		img: "https://www.nissanautoferro.com/wp-content/uploads/2020/11/frontier-le-4x4-at.png",
 	},
 ];
