@@ -69,9 +69,7 @@ export const headersColumProveedores = {
 	},
 };
 export const imagesPorada = [
-	"https://65b663b5db.cbaul-cdnwnd.com/a747f42470439687c1904b59994c7183/200000014-3d18f3e143/700/18739638_1907384282883028_1003761569046710645_n.jpg?ph=65b663b5db",
-	"https://65b663b5db.cbaul-cdnwnd.com/a747f42470439687c1904b59994c7183/200000000-ad82bae7d2/18813989_1908582862763170_5263042207915804323_n.jpg?ph=65b663b5db",
-	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmNZqIF2-D33a1YPa8_i9ZvnCRXPn-_Aad6qvYZi5UDe-WLoWMfNptMhbPmZmbSxrpCvE&usqp=CAU",
+	"https://res.cloudinary.com/daxahjyc9/image/upload/v1702311871/power-track/im8bumvlc25dclchxo8n.jpg",
 ];
 export const brands = [
 	{
