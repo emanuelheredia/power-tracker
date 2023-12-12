@@ -35,6 +35,22 @@
         display: block;
     }
 }
+.animationGoUp{
+    animation:.9s ease-in .1s reverse both running goUp;
+    animation-iteration-count: 1;
+}
+@keyframes goUp {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-15px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+    
+}
 @media (min-width:1200px){
 .productHomeCard_container{
     width: 300px;

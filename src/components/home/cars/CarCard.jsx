@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CarCard = ({ car }) => {
+const CarCard = ({ car, isVisible }) => {
 	return (
-		<div className="carCardHome_container">
+		<div
+			className={`carCardHome_container ${
+				isVisible ? "animationGoUp" : ""
+			}`}
+		>
 			<img src={car.img} />
 			<h4>{car.name}</h4>
 			<Link

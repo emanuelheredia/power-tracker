@@ -5,7 +5,7 @@ const initialState = {
 	loading: false,
 	error: false,
 };
-export default function productsReducer(state = initialState, action) {
+export default function usersReducer(state = initialState, action) {
 	switch (action.type) {
 		case ADD_NEW_USER:
 			return {
@@ -18,7 +18,7 @@ export default function productsReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				error: false,
-				msg: "",
+				msg: action.payload,
 			};
 		case ADD_NEW_USER_ERROR:
 			return {

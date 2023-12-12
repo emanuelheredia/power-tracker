@@ -13,7 +13,6 @@ import clienteAxios from "../../../src/axios";
 
 //ADD NEW ACCESSORIE IMAGE
 export const addNewAccessorieImage = (product) => {
-	console.log(product);
 	return async (dispatch) => {
 		dispatch(addNewAccessorieImageDB());
 		try {
@@ -22,7 +21,6 @@ export const addNewAccessorieImage = (product) => {
 				url: "add-new-accessorie-image",
 				data: product,
 			});
-			console.log(resp);
 			dispatch(
 				addNewAccessorieImageDBExito({
 					msg: "Almacenamiento Exitoso",

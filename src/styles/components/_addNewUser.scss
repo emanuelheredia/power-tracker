@@ -33,14 +33,20 @@
         padding: 0 10px;
     }
 }
-.addUser_errorMsg{
+.addUser_msg{
     width: 90%;
     font-size: .8rem;
-    background-color: red;
     padding: .5rem;
     margin-bottom: 0;
     color: whitesmoke;
     border-radius: 5px;
+}
+.error{
+    background-color: red;
+}
+.success{
+    background-color: rgb(6, 158, 32);
+
 }
 @media (min-width:"700px") {
     .addUser_container{

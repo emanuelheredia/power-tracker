@@ -15,20 +15,11 @@ export const addNewUser = (user) => {
 				url: "add-new-user",
 				data: user,
 			});
-			console.log(resp);
-			dispatch(
-				addNewUserDBExito({
-					msg: "Almacenamiento Exitoso",
-					text: resp.data.msg,
-				}),
-			);
+			if (resp.status === 203)
+				return dispatch(addNewUserDBError(resp.data.msg));
+			return dispatch(addNewUserDBExito(resp.data.msg));
 		} catch (error) {
-			dispatch(
-				addNewUserDBError({
-					msg: "Error en el almacenado",
-					text: error.response.data.msg,
-				}),
-			);
+			dispatch(addNewUserDBError("Error en el almacenado"));
 		}
 	};
 };

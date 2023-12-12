@@ -3,9 +3,14 @@ import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
 
-const ProductHomeCard = ({ product }) => {
+const ProductHomeCard = ({ product, isVisible }) => {
+	console.log(isVisible);
 	return (
-		<div className="productHomeCard_container">
+		<div
+			className={`productHomeCard_container ${
+				isVisible ? "animationGoUp" : ""
+			}`}
+		>
 			{/* 			<AutoplaySlider
 				play={true}
 				interval={6000}
