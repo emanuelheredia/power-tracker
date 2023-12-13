@@ -1,5 +1,7 @@
 import { getStructureFarad } from "./faradHelper";
 import { guiaMarcas, headersColumProveedores } from "./guide";
+import cryptoJs from "crypto-js";
+import config from "../src/config/config";
 
 const wordsFromHeaders = [
 	"CODIGO",
@@ -73,3 +75,7 @@ export const structuringDate = (date) => {
 	let secondClean = firstClean.split("-");
 	return secondClean[2] + "/" + secondClean[1] + "/" + secondClean[0];
 };
+export function encriptar(string) {
+	const secretKey = config.secretKey;
+	return cryptoJs.AES.encrypt(string, secretKey).toString();
+}

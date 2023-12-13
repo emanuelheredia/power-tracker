@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import cryptoJs from "crypto-js";
-import config from "../../config/config";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewUser } from "../../redux/actions/user.actions";
+import { encriptar } from "../../../helps/helpers";
 const initialUser = {
 	email: "",
 	password: "",
+	name: "",
 };
 const initialError = {
 	thereIsError: false,
@@ -53,10 +53,6 @@ const AddNewUser = () => {
 		);
 	};
 
-	function encriptar(string) {
-		const secretKey = config.secretKey;
-		return cryptoJs.AES.encrypt(string, secretKey).toString();
-	}
 	useEffect(() => {
 		if (users.error)
 			return setError({ thereIsError: true, msg: users.msg });
@@ -85,6 +81,15 @@ const AddNewUser = () => {
 						id="email"
 					/>
 				</div>
+				<div className="addUser_emailInputContainer">
+					<label htmlFor="name">Nombre</label>
+					<input
+						value={userData.name}
+						required
+						onChange={handleInputs}
+						id="name"
+					/>
+				</div>
 				<div className="addUser_passInputContainer">
 					<label htmlFor="password">Password</label>
 					<input
@@ -106,7 +111,7 @@ const AddNewUser = () => {
 						value={rePass}
 					/>
 				</div>
-				{thereIsError && (
+				{thereIsError && !users.loading && (
 					<h4 className="addUser_msg error">{error.msg}</h4>
 				)}
 				{backResponse !== "" && (

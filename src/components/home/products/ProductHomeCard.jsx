@@ -4,7 +4,6 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
 
 const ProductHomeCard = ({ product, isVisible }) => {
-	console.log(isVisible);
 	return (
 		<div
 			className={`productHomeCard_container ${

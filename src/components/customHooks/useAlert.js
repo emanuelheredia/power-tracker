@@ -3,23 +3,23 @@ import swal from "sweetalert";
 import { resetResponseMsgsStore } from "../../redux/actions/products.actions";
 import { useDispatch, useSelector } from "react-redux";
 
-export function useAlert() {
+export function useAlert({ state }) {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products);
 	const [showSpinner, setShowSpinner] = useState(false);
 	const [msgSwap, setMsgSwap] = useState({});
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	useEffect(() => {
-		if (!products.loading && products.msg) {
+		if (!state.loading && state.msg) {
 			setShowSpinner(false);
 			setShowAlertSumbit(true);
 		}
 		setMsgSwap({
-			title: products.msg,
-			text: products.text || "",
-			icon: products.error ? "error" : "success",
+			title: state.msg,
+			text: state.text || "",
+			icon: state.error ? "error" : "success",
 		});
-	}, [products.msg, products.error, products.text]);
+	}, [state.msg, state.error, state.text]);
 	const showAlert = ({ title, text, icon }) => {
 		swal({
 			title: title,

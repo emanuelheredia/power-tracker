@@ -5,9 +5,11 @@ import AddNewProduct from "./AddNewProduct";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { useAlert } from "../customHooks/useAlert";
 import AddNewUser from "./AddNewUser";
+import { useSelector } from "react-redux";
 const AdminDashBoard = () => {
+	const products = useSelector((state) => state.products);
 	const { showAlert, msgSwap, showAlertSumbit, showSpinner, setShowSpinner } =
-		useAlert();
+		useAlert({ state: products });
 	return (
 		<div className="adminDashBoard-container">
 			<div className="adminDashBoard-navContainer">

@@ -6,6 +6,7 @@ import { imagesPorada } from "../../../helps/guide";
 import BrandsList from "./brands/BrandsList";
 import ProductsHomeList from "./products/ProductsHomeList";
 import CarsList from "./cars/CarsList";
+import { FaWhatsapp } from "react-icons/fa";
 
 const home = () => {
 	const AutoplaySlider = withAutoplay(AwesomeSlider);
@@ -35,6 +36,14 @@ const home = () => {
 			<div className="home_brands">
 				<BrandsList />
 			</div>
+			<a
+				href={"https://wa.me/5493516537131"}
+				target="_blank"
+				rel="noreferrer"
+				className="home_btnWhatsapp"
+			>
+				<FaWhatsapp />
+			</a>
 		</div>
 	);
 };

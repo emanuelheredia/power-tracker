@@ -290,7 +290,7 @@ const CarAccesories = () => {
 							{imageData.fileURL && (
 								<button
 									type="submit"
-									className="addNewProduct-btnSubmit"
+									className="addNewAccessorie-btnSubmit"
 								>
 									Guardar Imágen
 								</button>
