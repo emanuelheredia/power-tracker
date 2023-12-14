@@ -137,8 +137,21 @@ export const imagesProductsHome = [
 
 export const imagesCarModels = [
 	{
+		name: "ALASKAN",
+		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702562664/power-track/piv82r8o4kdbwmcov6a5.png",
+	},
+	{
 		name: "AMAROK",
-		img: "https://vw.grupodietrich.com/wp-content/uploads/sites/2/2016/09/amaroknuevaThumb.png",
+		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702562568/power-track/tugmrxlpsxhglezpjw8s.png",
+	},
+	{
+		name: "AMAROK V6",
+		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702562161/power-track/rljgfkakdvknky7swmrc.png",
+	},
+
+	{
+		name: "F150",
+		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702561930/power-track/bpfhfibmqg4tl90bsapa.png",
 	},
 	{
 		name: "FRONTIER 2020>",
@@ -153,11 +166,27 @@ export const imagesCarModels = [
 		img: "https://build.ford.com/dig/Ford/Maverick/2023/HD-TILE/Image%5B%7CFord%7CMaverick%7C2023%7C1%7C1.%7C300A.W8E.121.PKU..887.89B.SCC.52H.64T.T7R.FWD.993.58K.445.XLT.UCS.%5D/EXT/1/vehicle.png",
 	},
 	{
+		name: "RANGER XLT",
+		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702560422/power-track/mvffeowiho6qbud8xtwy.png",
+	},
+	{
+		name: "RANGER LIMITED",
+		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702560694/power-track/gfpjojdldohmfyvnhthd.png",
+	},
+	{
 		name: "RANGER",
-		img: "https://www.autodashboard.com.br/wp-content/uploads/2015/02/cheverolet-s10-2015.png",
+		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702561116/power-track/lprfyq40atyrdwlh7xtq.png",
+	},
+	{
+		name: "RAM",
+		img: "https://centraljeep.divit.com.ar/wp-content/uploads/2018/11/ram_JB_flat_PearlWhite.png.img_.1440.png",
 	},
 	{
 		name: "S10",
 		img: "https://www.chevrolet.com.py/content/dam/chevrolet/south-america/paraguay/espanol/index/pickups-and-trucks/2022-s10-cabina-doble/01-images/2023/s10-cabina-doble.png?imwidth=960",
+	},
+	{
+		name: "TORO",
+		img: "https://www.fiat.com.uy/wp-content/uploads/sites/8/2021/03/main_image_1.png",
 	},
 ];

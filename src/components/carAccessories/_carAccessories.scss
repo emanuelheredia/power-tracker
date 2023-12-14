@@ -53,8 +53,10 @@
 }
 .carAccessoriesSlider_prevImagesContainer{
     display: flex;
+    flex-wrap: wrap;
     padding: 0 1rem 0 0;
     gap: 1rem;
+    margin-bottom: 1rem;
     & img{
         width: 70px;
         height: 70px;
@@ -158,6 +160,7 @@
 .carAccessories_btnAddImage{
     background-color: $color-principal;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     border: none;
     color: whitesmoke;
     &:hover{
@@ -177,6 +180,7 @@
 @media (min-width:"1200px") {
 .carAccessories_btnAddImage{
     margin: 0;
+    margin-bottom: 1rem;
     width: 80px;
     padding: 0;
     height: 75px;

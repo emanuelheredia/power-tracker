@@ -39,6 +39,7 @@ const CarAccesories = () => {
 	const { car } = useParams();
 	const dispatch = useDispatch();
 	const [image, setImage] = useState([]);
+	const [erroUpload, setErroUpload] = useState(false);
 	const [imageData, setImageData] = useState({});
 	const [category, setCategory] = useState("");
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
@@ -81,6 +82,10 @@ const CarAccesories = () => {
 					const public_id = data.public_id;
 					const fileURL = data.secure_url;
 					setImageData({ fileURL, public_id });
+				})
+				.catch((error) => {
+					setErroUpload(true);
+					setLoading(false);
 				});
 		});
 		axios.all(uploaders).then(() => {
@@ -111,6 +116,7 @@ const CarAccesories = () => {
 	const handleCategory = (e) => {
 		setCategory(e.target.value.toUpperCase());
 	};
+	console.log(imageData);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -282,6 +288,37 @@ const CarAccesories = () => {
 									</section>
 								)}
 							</Dropzone>
+							{erroUpload && (
+								<h3
+									style={{
+										backgroundColor: "red",
+										padding: "20px 10px",
+										borderRadius: "5px",
+										color: "whitesmoke",
+										textAlign: "center",
+										position: "relative",
+									}}
+								>
+									Error en la carga, puede deberse al tamaño
+									de la imágen, reintentá con otro formato o
+									tamaño
+									<span
+										onClick={() => setErroUpload(false)}
+										style={{
+											position: "absolute",
+											top: "5px",
+											right: "5px",
+											backgroundColor: "whitesmoke",
+											borderRadius: "50%",
+											width: "25px",
+											color: "red",
+											cursor: "pointer",
+										}}
+									>
+										X
+									</span>
+								</h3>
+							)}
 							{loading && <Spinner />}
 							<img
 								style={{ width: "100px", display: "block" }}
