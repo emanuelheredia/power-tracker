@@ -2,8 +2,8 @@
     box-shadow: 3px 3px 3px rgb(100, 100, 100);
     border-radius: 8px;
     padding: 1rem;
-    width: 200px;
-    height: 180px;
+    width: 120px;
+    height: 110px;
     position: relative;
     margin-bottom: 1rem;
     & img{
@@ -13,6 +13,7 @@
     }
     & h4{
         margin: .5rem;
+        font-size: .7rem;
     }
     background-color: white;
     cursor: pointer;
@@ -58,4 +59,22 @@
     & h3{
         display: block;
     }
+}
+@media (min-width:"800px") {
+    .carCardHome_container{
+    width: 160px;
+    height: 140px;
+    & h4{
+        font-size: .9rem;
+    }
+}
+}
+@media (min-width:"1290px") {
+    .carCardHome_container{
+    width: 220px;
+    height: 205px;
+    & h4{
+        font-size: 1rem;
+    }
+}
 }

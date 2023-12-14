@@ -154,7 +154,7 @@ export const imagesCarModels = [
 		img: "https://res.cloudinary.com/daxahjyc9/image/upload/v1702561930/power-track/bpfhfibmqg4tl90bsapa.png",
 	},
 	{
-		name: "FRONTIER 2020>",
+		name: "FRONTIER",
 		img: "https://www.nissanautoferro.com/wp-content/uploads/2020/11/frontier-le-4x4-at.png",
 	},
 	{
