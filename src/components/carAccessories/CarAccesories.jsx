@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { imagesCarModels } from "../../../helps/guide";
+import { imagesCarModels, imagesProductsHome } from "../../../helps/guide";
 import { FiTrash2 } from "react-icons/fi";
 import sha1 from "sha1";
 import { Spinner } from "../spinner/Spinner";
@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	addNewAccessorieImage,
 	deleteImage,
+	getAccessorieCategories,
 	getAccessorieImages,
 } from "../../redux/actions/accesorieImages.actions";
 
@@ -46,6 +47,7 @@ const CarAccesories = () => {
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
 		dispatch(getAccessorieImages(car));
+		dispatch(getAccessorieCategories(car));
 	}, []);
 	function openModal() {
 		setIsOpen(true);
@@ -92,6 +94,21 @@ const CarAccesories = () => {
 			setLoading(false);
 		});
 	};
+	const getGeneralCategoriesFromModel = () => {
+		const generalCategories = [];
+		for (let category of imagesProductsHome) {
+			let categorieName = category.name.split(" ")[0];
+			for (let imageCategorie of accesoriesImages.categoriesImages) {
+				if (
+					imageCategorie.includes(categorieName) &&
+					!generalCategories.includes(category.name)
+				)
+					generalCategories.push(category.name);
+			}
+		}
+		return generalCategories;
+	};
+	console.log(getGeneralCategoriesFromModel());
 	const handleDelete = async (id) => {
 		const timestamp = new Date().getTime();
 		const string = `public_id=${id}&timestamp=${timestamp}A00Golz5STHgRO2aGF4xbN3k17o`;
@@ -116,7 +133,6 @@ const CarAccesories = () => {
 	const handleCategory = (e) => {
 		setCategory(e.target.value.toUpperCase());
 	};
-	console.log(imageData);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(

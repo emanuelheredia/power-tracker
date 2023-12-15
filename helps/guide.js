@@ -99,38 +99,81 @@ export const brands = [
 ];
 export const imagesProductsHome = [
 	{
-		name: "TAPAS RETRACTILES",
+		name: "TAPA RETRACTIL",
 		images: [
-			"https://acdn.mitiendanube.com/stores/190/572/products/d_804229-mla47877446441_102021-o-64b8c67f813b8be5f516448564433139-640-0.jpg",
-			"https://warnesrepuestos.com.ar/assets/cobertor-tapa-retractil-7.jpg",
+			"	https://res.cloudinary.com/daxahjyc9/image/upload/v1702655101/power-track/c2ltl4pavkmcfcr1u0fz.jpg",
 		],
 	},
 	{
-		name: "LONAS",
+		name: "LONA",
 		images: [
-			"https://http2.mlstatic.com/D_NQ_NP_607238-MLV52335611393_112022-O.webp",
-			"https://http2.mlstatic.com/D_NQ_NP_694575-MLA31226119063_062019-O.webp",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702655313/power-track/lcxd1shbqx0zsvvkjh5u.jpg",
 		],
 	},
 	{
-		name: "JAULAS ANTIVUELCO",
+		name: "COBERTOR DE CAJA",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702584357/power-track/o3t2jmsncrratz4bycsy.jpg",
+		],
+	},
+	{
+		name: "ANTIVUELCO",
 		images: [
 			"https://rhino4x4.com.ar/media/catalog/product/cache/4/thumbnail/9df78eab33525d08d6e5fb8d27136e95/j/a/jaula_amarok_2.jpg",
-			"https://http2.mlstatic.com/D_NQ_NP_775701-MLA28426130296_102018-O.webp",
 		],
 	},
 	{
-		name: "ESTRIBOS",
+		name: "ESTRIBO",
 		images: [
 			"https://tiempolibreguzman.com/wp-content/uploads/2016/12/estribos-para-camionetas-d_nq_np_22058-mlm20222134687_012015-f.jpg",
-			"https://d2r9epyceweg5n.cloudfront.net/stores/001/032/769/products/estribos-aluminio-cobra-21-ffe991e895e2b53bf316600107465024-1024-1024.jpg",
 		],
 	},
 	{
-		name: "ENGANCHES",
+		name: "ENGANCHE",
 		images: [
 			"https://www.bocelujosla86.com/cdn/shop/products/B0351_dd86e5ee-8f9f-4296-8df0-afc76f9a1704_1024x1024.jpg?v=1642545983",
-			"https://trucksales.pxcrush.net/cars/dealer/c7wgbfeohe0i6p313lhvl28df.jpg",
+		],
+	},
+	{
+		name: "DEFENSA",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702658534/power-track/brnpxqaqj0gbabpj1nds.jpg",
+		],
+	},
+	{
+		name: "ALERON",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702657056/power-track/lenh3iduj1ub29uiayxu.jpg",
+		],
+	},
+	{
+		name: "CUBRE LOMOS",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702658049/power-track/ipbuxojvo7crdgjnlqr9.jpg",
+		],
+	},
+	{
+		name: "PARRILLA CAJA",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702657604/power-track/qmwkcsueqlgek9tglcfx.jpg",
+		],
+	},
+	{
+		name: "DEFLECTORES",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702658140/power-track/ni7jcnke51t40svljszm.jpg",
+		],
+	},
+	{
+		name: "BAUL",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702567668/power-track/p9lngiqmac46gj20dcck.jpg",
+		],
+	},
+	{
+		name: "RACK",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702657799/power-track/mo68okm6t9uf3tcj9ayq.jpg",
 		],
 	},
 ];

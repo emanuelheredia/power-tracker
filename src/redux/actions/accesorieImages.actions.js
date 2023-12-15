@@ -8,6 +8,9 @@ import {
 	DELETE_ACCESSORIE_IMAGES,
 	DELETE_ACCESSORIE_IMAGES_ERROR,
 	DELETE_ACCESSORIE_IMAGES_EXITO,
+	GET_ACCESSORIE_CATEGORIES,
+	GET_ACCESSORIE_CATEGORIES_EXITO,
+	GET_ACCESSORIE_CATEGORIES_ERROR,
 } from "../types/index";
 import clienteAxios from "../../../src/axios";
 
@@ -119,4 +122,37 @@ const deleteImageDBExito = (res) => ({
 const deleteImageDBError = (res) => ({
 	payload: res,
 	type: DELETE_ACCESSORIE_IMAGES_ERROR,
+});
+
+//ADD NEW ACCESSORIE IMAGE
+export const getAccessorieCategories = (model) => {
+	return async (dispatch) => {
+		dispatch(getAccessorieCategoriesDB());
+		try {
+			let resp = await clienteAxios({
+				method: "post",
+				url: "get-accessories-categories",
+				data: { model: model },
+			});
+			dispatch(getAccessorieCategoriesDBExito(resp.data));
+		} catch (error) {
+			dispatch(
+				getAccessorieCategoriesDBError({
+					msg: "Error en la obtención",
+					text: error.response.data.msg,
+				}),
+			);
+		}
+	};
+};
+
+const getAccessorieCategoriesDB = () => ({ type: GET_ACCESSORIE_CATEGORIES });
+
+const getAccessorieCategoriesDBExito = (res) => ({
+	payload: res,
+	type: GET_ACCESSORIE_CATEGORIES_EXITO,
+});
+const getAccessorieCategoriesDBError = (res) => ({
+	payload: res,
+	type: GET_ACCESSORIE_CATEGORIES_ERROR,
 });
