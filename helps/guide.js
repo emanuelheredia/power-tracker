@@ -147,7 +147,13 @@ export const imagesProductsHome = [
 		],
 	},
 	{
-		name: "CUBRE LOMOS",
+		name: "TUERCAS ANTIRROBO",
+		images: [
+			"https://acdn.mitiendanube.com/stores/190/572/products/d_680835-mla49065508205_022022-o-946cf6c6b3082df74716448521548283-1024-1024.jpg",
+		],
+	},
+	{
+		name: "CUBRE LOMO",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702658049/power-track/ipbuxojvo7crdgjnlqr9.jpg",
 		],
@@ -174,6 +180,24 @@ export const imagesProductsHome = [
 		name: "RACK",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702657799/power-track/mo68okm6t9uf3tcj9ayq.jpg",
+		],
+	},
+	{
+		name: "ANTIRROBO AUXILIO",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702581679/power-track/r9uny1tpq9vuipn4dxv0.jpg",
+		],
+	},
+	{
+		name: "DIVISOR CAJA",
+		images: [
+			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702581276/power-track/wszndzq3ukuunx52kcx9.jpg",
+		],
+	},
+	{
+		name: "BOLSO",
+		images: [
+			"	https://res.cloudinary.com/daxahjyc9/image/upload/v1702581494/power-track/gxpkorxukhsoeyhvtrx6.jpg",
 		],
 	},
 ];

@@ -15,6 +15,7 @@ import {
 	getAccessorieCategories,
 	getAccessorieImages,
 } from "../../redux/actions/accesorieImages.actions";
+import Select from "react-select";
 
 const customStyles = {
 	content: {
@@ -31,6 +32,21 @@ const customStyles = {
 		backgroundColor: "rgb(238, 165, 29)",
 	},
 };
+const selectStyles = () => ({
+	control: (baseStyles) => ({
+		...baseStyles,
+		fontSize: ".9rem",
+	}),
+	option: (baseStyles) => ({
+		...baseStyles,
+		textAlign: "center",
+		fontSize: ".9rem",
+		padding: 0,
+		color: "black",
+		backgroundColor: "white",
+	}),
+});
+
 Modal.setAppElement("*");
 const CarAccesories = () => {
 	const carImages = imagesCarModels;
@@ -43,12 +59,17 @@ const CarAccesories = () => {
 	const [erroUpload, setErroUpload] = useState(false);
 	const [imageData, setImageData] = useState({});
 	const [category, setCategory] = useState("");
+	const [superCategory, setSuperCategory] = useState("");
+	const [categorySelected, setCategorySelected] = useState("");
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
-		dispatch(getAccessorieImages(car));
 		dispatch(getAccessorieCategories(car));
-	}, []);
+		dispatch(getAccessorieImages(car, categorySelected));
+		setTimeout(() => {
+			dispatch(getAccessorieImages(car, categorySelected));
+		}, 500);
+	}, [categorySelected]);
 	function openModal() {
 		setIsOpen(true);
 		setLoading(false);
@@ -94,21 +115,7 @@ const CarAccesories = () => {
 			setLoading(false);
 		});
 	};
-	const getGeneralCategoriesFromModel = () => {
-		const generalCategories = [];
-		for (let category of imagesProductsHome) {
-			let categorieName = category.name.split(" ")[0];
-			for (let imageCategorie of accesoriesImages.categoriesImages) {
-				if (
-					imageCategorie.includes(categorieName) &&
-					!generalCategories.includes(category.name)
-				)
-					generalCategories.push(category.name);
-			}
-		}
-		return generalCategories;
-	};
-	console.log(getGeneralCategoriesFromModel());
+
 	const handleDelete = async (id) => {
 		const timestamp = new Date().getTime();
 		const string = `public_id=${id}&timestamp=${timestamp}A00Golz5STHgRO2aGF4xbN3k17o`;
@@ -161,6 +168,12 @@ const CarAccesories = () => {
 			handleDelete(public_id);
 		}
 	};
+	const getCategoryImageFromGuide = (category) => {
+		for (let categ of imagesProductsHome) {
+			if (categ.name === category) return categ.images;
+		}
+	};
+	console.log(accesoriesImages.images);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -168,6 +181,33 @@ const CarAccesories = () => {
 			</Link>
 			<h3 className="carAccessories_title">{car}</h3>
 			<div className="carAccessories_contenContainer">
+				<div className="carAccessories_categoriesContainer">
+					{accesoriesImages.categoriesImages.map((categ) => (
+						<div
+							onClick={() => setCategorySelected(categ)}
+							key={categ}
+						>
+							<button
+								className={
+									categ === categorySelected &&
+									"activeButtonCategory"
+								}
+							>
+								{categ}
+							</button>
+							<img
+								src={getCategoryImageFromGuide(categ)}
+								className={
+									categ === categorySelected &&
+									"activeImgSlider"
+								}
+							/>
+							<h5 className="carAccessories_categName">
+								{categ}
+							</h5>
+						</div>
+					))}
+				</div>
 				<img
 					className="carAccessories_mainImage"
 					src={getCarImage(car).img}
@@ -180,7 +220,8 @@ const CarAccesories = () => {
 								<button
 									onClick={() => handleNextImageClick(-1)}
 								>
-									Anterior
+									<p>Anterior</p>
+									<span>❮</span>
 								</button>
 								<h3>
 									{
@@ -190,12 +231,20 @@ const CarAccesories = () => {
 									}
 								</h3>
 								<button onClick={() => handleNextImageClick(1)}>
-									Siguiente
+									<p>Siguiente</p>
+									<span>❯</span>
 								</button>
 							</div>
 						)}
 						{accesoriesImages.images.length === 0 && (
-							<h3>Sin accesorios por el momento</h3>
+							<h3
+								style={{
+									textAlign: "center",
+									paddingTop: "20%",
+								}}
+							>
+								Seleccione una categoría
+							</h3>
 						)}
 						{accesoriesImages.images.length > 0 && (
 							<div
@@ -254,6 +303,21 @@ const CarAccesories = () => {
 						>
 							<h3>Agregá una imágen de accesorio</h3>
 							<div className="carAccessories-inputAddImageContainer">
+								<Select
+									placeholder="Selecioná la Categoría"
+									name="superCategory"
+									style={{ minWidth: "100%" }}
+									options={imagesProductsHome.map((categ) => {
+										return {
+											label: categ.name,
+											value: categ.name,
+										};
+									})}
+									value={superCategory}
+									type="text"
+									styles={selectStyles()}
+									onChange={(e) => setSuperCategory()}
+								/>
 								<label htmlFor="category">Modelo</label>
 								<input
 									disabled
@@ -261,10 +325,8 @@ const CarAccesories = () => {
 									type="text"
 									value={car}
 								/>
-							</div>
-							<div className="carAccessories-inputAddImageContainer">
 								<label htmlFor="category">
-									Ingresa la categoría
+									Ingresa la subCategoría
 								</label>
 								<input
 									id="category"
@@ -351,6 +413,14 @@ const CarAccesories = () => {
 						</form>
 					</Modal>
 				</div>
+				{auth.login && (
+					<button
+						onClick={openModal}
+						className="carAccessories_btnAddImage"
+					>
+						Agregar Imagen
+					</button>
+				)}
 				{accesoriesImages.images.length > 0 && (
 					<div className="carAccessoriesSlider_prevImagesContainer">
 						{accesoriesImages.images.map((el, index) => (
@@ -365,14 +435,6 @@ const CarAccesories = () => {
 							/>
 						))}
 					</div>
-				)}
-				{auth.login && (
-					<button
-						onClick={openModal}
-						className="carAccessories_btnAddImage"
-					>
-						Agregar Imagen
-					</button>
 				)}
 			</div>
 		</div>

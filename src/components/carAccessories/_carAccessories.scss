@@ -12,7 +12,7 @@
     text-decoration: none;
     color: whitesmoke;
     margin-top: 1rem;
-    margin-left: 3rem;    
+    margin-left: 1.2rem;    
     align-items: start;
     &:hover{
         background-color: $color-hover;
@@ -25,7 +25,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    padding-left: 3rem;
     width: 100vw;
     height: auto;
 }
@@ -53,8 +52,10 @@
 }
 .carAccessoriesSlider_prevImagesContainer{
     display: flex;
+    justify-content: center ;
+    width: 100%;
+    margin-top: 1rem;    
     flex-wrap: wrap;
-    padding: 0 1rem 0 0;
     gap: 1rem;
     margin-bottom: 1rem;
     & img{
@@ -64,9 +65,6 @@
         cursor: pointer;
     }
 }
-.activeImgSlider{
-    border: solid 3px $color-principal;
-}
 .carAccessoriesSlider_nextPrevContainer{
     display: flex;
     justify-content: space-between;
@@ -75,6 +73,11 @@
     & button{
         background-color: $color-principal;
         color: whitesmoke;
+        & p{
+
+            padding: 0;
+            margin: 0;
+        }
         cursor: pointer;
     }
     & button:hover{
@@ -82,13 +85,17 @@
     }
     & h3{
         padding: 0 1rem;
+        font-size: .8rem;
         margin: 0;
     }
+    & span{
+            display: none;
+        }
 }
 .carAccessoriesSlider_btnDelete{
     position: absolute;
     right: 1rem;
-    top: 1rem;
+    top: 4rem;
     background-color: $color-principal;
     border-radius: 50%;
     color: whitesmoke;
@@ -133,60 +140,168 @@
 .carAccessories-inputAddImageContainer{
     width: 80%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     font-weight: bolder;
     margin-bottom: 1rem;
     padding: 0 1rem;
     & label, input{
-        width: 50%;
+        width: 100%;
         color: rgb(70, 70, 70);
         
     }
     & label{
         text-align: start;
-        font-size: .8rem    ;
+        margin-top: 10px;
+        font-size: .8rem;
     }
     & input{
         text-align: center;
+        height: 1.5rem;
         border: none;
     }
 }
+.css-12lg6o9-control, .css-lerm4k-control{
+    width: 330px;
+}
+
 .addNewAccessorie-btnSubmit{
     background-color: black;
     color: $color-principal;
+    margin-top: 10px;
     &:hover{
         background-color: rgb(70, 70, 70);
     }
 }
 .carAccessories_btnAddImage{
     background-color: $color-principal;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    width: 50%;
+    height: 3rem;
     border: none;
     color: whitesmoke;
     &:hover{
         background-color: $color-hover
     }
 }
-@media (min-width:"800px") {
-    .dropzone{
-    & p{
-        font-size: .9rem;
+.carAccessories_categoriesContainer{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    padding:0 1rem;
+    flex-wrap: wrap;
+    gap: 5px;
+    & button{
+        font-size: .6rem;
+        border: 1px solid $color-principal;
+        &:hover{
+            background-color: $color-principal;
+            color: whitesmoke;
+        }
+    }
+    & img{
+        display: none;
+    }
+    & .carAccessories_categName{
+        display: none;
     }
 }
-.carAccessories_imageSlider{
-    height: 500px;
+.carAccessories_title{
+    margin-bottom: 0.5rem;
 }
+.activeButtonCategory{
+    background-color: $color-principal ;
+    color: whitesmoke;
+
 }
-@media (min-width:"1200px") {
-.carAccessories_btnAddImage{
-    margin: 0;
+@media (min-width:"800px") {
+    .carAccessoriesSlider_nextPrevContainer{
+        & h3{
+        font-size: 1rem;
+    }
+    }
+    .carAccessories_categoriesContainer{
+        & button{
+            font-size: .9rem;
+        }}
+        .dropzone{
+            & p{
+                font-size: .9rem;
+            }
+        }
+        .carAccessories_imageSlider{
+            height: 500px;
+        }
+        .carAccessories_btnAddImage{
+    width: 200px;
+}
+.css-12lg6o9-control, .css-lerm4k-control{
+    width: 410px;
+}
+    }
+
+    @media (min-width:"1200px") {
+    .carAccessories_categoriesContainer{
+            width: 100%;
+    padding-bottom:1rem;
+    gap: 1rem;
+    & button{
+        display: none;
+    }
+    & img{
+        display: flex;
+        cursor: pointer;
+        border-radius: 10px;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        box-sizing: border-box;
+        &:hover{
+            border: solid 3px rgba(128, 128, 128, 0.678);
+        }     
+    }
+    .carAccessories_categName{
+        display: block;
+        margin: 0;
+        max-width: 100px;
+    }
+}
+.carAccessories_title{
     margin-bottom: 1rem;
-    width: 80px;
-    padding: 0;
-    height: 75px;
 }
 .carAccessories_slider{
     width: 90%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+.carAccessories_imageSliderContainer{
+    width: 90%;
+}
+.carAccessoriesSlider_nextPrevContainer{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 0rem;
+    justify-content: space-around;
+    & button{
+        border-radius: 50%;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        & p{
+            display: none;
+        }
+        & span{
+            display: block;
+            font-size: 1rem;
+            padding: 0;
+        }
+    }
+    & h3{
+        border-radius: 10px;
+        color: whitesmoke;
+        background-color: rgba(0, 0, 0, 0.753);
+    }
 }
 .carAccessories_formContainer{
     & section{
@@ -196,17 +311,36 @@
 .carAccessories-inputAddImageContainer{
     margin-bottom: 1.1rem;
 }
-    .carAccessories_contenContainer{
+.carAccessories_contenContainer{
     flex-direction: row;
+    justify-content: center;
+    align-items: start;
 }
 .carAccessories_mainImage{
-    width: 55%;
+    width: 50%;
 }
 .carAccesories_contentAccessoriesContainer{
     width: 45%;
 }
 .carAccessories_imageSlider{
-    height: 600px;
+    height: 520px;
     object-fit: contain;
 }
+}
+@media (min-width:"1400px") {
+    .carAccessories_categoriesContainer{
+        & img{
+            width: 130px;
+            height: 130px;
+        }
+        & h5{
+            font-size: 1rem;
+        }
+        .carAccessories_categName{
+            max-width: 130px;
+        }
+    }
+}
+.activeImgSlider{
+    border: solid 3px $color-hover !important;
 }

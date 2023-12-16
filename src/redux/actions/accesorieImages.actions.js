@@ -54,14 +54,14 @@ const addNewAccessorieImageDBError = (res) => ({
 });
 
 //ADD NEW ACCESSORIE IMAGE
-export const getAccessorieImages = (model) => {
+export const getAccessorieImages = (model, categorySelected) => {
 	return async (dispatch) => {
 		dispatch(getAccessorieImagesDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "get-accessorie-images",
-				data: { model: model },
+				data: { model: model, category: categorySelected },
 			});
 			dispatch(getAccessorieImagesDBExito(resp.data.data));
 		} catch (error) {
