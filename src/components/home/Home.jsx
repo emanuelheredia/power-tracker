@@ -2,14 +2,17 @@ import React from "react";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
-import { imagesPorada } from "../../../helps/guide";
+import { imagesPorada, imagesProductsHome } from "../../../helps/guide";
 import BrandsList from "./brands/BrandsList";
-import ProductsHomeList from "./products/ProductsHomeList";
 import CarsList from "./cars/CarsList";
 import { FaWhatsapp } from "react-icons/fa";
+import Carousel from "./Carousel";
+import ProductHomeCard from "./products/ProductHomeCard";
 
 const home = () => {
 	const AutoplaySlider = withAutoplay(AwesomeSlider);
+	const products = imagesProductsHome;
+
 	return (
 		<div className="home_container">
 			<div className="home_slider">
@@ -31,7 +34,11 @@ const home = () => {
 			</div>
 			<div className="home_products">
 				<h2>Algunos de nuestros Productos</h2>
-				<ProductsHomeList />
+				<Carousel amountShowElem={{ xs: 1, md: 2, lg: 3 }}>
+					{products.map((el) => (
+						<ProductHomeCard key={el.name} product={el} />
+					))}
+				</Carousel>
 			</div>
 			<div className="home_brands">
 				<BrandsList />

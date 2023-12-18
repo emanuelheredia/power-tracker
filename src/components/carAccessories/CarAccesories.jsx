@@ -30,6 +30,7 @@ const customStyles = {
 		display: "flex",
 		flexDirection: "column",
 		backgroundColor: "rgb(238, 165, 29)",
+		zIndex: "1000",
 	},
 };
 const selectStyles = () => ({
@@ -73,6 +74,7 @@ const CarAccesories = () => {
 	function openModal() {
 		setIsOpen(true);
 		setLoading(false);
+		setSuperCategory("");
 	}
 	function closeModal() {
 		setIsOpen(false);
@@ -146,6 +148,7 @@ const CarAccesories = () => {
 			addNewAccessorieImage({
 				model: car,
 				category,
+				superCategory,
 				images: imageData.fileURL,
 				public_id: imageData.public_id,
 			}),
@@ -162,7 +165,7 @@ const CarAccesories = () => {
 		return setImgSeliderSelected(imgActive);
 	};
 	const handleImageDelete = (id, public_id) => {
-		if (confirm("Estás seguro que desea eliminar la imágen")) {
+		if (confirm("Estás seguro que desea eliminar la imágen?")) {
 			dispatch(deleteImage(id));
 			setImgSeliderSelected(0);
 			handleDelete(public_id);
@@ -173,7 +176,6 @@ const CarAccesories = () => {
 			if (categ.name === category) return categ.images;
 		}
 	};
-	console.log(accesoriesImages.images);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -184,7 +186,10 @@ const CarAccesories = () => {
 				<div className="carAccessories_categoriesContainer">
 					{accesoriesImages.categoriesImages.map((categ) => (
 						<div
-							onClick={() => setCategorySelected(categ)}
+							onClick={() => {
+								setCategorySelected(categ);
+								setImgSeliderSelected(0);
+							}}
 							key={categ}
 						>
 							<button
@@ -215,7 +220,7 @@ const CarAccesories = () => {
 				/>
 				<div className="carAccesories_contentAccessoriesContainer">
 					<div className="carAccessories_slider">
-						{accesoriesImages.images.length > 0 && (
+						{accesoriesImages.images.length > 0 && !modalIsOpen && (
 							<div className="carAccessoriesSlider_nextPrevContainer">
 								<button
 									onClick={() => handleNextImageClick(-1)}
@@ -313,10 +318,10 @@ const CarAccesories = () => {
 											value: categ.name,
 										};
 									})}
-									value={superCategory}
+									value={superCategory.value}
 									type="text"
 									styles={selectStyles()}
-									onChange={(e) => setSuperCategory()}
+									onChange={(e) => setSuperCategory(e.value)}
 								/>
 								<label htmlFor="category">Modelo</label>
 								<input
@@ -402,7 +407,7 @@ const CarAccesories = () => {
 								style={{ width: "100px", display: "block" }}
 								src={imageData.fileURL}
 							/>
-							{imageData.fileURL && (
+							{imageData.fileURL && superCategory && (
 								<button
 									type="submit"
 									className="addNewAccessorie-btnSubmit"
