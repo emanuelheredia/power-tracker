@@ -5,7 +5,7 @@ import "react-awesome-slider/dist/styles.css";
 import { imagesPorada, imagesProductsHome } from "../../../helps/guide";
 import BrandsList from "./brands/BrandsList";
 import CarsList from "./cars/CarsList";
-import { FaWhatsapp } from "react-icons/fa";
+import { RiWhatsappFill } from "react-icons/ri";
 import Carousel from "./Carousel";
 import ProductHomeCard from "./products/ProductHomeCard";
 
@@ -49,7 +49,7 @@ const home = () => {
 				rel="noreferrer"
 				className="home_btnWhatsapp"
 			>
-				<FaWhatsapp />
+				<RiWhatsappFill />
 			</a>
 		</div>
 	);
