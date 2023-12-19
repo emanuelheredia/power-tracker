@@ -67,9 +67,6 @@ const CarAccesories = () => {
 	useEffect(() => {
 		dispatch(getAccessorieCategories(car));
 		dispatch(getAccessorieImages(car, categorySelected));
-		setTimeout(() => {
-			dispatch(getAccessorieImages(car, categorySelected));
-		}, 500);
 	}, [categorySelected]);
 	function openModal() {
 		setIsOpen(true);
