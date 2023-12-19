@@ -101,19 +101,19 @@ export const imagesProductsHome = [
 	{
 		name: "TAPA RETRACTIL",
 		images: [
-			"	https://res.cloudinary.com/daxahjyc9/image/upload/v1702655101/power-track/c2ltl4pavkmcfcr1u0fz.jpg",
+			"	https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702655101/power-track/c2ltl4pavkmcfcr1u0fz.jpg",
 		],
 	},
 	{
 		name: "LONA",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702655313/power-track/lcxd1shbqx0zsvvkjh5u.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702655313/power-track/lcxd1shbqx0zsvvkjh5u.jpg",
 		],
 	},
 	{
 		name: "COBERTOR DE CAJA",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702584357/power-track/o3t2jmsncrratz4bycsy.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702584357/power-track/o3t2jmsncrratz4bycsy.jpg",
 		],
 	},
 	{
@@ -137,13 +137,13 @@ export const imagesProductsHome = [
 	{
 		name: "DEFENSA",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702658534/power-track/brnpxqaqj0gbabpj1nds.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702658534/power-track/brnpxqaqj0gbabpj1nds.jpg",
 		],
 	},
 	{
 		name: "ALERON",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702657056/power-track/lenh3iduj1ub29uiayxu.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702657056/power-track/lenh3iduj1ub29uiayxu.jpg",
 		],
 	},
 	{
@@ -155,49 +155,49 @@ export const imagesProductsHome = [
 	{
 		name: "CUBRE LOMO",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702658049/power-track/ipbuxojvo7crdgjnlqr9.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702658049/power-track/ipbuxojvo7crdgjnlqr9.jpg",
 		],
 	},
 	{
 		name: "PARRILLA CAJA",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702657604/power-track/qmwkcsueqlgek9tglcfx.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702657604/power-track/qmwkcsueqlgek9tglcfx.jpg",
 		],
 	},
 	{
 		name: "DEFLECTORES",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702658140/power-track/ni7jcnke51t40svljszm.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702658140/power-track/ni7jcnke51t40svljszm.jpg",
 		],
 	},
 	{
 		name: "BAUL",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702567668/power-track/p9lngiqmac46gj20dcck.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702567668/power-track/p9lngiqmac46gj20dcck.jpg",
 		],
 	},
 	{
 		name: "RACK",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702657799/power-track/mo68okm6t9uf3tcj9ayq.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702657799/power-track/mo68okm6t9uf3tcj9ayq.jpg",
 		],
 	},
 	{
 		name: "ANTIRROBO AUXILIO",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702581679/power-track/r9uny1tpq9vuipn4dxv0.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702581679/power-track/r9uny1tpq9vuipn4dxv0.jpg",
 		],
 	},
 	{
 		name: "DIVISOR CAJA",
 		images: [
-			"https://res.cloudinary.com/daxahjyc9/image/upload/v1702581276/power-track/wszndzq3ukuunx52kcx9.jpg",
+			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702581276/power-track/wszndzq3ukuunx52kcx9.jpg",
 		],
 	},
 	{
 		name: "BOLSO",
 		images: [
-			"	https://res.cloudinary.com/daxahjyc9/image/upload/v1702581494/power-track/gxpkorxukhsoeyhvtrx6.jpg",
+			"	https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702581494/power-track/gxpkorxukhsoeyhvtrx6.jpg",
 		],
 	},
 ];
