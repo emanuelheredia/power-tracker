@@ -63,7 +63,7 @@ const CarAccesories = () => {
 	const [superCategory, setSuperCategory] = useState("");
 	const [categorySelected, setCategorySelected] = useState("");
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
-	const [preloadImages, setPreloadImages] = useState([]);
+	const [showLoader, setShowLoader] = useState(false);
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
 		dispatch(getAccessorieCategories(car));
@@ -181,6 +181,7 @@ const CarAccesories = () => {
 		);
 		return firstCut;
 	};
+	console.log(showLoader);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -194,6 +195,7 @@ const CarAccesories = () => {
 							onClick={() => {
 								setCategorySelected(categ);
 								setImgSeliderSelected(0);
+								setShowLoader(true);
 							}}
 							key={categ}
 						>
@@ -225,27 +227,31 @@ const CarAccesories = () => {
 				/>
 				<div className="carAccesories_contentAccessoriesContainer">
 					<div className="carAccessories_slider">
-						{accesoriesImages.images.length > 0 && !modalIsOpen && (
-							<div className="carAccessoriesSlider_nextPrevContainer">
-								<button
-									onClick={() => handleNextImageClick(-1)}
-								>
-									<p>Anterior</p>
-									<span>❮</span>
-								</button>
-								<h3>
-									{
-										accesoriesImages.images[
-											imgSeliderSelected
-										]?.category
-									}
-								</h3>
-								<button onClick={() => handleNextImageClick(1)}>
-									<p>Siguiente</p>
-									<span>❯</span>
-								</button>
-							</div>
-						)}
+						{accesoriesImages.images.length > 0 &&
+							!modalIsOpen &&
+							!showLoader && (
+								<div className="carAccessoriesSlider_nextPrevContainer">
+									<button
+										onClick={() => handleNextImageClick(-1)}
+									>
+										<p>Anterior</p>
+										<span>❮</span>
+									</button>
+									<h3>
+										{
+											accesoriesImages.images[
+												imgSeliderSelected
+											]?.category
+										}
+									</h3>
+									<button
+										onClick={() => handleNextImageClick(1)}
+									>
+										<p>Siguiente</p>
+										<span>❯</span>
+									</button>
+								</div>
+							)}
 						{accesoriesImages.images.length === 0 && (
 							<h3
 								style={{
@@ -264,8 +270,10 @@ const CarAccesories = () => {
 								}
 								className="carAccessories_imageSliderContainer"
 							>
+								{showLoader && <Spinner />}
 								{accesoriesImages.images.map((img, index) => (
 									<img
+										onLoad={() => setShowLoader(false)}
 										className="carAccessories_imageSlider"
 										style={{
 											display: `${
