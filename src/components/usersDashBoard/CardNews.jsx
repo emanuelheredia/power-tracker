@@ -18,7 +18,6 @@ const CardNews = ({ product }) => {
 			}, 1000);
 		}
 	};
-	console.log(users.user);
 	return (
 		<div className="newsCard-container">
 			<p className="newsCard-createDate">

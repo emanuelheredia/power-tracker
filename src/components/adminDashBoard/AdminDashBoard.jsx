@@ -10,7 +10,6 @@ const AdminDashBoard = () => {
 	const products = useSelector((state) => state.products);
 	const { showAlert, msgSwap, showAlertSumbit, showSpinner, setShowSpinner } =
 		useAlert({ state: products });
-	console.log(msgSwap);
 	return (
 		<div className="adminDashBoard-container">
 			<div className="adminDashBoard-navContainer">
