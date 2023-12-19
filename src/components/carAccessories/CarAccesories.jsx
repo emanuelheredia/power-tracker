@@ -68,22 +68,6 @@ const CarAccesories = () => {
 	useEffect(() => {
 		dispatch(getAccessorieCategories(car));
 		dispatch(getAccessorieImages(car, categorySelected));
-		function getImage(url) {
-			return new Promise(function (resolve, reject) {
-				var img = new Image();
-				img.onload = function () {
-					resolve(url);
-				};
-				img.onerror = function () {
-					reject(url);
-				};
-				img.src = url;
-			});
-		}
-		accesoriesImages.images.forEach(
-			async (element) =>
-				await getImage(reduceSizeImage(element.images, true)),
-		);
 	}, [categorySelected]);
 	function openModal() {
 		setIsOpen(true);
@@ -193,7 +177,7 @@ const CarAccesories = () => {
 	const reduceSizeImage = (imageUrl, main) => {
 		let firstCut = imageUrl.replace(
 			"upload/",
-			`upload/c_scale,${main ? "w_450" : "w_80"}/`,
+			`upload/c_scale,${main ? "w_550" : "w_80"}/`,
 		);
 		return firstCut;
 	};
@@ -280,15 +264,18 @@ const CarAccesories = () => {
 								}
 								className="carAccessories_imageSliderContainer"
 							>
-								<img
-									className="carAccessories_imageSlider"
-									src={reduceSizeImage(
-										accesoriesImages.images[
-											imgSeliderSelected
-										]?.images,
-										true,
-									)}
-								/>
+								{accesoriesImages.images.map((img, index) => (
+									<img
+										className="carAccessories_imageSlider"
+										style={{
+											display: `${
+												index !== imgSeliderSelected &&
+												"none"
+											}`,
+										}}
+										src={reduceSizeImage(img.images, true)}
+									/>
+								))}
 								{auth.login && (
 									<FiTrash2
 										onClick={() =>
