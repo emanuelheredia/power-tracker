@@ -10,12 +10,11 @@ const LoginUser = ({ setStorageData }) => {
 	const { showAlert, msgSwap, showAlertSumbit } = useAlert({
 		state: users,
 	});
-	console.log(users);
 	const dispatch = useDispatch();
 	const handleSubmit = (user) => {
 		dispatch(
 			signInUser({
-				email: user.email,
+				userID: user.userAccess,
 				password: encriptar(user.password),
 			}),
 		);

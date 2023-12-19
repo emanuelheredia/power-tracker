@@ -12,15 +12,11 @@ const Carousel = ({ children, amountShowElem }) => {
 			? amountShowElem.xs
 			: width >= 780 && width < 1290
 			? amountShowElem.md
-			: amountShowElem.lg,
+			: width >= 1290 && width < 1700
+			? amountShowElem.lg
+			: amountShowElem.xl,
 	);
-	const [showLimited, setShowLimited] = useState(
-		width < 780
-			? amountShowElem.xs
-			: width >= 780 && width < 1290
-			? amountShowElem.md
-			: amountShowElem.lg,
-	);
+	const [showLimited, setShowLimited] = useState(elToShow);
 	const rest = elToShow - (ammountChildren % elToShow);
 	useEffect(() => {
 		window.addEventListener("resize", (e) =>
@@ -30,7 +26,8 @@ const Carousel = ({ children, amountShowElem }) => {
 	useEffect(() => {
 		if (width < 780) setElToShow(amountShowElem.xs);
 		else if (width >= 780 && width < 1290) setElToShow(amountShowElem.md);
-		else if (width >= 1290) setElToShow(amountShowElem.lg);
+		else if (width >= 1290 && width < 1700) setElToShow(amountShowElem.lg);
+		else setElToShow(amountShowElem.xl);
 	}, [width]);
 	useEffect(() => {
 		if (!(showLimited < elToShow))

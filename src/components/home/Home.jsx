@@ -33,8 +33,8 @@ const home = () => {
 				<CarsList />
 			</div>
 			<div className="home_products">
-				<h2>Algunos de nuestros Productos</h2>
-				<Carousel amountShowElem={{ xs: 1, md: 2, lg: 3 }}>
+				<h2>Productos</h2>
+				<Carousel amountShowElem={{ xs: 1, md: 2, lg: 3, xl: 4 }}>
 					{products.map((el) => (
 						<ProductHomeCard key={el.name} product={el} />
 					))}

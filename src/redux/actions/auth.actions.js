@@ -51,11 +51,15 @@ const signUpUserError = (msg) => ({
 });
 
 export const signIn = (newUser) => {
-	const { email, password } = newUser;
+	const { userAccess, password } = newUser;
 	return async (dispatch) => {
 		dispatch(signInUser());
 		try {
-			const res = await signInWithEmailAndPassword(auth, email, password);
+			const res = await signInWithEmailAndPassword(
+				auth,
+				userAccess,
+				password,
+			);
 			dispatch(
 				signInUserExito({
 					token: res.user.accessToken,

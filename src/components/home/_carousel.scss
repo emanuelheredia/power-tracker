@@ -5,12 +5,12 @@
     flex-wrap: wrap;
     padding: 0 2rem;
     position: relative;
-    gap: 1rem;
+    gap: 1.5rem;
     & .carousel_leftArrow, .carousel_rigthArrow{
         position: absolute;
         font-size: 4rem;
         z-index: 10;
-        top: 40%;
+        top: 37%;
         color: $color-principal;
         cursor: pointer;
         &:hover{

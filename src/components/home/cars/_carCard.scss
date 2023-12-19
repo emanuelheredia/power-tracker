@@ -2,8 +2,8 @@
     box-shadow: 3px 3px 3px rgb(100, 100, 100);
     border-radius: 8px;
     padding: 1rem;
-    width: 120px;
-    height: 110px;
+    width: 110px;
+    height: 95px;
     position: relative;
     margin-bottom: 1rem;
     & img{
@@ -12,7 +12,7 @@
         object-fit: fill;
     }
     & h4{
-        margin: .5rem;
+        margin: 0;
         font-size: .7rem;
     }
     background-color: white;
@@ -71,8 +71,8 @@
 }
 @media (min-width:"1290px") {
     .carCardHome_container{
-    width: 220px;
-    height: 205px;
+    width: 190px;
+    height: 185px;
     & h4{
         font-size: 1rem;
     }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNewUser } from "../../redux/actions/user.actions";
 import { encriptar } from "../../../helps/helpers";
 const initialUser = {
-	email: "",
+	idCliente: "",
 	password: "",
 	name: "",
 };
@@ -27,11 +27,6 @@ const AddNewUser = () => {
 		e.preventDefault();
 		setBackResponse("");
 		setError(initialError);
-		if (!userData.email.includes("@") || !userData.email.includes(".c"))
-			return setError({
-				thereIsError: true,
-				msg: "Formato de Email inválido",
-			});
 		if (userData.password.includes(" "))
 			return setError({
 				thereIsError: true,
@@ -73,12 +68,13 @@ const AddNewUser = () => {
 			<form onSubmit={handleSubmit}>
 				<h3>Ingresa los datos del cliente</h3>
 				<div className="addUser_emailInputContainer">
-					<label htmlFor="email">Email</label>
+					<label htmlFor="idCliente">Número de cliente</label>
 					<input
-						value={userData.email}
+						value={userData.idCliente}
 						required
+						type="number"
 						onChange={handleInputs}
-						id="email"
+						id="idCliente"
 					/>
 				</div>
 				<div className="addUser_emailInputContainer">

@@ -158,7 +158,7 @@ const ProductsList = () => {
 				}}
 			>
 				<h4 className="userDashBoard_welcome">
-					Bienvenido {user.name}!
+					Bienvenido {user?.name || "Administrador"}!
 				</h4>
 				<FaDoorOpen
 					onClick={handleLogOut}

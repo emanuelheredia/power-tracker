@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "../spinner/Spinner";
 
 const initialState = {
-	email: "",
+	userAccess: "",
 	password: "",
 };
 const Form = ({
@@ -52,13 +52,19 @@ const Form = ({
 				</h2>
 				<div className="form_background"></div>
 				<div className="form-campos">
-					<label htmlFor="email">Email</label>
+					<label htmlFor="email">{`${
+						admin ? "Email" : "Número de cliente"
+					}`}</label>
 					<input
-						name="email"
-						type="email"
-						id="email"
-						value={user.email}
-						placeholder="Ingresá tu email"
+						name="userAccess"
+						type={`${admin ? "email" : "number"}`}
+						id="userAccess"
+						value={user.userAccess}
+						placeholder={`${
+							admin
+								? "Ingresá tu email"
+								: "Ingresá tu número de cliente"
+						}`}
 						onChange={handleChange}
 						required
 					/>

@@ -5,7 +5,7 @@ import LoginUser from "./LoginUser.jsx";
 const UserDashBoard = () => {
 	const [storageData, setStorageData] = useState(null);
 	const { user } = useSelector((state) => state.users);
-	console.log(storageData);
+	const auth = useSelector((state) => state.auth);
 	useEffect(() => {
 		if (user?.token) {
 			if (storageData) {
@@ -14,7 +14,7 @@ const UserDashBoard = () => {
 		}
 	}, [user]);
 	const users = useSelector((state) => state.users);
-	return users.user ? (
+	return users.user || auth.login ? (
 		<ProductsList />
 	) : (
 		<LoginUser setStorageData={setStorageData} />

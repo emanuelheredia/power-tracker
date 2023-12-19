@@ -8,11 +8,11 @@
     width: 100px;
     border-radius: 5px;
     padding: 3px;
-    display: block;
+    position:fixed;
+    top: 150px;
+    left: 1rem;
     text-decoration: none;
     color: whitesmoke;
-    margin-top: 1rem;
-    margin-left: 1.2rem;    
     align-items: start;
     &:hover{
         background-color: $color-hover;
@@ -94,7 +94,7 @@
 .carAccessoriesSlider_btnDelete{
     position: absolute;
     right: 1rem;
-    top: 4rem;
+    top: 3rem;
     background-color: $color-principal;
     border-radius: 50%;
     color: whitesmoke;
@@ -280,7 +280,7 @@
     position: absolute;
     z-index: 1;
     width: 100%;
-    top: 0rem;
+    top: -1rem;
     justify-content: space-around;
     & button{
         border-radius: 50%;

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 export function useAlert({ state }) {
 	const dispatch = useDispatch();
-	const products = useSelector((state) => state.products);
 	const [showSpinner, setShowSpinner] = useState(false);
 	const [msgSwap, setMsgSwap] = useState({});
 	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
