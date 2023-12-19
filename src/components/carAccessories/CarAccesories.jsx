@@ -63,10 +63,27 @@ const CarAccesories = () => {
 	const [superCategory, setSuperCategory] = useState("");
 	const [categorySelected, setCategorySelected] = useState("");
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
+	const [preloadImages, setPreloadImages] = useState([]);
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
 		dispatch(getAccessorieCategories(car));
 		dispatch(getAccessorieImages(car, categorySelected));
+		function getImage(url) {
+			return new Promise(function (resolve, reject) {
+				var img = new Image();
+				img.onload = function () {
+					resolve(url);
+				};
+				img.onerror = function () {
+					reject(url);
+				};
+				img.src = url;
+			});
+		}
+		accesoriesImages.images.forEach(
+			async (element) =>
+				await getImage(reduceSizeImage(element.images, true)),
+		);
 	}, [categorySelected]);
 	function openModal() {
 		setIsOpen(true);
@@ -173,6 +190,13 @@ const CarAccesories = () => {
 			if (categ.name === category) return categ.images;
 		}
 	};
+	const reduceSizeImage = (imageUrl, main) => {
+		let firstCut = imageUrl.replace(
+			"upload/",
+			`upload/c_scale,${main ? "w_450" : "w_80"}/`,
+		);
+		return firstCut;
+	};
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -258,11 +282,12 @@ const CarAccesories = () => {
 							>
 								<img
 									className="carAccessories_imageSlider"
-									src={
+									src={reduceSizeImage(
 										accesoriesImages.images[
 											imgSeliderSelected
-										]?.images
-									}
+										]?.images,
+										true,
+									)}
 								/>
 								{auth.login && (
 									<FiTrash2
@@ -433,7 +458,7 @@ const CarAccesories = () => {
 								}
 								onClick={() => setImgSeliderSelected(index)}
 								key={el.public_id}
-								src={el.images}
+								src={reduceSizeImage(el.images, false)}
 							/>
 						))}
 					</div>
