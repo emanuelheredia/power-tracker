@@ -4,15 +4,20 @@ import FilesAdministrator from "./FilesAdministration";
 import AddNewProduct from "./AddNewProduct";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { useAlert } from "../customHooks/useAlert";
+import AddNewUser from "./AddNewUser";
+import { useSelector } from "react-redux";
 const AdminDashBoard = () => {
+	const products = useSelector((state) => state.products);
 	const { showAlert, msgSwap, showAlertSumbit, showSpinner, setShowSpinner } =
-		useAlert();
+		useAlert({ state: products });
+	console.log(msgSwap);
 	return (
 		<div className="adminDashBoard-container">
 			<div className="adminDashBoard-navContainer">
 				<NavLink to="update-product">Actualizar Precios</NavLink>
 				<NavLink to="add-newProduct">Agregar Producto</NavLink>
 				<NavLink to="update-imagesProduct">Actualizar Imágenes</NavLink>
+				<NavLink to="add-user">Agregar Cliente</NavLink>
 			</div>
 			<Routes>
 				<Route
@@ -32,6 +37,7 @@ const AdminDashBoard = () => {
 					path="update-imagesProduct"
 					element={<ImagesAdministration />}
 				/>
+				<Route path="add-user" element={<AddNewUser />} />
 			</Routes>
 			{showAlertSumbit && showAlert(msgSwap)}
 		</div>

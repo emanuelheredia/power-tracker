@@ -11,6 +11,7 @@ const News = () => {
 	}, []);
 	return (
 		<div className="news-container">
+			<button className="news_addNewsBtn">Agregar Novedad</button>
 			{news.length === 0 ? (
 				<h2>Sin novedades por el momento</h2>
 			) : (

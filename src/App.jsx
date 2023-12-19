@@ -8,13 +8,25 @@ import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import Header from "./components/header/Header";
 import Cart from "./components/cart/Cart";
 import News from "./components/usersDashBoard/News";
+import Home from "./components/home/Home";
+import Footer from "./components/footer/Footer";
+import CarAccesories from "./components/carAccessories/CarAccesories";
+
 function App() {
 	return (
 		<>
 			<Header />
-			<div style={{ display: "flex", justifyContent: "center" }}>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					minHeight: "90vh",
+				}}
+			>
 				<Routes>
-					<Route path="/" element={<UserDashBoard />} />
+					<Route path="/" element={<Home />} />
+					<Route path="/products/:car" element={<CarAccesories />} />
+					<Route path="/lists" element={<UserDashBoard />} />
 					<Route path="/news" element={<News />} />
 					<Route
 						path="/admin/*"
@@ -28,6 +40,7 @@ function App() {
 					<Route path="/cart" element={<Cart />} />
 				</Routes>
 			</div>
+			<Footer />
 		</>
 	);
 }

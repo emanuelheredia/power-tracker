@@ -19,7 +19,7 @@ const Login = () => {
 		dispatch(signIn(user));
 		setShowSpinner(true);
 		setTimeout(() => {
-			setShowAlertSumbit(true);
+			if (!auth.login) setShowAlertSumbit(true);
 			setShowSpinner(false);
 		}, 1000);
 	};
@@ -72,7 +72,7 @@ const Login = () => {
 			navigate("/admin");
 			setShowSpinner(false);
 			if (storageData) {
-				localStorage.setItem("userData", JSON.stringify(storageData));
+				localStorage.setItem("adminData", JSON.stringify(storageData));
 			}
 		}
 	}, [auth, resetPass]);
@@ -99,6 +99,7 @@ const Login = () => {
 				showSpinner={showSpinner}
 				setResetPass={setResetPass}
 				setStorageData={setStorageData}
+				admin={true}
 			/>
 
 			{showAlertSumbit && showAlert(msgSwap)}

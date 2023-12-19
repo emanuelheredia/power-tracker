@@ -1,0 +1,29 @@
+.cardBrand_container{
+    width: 80px;
+    height: 80px;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    & h4{
+        margin-top: .4rem;
+        font-size: .7rem;
+    }
+}
+.cardBrand_image{
+    width: 90%;
+    height: 80%;
+    border-radius: 50%;
+    object-fit:fill;
+    &:hover{
+        transform: scale(1.2);
+    }
+}
+@media (min-width:"1200px") {
+    .cardBrand_container{
+    width: 120px;
+    height: 120px;
+    & h4{
+        margin-top: .4rem;
+        font-size: .9rem;
+    }
+}
+}

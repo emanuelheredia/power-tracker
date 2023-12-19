@@ -1,0 +1,26 @@
+.carousel_container{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+    position: relative;
+    gap: 1.5rem;
+    & .carousel_leftArrow, .carousel_rigthArrow{
+        position: absolute;
+        font-size: 4rem;
+        z-index: 10;
+        top: 37%;
+        color: $color-principal;
+        cursor: pointer;
+        &:hover{
+            color: $color-hover;
+        }
+    }
+}
+.carousel_leftArrow{
+    left: 3rem;
+}
+.carousel_rigthArrow{
+    right:  3rem;
+}

@@ -8,6 +8,7 @@ import { structuringDate } from "../../../helps/helpers";
 const CardNews = ({ product }) => {
 	const { _id: id } = product;
 	const auth = useSelector((state) => state.auth);
+	const users = useSelector((state) => state.users);
 	const dispatch = useDispatch();
 	const handleDelete = () => {
 		if (confirm("Estás seguro que deseas eliminar esta novedad?")) {
@@ -17,6 +18,7 @@ const CardNews = ({ product }) => {
 			}, 1000);
 		}
 	};
+	console.log(users.user);
 	return (
 		<div className="newsCard-container">
 			<p className="newsCard-createDate">
@@ -29,8 +31,8 @@ const CardNews = ({ product }) => {
 				/>
 			)}
 			<div className="cardNews-imagesContainer">
-				{product.images.map((image) => (
-					<img className="cardNews-image" src={image} />
+				{product.images.map((image, index) => (
+					<img className="cardNews-image" key={index} src={image} />
 				))}
 			</div>
 			<div className="newsCard-detailContainer vahiculoNews">
@@ -57,12 +59,14 @@ const CardNews = ({ product }) => {
 				<p>Código</p>
 				<p>{product.code}</p>
 			</div>
-			<div className="newsCard-detailContainer priceNews">
-				<p>Precio</p>
-				<p style={{ fontWeight: "bolder" }}>
-					$ {formatingPrice(product.price, product.proveedor)}
-				</p>
-			</div>
+			{(users.user?.token || auth.login) && (
+				<div className="newsCard-detailContainer priceNews">
+					<p>Precio</p>
+					<p style={{ fontWeight: "bolder" }}>
+						$ {formatingPrice(product.price, product.proveedor)}
+					</p>
+				</div>
+			)}
 		</div>
 	);
 };

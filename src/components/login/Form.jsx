@@ -3,12 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "../spinner/Spinner";
 
 const initialState = {
-	email: "",
+	userAccess: "",
 	password: "",
 };
-const Form = ({ handleSubmit, register, showSpinner, setStorageData }) => {
+const Form = ({
+	handleSubmit,
+	register,
+	showSpinner,
+	setStorageData,
+	admin,
+}) => {
 	const [user, setUser] = useState(
-		JSON.parse(localStorage.getItem("userData")) || initialState,
+		JSON.parse(
+			localStorage.getItem(`${admin ? "adminData" : "userData"}`),
+		) || initialState,
 	);
 	const [checkRememberme, setCheckRememberme] = useState(false);
 	const navigate = useNavigate();
@@ -38,17 +46,25 @@ const Form = ({ handleSubmit, register, showSpinner, setStorageData }) => {
 		<form className="form" onSubmit={handleSubmitForm}>
 			<div className="form-container">
 				<h2 style={{ color: "orange", fontSize: "40px" }}>
-					{register ? "Registro" : "Login"}
+					{register
+						? "Registro"
+						: `${admin ? "Login Admin" : "Login Cliente"}`}
 				</h2>
 				<div className="form_background"></div>
 				<div className="form-campos">
-					<label htmlFor="email">Email</label>
+					<label htmlFor="email">{`${
+						admin ? "Email" : "Número de cliente"
+					}`}</label>
 					<input
-						name="email"
-						type="email"
-						id="email"
-						value={user.email}
-						placeholder="Ingresá tu email"
+						name="userAccess"
+						type={`${admin ? "email" : "number"}`}
+						id="userAccess"
+						value={user.userAccess}
+						placeholder={`${
+							admin
+								? "Ingresá tu email"
+								: "Ingresá tu número de cliente"
+						}`}
 						onChange={handleChange}
 						required
 					/>
@@ -73,7 +89,10 @@ const Form = ({ handleSubmit, register, showSpinner, setStorageData }) => {
 					{register ? "Registrar" : "Loguear"}
 				</button>
 				{register && (
-					<p onClick={goToLogin} className="form-linkToRegistrer">
+					<p
+						onClick={admin ? goToLogin : null}
+						className="form-linkToRegistrer"
+					>
 						Para loguearte click acá
 					</p>
 				)}

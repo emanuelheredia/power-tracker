@@ -49,6 +49,7 @@ const initialState = {
 	categories: [],
 	subCategories: [],
 	imagesProduct: [],
+	imagesProductHome: [],
 	msg: "",
 	text: "",
 	loading: false,

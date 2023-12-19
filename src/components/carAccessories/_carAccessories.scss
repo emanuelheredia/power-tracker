@@ -1,0 +1,345 @@
+.carAccessories_container{
+    margin-top: 120px;
+    margin-bottom: 3rem;
+    position: relative;
+}
+.carAccessories_btnGoBack{
+    background-color: $color-principal;
+    width: 100px;
+    border-radius: 5px;
+    padding: 3px;
+    position:fixed;
+    top: 150px;
+    left: 1rem;
+    text-decoration: none;
+    color: whitesmoke;
+    align-items: start;
+    &:hover{
+        background-color: $color-hover;
+        color: white;
+    }
+}
+.carAccessories_contenContainer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 100vw;
+    height: auto;
+}
+.carAccessories_mainImage{
+    width: 90%;
+    height: auto;
+    padding-bottom: 1rem;
+}
+.carAccesories_contentAccessoriesContainer{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.carAccessories_imageSliderContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.carAccessories_imageSlider{
+    width: 100%;
+    height: 400px;
+}
+.carAccessoriesSlider_prevImagesContainer{
+    display: flex;
+    justify-content: center ;
+    width: 100%;
+    margin-top: 1rem;    
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    & img{
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        cursor: pointer;
+    }
+}
+.carAccessoriesSlider_nextPrevContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    & button{
+        background-color: $color-principal;
+        color: whitesmoke;
+        & p{
+            
+            padding: 0;
+            margin: 0;
+        }
+        cursor: pointer;
+    }
+    & button:hover{
+        background-color: $color-hover;
+    }
+    & h3{
+        padding: 0 1rem;
+        font-size: .8rem;
+        margin: 0;
+    }
+    & span{
+            display: none;
+        }
+}
+.carAccessoriesSlider_btnDelete{
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    background-color: $color-principal;
+    border-radius: 50%;
+    color: whitesmoke;
+    font-size: 2rem;
+    padding: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: $color-hover;
+    }
+}
+.dropzone{
+    text-align: center;
+    border: 3px dashed #eeeeee;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    & p{
+        font-size: .8rem;
+    }
+}
+.carAccessories_formContainer{
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & h3{
+        margin-top: 0;
+        color: rgb(70, 70, 70);
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    & section{
+        width: 80%;
+        height: 90px;
+        cursor: pointer;
+        & div{
+            max-height: 100%;
+        }
+    }
+}
+.carAccessories-inputAddImageContainer{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    & label, input{
+        width: 100%;
+        color: rgb(70, 70, 70);
+        
+    }
+    & label{
+        text-align: start;
+        margin-top: 10px;
+        font-size: .8rem;
+    }
+    & input{
+        text-align: center;
+        height: 1.5rem;
+        border: none;
+    }
+}
+.css-12lg6o9-control, .css-lerm4k-control{
+    width: 330px;
+}
+
+.addNewAccessorie-btnSubmit{
+    background-color: black;
+    color: $color-principal;
+    margin-top: 10px;
+    &:hover{
+        background-color: rgb(70, 70, 70);
+    }
+}
+.carAccessories_btnAddImage{
+    background-color: $color-principal;
+    width: 50%;
+    height: 3rem;
+    border: none;
+    color: whitesmoke;
+    &:hover{
+        background-color: $color-hover
+    }
+}
+.carAccessories_categoriesContainer{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    padding:0 1rem;
+    flex-wrap: wrap;
+    gap: 5px;
+    & button{
+        font-size: .6rem;
+        border: 1px solid $color-principal;
+        &:hover{
+            background-color: $color-principal;
+            color: whitesmoke;
+        }
+    }
+    & img{
+        display: none;
+    }
+    & .carAccessories_categName{
+        display: none;
+    }
+}
+.carAccessories_title{
+    margin-bottom: 0.5rem;
+}
+.activeButtonCategory{
+    background-color: $color-principal ;
+    color: whitesmoke;
+
+}
+@media (min-width:"800px") {
+    .carAccessoriesSlider_nextPrevContainer{
+        & h3{
+        font-size: 1rem;
+    }
+    }
+    .carAccessories_categoriesContainer{
+        & button{
+            font-size: .9rem;
+        }}
+        .dropzone{
+            & p{
+                font-size: .9rem;
+            }
+        }
+        .carAccessories_imageSlider{
+            height: 500px;
+        }
+        .carAccessories_btnAddImage{
+    width: 200px;
+}
+.css-12lg6o9-control, .css-lerm4k-control{
+    width: 410px;
+}
+    }
+
+    @media (min-width:"1200px") {
+    .carAccessories_categoriesContainer{
+            width: 100%;
+    padding-bottom:1rem;
+    gap: 1rem;
+    & button{
+        display: none;
+    }
+    & img{
+        display: flex;
+        cursor: pointer;
+        border-radius: 10px;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        box-sizing: border-box;
+        &:hover{
+            border: solid 3px rgba(128, 128, 128, 0.678);
+        }     
+    }
+    .carAccessories_categName{
+        display: block;
+        margin: 0;
+        max-width: 100px;
+    }
+}
+.carAccessories_title{
+    margin-bottom: 1rem;
+}
+.carAccessories_slider{
+    width: 90%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+.carAccessories_imageSliderContainer{
+    width: 90%;
+}
+.carAccessoriesSlider_nextPrevContainer{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: -1rem;
+    justify-content: space-around;
+    & button{
+        border-radius: 50%;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        & p{
+            display: none;
+        }
+        & span{
+            display: block;
+            font-size: 1rem;
+            padding: 0;
+        }
+    }
+    & h3{
+        border-radius: 10px;
+        color: whitesmoke;
+        background-color: rgba(0, 0, 0, 0.753);
+    }
+}
+.carAccessories_formContainer{
+    & section{
+        height: 100px;
+    }
+}
+.carAccessories-inputAddImageContainer{
+    margin-bottom: 1.1rem;
+}
+.carAccessories_contenContainer{
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+.carAccessories_mainImage{
+    width: 50%;
+}
+.carAccesories_contentAccessoriesContainer{
+    width: 45%;
+}
+.carAccessories_imageSlider{
+    height: 520px;
+    object-fit: contain;
+}
+}
+@media (min-width:"1400px") {
+    .carAccessories_categoriesContainer{
+        & img{
+            width: 130px;
+            height: 130px;
+        }
+        & h5{
+            font-size: 1rem;
+        }
+        .carAccessories_categName{
+            max-width: 130px;
+        }
+    }
+}
+.activeImgSlider{
+    border: solid 3px $color-hover !important;
+}

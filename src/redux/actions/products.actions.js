@@ -305,7 +305,6 @@ export const getImagesProduct = (code, subCategory, color, marca, vehiculo) => {
 			});
 			dispatch(getImagesProductDBExito(resp.data.data));
 		} catch (error) {
-			console.log(error);
 			dispatch(
 				getImagesProductDBError({
 					msg: "Error en la obtención de las imágenes",

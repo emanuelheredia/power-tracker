@@ -76,7 +76,12 @@ const CardProduct = ({ product, ocultarPrice }) => {
 		hoy.getUTCMonth(),
 		hoy.getFullYear(),
 	];
-	const fullDate = day + "/" + (month === 12 ? 1 : month + 1) + "/" + year;
+	const fullDate =
+		day +
+		"/" +
+		(month === 12 ? 1 : month + 1) +
+		"/" +
+		(month === 12 ? year + 1 : year);
 	return (
 		<div className="userDashBoard-container-rowTable">
 			{/* 			<div className="userDashBoard_updateDateContainer">

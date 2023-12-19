@@ -1,0 +1,80 @@
+.carCardHome_container{
+    box-shadow: 3px 3px 3px rgb(100, 100, 100);
+    border-radius: 8px;
+    padding: 1rem;
+    width: 110px;
+    height: 95px;
+    position: relative;
+    margin-bottom: 1rem;
+    & img{
+        max-width: 100%;
+        height: 80%;
+        object-fit: fill;
+    }
+    & h4{
+        margin: 0;
+        font-size: .7rem;
+    }
+    background-color: white;
+    cursor: pointer;
+}
+.animationGoUp{
+    animation:.9s ease-in .1s reverse both running goUp;
+    animation-iteration-count: 1;
+}
+@keyframes goUp {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-15px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+    
+}
+.carCardHome_backGroundHover{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & h3{
+        display: none;
+        background-color: $color-principal;
+        width:auto;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        padding: 10px;
+        color: whitesmoke;
+    }
+}
+.carCardHome_backGroundHover:hover{
+    background-color: rgba(0, 0, 0, 0.281);
+    & h3{
+        display: block;
+    }
+}
+@media (min-width:"800px") {
+    .carCardHome_container{
+    width: 160px;
+    height: 140px;
+    & h4{
+        font-size: .9rem;
+    }
+}
+}
+@media (min-width:"1290px") {
+    .carCardHome_container{
+    width: 190px;
+    height: 185px;
+    & h4{
+        font-size: 1rem;
+    }
+}
+}

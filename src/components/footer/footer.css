@@ -1,0 +1,8 @@
+.footer_backGroundContainer{
+    position: absolute;
+    width: 100vw;
+    height: 120px;
+    z-index: 0;
+    background-image:url('../../assets/fondoHeader.jpg');
+    transform: scaleX(-1) scaleY(-1);
+}

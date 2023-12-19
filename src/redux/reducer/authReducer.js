@@ -1,7 +1,7 @@
 import {
-	SIGN_IN_USER,
-	SIGN_IN_USER_EXITO,
-	SIGN_IN_USER_ERROR,
+	SIGN_IN_ADMIN,
+	SIGN_IN_ADMIN_EXITO,
+	SIGN_IN_ADMIN_ERROR,
 	SIGN_UP_USER,
 	SIGN_UP_USER_ERROR,
 	SIGN_UP_USER_EXITO,
@@ -22,7 +22,7 @@ const initialState = {
 export default function authReducer(state = initialState, action) {
 	switch (action.type) {
 		case SIGN_UP_USER:
-		case SIGN_IN_USER:
+		case SIGN_IN_ADMIN:
 			return {
 				...state,
 				error: null,
@@ -47,7 +47,7 @@ export default function authReducer(state = initialState, action) {
 				error: false,
 				msg: "",
 			};
-		case SIGN_IN_USER_EXITO:
+		case SIGN_IN_ADMIN_EXITO:
 			return {
 				...state,
 				loading: false,
@@ -67,7 +67,7 @@ export default function authReducer(state = initialState, action) {
 				data: [],
 			};
 		case SIGN_UP_USER_ERROR:
-		case SIGN_IN_USER_ERROR:
+		case SIGN_IN_ADMIN_ERROR:
 		case SIGN_OUT_USER_ERROR:
 			return {
 				...state,
