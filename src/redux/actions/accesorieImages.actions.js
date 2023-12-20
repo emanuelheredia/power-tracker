@@ -11,6 +11,9 @@ import {
 	GET_ACCESSORIE_CATEGORIES,
 	GET_ACCESSORIE_CATEGORIES_EXITO,
 	GET_ACCESSORIE_CATEGORIES_ERROR,
+	RESET_ACCESSORIE_STATE,
+	RESET_ACCESSORIE_STATE_ERROR,
+	RESET_ACCESSORIE_STATE_EXITO,
 } from "../types/index";
 import clienteAxios from "../../../src/axios";
 
@@ -155,4 +158,25 @@ const getAccessorieCategoriesDBExito = (res) => ({
 const getAccessorieCategoriesDBError = (res) => ({
 	payload: res,
 	type: GET_ACCESSORIE_CATEGORIES_ERROR,
+});
+
+//RESET ACCESSORIES STATE
+export const resetAccessorieState = () => {
+	return async (dispatch) => {
+		dispatch(resetAccessorieStateDB());
+		try {
+			dispatch(resetAccessorieStateDBExito());
+		} catch (error) {
+			dispatch(resetAccessorieStateDBError());
+		}
+	};
+};
+
+const resetAccessorieStateDB = () => ({ type: RESET_ACCESSORIE_STATE });
+
+const resetAccessorieStateDBExito = () => ({
+	type: RESET_ACCESSORIE_STATE_EXITO,
+});
+const resetAccessorieStateDBError = () => ({
+	type: RESET_ACCESSORIE_STATE_ERROR,
 });

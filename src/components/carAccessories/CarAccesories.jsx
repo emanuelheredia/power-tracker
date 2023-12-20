@@ -14,6 +14,7 @@ import {
 	deleteImage,
 	getAccessorieCategories,
 	getAccessorieImages,
+	resetAccessorieState,
 } from "../../redux/actions/accesorieImages.actions";
 import Select from "react-select";
 
@@ -69,6 +70,10 @@ const CarAccesories = () => {
 		dispatch(getAccessorieCategories(car));
 		dispatch(getAccessorieImages(car, categorySelected));
 	}, [categorySelected]);
+	useEffect(() => {
+		return () => dispatch(resetAccessorieState());
+	}, []);
+
 	function openModal() {
 		setIsOpen(true);
 		setLoading(false);
@@ -181,7 +186,6 @@ const CarAccesories = () => {
 		);
 		return firstCut;
 	};
-	console.log(showLoader);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -190,7 +194,7 @@ const CarAccesories = () => {
 			<h3 className="carAccessories_title">{car}</h3>
 			<div className="carAccessories_contenContainer">
 				<div className="carAccessories_categoriesContainer">
-					{accesoriesImages.categoriesImages.map((categ) => (
+					{accesoriesImages.categoriesImages?.map((categ) => (
 						<div
 							onClick={() => {
 								setCategorySelected(categ);
@@ -220,14 +224,24 @@ const CarAccesories = () => {
 						</div>
 					))}
 				</div>
+				{showLoader && accesoriesImages.images?.length === 0 && (
+					<div className="carAccessories_spinnerContainer">
+						<Spinner />
+					</div>
+				)}
 				<img
 					className="carAccessories_mainImage"
 					src={getCarImage(car).img}
 					alt=""
 				/>
 				<div className="carAccesories_contentAccessoriesContainer">
+					{showLoader && accesoriesImages.images?.length > 0 && (
+						<div className="carAccesories_shadowBoxContentContainer">
+							<Spinner />
+						</div>
+					)}
 					<div className="carAccessories_slider">
-						{accesoriesImages.images.length > 0 &&
+						{accesoriesImages.images?.length > 0 &&
 							!modalIsOpen &&
 							!showLoader && (
 								<div className="carAccessoriesSlider_nextPrevContainer">
@@ -252,7 +266,7 @@ const CarAccesories = () => {
 									</button>
 								</div>
 							)}
-						{accesoriesImages.images.length === 0 && (
+						{accesoriesImages.images?.length === 0 && (
 							<h3
 								style={{
 									textAlign: "center",
@@ -262,7 +276,7 @@ const CarAccesories = () => {
 								Seleccione una categoría
 							</h3>
 						)}
-						{accesoriesImages.images.length > 0 && (
+						{accesoriesImages.images?.length > 0 && (
 							<div
 								key={
 									accesoriesImages.images[imgSeliderSelected]
@@ -270,9 +284,9 @@ const CarAccesories = () => {
 								}
 								className="carAccessories_imageSliderContainer"
 							>
-								{showLoader && <Spinner />}
 								{accesoriesImages.images.map((img, index) => (
 									<img
+										key={index}
 										onLoad={() => setShowLoader(false)}
 										className="carAccessories_imageSlider"
 										style={{
@@ -443,7 +457,7 @@ const CarAccesories = () => {
 						Agregar Imagen
 					</button>
 				)}
-				{accesoriesImages.images.length > 0 && (
+				{accesoriesImages.images?.length > 0 && (
 					<div className="carAccessoriesSlider_prevImagesContainer">
 						{accesoriesImages.images.map((el, index) => (
 							<img

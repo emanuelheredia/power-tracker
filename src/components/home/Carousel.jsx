@@ -19,9 +19,11 @@ const Carousel = ({ children, amountShowElem }) => {
 	const [showLimited, setShowLimited] = useState(elToShow);
 	const rest = elToShow - (ammountChildren % elToShow);
 	useEffect(() => {
-		window.addEventListener("resize", (e) =>
-			setWidth(e.currentTarget.innerWidth),
-		);
+		const handleResize = (e) => {
+			setWidth(e.currentTarget.innerWidth);
+		};
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 	useEffect(() => {
 		if (width < 780) setElToShow(amountShowElem.xs);

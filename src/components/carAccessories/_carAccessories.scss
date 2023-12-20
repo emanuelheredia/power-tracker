@@ -26,6 +26,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
+    position: relative;
     width: 100vw;
     height: auto;
 }
@@ -35,6 +36,7 @@
     padding-bottom: 1rem;
 }
 .carAccesories_contentAccessoriesContainer{
+    order: 4;
     width: 90%;
     position: relative;
     display: flex;
@@ -54,6 +56,7 @@
 }
 .carAccessoriesSlider_prevImagesContainer{
     display: flex;
+    order: 3;
     justify-content: center ;
     width: 100%;
     margin-top: 1rem;    
@@ -192,6 +195,7 @@
     padding:0 1rem;
     flex-wrap: wrap;
     gap: 5px;
+    order: 1;
     & button{
         font-size: .6rem;
         border: 1px solid $color-principal;
@@ -214,6 +218,22 @@
     background-color: $color-principal ;
     color: whitesmoke;
 
+}
+.carAccessories_spinnerContainer{
+    width: 100%;
+    margin-top: 1rem;
+    order: 2;
+}
+.carAccesories_shadowBoxContentContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(243, 160, 5, 0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    z-index: 10;
 }
 @media (min-width:"800px") {
     .carAccessoriesSlider_nextPrevContainer{
@@ -242,8 +262,14 @@
     }
 
     @media (min-width:"1200px") {
+        .carAccessories_spinnerContainer {
+            top: 10rem;
+            position: absolute;
+                order: 0;
+            }
     .carAccessories_categoriesContainer{
-            width: 100%;
+    width: 100%;
+    order: 0;
     padding-bottom:1rem;
     gap: 1rem;
     & button{
@@ -319,14 +345,21 @@
     align-items: start;
 }
 .carAccessories_mainImage{
+    order: 0;
     width: 50%;
 }
 .carAccesories_contentAccessoriesContainer{
+    order: 0;
     width: 45%;
 }
 .carAccessories_imageSlider{
     height: 520px;
     object-fit: contain;
+}
+.carAccesories_shadowBoxContentContainer {
+    margin-top: 1rem;
+    width: 85%;
+    height: 90%;
 }
 }
 @media (min-width:"1400px") {

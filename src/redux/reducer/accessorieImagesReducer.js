@@ -11,6 +11,8 @@ import {
 	GET_ACCESSORIE_CATEGORIES,
 	GET_ACCESSORIE_CATEGORIES_EXITO,
 	GET_ACCESSORIE_CATEGORIES_ERROR,
+	RESET_ACCESSORIE_STATE,
+	RESET_ACCESSORIE_STATE_EXITO,
 } from "../types";
 const initialState = {
 	images: [],
@@ -22,6 +24,7 @@ const initialState = {
 };
 export default function accessorieImagesReducer(state = initialState, action) {
 	switch (action.type) {
+		case RESET_ACCESSORIE_STATE:
 		case GET_ACCESSORIE_IMAGES:
 		case GET_ACCESSORIE_CATEGORIES:
 		case ADD_NEW_ACCESSORIE_IMAGE:
@@ -62,6 +65,10 @@ export default function accessorieImagesReducer(state = initialState, action) {
 				loading: false,
 				error: false,
 				categoriesImages: action.payload,
+			};
+		case RESET_ACCESSORIE_STATE_EXITO:
+			return {
+				initialState,
 			};
 		case ADD_NEW_ACCESSORIE_IMAGE_ERROR:
 			return {
