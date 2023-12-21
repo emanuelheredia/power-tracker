@@ -42,7 +42,7 @@ const CardProduct = ({ product, ocultarPrice }) => {
 		news.map((el) => {
 			if (el.code === code) setIsInNews({ is: true, newsId: el._id });
 		});
-	}, [code, news]);
+	}, [product, news]);
 	const handleDelete = () => {
 		if (confirm("Está seguro que desea eliminar este producto?")) {
 			dispatch(deleteProduct(product._id));

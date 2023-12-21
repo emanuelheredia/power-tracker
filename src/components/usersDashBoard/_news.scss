@@ -19,16 +19,23 @@
     margin-top: 1rem;
     padding: .5rem;
     height: 3rem;
-    width: 200px;
+    width: 50px;
     color: white;
     left: 0;
     font-weight: bolder;
     font-size: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
     &:hover{
         background-color: $color-hover;
     }
 
+}
+@media (min-width:"1200px") {
+    .news_addNewsBtn{
+        font-size: 2rem;
+        height: 3.8rem;
+        width: 60px;
+    }
 }

@@ -51,6 +51,7 @@ export const addNewProductToNews = (product) => {
 				url: "add-new-news",
 				data: product,
 			});
+			console.log(resp);
 			dispatch(
 				addNewProductToNewsDBExito({
 					msg: "Almacenamiento Exitoso",
@@ -58,6 +59,7 @@ export const addNewProductToNews = (product) => {
 				}),
 			);
 		} catch (error) {
+			console.log(error);
 			dispatch(
 				addNewProductToNewsDBError({
 					msg: "Error en el almacenado",
