@@ -6,12 +6,16 @@ import CardNews from "./CardNews";
 const News = () => {
 	const dispatch = useDispatch();
 	const { news } = useSelector((state) => state.news);
+	const { auth } = useSelector((state) => state);
+	console.log(auth);
 	useEffect(() => {
 		dispatch(getAllNews());
 	}, []);
 	return (
 		<div className="news-container">
-			<button className="news_addNewsBtn">Agregar Novedad</button>
+			{auth.login && (
+				<button className="news_addNewsBtn">Agregar Novedad</button>
+			)}
 			{news.length === 0 ? (
 				<h2>Sin novedades por el momento</h2>
 			) : (
