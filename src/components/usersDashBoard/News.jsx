@@ -9,7 +9,6 @@ const News = () => {
 	const { news } = useSelector((state) => state.news);
 	const { auth } = useSelector((state) => state);
 	const [showModal, setShowModal] = useState(false);
-	console.log(auth);
 	useEffect(() => {
 		dispatch(getAllNews());
 	}, []);

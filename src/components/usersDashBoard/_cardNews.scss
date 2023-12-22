@@ -34,7 +34,7 @@
 }
 .cardNews-image{ 
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     min-width: 49%;
 }
@@ -81,7 +81,7 @@
 }
 .newsCard-container{
     width: 480px;
-    height: 350px;
+    height: 400px;
 }
 }
 @media (min-width:"800px") {

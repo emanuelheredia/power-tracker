@@ -31,7 +31,7 @@ export default function productsReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				error: false,
-				msg: "",
+				msg: action.payload.msg,
 			};
 		case GET_ALL_NEWS_EXITO:
 			return {
@@ -46,21 +46,21 @@ export default function productsReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				error: false,
-				msg: action.payload,
+				msg: action.payload.msg,
 			};
 		case ADD_PRODUCT_TO_NEWS_ERROR:
 			return {
 				...state,
 				loading: false,
 				error: true,
-				msg: "",
+				msg: action.payload,
 			};
 		case GET_ALL_NEWS_ERROR:
 			return {
 				...state,
 				loading: false,
 				error: true,
-				msg: action.payload,
+				msg: action.payload.msg,
 			};
 		case DELETE_NEWS_ERROR:
 			return {

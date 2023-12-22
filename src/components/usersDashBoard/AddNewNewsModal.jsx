@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import Dropzone from "react-dropzone";
 import { FaFolderPlus } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { addNewProductToNews } from "../../redux/actions/news.actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	addNewProductToNews,
+	getAllNews,
+} from "../../redux/actions/news.actions";
 import useCloudinary from "../customHooks/useCloudinary";
 
 const customStyles = {
@@ -15,7 +18,6 @@ const customStyles = {
 		marginRight: "-50%",
 		transform: "translate(-50%, -50%)",
 		width: "350px",
-		height: "350px",
 		display: "flex",
 		flexDirection: "column",
 		backgroundColor: "rgb(238, 165, 29)",
@@ -32,15 +34,20 @@ const AddNewNewsModal = ({ open, setShowModal }) => {
 	const [loading, setLoading] = useState(false);
 	const dispatch = useDispatch();
 	const { handleDrop, handleDelete } = useCloudinary();
-
+	const { news } = useSelector((state) => state);
 	useEffect(() => {
 		setIsOpen(open);
 	}, [open]);
 	function closeModal() {
 		setIsOpen(false);
 		setNewData({});
+		setImageData({});
 		setShowModal(false);
 	}
+	useEffect(() => {
+		if (news.msg === "Almacenamiento Exitoso") closeModal();
+		dispatch(getAllNews());
+	}, [news.msg]);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(addNewProductToNews({ ...newData, images: imageData }));
@@ -54,7 +61,6 @@ const AddNewNewsModal = ({ open, setShowModal }) => {
 	const handleChangeNewsData = (e) => {
 		setNewData({ ...newData, [e.target.id]: e.target.value });
 	};
-	console.log(imageData);
 	return (
 		<Modal
 			isOpen={modalIsOpen}
@@ -75,42 +81,54 @@ const AddNewNewsModal = ({ open, setShowModal }) => {
 			<div className="addNewNewsModal_bodyContainer">
 				<form onSubmit={handleSubmit}>
 					<h3 className="addNewNewsModal_title">Agregar Novedad</h3>
-					<label htmlFor="vehiculo">Vehículo</label>
-					<input
-						id="vehiculo"
-						onChange={handleChangeNewsData}
-						type="text"
-					/>
-					<label htmlFor="subCategory">Categoría</label>
-					<input
-						id="subCategory"
-						onChange={handleChangeNewsData}
-						type="text"
-					/>
-					<label htmlFor="mark">Marca</label>
-					<input
-						id="mark"
-						onChange={handleChangeNewsData}
-						type="text"
-					/>
-					<label htmlFor="proveedor">Proveedor</label>
-					<input
-						id="proveedor"
-						onChange={handleChangeNewsData}
-						type="text"
-					/>
-					<label htmlFor="code">Código</label>
-					<input
-						id="code"
-						onChange={handleChangeNewsData}
-						type="text"
-					/>
-					<label htmlFor="price">Precio</label>
-					<input
-						id="price"
-						onChange={handleChangeNewsData}
-						type="number"
-					/>
+					<div>
+						<label htmlFor="vehiculo">Vehículo</label>
+						<input
+							id="vehiculo"
+							onChange={handleChangeNewsData}
+							type="text"
+						/>
+					</div>
+					<div>
+						<label htmlFor="subCategory">Categoría</label>
+						<input
+							id="subCategory"
+							onChange={handleChangeNewsData}
+							type="text"
+						/>
+					</div>
+					<div>
+						<label htmlFor="mark">Marca</label>
+						<input
+							id="mark"
+							onChange={handleChangeNewsData}
+							type="text"
+						/>
+					</div>
+					<div>
+						<label htmlFor="proveedor">Proveedor</label>
+						<input
+							id="proveedor"
+							onChange={handleChangeNewsData}
+							type="text"
+						/>
+					</div>
+					<div>
+						<label htmlFor="code">Código</label>
+						<input
+							id="code"
+							onChange={handleChangeNewsData}
+							type="text"
+						/>
+					</div>
+					<div>
+						<label htmlFor="price">Precio</label>
+						<input
+							id="price"
+							onChange={handleChangeNewsData}
+							type="number"
+						/>
+					</div>
 					<Dropzone
 						className="dropzone"
 						onChange={handleChange}
@@ -141,7 +159,8 @@ const AddNewNewsModal = ({ open, setShowModal }) => {
 							</section>
 						)}
 					</Dropzone>
-					<button>Agregar</button>
+					{imageData.fileURL && <button>Agregar</button>}
+					{imageData.fileURL && <img src={imageData.fileURL} />}
 				</form>
 			</div>
 		</Modal>
