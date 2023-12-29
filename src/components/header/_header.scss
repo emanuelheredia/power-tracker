@@ -47,7 +47,6 @@
 }
 .header-cartContainer{
     position: relative;
-    margin-top: 10px;
 }
 .header-cartIcon{
     font-size: 1.2rem;
@@ -110,6 +109,7 @@
     .header-cartContainer {
         position: relative;
         margin-right: 3rem;
+            margin-top: 10px;
     }
     .header-cartCounter {
         font-size: 1rem;
