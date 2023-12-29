@@ -65,6 +65,7 @@ const CarAccesories = () => {
 	const [imageData, setImageData] = useState({});
 	const [category, setCategory] = useState("");
 	const [superCategory, setSuperCategory] = useState("");
+	const [brand, setBrand] = useState("");
 	const [categorySelected, setCategorySelected] = useState("");
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
 	const [showLoader, setShowLoader] = useState(false);
@@ -106,6 +107,7 @@ const CarAccesories = () => {
 				model: car,
 				category,
 				superCategory,
+				proveedor: brand,
 				images: imageData.fileURL,
 				public_id: imageData.public_id,
 			}),
@@ -140,6 +142,7 @@ const CarAccesories = () => {
 		);
 		return firstCut;
 	};
+	console.log(brand);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -316,10 +319,18 @@ const CarAccesories = () => {
 						>
 							<h3>Agregá una imágen de accesorio</h3>
 							<div className="carAccessories-inputAddImageContainer">
+								<input
+									disabled
+									id="category"
+									type="text"
+									value={car}
+								/>
 								<Select
 									placeholder="Selecioná la Categoría"
 									name="superCategory"
-									style={{ minWidth: "100%" }}
+									style={{
+										minWidth: "100%",
+									}}
 									options={imagesProductsHome.map((categ) => {
 										return {
 											label: categ.name,
@@ -331,20 +342,27 @@ const CarAccesories = () => {
 									styles={selectStyles()}
 									onChange={(e) => setSuperCategory(e.value)}
 								/>
-								<label htmlFor="category">Modelo</label>
-								<input
-									disabled
-									id="category"
+								<Select
+									placeholder="Selecioná la Marca"
+									name="superCategory"
+									style={{ minWidth: "100%" }}
+									options={brands.map((brand) => {
+										return {
+											label: brand.name.toUpperCase(),
+											value: brand.name.toUpperCase(),
+										};
+									})}
+									value={brand.value}
 									type="text"
-									value={car}
+									styles={selectStyles()}
+									onChange={(e) => setBrand(e.value)}
+									required
 								/>
-								<label htmlFor="category">
-									Ingresa la subCategoría
-								</label>
 								<input
 									id="category"
 									type="text"
 									onChange={handleCategory}
+									placeholder="Ingresá la Sub Categoría"
 									required
 									value={category}
 								/>

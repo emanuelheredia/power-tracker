@@ -150,20 +150,25 @@
     font-weight: bolder;
     margin-bottom: 1rem;
     padding: 0 1rem;
+    gap:10px;
     & label, input{
         width: 100%;
         color: rgb(70, 70, 70);
         
     }
-    & label{
-        text-align: start;
-        margin-top: 10px;
-        font-size: .8rem;
-    }
     & input{
         text-align: center;
         height: 1.5rem;
         border: none;
+        padding: 7px 0;
+        border-radius: 3px;
+        width: 102.4%;
+        &::placeholder{
+            padding-left: 10px;
+            font-size: .9rem;
+            font-weight: bolder;
+            color: #acacac;
+        }
     }
 }
 .css-12lg6o9-control, .css-lerm4k-control{
@@ -180,6 +185,7 @@
 }
 .carAccessories_btnAddImage{
     background-color: $color-principal;
+    margin-bottom: 1rem;
     width: 50%;
     height: 3rem;
     border: none;
