@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: center;
     color: gainsboro;
-    font-size: .85rem;
+    font-size: 1.2rem;
     & a{
         color: $color-principal;
         margin-top: .7rem;
@@ -47,6 +47,7 @@
 }
 .header-cartContainer{
     position: relative;
+    margin-top: 10px;
 }
 .header-cartIcon{
     font-size: 1.2rem;
@@ -98,8 +99,7 @@
         }
     }
     .header-linksContainer{
-        gap: 2rem;
-        font-size: 1.1rem;
+        gap: 3rem;
     }
     .header-cartIcon{
         font-size: 1.3rem;
@@ -109,7 +109,7 @@
     }
     .header-cartContainer {
         position: relative;
-        margin-right: 1rem;
+        margin-right: 3rem;
     }
     .header-cartCounter {
         font-size: 1rem;
@@ -127,5 +127,8 @@
         height: 45px;
         border-radius: 10px;
         margin: 0 0 0 4rem;
+    }
+    .header-linksContainer {
+        gap: 6rem;
     }
 }
