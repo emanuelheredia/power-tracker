@@ -51,7 +51,7 @@ const selectStyles = () => ({
 		backgroundColor: "white",
 	}),
 });
-
+const buttonDisabledStyles = {};
 Modal.setAppElement("*");
 const CarAccesories = () => {
 	const carImages = imagesCarModels;
@@ -100,6 +100,7 @@ const CarAccesories = () => {
 	const handleCategory = (e) => {
 		setCategory(e.target.value.toUpperCase());
 	};
+	console.log(imgSeliderSelected);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -118,6 +119,8 @@ const CarAccesories = () => {
 	};
 	const handleNextImageClick = (add) => {
 		const imagesAccount = accesoriesImages.images.length - 1;
+		if (add === -1 && imgSeliderSelected === 0) return;
+		if (add === 1 && imgSeliderSelected === imagesAccount) return;
 		const imgActive = imgSeliderSelected + add;
 		if (imgActive > imagesAccount) return setImgSeliderSelected(0);
 		if (imgActive < 0) return setImgSeliderSelected(imagesAccount);
@@ -142,7 +145,6 @@ const CarAccesories = () => {
 		);
 		return firstCut;
 	};
-	console.log(brand);
 	return (
 		<div className="carAccessories_container">
 			<Link to="/" className="carAccessories_btnGoBack">
@@ -162,8 +164,9 @@ const CarAccesories = () => {
 						>
 							<button
 								className={
-									categ === categorySelected &&
-									"activeButtonCategory"
+									categ === categorySelected
+										? "activeButtonCategory"
+										: ""
 								}
 							>
 								{categ}
@@ -171,8 +174,9 @@ const CarAccesories = () => {
 							<img
 								src={getCategoryImageFromGuide(categ)}
 								className={
-									categ === categorySelected &&
-									"activeImgSlider"
+									categ === categorySelected
+										? "activeImgSlider"
+										: ""
 								}
 							/>
 							<h5 className="carAccessories_categName">
@@ -204,6 +208,11 @@ const CarAccesories = () => {
 								<div className="carAccessoriesSlider_nextPrevContainer">
 									<button
 										onClick={() => handleNextImageClick(-1)}
+										className={
+											imgSeliderSelected === 0
+												? "buttonDisabled"
+												: ""
+										}
 									>
 										<p>Anterior</p>
 										<span>❮</span>
@@ -216,6 +225,12 @@ const CarAccesories = () => {
 										}
 									</h3>
 									<button
+										className={
+											imgSeliderSelected ===
+											accesoriesImages.images?.length - 1
+												? "buttonDisabled"
+												: ""
+										}
 										onClick={() => handleNextImageClick(1)}
 									>
 										<p>Siguiente</p>
@@ -242,7 +257,7 @@ const CarAccesories = () => {
 								className="carAccessories_imageSliderContainer"
 							>
 								{accesoriesImages.images.map((img, index) => (
-									<div>
+									<div key={index}>
 										<img
 											key={index}
 											onLoad={() => setShowLoader(false)}
@@ -457,8 +472,9 @@ const CarAccesories = () => {
 						{accesoriesImages.images.map((el, index) => (
 							<img
 								className={
-									index === imgSeliderSelected &&
-									"activeImgSlider"
+									index === imgSeliderSelected
+										? "activeImgSlider"
+										: ""
 								}
 								onClick={() => setImgSeliderSelected(index)}
 								key={el.public_id}

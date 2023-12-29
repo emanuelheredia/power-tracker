@@ -251,8 +251,8 @@
 @media (min-width:"800px") {
     .carAccessoriesSlider_nextPrevContainer{
         & h3{
-        font-size: 1rem;
-    }
+            font-size: 1rem;
+        }
     }
     .carAccessories_categoriesContainer{
         & button{
@@ -267,58 +267,58 @@
             height: 500px;
         }
         .carAccessories_btnAddImage{
-    width: 200px;
-}
-.css-12lg6o9-control, .css-lerm4k-control{
-    width: 410px;
-}
+            width: 200px;
+        }
+        .css-12lg6o9-control, .css-lerm4k-control{
+            width: 410px;
+        }
     }
-
+    
     @media (min-width:"1200px") {
         .carAccessories_spinnerContainer {
             top: 10rem;
             position: absolute;
-                order: 0;
-            }
+            order: 0;
+        }
         .carAccesories_brandImg {
             width: 100px;
             height: 100px;
         }
-    .carAccessories_categoriesContainer{
-    width: 100%;
-    order: 0;
-    padding-bottom:1rem;
-    gap: 1rem;
-    & button{
-        display: none;
-    }
-    & img{
-        display: flex;
-        cursor: pointer;
-        border-radius: 10px;
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        box-sizing: border-box;
-        &:hover{
-            border: solid 3px rgba(128, 128, 128, 0.678);
-        }     
-    }
-    .carAccessories_categName{
-        display: block;
-        margin: 0;
-        max-width: 100px;
-    }
-}
-.carAccessories_title{
-    margin-bottom: 1rem;
-}
-.carAccessories_slider{
-    width: 90%;
-    display: flex;
-    position: relative;
-    justify-content: center;
-}
+        .carAccessories_categoriesContainer{
+            width: 100%;
+            order: 0;
+            padding-bottom:1rem;
+            gap: 1rem;
+            & button{
+                display: none;
+            }
+            & img{
+                display: flex;
+                cursor: pointer;
+                border-radius: 10px;
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                box-sizing: border-box;
+                &:hover{
+                    border: solid 3px rgba(128, 128, 128, 0.678);
+                }     
+            }
+            .carAccessories_categName{
+                display: block;
+                margin: 0;
+                max-width: 100px;
+            }
+        }
+        .carAccessories_title{
+            margin-bottom: 1rem;
+        }
+        .carAccessories_slider{
+            width: 90%;
+            display: flex;
+            position: relative;
+            justify-content: center;
+        }
 .carAccessories_imageSliderContainer{
     width: 90%;
 }
@@ -395,4 +395,9 @@
 }
 .activeImgSlider{
     border: solid 3px $color-hover !important;
+}
+.buttonDisabled{
+    opacity: 0.5;
+    background-color: gray !important;
+    cursor: default !important;
 }
