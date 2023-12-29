@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { imagesCarModels, imagesProductsHome } from "../../../helps/guide";
+import {
+	imagesCarModels,
+	imagesProductsHome,
+	brands,
+} from "../../../helps/guide";
 import { FiTrash2 } from "react-icons/fi";
 import { Spinner } from "../spinner/Spinner";
 import Dropzone from "react-dropzone";
@@ -72,7 +76,6 @@ const CarAccesories = () => {
 	useEffect(() => {
 		return () => dispatch(resetAccessorieState());
 	}, []);
-
 	function openModal() {
 		setIsOpen(true);
 		setLoading(false);
@@ -236,18 +239,41 @@ const CarAccesories = () => {
 								className="carAccessories_imageSliderContainer"
 							>
 								{accesoriesImages.images.map((img, index) => (
-									<img
-										key={index}
-										onLoad={() => setShowLoader(false)}
-										className="carAccessories_imageSlider"
-										style={{
-											display: `${
-												index !== imgSeliderSelected &&
-												"none"
-											}`,
-										}}
-										src={reduceSizeImage(img.images, true)}
-									/>
+									<div>
+										<img
+											key={index}
+											onLoad={() => setShowLoader(false)}
+											className="carAccessories_imageSlider"
+											style={{
+												display: `${
+													index !==
+														imgSeliderSelected &&
+													"none"
+												}`,
+											}}
+											src={reduceSizeImage(
+												img.images,
+												true,
+											)}
+										/>
+										<img
+											src={
+												brands.filter(
+													(brand) =>
+														brand.name.toLocaleUpperCase() ===
+														img.proveedor,
+												)[0].img
+											}
+											className="carAccesories_brandImg"
+											style={{
+												display: `${
+													index !==
+														imgSeliderSelected &&
+													"none"
+												}`,
+											}}
+										/>
+									</div>
 								))}
 								{auth.login && (
 									<FiTrash2

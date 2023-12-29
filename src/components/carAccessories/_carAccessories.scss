@@ -233,6 +233,15 @@
     height: 100%;
     z-index: 10;
 }
+.carAccesories_brandImg{
+    width: 100px;
+    height: 100px;
+    left: 0;
+    top:3rem;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    position: absolute;
+}
 @media (min-width:"800px") {
     .carAccessoriesSlider_nextPrevContainer{
         & h3{

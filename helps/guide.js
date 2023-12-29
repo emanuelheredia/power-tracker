@@ -74,27 +74,35 @@ export const imagesPorada = [
 export const brands = [
 	{
 		name: "BEPO",
-		img: "https://bc09cd06c8.cbaul-cdnwnd.com/d9e3274877ecd90a49e66d8a9a296d74/system_preview_detail_200000068-21b8422b1f-public/bepo%20logo.jpg",
+		img: "https://accesoriosjorge.com.ar/wp-content/uploads/2019/10/BEPO.png",
 	},
 	{
 		name: "farad",
-		img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe5RXCLvGEJh82-LQukKAKYkHAqK1IqHXZPzCEveCrdI2ZSzuXxKWSIXqO_UogrpctWc&usqp=CAU",
+		img: "	https://accesoriosjorge.com.ar/wp-content/uploads/2019/10/FARAD-copy.png",
 	},
 	{
-		name: "flascover",
-		img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwTwGxTssGK-5igZNdYsuDN1FzmceiUBhkoVu2Sb9T-sqbfesWNMytEGR-1exig-vYwjQ&usqp=CAU",
+		name: "flashcover",
+		img: "https://accesoriosjorge.com.ar/wp-content/uploads/2019/10/FLASH-copy.png",
 	},
 	{
 		name: "kraken",
-		img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXfOcXD_-Cj4dhcEXI1W8tH8UJGrHgb3RAyg&usqp=CAU",
+		img: "https://accesoriosjorge.com.ar/wp-content/uploads/2019/10/KRA.png",
 	},
 	{
 		name: "truck liner",
-		img: "https://inversionycomercio.exportargentina.org.ar/companyimages/15385882151716.png",
+		img: "https://accesoriosjorge.com.ar/wp-content/uploads/2019/10/truck.png",
 	},
 	{
 		name: "ziel technology",
 		img: "https://zieltechnology.com.ar/wp-content/uploads/2021/03/Logo-ZT-.png-Transparente-e1620087320341.png",
+	},
+	{
+		name: "cobra",
+		img: "	https://accesoriosjorge.com.ar/wp-content/uploads/2019/10/COBRA.png",
+	},
+	{
+		name: "dc",
+		img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPCxYj_Y-ZHoGyR1qQ31R-ttqsVERfA8zSbQ&usqp=CAU",
 	},
 ];
 export const imagesProductsHome = [
