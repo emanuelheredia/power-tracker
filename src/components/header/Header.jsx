@@ -46,8 +46,11 @@ const Header = () => {
 					</Link>
 				)}
 				{!auth.login && (
-					<Link onClick={() => setShowMenu(false)} to="/cart">
-						<div className="header-cartContainer">
+					<Link to="/cart">
+						<div
+							onClick={() => setShowMenu(false)}
+							className="header-cartContainer"
+						>
 							<FaShoppingCart className="header-cartIcon" />
 							{cart.length > 0 && (
 								<p className="header-cartCounter">
