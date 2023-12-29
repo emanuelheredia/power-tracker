@@ -11,6 +11,7 @@ import News from "./components/usersDashBoard/News";
 import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
 import CarAccesories from "./components/carAccessories/CarAccesories";
+import ProductDescripcion from "./components/home/products/ProductDescripcion";
 
 function App() {
 	return (
@@ -28,6 +29,11 @@ function App() {
 					<Route path="/products/:car" element={<CarAccesories />} />
 					<Route path="/lists" element={<UserDashBoard />} />
 					<Route path="/news" element={<News />} />
+					<Route
+						path="/:productDescription"
+						element={<ProductDescripcion />}
+					/>
+
 					<Route
 						path="/admin/*"
 						element={

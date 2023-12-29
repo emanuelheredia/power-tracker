@@ -1,0 +1,12 @@
+.productDescriotion_container{
+    margin-top: 180px;
+
+.productDescription_contentContainer{
+    display: flex;
+    width: 80vw;
+    & img{
+        height: 500px;
+    }
+}
+
+}

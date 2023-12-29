@@ -7,7 +7,6 @@ export function useAlert({ state }) {
 	const dispatch = useDispatch();
 	const [showSpinner, setShowSpinner] = useState(false);
 	const [msgSwap, setMsgSwap] = useState({});
-	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
 	useEffect(() => {
 		if (!state.loading && state.msg) {
 			setShowSpinner(false);

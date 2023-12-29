@@ -8,6 +8,8 @@ import CarsList from "./cars/CarsList";
 import { RiWhatsappFill } from "react-icons/ri";
 import Carousel from "./Carousel";
 import ProductHomeCard from "./products/ProductHomeCard";
+import { Route, Routes } from "react-router-dom";
+import ProductDescripcion from "./products/ProductDescripcion";
 
 const home = () => {
 	const AutoplaySlider = withAutoplay(AwesomeSlider);

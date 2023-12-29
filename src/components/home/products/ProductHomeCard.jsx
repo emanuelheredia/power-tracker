@@ -2,10 +2,12 @@ import React from "react";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
+import { Link } from "react-router-dom";
 
 const ProductHomeCard = ({ product, isVisible }) => {
 	return (
-		<div
+		<Link
+			to={`/${product.name}`}
 			className={`productHomeCard_container ${
 				isVisible ? "animationGoUp" : ""
 			}`}
@@ -28,7 +30,7 @@ const ProductHomeCard = ({ product, isVisible }) => {
 			<div className="productHomeCard_backGroundHover">
 				<h3>{product.name}</h3>
 			</div>
-		</div>
+		</Link>
 	);
 };
 
