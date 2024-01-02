@@ -21,13 +21,22 @@
 
 .header-linksContainer{
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 120px;
+    padding-bottom: 1rem;
+    border-radius: 0 0 30px 30px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.747);
+    width: 100%;
     font-weight: bolder;
     align-items: center;
+    justify-content: center;
     color: gainsboro;
-    font-size: .85rem;
+    font-size: 1.2rem;
     & a{
         color: $color-principal;
-        margin: 0 1.5rem 0 0;
+        margin-top: .7rem;
         cursor: pointer;
         &:hover{
             cursor: pointer;
@@ -42,7 +51,6 @@
 .header-cartIcon{
     font-size: 1.2rem;
     color: $color-principal;
-    margin-right: 1rem;
 }
 .header-cartCounter{
     position: absolute;
@@ -50,20 +58,67 @@
     padding: 0;
     background-color: whitesmoke;
     border-radius: 50%;
-    width: 40%;
-    height: 60%;
+    width: 80%;
+    height: 70%;
     margin: 0;
-    top: -5px;
-    right: 5px;
+    top: -7px;
+    right: -5px;
     color: black;
 }
+.header_menuIcon{
+    color: $color-principal;
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+.show{
+    display: flex;
+}
+.noShow{
+    display: none;
+}
 @media (min-width:780px){
+    .header-linksContainer {
+        display: flex;
+        top: 0;
+        background-color: inherit;
+        flex-direction: row;
+        position: relative;
+        padding:0;
+        border-radius: 0;
+        width: auto;
+        & a {
+            color: $color-principal;
+            margin-top: 0;
+            cursor: pointer;
+            &:hover {
+                cursor: pointer;
+                color: $color-hover;
+                transition-delay: .1s;
+            }
+        }
+    }
     .header-linksContainer{
-        gap: 2rem;
-        font-size: 1.1rem;
+        gap: 3rem;
     }
     .header-cartIcon{
         font-size: 1.3rem;
+    }
+    .header_menuIcon {
+        display: none;
+    }
+    .header-cartContainer {
+        position: relative;
+        margin-right: 3rem;
+            margin-top: 10px;
+    }
+    .header-cartCounter {
+        font-size: 1rem;
+        width: 70%;
+        padding-bottom: 3px;
+        height: 60%;
+        margin: 0;
+        top: -8px;
+        right: -5px;
     }
 }
 @media (min-width:1230px){
@@ -72,5 +127,8 @@
         height: 45px;
         border-radius: 10px;
         margin: 0 0 0 4rem;
+    }
+    .header-linksContainer {
+        gap: 6rem;
     }
 }

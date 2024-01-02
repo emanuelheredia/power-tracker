@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { imagesCarModels, imagesProductsHome } from "../../../helps/guide";
+import {
+	imagesCarModels,
+	imagesProductsHome,
+	brands,
+} from "../../../helps/guide";
 import { FiTrash2 } from "react-icons/fi";
 import { Spinner } from "../spinner/Spinner";
 import Dropzone from "react-dropzone";
@@ -47,7 +51,7 @@ const selectStyles = () => ({
 		backgroundColor: "white",
 	}),
 });
-
+const buttonDisabledStyles = {};
 Modal.setAppElement("*");
 const CarAccesories = () => {
 	const carImages = imagesCarModels;
@@ -61,6 +65,7 @@ const CarAccesories = () => {
 	const [imageData, setImageData] = useState({});
 	const [category, setCategory] = useState("");
 	const [superCategory, setSuperCategory] = useState("");
+	const [brand, setBrand] = useState("");
 	const [categorySelected, setCategorySelected] = useState("");
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
 	const [showLoader, setShowLoader] = useState(false);
@@ -72,7 +77,6 @@ const CarAccesories = () => {
 	useEffect(() => {
 		return () => dispatch(resetAccessorieState());
 	}, []);
-
 	function openModal() {
 		setIsOpen(true);
 		setLoading(false);
@@ -96,6 +100,7 @@ const CarAccesories = () => {
 	const handleCategory = (e) => {
 		setCategory(e.target.value.toUpperCase());
 	};
+	console.log(imgSeliderSelected);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -103,6 +108,7 @@ const CarAccesories = () => {
 				model: car,
 				category,
 				superCategory,
+				proveedor: brand,
 				images: imageData.fileURL,
 				public_id: imageData.public_id,
 			}),
@@ -113,6 +119,8 @@ const CarAccesories = () => {
 	};
 	const handleNextImageClick = (add) => {
 		const imagesAccount = accesoriesImages.images.length - 1;
+		if (add === -1 && imgSeliderSelected === 0) return;
+		if (add === 1 && imgSeliderSelected === imagesAccount) return;
 		const imgActive = imgSeliderSelected + add;
 		if (imgActive > imagesAccount) return setImgSeliderSelected(0);
 		if (imgActive < 0) return setImgSeliderSelected(imagesAccount);
@@ -156,8 +164,9 @@ const CarAccesories = () => {
 						>
 							<button
 								className={
-									categ === categorySelected &&
-									"activeButtonCategory"
+									categ === categorySelected
+										? "activeButtonCategory"
+										: ""
 								}
 							>
 								{categ}
@@ -165,8 +174,9 @@ const CarAccesories = () => {
 							<img
 								src={getCategoryImageFromGuide(categ)}
 								className={
-									categ === categorySelected &&
-									"activeImgSlider"
+									categ === categorySelected
+										? "activeImgSlider"
+										: ""
 								}
 							/>
 							<h5 className="carAccessories_categName">
@@ -198,6 +208,11 @@ const CarAccesories = () => {
 								<div className="carAccessoriesSlider_nextPrevContainer">
 									<button
 										onClick={() => handleNextImageClick(-1)}
+										className={
+											imgSeliderSelected === 0
+												? "buttonDisabled"
+												: ""
+										}
 									>
 										<p>Anterior</p>
 										<span>❮</span>
@@ -210,6 +225,12 @@ const CarAccesories = () => {
 										}
 									</h3>
 									<button
+										className={
+											imgSeliderSelected ===
+											accesoriesImages.images?.length - 1
+												? "buttonDisabled"
+												: ""
+										}
 										onClick={() => handleNextImageClick(1)}
 									>
 										<p>Siguiente</p>
@@ -236,18 +257,41 @@ const CarAccesories = () => {
 								className="carAccessories_imageSliderContainer"
 							>
 								{accesoriesImages.images.map((img, index) => (
-									<img
-										key={index}
-										onLoad={() => setShowLoader(false)}
-										className="carAccessories_imageSlider"
-										style={{
-											display: `${
-												index !== imgSeliderSelected &&
-												"none"
-											}`,
-										}}
-										src={reduceSizeImage(img.images, true)}
-									/>
+									<div key={index}>
+										<img
+											key={index}
+											onLoad={() => setShowLoader(false)}
+											className="carAccessories_imageSlider"
+											style={{
+												display: `${
+													index !==
+														imgSeliderSelected &&
+													"none"
+												}`,
+											}}
+											src={reduceSizeImage(
+												img.images,
+												true,
+											)}
+										/>
+										<img
+											src={
+												brands.filter(
+													(brand) =>
+														brand.name.toLocaleUpperCase() ===
+														img.proveedor,
+												)[0].img
+											}
+											className="carAccesories_brandImg"
+											style={{
+												display: `${
+													index !==
+														imgSeliderSelected &&
+													"none"
+												}`,
+											}}
+										/>
+									</div>
 								))}
 								{auth.login && (
 									<FiTrash2
@@ -290,10 +334,18 @@ const CarAccesories = () => {
 						>
 							<h3>Agregá una imágen de accesorio</h3>
 							<div className="carAccessories-inputAddImageContainer">
+								<input
+									disabled
+									id="category"
+									type="text"
+									value={car}
+								/>
 								<Select
 									placeholder="Selecioná la Categoría"
 									name="superCategory"
-									style={{ minWidth: "100%" }}
+									style={{
+										minWidth: "100%",
+									}}
 									options={imagesProductsHome.map((categ) => {
 										return {
 											label: categ.name,
@@ -305,20 +357,27 @@ const CarAccesories = () => {
 									styles={selectStyles()}
 									onChange={(e) => setSuperCategory(e.value)}
 								/>
-								<label htmlFor="category">Modelo</label>
-								<input
-									disabled
-									id="category"
+								<Select
+									placeholder="Selecioná la Marca"
+									name="superCategory"
+									style={{ minWidth: "100%" }}
+									options={brands.map((brand) => {
+										return {
+											label: brand.name.toUpperCase(),
+											value: brand.name.toUpperCase(),
+										};
+									})}
+									value={brand.value}
 									type="text"
-									value={car}
+									styles={selectStyles()}
+									onChange={(e) => setBrand(e.value)}
+									required
 								/>
-								<label htmlFor="category">
-									Ingresa la subCategoría
-								</label>
 								<input
 									id="category"
 									type="text"
 									onChange={handleCategory}
+									placeholder="Ingresá la Sub Categoría"
 									required
 									value={category}
 								/>
@@ -413,8 +472,9 @@ const CarAccesories = () => {
 						{accesoriesImages.images.map((el, index) => (
 							<img
 								className={
-									index === imgSeliderSelected &&
-									"activeImgSlider"
+									index === imgSeliderSelected
+										? "activeImgSlider"
+										: ""
 								}
 								onClick={() => setImgSeliderSelected(index)}
 								key={el.public_id}
