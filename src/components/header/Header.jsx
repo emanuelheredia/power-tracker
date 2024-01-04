@@ -15,7 +15,6 @@ const Header = () => {
 	const logOut = (e) => {
 		dispatch(signOutLogin());
 	};
-	console.log(showMenu);
 	return (
 		<div className="header-container">
 			<img className="header-logo" src={logo} alt="" />

@@ -13,10 +13,14 @@ import {
 	GET_ACCESSORIE_CATEGORIES_ERROR,
 	RESET_ACCESSORIE_STATE,
 	RESET_ACCESSORIE_STATE_EXITO,
+	GET_ACCESSORIE_ATTRIBUTES,
+	GET_ACCESSORIE_ATTRIBUTES_EXITO,
+	GET_ACCESSORIE_ATTRIBUTES_ERROR,
 } from "../types";
 const initialState = {
 	images: [],
 	categoriesImages: [],
+	accesoriesAttributes: [],
 	msg: "",
 	text: "",
 	loading: false,
@@ -29,6 +33,7 @@ export default function accessorieImagesReducer(state = initialState, action) {
 		case GET_ACCESSORIE_CATEGORIES:
 		case ADD_NEW_ACCESSORIE_IMAGE:
 		case DELETE_ACCESSORIE_IMAGES:
+		case GET_ACCESSORIE_ATTRIBUTES:
 			return {
 				...state,
 				loading: true,
@@ -66,6 +71,13 @@ export default function accessorieImagesReducer(state = initialState, action) {
 				error: false,
 				categoriesImages: action.payload,
 			};
+		case GET_ACCESSORIE_ATTRIBUTES_EXITO:
+			return {
+				...state,
+				loading: false,
+				error: false,
+				accesoriesAttributes: action.payload,
+			};
 		case RESET_ACCESSORIE_STATE_EXITO:
 			return {
 				initialState,
@@ -99,6 +111,12 @@ export default function accessorieImagesReducer(state = initialState, action) {
 				loading: false,
 				error: true,
 				msg: action.payload.msg,
+			};
+		case GET_ACCESSORIE_ATTRIBUTES_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: true,
 			};
 		default:
 			return state;

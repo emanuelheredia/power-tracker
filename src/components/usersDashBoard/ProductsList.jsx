@@ -18,6 +18,7 @@ import { structuringSelectValues } from "../helpers/helpers.js";
 import { useAlert } from "../customHooks/useAlert";
 import { getAllNews } from "../../redux/actions/news.actions.js";
 import { logOutUser } from "../../redux/actions/user.actions.js";
+import { signOutLogin } from "../../redux/actions/auth.actions.js";
 
 const ProductsList = () => {
 	const dispatch = useDispatch();
@@ -29,7 +30,6 @@ const ProductsList = () => {
 		msgSwap,
 		showAlert,
 	} = useAlert({ state: products });
-	const { news } = useSelector((state) => state.news);
 	const { user } = useSelector((state) => state.users);
 	const [codeInput, setCodeInput] = useState("");
 	const [modeloInput, setModeloInput] = useState("");
@@ -146,6 +146,9 @@ const ProductsList = () => {
 	const handleLogOut = () => {
 		dispatch(logOutUser());
 	};
+	const logOutAdmin = (e) => {
+		dispatch(signOutLogin());
+	};
 	return (
 		<div className="userDashBoard-container">
 			<div
@@ -161,7 +164,7 @@ const ProductsList = () => {
 					Bienvenido {user?.name || "Administrador"}!
 				</h4>
 				<FaDoorOpen
-					onClick={handleLogOut}
+					onClick={user?.name ? handleLogOut : logOutAdmin}
 					className="userDashBoard_logOut"
 				/>
 			</div>

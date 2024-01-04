@@ -79,3 +79,10 @@ export function encriptar(string) {
 	const secretKey = config.secretKey;
 	return cryptoJs.AES.encrypt(string, secretKey).toString();
 }
+export const reduceSizeImage = (imageUrl, main) => {
+	let firstCut = imageUrl.replace(
+		"upload/",
+		`upload/c_scale,${main ? "w_550" : "w_80"}/`,
+	);
+	return firstCut;
+};

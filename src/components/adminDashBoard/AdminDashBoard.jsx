@@ -8,6 +8,7 @@ import AddNewUser from "./AddNewUser";
 import { useSelector } from "react-redux";
 const AdminDashBoard = () => {
 	const products = useSelector((state) => state.products);
+
 	const { showAlert, msgSwap, showAlertSumbit, showSpinner, setShowSpinner } =
 		useAlert({ state: products });
 	return (

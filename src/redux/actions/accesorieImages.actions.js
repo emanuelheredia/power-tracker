@@ -14,6 +14,9 @@ import {
 	RESET_ACCESSORIE_STATE,
 	RESET_ACCESSORIE_STATE_ERROR,
 	RESET_ACCESSORIE_STATE_EXITO,
+	GET_ACCESSORIE_ATTRIBUTES,
+	GET_ACCESSORIE_ATTRIBUTES_EXITO,
+	GET_ACCESSORIE_ATTRIBUTES_ERROR,
 } from "../types/index";
 import clienteAxios from "../../../src/axios";
 
@@ -57,14 +60,14 @@ const addNewAccessorieImageDBError = (res) => ({
 });
 
 //ADD NEW ACCESSORIE IMAGE
-export const getAccessorieImages = (model, categorySelected) => {
+export const getAccessorieImages = (query, limit) => {
 	return async (dispatch) => {
 		dispatch(getAccessorieImagesDB());
 		try {
 			let resp = await clienteAxios({
 				method: "post",
 				url: "get-accessorie-images",
-				data: { model: model, category: categorySelected },
+				data: { query, limit },
 			});
 			dispatch(getAccessorieImagesDBExito(resp.data.data));
 		} catch (error) {
@@ -160,6 +163,37 @@ const getAccessorieCategoriesDBError = (res) => ({
 	type: GET_ACCESSORIE_CATEGORIES_ERROR,
 });
 
+export const getAccessorieAttributes = (query, attributes) => {
+	return async (dispatch) => {
+		dispatch(getAccessorieAttributesDB());
+		try {
+			let resp = await clienteAxios({
+				method: "post",
+				url: "get-accessories-attributes",
+				data: { query, attributes },
+			});
+			dispatch(getAccessorieAttributesDBExito(resp.data.data));
+		} catch (error) {
+			dispatch(
+				getAccessorieAttributesDBError({
+					msg: "Error en la obtención",
+					text: error.response.data.msg,
+				}),
+			);
+		}
+	};
+};
+
+const getAccessorieAttributesDB = () => ({ type: GET_ACCESSORIE_ATTRIBUTES });
+
+const getAccessorieAttributesDBExito = (res) => ({
+	payload: res,
+	type: GET_ACCESSORIE_ATTRIBUTES_EXITO,
+});
+const getAccessorieAttributesDBError = (res) => ({
+	payload: res,
+	type: GET_ACCESSORIE_ATTRIBUTES_ERROR,
+});
 //RESET ACCESSORIES STATE
 export const resetAccessorieState = () => {
 	return async (dispatch) => {

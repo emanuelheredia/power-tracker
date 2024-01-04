@@ -5,7 +5,6 @@ import {
 	imagesProductsHome,
 	brands,
 } from "../../../helps/guide";
-import { FiTrash2 } from "react-icons/fi";
 import { Spinner } from "../spinner/Spinner";
 import Dropzone from "react-dropzone";
 import { FaFolderPlus } from "react-icons/fa";
@@ -20,6 +19,8 @@ import {
 } from "../../redux/actions/accesorieImages.actions";
 import Select from "react-select";
 import useCloudinary from "../customHooks/useCloudinary";
+import { reduceSizeImage } from "../../../helps/helpers";
+import SliderImages from "../sliderImages/SliderImages";
 
 const customStyles = {
 	content: {
@@ -51,7 +52,6 @@ const selectStyles = () => ({
 		backgroundColor: "white",
 	}),
 });
-const buttonDisabledStyles = {};
 Modal.setAppElement("*");
 const CarAccesories = () => {
 	const carImages = imagesCarModels;
@@ -72,7 +72,15 @@ const CarAccesories = () => {
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
 		dispatch(getAccessorieCategories(car));
-		dispatch(getAccessorieImages(car, categorySelected));
+		dispatch(
+			getAccessorieImages(
+				{
+					model: car,
+					superCategory: categorySelected,
+				},
+				100,
+			),
+		);
 	}, [categorySelected]);
 	useEffect(() => {
 		return () => dispatch(resetAccessorieState());
@@ -100,7 +108,6 @@ const CarAccesories = () => {
 	const handleCategory = (e) => {
 		setCategory(e.target.value.toUpperCase());
 	};
-	console.log(imgSeliderSelected);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -117,15 +124,6 @@ const CarAccesories = () => {
 		setCategory("");
 		closeModal();
 	};
-	const handleNextImageClick = (add) => {
-		const imagesAccount = accesoriesImages.images.length - 1;
-		if (add === -1 && imgSeliderSelected === 0) return;
-		if (add === 1 && imgSeliderSelected === imagesAccount) return;
-		const imgActive = imgSeliderSelected + add;
-		if (imgActive > imagesAccount) return setImgSeliderSelected(0);
-		if (imgActive < 0) return setImgSeliderSelected(imagesAccount);
-		return setImgSeliderSelected(imgActive);
-	};
 	const handleImageDelete = (id, public_id) => {
 		if (confirm("Estás seguro que desea eliminar la imágen?")) {
 			dispatch(deleteImage(id));
@@ -137,13 +135,6 @@ const CarAccesories = () => {
 		for (let categ of imagesProductsHome) {
 			if (categ.name === category) return categ.images;
 		}
-	};
-	const reduceSizeImage = (imageUrl, main) => {
-		let firstCut = imageUrl.replace(
-			"upload/",
-			`upload/c_scale,${main ? "w_550" : "w_80"}/`,
-		);
-		return firstCut;
 	};
 	return (
 		<div className="carAccessories_container">
@@ -196,269 +187,163 @@ const CarAccesories = () => {
 					alt=""
 				/>
 				<div className="carAccesories_contentAccessoriesContainer">
-					{showLoader && accesoriesImages.images?.length > 0 && (
-						<div className="carAccesories_shadowBoxContentContainer">
-							<Spinner />
+					<SliderImages
+						images={accesoriesImages.images}
+						adminLogin={auth.login}
+						setShowLoader={setShowLoader}
+						showLoader={showLoader}
+						imgSeliderSelected={imgSeliderSelected}
+						setImgSeliderSelected={setImgSeliderSelected}
+						handleImageDelete={handleImageDelete}
+						anotherCondition={!modalIsOpen}
+					/>
+				</div>
+				<Modal
+					isOpen={modalIsOpen}
+					onRequestClose={closeModal}
+					style={customStyles}
+					contentLabel="Example Modal"
+				>
+					<button
+						style={{
+							textAlign: "end",
+							padding: "0",
+							backgroundColor: "inherit",
+						}}
+						onClick={closeModal}
+					>
+						X
+					</button>
+					<form
+						action=""
+						className="carAccessories_formContainer"
+						onSubmit={handleSubmit}
+					>
+						<h3>Agregá una imágen de accesorio</h3>
+						<div className="carAccessories-inputAddImageContainer">
+							<input
+								disabled
+								id="category"
+								type="text"
+								value={car}
+							/>
+							<Select
+								placeholder="Selecioná la Categoría"
+								name="superCategory"
+								style={{
+									minWidth: "100%",
+								}}
+								options={imagesProductsHome.map((categ) => {
+									return {
+										label: categ.name,
+										value: categ.name,
+									};
+								})}
+								value={superCategory.value}
+								type="text"
+								styles={selectStyles()}
+								onChange={(e) => setSuperCategory(e.value)}
+							/>
+							<Select
+								placeholder="Selecioná la Marca"
+								name="superCategory"
+								style={{ minWidth: "100%" }}
+								options={brands.map((brand) => {
+									return {
+										label: brand.name.toUpperCase(),
+										value: brand.name.toUpperCase(),
+									};
+								})}
+								value={brand.value}
+								type="text"
+								styles={selectStyles()}
+								onChange={(e) => setBrand(e.value)}
+								required
+							/>
+							<input
+								id="category"
+								type="text"
+								onChange={handleCategory}
+								placeholder="Ingresá la Sub Categoría"
+								required
+								value={category}
+							/>
 						</div>
-					)}
-					<div className="carAccessories_slider">
-						{accesoriesImages.images?.length > 0 &&
-							!modalIsOpen &&
-							!showLoader && (
-								<div className="carAccessoriesSlider_nextPrevContainer">
-									<button
-										onClick={() => handleNextImageClick(-1)}
-										className={
-											imgSeliderSelected === 0
-												? "buttonDisabled"
-												: ""
-										}
+						<Dropzone
+							className="dropzone"
+							onChange={handleChange}
+							onDrop={handleDropFile}
+							value={image}
+						>
+							{({ getRootProps, getInputProps }) => (
+								<section
+									onClick={() => {
+										setLoading(true);
+										setImageData({});
+									}}
+								>
+									<div
+										{...getRootProps({
+											className: "dropzone",
+										})}
 									>
-										<p>Anterior</p>
-										<span>❮</span>
-									</button>
-									<h3>
-										{
-											accesoriesImages.images[
-												imgSeliderSelected
-											]?.category
-										}
-									</h3>
-									<button
-										className={
-											imgSeliderSelected ===
-											accesoriesImages.images?.length - 1
-												? "buttonDisabled"
-												: ""
-										}
-										onClick={() => handleNextImageClick(1)}
-									>
-										<p>Siguiente</p>
-										<span>❯</span>
-									</button>
-								</div>
+										<input {...getInputProps()} />
+										<span>
+											<FaFolderPlus />
+										</span>
+										<p>
+											Coloca la imágen aquí, o clickea
+											para seleccionar
+										</p>
+									</div>
+								</section>
 							)}
-						{accesoriesImages.images?.length === 0 && (
+						</Dropzone>
+						{erroUpload && (
 							<h3
 								style={{
+									backgroundColor: "red",
+									padding: "20px 10px",
+									borderRadius: "5px",
+									color: "whitesmoke",
 									textAlign: "center",
-									paddingTop: "20%",
+									position: "relative",
 								}}
 							>
-								Seleccione una categoría
+								Error en la carga, puede deberse al tamaño de la
+								imágen, reintentá con otro formato o tamaño
+								<span
+									onClick={() => setErroUpload(false)}
+									style={{
+										position: "absolute",
+										top: "5px",
+										right: "5px",
+										backgroundColor: "whitesmoke",
+										borderRadius: "50%",
+										width: "25px",
+										color: "red",
+										cursor: "pointer",
+									}}
+								>
+									X
+								</span>
 							</h3>
 						)}
-						{accesoriesImages.images?.length > 0 && (
-							<div
-								key={
-									accesoriesImages.images[imgSeliderSelected]
-										?.images
-								}
-								className="carAccessories_imageSliderContainer"
+						{loading && <Spinner />}
+						<img
+							style={{ width: "100px", display: "block" }}
+							src={imageData.fileURL}
+						/>
+						{imageData.fileURL && superCategory && (
+							<button
+								type="submit"
+								className="addNewAccessorie-btnSubmit"
 							>
-								{accesoriesImages.images.map((img, index) => (
-									<div key={index}>
-										<img
-											key={index}
-											onLoad={() => setShowLoader(false)}
-											className="carAccessories_imageSlider"
-											style={{
-												display: `${
-													index !==
-														imgSeliderSelected &&
-													"none"
-												}`,
-											}}
-											src={reduceSizeImage(
-												img.images,
-												true,
-											)}
-										/>
-										<img
-											src={
-												brands.filter(
-													(brand) =>
-														brand.name.toLocaleUpperCase() ===
-														img.proveedor,
-												)[0].img
-											}
-											className="carAccesories_brandImg"
-											style={{
-												display: `${
-													index !==
-														imgSeliderSelected &&
-													"none"
-												}`,
-											}}
-										/>
-									</div>
-								))}
-								{auth.login && (
-									<FiTrash2
-										onClick={() =>
-											handleImageDelete(
-												accesoriesImages.images[
-													imgSeliderSelected
-												]?._id,
-												accesoriesImages.images[
-													imgSeliderSelected
-												]?.public_id,
-											)
-										}
-										className="carAccessoriesSlider_btnDelete"
-									/>
-								)}
-							</div>
+								Guardar Imágen
+							</button>
 						)}
-					</div>
-					<Modal
-						isOpen={modalIsOpen}
-						onRequestClose={closeModal}
-						style={customStyles}
-						contentLabel="Example Modal"
-					>
-						<button
-							style={{
-								textAlign: "end",
-								padding: "0",
-								backgroundColor: "inherit",
-							}}
-							onClick={closeModal}
-						>
-							X
-						</button>
-						<form
-							action=""
-							className="carAccessories_formContainer"
-							onSubmit={handleSubmit}
-						>
-							<h3>Agregá una imágen de accesorio</h3>
-							<div className="carAccessories-inputAddImageContainer">
-								<input
-									disabled
-									id="category"
-									type="text"
-									value={car}
-								/>
-								<Select
-									placeholder="Selecioná la Categoría"
-									name="superCategory"
-									style={{
-										minWidth: "100%",
-									}}
-									options={imagesProductsHome.map((categ) => {
-										return {
-											label: categ.name,
-											value: categ.name,
-										};
-									})}
-									value={superCategory.value}
-									type="text"
-									styles={selectStyles()}
-									onChange={(e) => setSuperCategory(e.value)}
-								/>
-								<Select
-									placeholder="Selecioná la Marca"
-									name="superCategory"
-									style={{ minWidth: "100%" }}
-									options={brands.map((brand) => {
-										return {
-											label: brand.name.toUpperCase(),
-											value: brand.name.toUpperCase(),
-										};
-									})}
-									value={brand.value}
-									type="text"
-									styles={selectStyles()}
-									onChange={(e) => setBrand(e.value)}
-									required
-								/>
-								<input
-									id="category"
-									type="text"
-									onChange={handleCategory}
-									placeholder="Ingresá la Sub Categoría"
-									required
-									value={category}
-								/>
-							</div>
-							<Dropzone
-								className="dropzone"
-								onChange={handleChange}
-								onDrop={handleDropFile}
-								value={image}
-							>
-								{({ getRootProps, getInputProps }) => (
-									<section
-										onClick={() => {
-											setLoading(true);
-											setImageData({});
-										}}
-									>
-										<div
-											{...getRootProps({
-												className: "dropzone",
-											})}
-										>
-											<input {...getInputProps()} />
-											<span>
-												<FaFolderPlus />
-											</span>
-											<p>
-												Coloca la imágen aquí, o clickea
-												para seleccionar
-											</p>
-										</div>
-									</section>
-								)}
-							</Dropzone>
-							{erroUpload && (
-								<h3
-									style={{
-										backgroundColor: "red",
-										padding: "20px 10px",
-										borderRadius: "5px",
-										color: "whitesmoke",
-										textAlign: "center",
-										position: "relative",
-									}}
-								>
-									Error en la carga, puede deberse al tamaño
-									de la imágen, reintentá con otro formato o
-									tamaño
-									<span
-										onClick={() => setErroUpload(false)}
-										style={{
-											position: "absolute",
-											top: "5px",
-											right: "5px",
-											backgroundColor: "whitesmoke",
-											borderRadius: "50%",
-											width: "25px",
-											color: "red",
-											cursor: "pointer",
-										}}
-									>
-										X
-									</span>
-								</h3>
-							)}
-							{loading && <Spinner />}
-							<img
-								style={{ width: "100px", display: "block" }}
-								src={imageData.fileURL}
-							/>
-							{imageData.fileURL && superCategory && (
-								<button
-									type="submit"
-									className="addNewAccessorie-btnSubmit"
-								>
-									Guardar Imágen
-								</button>
-							)}
-						</form>
-					</Modal>
-				</div>
+					</form>
+				</Modal>
 				{auth.login && (
 					<button
 						onClick={openModal}

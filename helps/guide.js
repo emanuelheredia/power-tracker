@@ -111,11 +111,38 @@ export const imagesProductsHome = [
 		images: [
 			"	https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702655101/power-track/c2ltl4pavkmcfcr1u0fz.jpg",
 		],
+		video: "https://youtu.be/gLg2c_33QbY",
+		description: [
+			"TAPA RETRÁCTIL KRAKEN, ÚNICA CON SISTEMA DE ESPIRAL Y RODAMIENTOS!!",
+			"La Evolución de la tan exitosa tapa retráctil , pero con las mejoras que la hacen ÚNICA..",
+			"LANZAMIENTO 2019",
+			"CONOZCA LAS VENTAJAS Y VIRTUDES DE LA TAPA RETRÁCTIL KRAKEN",
+			"SISTEMA DE ESPIRAL : sus tablillas enrollan dentro del espiral sin hacer contacto entre ellas y no sufrir desgaste en la pintura.",
+			"Con RODAMIENTOS que corren por las guías laterales facilitando el suave deslizamiento en la apertura y cierre de la tapa EVITANDO LA FRICCIÓN , Sin desgastes y libre mantenimiento",
+			"Los BURLETES de excelente calidad, indeformables, resistentes a bajas y altas temperaturas( Espectro térmico de – 40 C° a , 140 C° ) en forma continua sin presentar deterioro alguno del producto",
+			"PINTURA microtexturada Premium importada negra mate de alta resistencia evitando corrosión",
+			"PERFILES LATERALES ROBUSTOS de aluminio estrusado",
+			"TABLILLAS TRASVERSALES de aluminio unidas por burletes",
+			"PUNTERAS de terminación fabricadas en ABS inyectado.",
+			"SISTEMA DE BLOQUEO INTERNO , ( sustituyendo la problemática antigua cerradura exterior ) 100% SEGURO",
+			"DISEÑADO Y PRODUCIDO INTEGRAMENTE EN ARGENTINA CON 3 AÑOS DE GARANTÍA",
+			"STOCK Y REPUESTOS PERMANENTES DE TODA LA LINEA",
+		],
 	},
 	{
 		name: "LONA",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702655313/power-track/lcxd1shbqx0zsvvkjh5u.jpg",
+		],
+		description: [
+			"Lona Flash Cover Force",
+			"LA LONA MÁS VENDIDA DE LATINOAMERICA!",
+			"La línea de capotas Flash Cover, tiene un diseño único y nuevo. Las formas cuadradas dan paso a las curvas. Diseñado para cumplir con las normas de la industria automotriz de hoy, las esquinas se han eliminado mediante la adopción de un visual sutil con esquinas sin costura. Los componentes han sido diseñados con el fin de crear un modelo de capota resistente y que acompaña a la particularidad de cada vehículo.",
+			"» Rápida y fácil instalación",
+			"» Sin modificaciones y perforaciones",
+			"» No afecta la garantía de fabrica de su vehículo",
+			"» Estructura de aluminio",
+			"» Trabamiento lateral en fleje",
 		],
 	},
 	{
@@ -123,11 +150,25 @@ export const imagesProductsHome = [
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702584357/power-track/o3t2jmsncrratz4bycsy.jpg",
 		],
+		description: [
+			"Cobertor de caja",
+			"» Superficie anti-deslizante",
+			"» Excelente calidad y terminación",
+			"» Bajo perfil (lomo portón incluido) laterales se venden aparte",
+			"» No hay necesidad de modificación en la pick up",
+		],
 	},
 	{
 		name: "ANTIVUELCO",
 		images: [
 			"https://rhino4x4.com.ar/media/catalog/product/cache/4/thumbnail/9df78eab33525d08d6e5fb8d27136e95/j/a/jaula_amarok_2.jpg",
+		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
 		],
 	},
 	{
@@ -135,11 +176,25 @@ export const imagesProductsHome = [
 		images: [
 			"https://tiempolibreguzman.com/wp-content/uploads/2016/12/estribos-para-camionetas-d_nq_np_22058-mlm20222134687_012015-f.jpg",
 		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
+		],
 	},
 	{
 		name: "ENGANCHE",
 		images: [
 			"https://www.bocelujosla86.com/cdn/shop/products/B0351_dd86e5ee-8f9f-4296-8df0-afc76f9a1704_1024x1024.jpg?v=1642545983",
+		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
 		],
 	},
 	{
@@ -147,11 +202,25 @@ export const imagesProductsHome = [
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702658534/power-track/brnpxqaqj0gbabpj1nds.jpg",
 		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
+		],
 	},
 	{
 		name: "ALERON",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702657056/power-track/lenh3iduj1ub29uiayxu.jpg",
+		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
 		],
 	},
 	{
@@ -159,11 +228,29 @@ export const imagesProductsHome = [
 		images: [
 			"https://acdn.mitiendanube.com/stores/190/572/products/d_680835-mla49065508205_022022-o-946cf6c6b3082df74716448521548283-1024-1024.jpg",
 		],
+		description: [
+			"Tuercas Antirrobo FARAD Italia",
+			"– Número infinito de diseño de llaves.",
+			"– El diseño de las llaves impide la remoción utilizando herramientas disponibles en el mercado.",
+			"– Llave autocentrante para fácil montaje y desmontaje.",
+			"– Hexágono de la llave antirrobo permite la utilización de la llave de rueda original del vehículo.",
+			"– Robusto, giratorio y anticorte que impide desatornillar las ruedas con herramientas disponibles en el mercado.",
+			"– Cabeza a prueba de perforación y corte.",
+			"– Cuerpo con clase de resistencia 10.9.",
+			"– Resistencia a la torsión superior a 400Nm.",
+		],
 	},
 	{
 		name: "CUBRE LOMO",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702658049/power-track/ipbuxojvo7crdgjnlqr9.jpg",
+		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
 		],
 	},
 	{
@@ -171,11 +258,25 @@ export const imagesProductsHome = [
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702657604/power-track/qmwkcsueqlgek9tglcfx.jpg",
 		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
+		],
 	},
 	{
 		name: "DEFLECTORES",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702658140/power-track/ni7jcnke51t40svljszm.jpg",
+		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
 		],
 	},
 	{
@@ -183,11 +284,25 @@ export const imagesProductsHome = [
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702567668/power-track/p9lngiqmac46gj20dcck.jpg",
 		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
+		],
 	},
 	{
 		name: "RACK",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702657799/power-track/mo68okm6t9uf3tcj9ayq.jpg",
+		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
 		],
 	},
 	{
@@ -195,17 +310,38 @@ export const imagesProductsHome = [
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702581679/power-track/r9uny1tpq9vuipn4dxv0.jpg",
 		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
+		],
 	},
 	{
 		name: "DIVISOR CAJA",
 		images: [
 			"https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702581276/power-track/wszndzq3ukuunx52kcx9.jpg",
 		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
+		],
 	},
 	{
 		name: "BOLSO",
 		images: [
 			"	https://res.cloudinary.com/daxahjyc9/image/upload/c_scale,w_450/v1702581494/power-track/gxpkorxukhsoeyhvtrx6.jpg",
+		],
+		description: [
+			"Lomos Cobertor Laterales De Caja Bepo",
+			"» Fabricado en plástico ABS inyectado.",
+			"» Producto de excelente calidad.",
+			"» Protege de rayas.",
+			"» Marca Bepo.",
 		],
 	},
 ];

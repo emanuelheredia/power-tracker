@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 export function useAlert({ state }) {
 	const dispatch = useDispatch();
 	const [showSpinner, setShowSpinner] = useState(false);
+	const [showAlertSumbit, setShowAlertSumbit] = useState(false);
+
 	const [msgSwap, setMsgSwap] = useState({});
 	useEffect(() => {
 		if (!state.loading && state.msg) {
