@@ -28,7 +28,7 @@ object-fit: cover;
 }
 .productDescription_description{
     order:3;
-    width: 100%;
+    width: 95%;
     background-color: rgba(0, 0, 0, 0.76);
     border-radius: 30px;
     height: auto;
@@ -39,6 +39,7 @@ object-fit: cover;
         line-height: 25px;
         font-size: .8rem;
     }
+    padding: 0 15px;
     & p:first-child{
         padding-top: 1rem;
     }
