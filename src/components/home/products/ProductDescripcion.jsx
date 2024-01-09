@@ -13,7 +13,7 @@ const ProductDescripcion = () => {
 	const { productDescription: productName } = useParams();
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
 	const [showLoader, setShowLoader] = useState(false);
-
+	const [description, setDescription] = useState([]);
 	const { accesoriesAttributes, images } = useSelector(
 		(state) => state.accesoriesImages,
 	);
@@ -28,7 +28,6 @@ const ProductDescripcion = () => {
 	useEffect(() => {
 		return () => dispatch(resetAccessorieState());
 	}, []);
-	console.log(images);
 	useEffect(() => {
 		dispatch(
 			getAccessorieAttributes({ superCategory: productName }, "category"),
@@ -45,9 +44,20 @@ const ProductDescripcion = () => {
 					10,
 				),
 			);
-		if (!accesoriesAttributes)
+		if (accesoriesAttributes?.length === 0)
 			dispatch(getAccessorieImages({ superCategory: productName }, 10));
 	}, [categSelec, accesoriesAttributes]);
+	useEffect(() => {
+		const onlyOneDescription = Array.isArray(
+			getProductAttribute("description"),
+		);
+		if (onlyOneDescription)
+			setDescription(getProductAttribute("description"));
+		if (!onlyOneDescription && categSelec)
+			setDescription(getProductAttribute("description")[categSelec]);
+		return () => setDescription([]);
+	}, [categSelec]);
+	console.log(getProductAttribute("video"));
 	return (
 		<div className="productDescriotion_container">
 			{" "}
@@ -55,20 +65,31 @@ const ProductDescripcion = () => {
 				VOLVER
 			</Link>
 			<h2>{productName}</h2>
-			<div className="productDescription_categoriesContainer">
-				{accesoriesAttributes?.map((categ) => (
-					<button key={categ} onClick={() => setCategSelec(categ)}>
-						{categ}
-					</button>
-				))}
-			</div>
 			<div className="productDescription_contentContainer">
-				<ReactPlayer
-					url="https://youtu.be/gLg2c_33QbY"
-					className="productDescription_react-player"
-					/* playing */
-					height="530px"
-				/>
+				<div className="productDescription_categoriesContainer">
+					{accesoriesAttributes?.map((categ) => (
+						<button
+							key={categ}
+							onClick={() => setCategSelec(categ)}
+						>
+							{categ}
+						</button>
+					))}
+				</div>
+
+				{getProductAttribute("video") ? (
+					<ReactPlayer
+						url={getProductAttribute("video")}
+						className="productDescription_react-player"
+						playing
+						height="530px"
+					/>
+				) : (
+					<img
+						className="productDescription_mainImage"
+						src={getProductAttribute("images")[0]}
+					/>
+				)}
 				<div className="productDescription_sliderContainer">
 					<SliderImages
 						images={images}
@@ -80,7 +101,7 @@ const ProductDescripcion = () => {
 					/>
 				</div>
 				<div className="productDescription_description">
-					{getProductAttribute("description").map((linea) => (
+					{description.map((linea) => (
 						<p className="productDescription_descriptionLine">
 							{linea}
 						</p>
