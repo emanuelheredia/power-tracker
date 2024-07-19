@@ -21,6 +21,7 @@ export function useAlert({ state }) {
 		});
 	}, [state.msg, state.error, state.text]);
 	const showAlert = ({ title, text, icon }) => {
+		if (title === "") return;
 		swal({
 			title: title,
 			text: text,

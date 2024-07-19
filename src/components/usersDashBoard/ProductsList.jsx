@@ -19,6 +19,7 @@ import { useAlert } from "../customHooks/useAlert";
 import { getAllNews } from "../../redux/actions/news.actions.js";
 import { logOutUser } from "../../redux/actions/user.actions.js";
 import { signOutLogin } from "../../redux/actions/auth.actions.js";
+import { scrollToUp } from "../../../helps/helpers.js";
 
 const ProductsList = () => {
 	const dispatch = useDispatch();
@@ -129,9 +130,6 @@ const ProductsList = () => {
 			backgroundColor: "white",
 		}),
 	});
-	const scrollToUp = () => {
-		window.scrollTo(0, 0);
-	};
 	const handleResetForm = (e) => {
 		setColorSelect("");
 		setCategoriaSelect("");

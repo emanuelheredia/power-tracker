@@ -82,6 +82,7 @@ const CardProduct = ({ product, ocultarPrice }) => {
 		(month === 12 ? 1 : month + 1) +
 		"/" +
 		(month === 12 ? year + 1 : year);
+
 	return (
 		<div className="userDashBoard-container-rowTable">
 			{/* 			<div className="userDashBoard_updateDateContainer">
@@ -136,7 +137,7 @@ const CardProduct = ({ product, ocultarPrice }) => {
 			</div>
 			<div className="userDashBoard-item-celdaPrice">
 				<p>Precio</p>
-				{!ocultarPrice && !editPrice && (
+				{!ocultarPrice && !editPrice && price && (
 					<p>
 						{price !== 0 && !isNaN(price)
 							? "$ " + formatingPrice(price, proveedor)

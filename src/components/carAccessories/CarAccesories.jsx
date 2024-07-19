@@ -6,8 +6,6 @@ import {
 	brands,
 } from "../../../helps/guide";
 import { Spinner } from "../spinner/Spinner";
-import Dropzone from "react-dropzone";
-import { FaFolderPlus } from "react-icons/fa";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,6 +19,7 @@ import Select from "react-select";
 import useCloudinary from "../customHooks/useCloudinary";
 import { reduceSizeImage } from "../../../helps/helpers";
 import SliderImages from "../sliderImages/SliderImages";
+import { DropImages } from "./DropImages";
 
 const customStyles = {
 	content: {
@@ -60,7 +59,6 @@ const CarAccesories = () => {
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const { car } = useParams();
 	const dispatch = useDispatch();
-	const [image, setImage] = useState([]);
 	const [erroUpload, setErroUpload] = useState(false);
 	const [imageData, setImageData] = useState({});
 	const [category, setCategory] = useState("");
@@ -98,13 +96,8 @@ const CarAccesories = () => {
 	const getCarImage = (car) => {
 		return carImages.filter((el) => el.name === car)[0];
 	};
-	const handleChange = (e) => {
-		setImage(e.target.value);
-	};
+
 	const { handleDrop, handleDelete } = useCloudinary();
-	const handleDropFile = (files) => {
-		handleDrop(files, setImageData, setErroUpload, setLoading);
-	};
 	const handleCategory = (e) => {
 		setCategory(e.target.value.toUpperCase());
 	};
@@ -269,36 +262,11 @@ const CarAccesories = () => {
 								value={category}
 							/>
 						</div>
-						<Dropzone
-							className="dropzone"
-							onChange={handleChange}
-							onDrop={handleDropFile}
-							value={image}
-						>
-							{({ getRootProps, getInputProps }) => (
-								<section
-									onClick={() => {
-										setLoading(true);
-										setImageData({});
-									}}
-								>
-									<div
-										{...getRootProps({
-											className: "dropzone",
-										})}
-									>
-										<input {...getInputProps()} />
-										<span>
-											<FaFolderPlus />
-										</span>
-										<p>
-											Coloca la imágen aquí, o clickea
-											para seleccionar
-										</p>
-									</div>
-								</section>
-							)}
-						</Dropzone>
+						<DropImages
+							setImageData={setImageData}
+							setLoading={setLoading}
+							handleDrop={handleDrop}
+						/>
 						{erroUpload && (
 							<h3
 								style={{

@@ -9,6 +9,7 @@ import {
 	resetAccessorieState,
 } from "../../../redux/actions/accesorieImages.actions.js";
 import SliderImages from "../../sliderImages/SliderImages.jsx";
+import { scrollToUp } from "../../../../helps/helpers.js";
 const ProductDescripcion = () => {
 	const { productDescription: productName } = useParams();
 	const [imgSeliderSelected, setImgSeliderSelected] = useState(0);
@@ -29,6 +30,7 @@ const ProductDescripcion = () => {
 		return () => dispatch(resetAccessorieState());
 	}, []);
 	useEffect(() => {
+		scrollToUp();
 		dispatch(
 			getAccessorieAttributes({ superCategory: productName }, "category"),
 		);

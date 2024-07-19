@@ -50,6 +50,7 @@ export const isNull = (row) => {
 };
 
 const orderColumn = (row, headerIndexs, proveedor) => {
+	console.log(row);
 	return {
 		code:
 			row[headerIndexs.codigoColum ? headerIndexs.codigoColum : 0] ||
@@ -85,4 +86,7 @@ export const reduceSizeImage = (imageUrl, main) => {
 		`upload/c_scale,${main ? "w_550" : "w_80"}/`,
 	);
 	return firstCut;
+};
+export const scrollToUp = () => {
+	window.scrollTo(0, 0);
 };

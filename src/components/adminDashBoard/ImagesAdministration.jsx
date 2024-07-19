@@ -65,6 +65,7 @@ const ImagesAdministration = () => {
 		}
 	}, [categorieSelect, marcaSelect]);
 	useEffect(() => {
+		console.log(newUrl);
 		if (newUrl !== imagesProduct && newUrl.length !== 0) {
 			setShowBtnUpdateImages(true);
 		} else {
@@ -197,7 +198,6 @@ const ImagesAdministration = () => {
 	const valueSelectConstructor = (value) => {
 		return { value, label: value.toUpperCase() };
 	};
-
 	return (
 		<div className="imagesAdministration-container">
 			<h2 style={{ marginBottom: "0" }}>Administrar Imágenes</h2>
